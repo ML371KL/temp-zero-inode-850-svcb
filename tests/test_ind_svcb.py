@@ -81,7 +81,8 @@ def test_settings_of_this_copy_name_no_monthly_release_and_the_bank_forms():
     assert cal.monthly_spec(sched) is None                         # месячного релиза у эмитента нет
     assert release_watch.monthly(s).wakes is False
     assert s["issuer_docs"]["hosts"] == ["prod-api.sovcombank.ru"] and not s["issuer_docs"].get("press_page")
-    assert not s["issuer_docs"]["trusted_root_hosts"] and not s["issuer_docs"]["fallback_hosts"]
+    # сертификат хоста API эмитента — УЦ Минцифры: закреплённый корень рабочему хосту; запасных хостов нет
+    assert s["issuer_docs"]["trusted_root_hosts"] == ["prod-api.sovcombank.ru"] and not s["issuer_docs"]["fallback_hosts"]
     assert [p["next_id"] for p in s["issuer_docs"]["probe"]] == [168, 165]
     assert s["issuer_docs"]["slots"][0]["id"] == 16976
     assert s["cbr_group"]["suspended_since"] == "2025Q2"

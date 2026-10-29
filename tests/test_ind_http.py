@@ -130,12 +130,17 @@ def test_the_sources_name_the_issuer_hosts_that_need_the_root():
     from indicators import config
     form = config.sources(Path(__file__).resolve().parent / "fixtures/ind/form/sources.yaml")["issuer_docs"]
     assert form["trusted_root_hosts"]                    # у формы образца запасные хосты — с корнем Минцифры
-    for cfg in (form, config.sources()["issuer_docs"]):
-        # рабочие хосты — с общедоверенным сертификатом; закреплённый корень — только запасным
-        assert set(cfg.get("trusted_root_hosts") or []) <= set(cfg.get("fallback_hosts") or [])
-        assert not set(cfg.get("trusted_root_hosts") or []) & set(cfg["hosts"])
-        rewrite = cfg.get("host_rewrite") or {}
-        assert set(rewrite) <= set(cfg.get("fallback_hosts") or []) and set(rewrite.values()) <= set(cfg["hosts"])
+    # форма образца: рабочие хосты — с общедоверенным сертификатом; закреплённый корень — только запасным
+    assert set(form.get("trusted_root_hosts") or []) <= set(form.get("fallback_hosts") or [])
+    assert not set(form.get("trusted_root_hosts") or []) & set(form["hosts"])
+    # эта копия: сертификат рабочего хоста эмитента выдан УЦ Минцифры — корень закреплён ему (как у панели ВТБ),
+    # и только хостам настройки
+    cfg = config.sources()["issuer_docs"]
+    assert cfg["trusted_root_hosts"]
+    assert set(cfg["trusted_root_hosts"]) <= set(cfg["hosts"]) | set(cfg.get("fallback_hosts") or [])
+    for c in (form, cfg):
+        rewrite = c.get("host_rewrite") or {}
+        assert set(rewrite) <= set(c.get("fallback_hosts") or []) and set(rewrite.values()) <= set(c["hosts"])
 
 
 @pytest.mark.tact

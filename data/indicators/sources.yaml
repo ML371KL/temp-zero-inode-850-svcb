@@ -68,7 +68,9 @@ news:
   pdf_patterns: ['https://prod-api\.sovcombank\.ru/(?:finance-report/index\?id=\d+|finance-presentations/\d+|documents?/\d+)']
 
 issuer_docs:
-  # Документы — только с открытого хоста API эмитента (общедоверенный сертификат). Перечня документов у хоста нет:
+  # Документы — только с открытого хоста API эмитента. Его сертификат выдан удостоверяющим центром Минцифры (проба
+  # сервера 29.10.2026: без корня — «self-signed certificate in certificate chain»), поэтому закреплённый корень из
+  # indicators/tls — рабочему хосту (`trusted_root_hosts`), как у панели ВТБ. Перечня документов у хоста нет:
   # отчётность и презентации — по сквозным номерам (`probe`: следующие номера каждый такт), текущая презентация —
   # в «слоте», номер которого перезаписывается (`slots`: перекачка и sha256 каждый такт). Заголовок — имя файла из
   # Content-Disposition. Файл отчётности ложится на хост накануне вечером; сборщик документов идёт утром (≈ 09:20
@@ -76,7 +78,7 @@ issuer_docs:
   # квартал — тоже документ эмитента (`posts`, `post_kinds`): сигнал «отчёт вышел», его числа — в запись кандидата.
   hosts: [prod-api.sovcombank.ru]
   fallback_hosts: []
-  trusted_root_hosts: []
+  trusted_root_hosts: [prod-api.sovcombank.ru]
   ocr: false
   probe:
     - {url: "https://prod-api.sovcombank.ru/finance-report/index?id={id}", next_id: 168, ahead: 3, title: "отчётность МСФО"}
