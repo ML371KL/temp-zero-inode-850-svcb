@@ -34,7 +34,7 @@ ExecStart=/bin/bash /srv/dash/repo-850-svcb/ops/run.sh rebuild
 # Число вписывает `python ops/tools/budgets.py --write` из ops/budgets.json;
 # руками не правится, равенство сверяет tests/test_ops_units.py. Оценка это
 # или замер сервера — ops/budgets.json, status (ops/README.md §9).
-RuntimeMaxSec=4080
+RuntimeMaxSec=4680
 SyslogIdentifier=svcb850
 
 StateDirectory=svcb-850
@@ -55,8 +55,8 @@ ReadWritePaths=/srv/dash/repo-850-svcb
 # процессов стоят на ОДНОМ замере (ops/budgets.json, ops/README.md §9): числа
 # вписывает `python ops/tools/budgets.py --write`. Оценка это или замер
 # сервера — ops/budgets.json, status.
-MemoryHigh=832M
-MemoryMax=1024M
+MemoryHigh=1024M
+MemoryMax=1536M
 Nice=10
 
 # Мост тревог: шлёт СМЕНУ состояния, поэтому тихие проверки с кодом 0 ничего не

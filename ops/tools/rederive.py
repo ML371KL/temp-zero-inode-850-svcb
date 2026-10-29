@@ -200,12 +200,24 @@ class Tree:
         return self.root / "var" / "rederive"
 
 
+def forget_foreign_siblings(folder: Path) -> None:
+    """Модуль книги импортирует лист рядом обычным `import` (описание вывода — `import derive_on_engine`): модуль
+    с тем же именем, уже загруженный из ДРУГОГО дерева (копии книги во временном каталоге), забывается — иначе
+    описание этого дерева читало бы лист и его записи `out/` чужого дерева."""
+    for sibling in folder.glob("*.py"):
+        cached = sys.modules.get(sibling.stem)
+        where = getattr(cached, "__file__", None) if cached is not None else None
+        if where and Path(where).resolve() != sibling.resolve():
+            del sys.modules[sibling.stem]
+
+
 def load_module(path: Path, name: str):
     """Модуль книги по пути (не пакет): лист, описание, сборщик; байткод в дерево книги не пишется."""
     if not path.exists():
         raise Refused(f"нет файла {path.name} ({path.parent})")
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
+    forget_foreign_siblings(path.parent)
     sys.path.insert(0, str(path.parent))
     keep, sys.dont_write_bytecode = sys.dont_write_bytecode, True
     try:

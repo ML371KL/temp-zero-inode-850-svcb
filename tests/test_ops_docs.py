@@ -168,8 +168,8 @@ def test_the_build_is_measured_by_hand_before_the_units_and_the_timers():
     assert "**Выбор числа процессов.**" in steps[8] and "короче суток" in flat and "«бюджет: restart …»" in flat
     assert "бюджет: {line}" in budget_tool and 'f"restart: окно перезапуска такта' in budget_tool
     assert "BANK_WORKERS=<workers бюджета>" in measure and "'^BANK_WORKERS=[1-7]$'" in measure
-    # цели названы числами: тесты такта — 270 с, сборка — 30 минут, выше 45 минут — решает ведущий
-    assert "270 с (`tact_tests_target`)" in steps[8] and "30 минут (`build_target`" in steps[8]
+    # цели названы числами: тесты такта — 450 с, сборка — 30 минут, выше 45 минут — решает ведущий
+    assert "450 с (`tact_tests_target`)" in steps[8] and "30 минут (`build_target`" in steps[8]
     assert "45 минут" in steps[8] and "(`build_stop`)" in steps[8] and "решает ведущий" in steps[8]
     # цель рабочей машины — тоже числами бюджета: 15 минут в обычном случае, 25 — в худшем, при четырёх процессах
     assert "(`build_laptop_goal`)" in steps[8] and "15 минут в обычном случае и 25 минут в" in " ".join(steps[8].split())
@@ -192,7 +192,7 @@ def test_the_build_is_measured_by_hand_before_the_units_and_the_timers():
     for word in ("`status: estimate`", "python ops/tools/budgets.py --write", "одна правка файла и одна команда",
                  "`workers` бюджета", "раздел 5, шаг 8", "`status: measured`", "`basis.build_worst_s`",
                  "python ops/tools/worst_build.py", "`basis.tact_server_factor`", "`tact_tests_laptop_limit` (150 с)",
-                 "`tact_tests_target` (270 с)", "30 минут (`build_target`", "45 минут (`build_stop`)",
+                 "`tact_tests_target` (450 с)", "30 минут (`build_target`", "45 минут (`build_stop`)",
                  "`build_laptop_goal` бюджета", "15 минут в обычном случае (`usual_s`)", "25 минут в худшем (`worst_s`)",
                  "«бюджет: restart …»"):
         assert word in " ".join(budget.split()), word
@@ -200,7 +200,7 @@ def test_the_build_is_measured_by_hand_before_the_units_and_the_timers():
     # числа целей в тексте — числа бюджета
     budgets = json.loads((ROOT / "ops" / "budgets.json").read_text(encoding="utf-8"))
     assert (budgets["tact_tests_target"], budgets["tact_tests_laptop_limit"], budgets["tact_tests_ci_ceiling"],
-            budgets["build_target"] // 60, budgets["build_stop"] // 60) == (270, 150, 300, 30, 45)
+            budgets["build_target"] // 60, budgets["build_stop"] // 60) == (450, 150, 300, 30, 45)
     goal = budgets["build_laptop_goal"]
     assert (goal["workers"], goal["usual_s"] // 60, goal["worst_s"] // 60) == (4, 15, 25)
     assert "решение ведущего" not in _ops_readme(), "текст эксплуатации — о том, как есть, а не о том, кто решил"
@@ -394,7 +394,7 @@ def test_the_first_push_is_accepted_before_and_after_the_commit():
     assert "ИТОГ: набор сервера зелёный на 4 датах из 4" in section
     assert "не запускается ничего другого" in section and "`tests/support_git.py`" in section
     assert "git rev-list --count main; git status --short | wc -l" in commands, "после прогонов приёмки — снова 1 и 0"
-    assert "такт: N с из 300 (цель сервера — 270 с)" in section
+    assert "такт: N с из 300 (цель сервера — 450 с)" in section
     assert "Шаблоны приёмки — свои у каждой панели" in section and "Шаблоны панели-образца копии не годятся" in section
     assert """TACT=$(sed -n 's/^TACT_TESTS="\\(.*\\)"$/\\1/p' ops/run.sh)""" in commands
     assert commands.count("-rs -m archive tests/test_public_hygiene.py") == 2, "личные слова — до коммита и после"

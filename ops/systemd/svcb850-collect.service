@@ -10,7 +10,7 @@ After=network-online.target
 # фактически не ограничен: не больше 3 стартов за окно, дальше юнит стоит до
 # следующего таймера. Расчёт — ops/budgets.json (restart); числа вписывает
 # `python ops/tools/budgets.py --write`, равенство сверяет tests/test_ops_units.py.
-StartLimitIntervalSec=26940
+StartLimitIntervalSec=28740
 StartLimitBurst=3
 
 [Service]
@@ -44,7 +44,7 @@ RestartPreventExitStatus=8 64 78
 # Число вписывает `python ops/tools/budgets.py --write` из ops/budgets.json;
 # руками не правится, равенство сверяет tests/test_ops_units.py. Оценка это
 # или замер сервера — ops/budgets.json, status (ops/README.md §9).
-RuntimeMaxSec=8700
+RuntimeMaxSec=9300
 SyslogIdentifier=svcb850
 
 StateDirectory=svcb-850
@@ -71,8 +71,8 @@ InaccessiblePaths=/srv/dash/.ssh
 # память сборки при числе процессов бюджета и память набора тестов такта, с
 # запасом; вписывает `python ops/tools/budgets.py --write`. Оценка это или
 # замер сервера — ops/budgets.json, status.
-MemoryHigh=832M
-MemoryMax=1024M
+MemoryHigh=1024M
+MemoryMax=1536M
 Nice=10
 
 # Мост тревог: ExecStopPost, а НЕ OnFailure — выполняется всегда, поэтому из

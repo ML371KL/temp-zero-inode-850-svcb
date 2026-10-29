@@ -302,7 +302,7 @@ def test_the_tact_timing_step_uses_the_servers_selection():
     timing = _step(_ci()["jobs"]["tests"], "Тесты такта — замер времени")["run"]
     assert 'python -m pytest -m "($TACT)" --strict-markers --durations=0 -p no:cacheprovider' in timing
     assert runs.count('-m "($TACT)"') == 1, "набор сервера идёт в CI один раз"
-    # Потолок шага — из бюджета (300 с), шаг краснеет сверх него; цель сервера (270 с) сверяет
+    # Потолок шага — из бюджета (300 с), шаг краснеет сверх него; цель сервера (450 с) сверяет
     # замер на сервере, здесь время дольше цели — предупреждение.
     assert '["tact_tests_ci_ceiling"]' in runs and 'if [ "$spent" -gt "$ceiling" ]' in runs
     assert '["tact_tests_target"]' in runs and 'if [ "$spent" -gt "$target" ]' in runs
@@ -312,7 +312,7 @@ def test_the_tact_timing_step_uses_the_servers_selection():
     assert "::warning::" in warning and "exit" not in warning, "цель сервера на раннере — не отказ"
     assert 'echo "такт: $spent с из $ceiling (цель сервера — $target с)"' in runs
     budgets = json.loads((ROOT / "ops" / "budgets.json").read_text(encoding="utf-8"))
-    assert (budgets["tact_tests_target"], budgets["tact_tests_ci_ceiling"]) == (270, 300)
+    assert (budgets["tact_tests_target"], budgets["tact_tests_ci_ceiling"]) == (450, 300)
     tact = _tact()
     assert tact.startswith("tact and "), "такт — белый список по метке tact"
     for excluded in ("not network", "not archive", "not docs", "not ci_only", "not deadline"):

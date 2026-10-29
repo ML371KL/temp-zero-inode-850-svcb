@@ -1200,7 +1200,10 @@ MUTATIONS: list[Mutation] = [
     # --- проход ядра 4, Р5-4: лист вывода — корни расходов в связке оси базы строки
     Mutation("M432", "Р5-4 (M_p4_8): лист кладёт корни расходов в связку и при неполном наборе путей",
              "data/assumptions/evidence/path/derive_on_engine.py",
-             "    if len(have) != len(keys):", "    if False:"),
+             # строка правки — с текстом остановки Р5-4: та же строка проверки стоит выше в листе (Р8-6, κ строк), и
+             # правка первого вхождения била бы не ту функцию (мутант выживал в CI 29.10.2026)
+             "    if len(have) != len(keys):\n        raise RuntimeError(f\"ось «{ax['name']}» несёт часть корней расходов",
+             "    if False:\n        raise RuntimeError(f\"ось «{ax['name']}» несёт часть корней расходов"),
     Mutation("M433", "Р5-4: инвариант book_schema судит углы сложения связок и у книги-копии (прогон, вариант)",
              "model/checks.py", "        validate(book.data, corners=book.base is None)",
              "        validate(book.data)"),

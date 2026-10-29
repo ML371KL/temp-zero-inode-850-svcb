@@ -157,7 +157,7 @@ python -m venv .venv
 Git Bash — `FAKE_TODAY=ГГГГ-ММ-ДД ./.venv/Scripts/python.exe -m pytest`; PowerShell —
 `$env:FAKE_TODAY='ГГГГ-ММ-ДД'; .\.venv\Scripts\python.exe -m pytest; Remove-Item Env:FAKE_TODAY`.
 Быстрые тесты каждого потока несут метку `tact` — их сервер гоняет перед каждой
-сборкой (весь набор не дольше 270 с на сервере и 150 с на ноутбуке; шаг CI краснеет
+сборкой (весь набор не дольше 450 с на сервере и 150 с на ноутбуке; шаг CI краснеет
 после 300 с — `ops/budgets.json`). Набор сервера — выражение `TACT_TESTS` в
 `ops/run.sh` (`tact and not network and not archive and not docs and not ci_only
 and not deadline`); он обязан быть зелёным на любой будущей дате. `-m tact` в

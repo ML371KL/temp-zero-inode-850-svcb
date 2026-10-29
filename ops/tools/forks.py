@@ -147,6 +147,11 @@ def load_spec(book_dir: Path):
     path = book_dir / "evidence" / "path" / "derive_spec.py"
     spec = importlib.util.spec_from_file_location("forks_spec", path)
     module = importlib.util.module_from_spec(spec)
+    for sibling in path.parent.glob("*.py"):              # лист рядом, загруженный из другого дерева, — забыть
+        cached = sys.modules.get(sibling.stem)
+        where = getattr(cached, "__file__", None) if cached is not None else None
+        if where and Path(where).resolve() != sibling.resolve():
+            del sys.modules[sibling.stem]
     sys.path.insert(0, str(path.parent))
     keep, sys.dont_write_bytecode = sys.dont_write_bytecode, True
     try:
