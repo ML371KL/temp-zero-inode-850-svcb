@@ -1,0 +1,22 @@
+{
+ "response": [
+  {
+   "name": "2026",
+   "type": "folder",
+   "description": "",
+   "children": [
+    {
+     "id": "id-bbbb0001",
+     "name": "Операционные результаты за сентябрь 2026",
+     "link": "https://cdn.tbank.ru/static/documents/bbbb0001-0000-4000-8000-000000000001.pdf",
+     "size": "300000",
+     "type": "file",
+     "typeFile": "pdf",
+     "description": "",
+     "disclaimer": null,
+     "publishedAt": "2026-10-23T08:00:00.000Z"
+    }
+   ]
+  }
+ ]
+}

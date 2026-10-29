@@ -1,0 +1,147 @@
+{
+ "basis": "mgmt",
+ "unit": "share",
+ "source": "data/facts/mgmt_quarterly.json (ЧПМ и стоимость риска квартала)",
+ "quarters": {
+  "2023Q1": {
+   "nim": {
+    "v": 0.06444,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!X6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.028171,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!T6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q2": {
+   "nim": {
+    "v": 0.068336,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!Y6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.025497,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!U6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q3": {
+   "nim": {
+    "v": 0.068292,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!Z6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.014576,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!V6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q4": {
+   "nim": {
+    "v": 0.059127,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AA6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.051646,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!W6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2024Q1": {
+   "nim": {
+    "v": 0.053695,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AB6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.019885,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!X6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2024Q2": {
+   "nim": {
+    "v": 0.058894,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AC6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.026916,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!Y6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2024Q3": {
+   "nim": {
+    "v": 0.053364,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AD6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.029591,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!Z6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2024Q4": {
+   "nim": {
+    "v": 0.051,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.024693,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AA6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2025Q1": {
+   "nim": {
+    "v": 0.043,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.022298,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AB6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2025Q2": {
+   "nim": {
+    "v": 0.047,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.037,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   }
+  },
+  "2025Q3": {
+   "nim": {
+    "v": 0.057,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.034,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   }
+  },
+  "2025Q4": {
+   "nim": {
+    "v": 0.064,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.025,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   }
+  },
+  "2026Q1": {
+   "nim": {
+    "v": 0.07,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.03,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   }
+  },
+  "2026Q2": {
+   "nim": {
+    "v": 0.076,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.022,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880"
+   }
+  }
+ }
+}

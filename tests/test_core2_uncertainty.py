@@ -1,0 +1,347 @@
+"""Полоса A-V9 (М§10): печать, треугольные оси, LHS, быстрая выборка, вклады осей, привязка медианы."""
+
+from __future__ import annotations
+
+import math
+import random
+
+import pytest
+
+from model import uncertainty as U
+from model.grid import live_from_book, run_grid
+from tests.support_core2 import book_and_facts, first_form_book_and_facts, small_book
+
+
+# ------------------------------------------------------------------ печать и статистика
+
+
+@pytest.mark.parametrize("x, step, want", [
+    (437.5, 5, 440.0), (437.4999, 5, 435.0), (432.5, 5, 435.0), (1.25, 0.1, 1.3), (1.35, 0.1, 1.4),
+    (272.87, 0.1, 272.9), (-2.5, 5, -5.0), (0.0, 5, 0.0), (1002.5, 5, 1005.0),
+])
+@pytest.mark.tact
+def test_round_half_up_in_decimal(x, step, want):
+    assert U.round_half_up(x, step) == want
+
+
+@pytest.mark.tact
+def test_triangular_axis_has_book_value_as_median_and_ends():
+    assert U.tri_s(0.5) == 0.0
+    assert U.tri_s(0.0) == -1.0 and U.tri_s(1.0) == 1.0
+    for u in (0.1, 0.25, 0.4):
+        assert U.tri_s(u) == pytest.approx(-U.tri_s(1 - u), abs=1e-15)
+    # плотность треугольника: P(|s| < 0.5) = 0.75
+    rng = random.Random(1)
+    s = [U.tri_s(rng.random()) for _ in range(20000)]
+    assert sum(1 for v in s if abs(v) < 0.5) / len(s) == pytest.approx(0.75, abs=0.02)
+
+
+@pytest.mark.tact
+def test_quantile_is_type_7():
+    v = [1.0, 2.0, 4.0, 8.0]
+    assert U.quantile(v, 0.5) == 3.0
+    assert U.quantile(v, 0.1) == pytest.approx(1.3)
+    assert U.quantile(v, 0.9) == pytest.approx(6.8)
+
+
+@pytest.mark.tact
+def test_latin_hypercube_order_is_part_of_the_definition():
+    n, k, seed = 50, 3, 20260930
+    pts = U.draw_points(n, k, seed)
+    # каждая ось стратифицирована: ровно одна точка в каждой страте
+    for j in range(k):
+        strata = sorted(int(_u_of_s(pts[i][j]) * n) for i in range(n))
+        assert strata == list(range(n))
+    # порядок случайных чисел: перестановки по осям, затем u по прогонам и осям
+    rng = random.Random(seed)
+    perms = []
+    for _ in range(k):
+        p = list(range(n))
+        rng.shuffle(p)
+        perms.append(p)
+    first = [U.tri_s((perms[j][0] + rng.random()) / n) for j in range(k)]
+    assert pts[0] == first
+    assert U.draw_points(n, k, seed) == pts
+
+
+def _u_of_s(s: float) -> float:
+    """Обратное к tri_s: u(s)."""
+    return (s + 1) ** 2 / 2 if s < 0 else 1 - (1 - s) ** 2 / 2
+
+
+# ------------------------------------------------------------------ вклады осей
+
+
+@pytest.mark.tact
+def test_axis_contributions_are_squared_rank_correlation_shares():
+    rng = random.Random(7)
+    pts = [[rng.uniform(-1, 1) for _ in range(3)] for _ in range(400)]
+    centre = [math.exp(3 * s[0]) + 0.3 * s[1] for s in pts]          # монотонно по оси 0, слабо по оси 1
+    rows = U.axis_contributions(["a", "b", "c"], pts, centre)
+    assert sum(r["share"] for r in rows) == pytest.approx(1.0, abs=1e-12)
+    assert rows[0]["axis"] == "a" and rows[0]["share"] > 0.8
+    shares = {r["axis"]: r["share"] for r in rows}
+    assert shares["b"] > shares["c"]
+    # Спирмен не зависит от монотонного преобразования центра
+    rows2 = U.axis_contributions(["a", "b", "c"], pts, [math.log(c + 10) for c in centre])
+    assert [r["share"] for r in rows2] == pytest.approx([r["share"] for r in rows], abs=1e-12)
+    # оси-словари не участвуют: доли остальных — в сумме 1
+    rows3 = U.axis_contributions(["a", "b", "c"], pts, centre, skip=[0])
+    assert {r["axis"] for r in rows3} == {"b", "c"} and sum(r["share"] for r in rows3) == pytest.approx(1.0)
+
+
+# ------------------------------------------------------------------ оси книги
+
+
+@pytest.mark.tact
+def test_axis_overrides_value_shift_dict():
+    book, _ = book_and_facts()
+    axes = book.get("valuation.uncertainty.axes")
+    for ax in axes:
+        for s in (-1.0, -0.5, 0.0, 0.5, 1.0):
+            ov = U.axis_overrides(book, ax, s)
+            assert set(ov) == set(ax["paths"])
+            if ax["kind"] == "value":
+                base = float(book.get(ax["paths"][0]))
+                end = ax["high"] if s >= 0 else ax["low"]
+                assert ov[ax["paths"][0]] == pytest.approx(base + abs(s) * (end - base))
+            elif ax["kind"] == "dict":
+                assert sum(ov[ax["paths"][0]].values()) == pytest.approx(1.0)
+            if s == 0.0 and ax["kind"] != "shift":
+                assert ov[ax["paths"][0]] == pytest.approx(book.get(ax["paths"][0]))
+    with pytest.raises(Exception):
+        U.axis_overrides(book, {**axes[0], "kind": "wobble"}, 0.3)
+
+
+@pytest.mark.tact
+def test_governance_axis_keeps_channels_summing_to_the_discount():
+    """Ось дисконта за управление масштабирует каналы так, что их сумма — итог (М§8.2). У книги без каналов (дисконт 0,
+    список каналов пуст — книга Совкомбанка) подменить можно только нулём: ненулевой итог без каналов схема отвергает,
+    и такую ось книга нести не может; правило масштабирования проверяется на фикстуре core с каналами."""
+    from model.book_schema import BookError
+    from tests.support_core import fixture_book
+    book, _ = book_and_facts()
+    if not book.get("valuation.governance.components"):
+        assert float(book.get("valuation.governance.discount")) == 0.0
+        assert float(U.trial_book(book, {"valuation.governance.discount": 0.0}).get("valuation.governance.discount")) == 0.0
+        with pytest.raises(BookError, match="Σ sign × value"):
+            U.trial_book(book, {"valuation.governance.discount": 0.03})
+        book = fixture_book()
+    assert book.get("valuation.governance.components")
+    for new in (0.0, 0.03, 0.1):
+        b2 = U.trial_book(book, {"valuation.governance.discount": new})
+        comps = b2.get("valuation.governance.components")
+        assert sum(float(c["sign"]) * float(c["value"]) for c in comps) == pytest.approx(new, abs=1e-12)
+        assert float(b2.get("valuation.governance.discount")) == pytest.approx(new, abs=1e-15)
+
+
+@pytest.mark.tact
+def test_axis_keys_collapse_parallel_paths():
+    assert U.axis_key({"paths": ["regimes.soft.cor.LT", "regimes.norm.cor.LT"]}) == "regimes.*.cor.LT"
+    assert U.axis_key({"paths": ["valuation.erp"]}) == "valuation.erp"
+    assert U.axis_key({"paths": ["worlds.M.cpi", "worlds.M.lt_inflation"]}) == "worlds.M.*"
+
+
+# ------------------------------------------------------------------ быстрая выборка полосы
+
+
+@pytest.fixture(scope="module")
+def small_band():
+    book, facts = book_and_facts()
+    live = live_from_book(book, facts)
+    return book, facts, live, U.band(book, facts, live, draws=10, workers=1)
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_fast_band_sample_is_deterministic_and_rounded(small_band):
+    book, facts, live, band = small_band
+    assert band.draws == 10 and len(band.low_draws) == len(band.high_draws) == 10 == len(band.s)
+    step = U.draw_step(book)                       # шаг хранения прогонов — ключ книги (0,01 ₽ у книги Совкомбанка)
+    assert band.draw_step == step
+    for v in band.low_draws + band.high_draws:
+        assert v == U.round_half_up(v, step)
+    again = U.band(book, facts, live, draws=10, workers=1)
+    assert again.low_draws == band.low_draws and again.high_draws == band.high_draws   # бит в бит
+    assert band.axes == tuple(book.get("valuation.uncertainty.axes"))
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_band_draw_is_the_grid_on_the_changed_book(small_band):
+    """Прогон i — та же сетка и то же отображение, что у печатаемого числа (М§10). Подмены прогона собирает
+    `draw_overrides`: у книги с осью-связкой её приращения складываются со сдвигами осей вида `shift` на тех же путях;
+    у книги без связок это те же подмены осей по порядку книги."""
+    book, facts, live, band = small_band
+    s = band.s[3]
+    plain = {}
+    for ax, sj in zip(band.axes, s):
+        if ax["kind"] != U.BUNDLE:
+            plain.update(U.axis_overrides(book, ax, sj))
+    ov = U.draw_overrides(book, band.axes, s)
+    assert all(ov[path] == value for path, value in plain.items()
+               if not any(b["kind"] == U.BUNDLE and any(p == path or p.startswith(path + ".") for p in b["paths"]) for b in band.axes))
+    run = run_grid(U.trial_book(book, ov), facts, live)
+    assert band.low_draws[3] == U.round_half_up(run.low, U.draw_step(book))
+    assert band.high_draws[3] == U.round_half_up(run.high, U.draw_step(book))
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_headline_reproduces_from_draws(small_band):
+    book, _, live, band = small_band
+    main = str(book.get("meta.company.main_ticker"))
+    h = band.headline(band.lam, live.prices, main)
+    c = sorted(lo + band.lam * (hi - lo) for lo, hi in zip(band.low_draws, band.high_draws))
+    assert h["median"] == U.quantile(c, 0.5) and h["band80"] == [U.quantile(c, 0.1), U.quantile(c, 0.9)]
+    assert h["printed_median"] == U.round_half_up(h["median"], band.print_step)
+    assert h["p_below_market"] == sum(1 for v in c if v < live.prices[main]) / len(c)
+    assert set(h["upside"]) == set(live.prices)
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_band_contributions_skip_dict_axes(small_band):
+    _, _, _, band = small_band
+    rows = band.contributions(band.lam)
+    kinds = {k: ax["kind"] for k, ax in zip(band.keys, band.axes)}
+    assert all(kinds[r["axis"]] != "dict" for r in rows)
+    assert sum(r["share"] for r in rows) == pytest.approx(1.0)
+    assert all(r["judgement_key"] == r["axis"] for r in rows)
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_band_tail_counts_the_cells_that_need_capital(small_band):
+    """Хвост полосы (М§10): сводка прогона несёт массы клеток с капитальным разрывом, с ROE терминала не выше
+    роста и с отрицательной стоимостью и цену прогона при стоимости клетки не ниже нуля; `Band.tail` — число
+    таких прогонов, средняя масса и сдвиг квантилей."""
+    book, facts = first_form_book_and_facts()             # у книги с ростом по капиталу разрыва в хвосте нет
+    live = live_from_book(book, facts)
+    band = small_band[3] if book is small_band[0] else U.band(book, facts, live, draws=10, workers=1)
+    masses = ("gap_mass", "need_capital_mass", "negative_mass")
+    negative = [i for i, r in enumerate(band.rows) if r["negative_mass"] > 0]
+    gap_only = [i for i, r in enumerate(band.rows) if r["gap_mass"] > 0 and not r["negative_mass"]]
+    calm = [i for i, r in enumerate(band.rows) if not any(r[k] > 0 for k in masses)]
+    cases = [group[0] for group in (negative, gap_only, calm) if group]
+    assert calm and len(cases) >= 2                       # в выборке — спокойный прогон и прогон хвоста: сверка не пуста
+    for i in cases:
+        run = run_grid(U.draw_book(book, band.axes, band.s[i]), facts, live)
+        row, prob = band.rows[i], run.layers["analytical"].prob
+        assert row["gap_mass"] == pytest.approx(sum(prob[c.key] for c in run.cells if "capital_gap" in c.flags))
+        assert row["need_capital_mass"] == pytest.approx(sum(prob[c.key] for c in run.cells if c.roe_t <= c.g_t))
+        assert row["negative_mass"] == pytest.approx(sum(prob[c.key] for c in run.cells if c.v_ri < 0))
+        for name, layer in (("low_floor", "macro_neutral"), ("high_floor", "analytical")):
+            weights = run.layers[layer].prob
+            floor = run.price_of(sum(weights[c.key] * max(c.v_ri, 0.0) for c in run.cells))
+            assert row[name] == pytest.approx(floor, rel=1e-12)
+        if any(c.v_ri < 0 for c in run.cells):
+            assert i in negative and row["low_floor"] > row["low"] and row["high_floor"] > row["high"]
+        else:
+            assert (row["low_floor"], row["high_floor"]) == (row["low"], row["high"])       # бит в бит
+    worst = band.rows[negative[0]]
+    assert worst["need_capital_mass"] > 0 and worst["gap_mass"] > 0     # отрицательная стоимость — там, где нужен капитал
+    tail = band.tail(band.lam)
+    assert set(tail) == {"n", "capital_gap", "need_capital", "negative", "floor_shift"} and tail["n"] == 10
+    for key, name in (("capital_gap", "gap_mass"), ("need_capital", "need_capital_mass"),
+                      ("negative", "negative_mass")):
+        assert tail[key]["draws"] == sum(1 for r in band.rows if r[name] > 0) > 0
+        assert tail[key]["mass"] == pytest.approx(sum(r[name] for r in band.rows) / 10)        # по всем прогонам
+        assert 0 < tail[key]["mass"] < max(r[name] for r in band.rows)
+    assert tail["floor_shift"]["low"] > 0 and tail["floor_shift"]["median"] >= 0
+
+
+@pytest.mark.tact
+def test_band_tail_floor_shift_on_synthetic_draws():
+    """Сдвиг квантилей при нулевом поле стоимости клетки — разность квантилей центра прогонов с полом и без
+    него; сводки без полей хвоста (полоса прежнего формата) — хвоста нет."""
+    lam, levels = 0.5, (0.1, 0.25, 0.5, 0.75, 0.9)
+    data = ((100.0, 140.0, 30.0, 0.04, 0.03, 0.02), (200.0, 260.0, 0.0, 0.0, 0.0, 0.0),
+            (300.0, 380.0, 0.0, 0.01, 0.0, 0.0), (400.0, 500.0, 0.0, 0.0, 0.0, 0.0),
+            (150.0, 190.0, 10.0, 0.02, 0.02, 0.01))
+    rows = tuple({"low": lo, "high": hi, "low_floor": lo + up, "high_floor": hi + up, "gap_mass": gap,
+                  "need_capital_mass": need, "negative_mass": neg} for lo, hi, up, gap, need, neg in data)
+    band = U.Band(axes=(), s=(), low_draws=tuple(r["low"] for r in rows), high_draws=tuple(r["high"] for r in rows),
+                  draws=len(rows), quantiles=levels, rows=rows)
+    tail = band.tail(lam)
+    centre = sorted((lo + hi) / 2 for lo, hi, *_ in data)
+    floored = sorted((lo + hi) / 2 + up for lo, hi, up, *_ in data)
+    assert tail["floor_shift"]["low"] == pytest.approx(U.quantile(floored, 0.1) - U.quantile(centre, 0.1))
+    assert tail["floor_shift"]["median"] == pytest.approx(U.quantile(floored, 0.5) - U.quantile(centre, 0.5)) == 0.0
+    assert tail["capital_gap"] == {"draws": 3, "mass": pytest.approx(0.07 / 5)}
+    assert tail["need_capital"]["draws"] == 2 and tail["negative"] == {"draws": 2, "mass": pytest.approx(0.03 / 5)}
+    old = U.Band(axes=(), s=(), low_draws=(1.0, 2.0), high_draws=(2.0, 3.0), draws=2, quantiles=levels,
+                 rows=({"low": 1.0, "high": 2.0}, {"low": 2.0, "high": 3.0}))
+    assert old.tail(lam) is None and U.Band(axes=(), s=(), low_draws=(1.0,), high_draws=(2.0,)).tail(lam) is None
+
+
+# вне такта сервера: быстрая полоса — секунды, набор такта держит цель времени (ops/budgets.json)
+def test_gate_messages_name_the_band_tail(small_band):
+    """Сообщения гейтов `capital_gap` и `roe_gt_g` называют и хвост прогонов полосы; условие, масса и список
+    клеток гейта — по-прежнему печатаемой сетки (М§14.2)."""
+    from model.checks import check_gates, grouped, pct
+    book, facts, live, band = small_band
+    run = run_grid(book, facts, live)
+    plain = {f.name: f for f in check_gates(run)}
+    told = {f.name: f for f in check_gates(run, band=band)}
+    tail = band.tail(run.lam)
+    for name, key in (("capital_gap", "capital_gap"), ("roe_gt_g", "need_capital")):
+        a, b = plain[name], told[name]
+        assert (a.fired, a.mass, a.cells) == (b.fired, b.mass, b.cells)
+        part = (f"в {grouped(tail[key]['draws'])} из {grouped(10)} прогонов (масса таких клеток в среднем по всем "
+                f"прогонам — {pct(tail[key]['mass'])})")
+        assert b.message.startswith(a.message + "; в полосе — " + part), b.message
+        assert "в полосе" not in a.message
+    assert "стоимость клетки ниже нуля — " in told["roe_gt_g"].message
+    for name in set(plain) - {"capital_gap", "roe_gt_g", "growth_cut"}:     # гейт урезания роста называет и полосу
+        assert plain[name].message == told[name].message
+    if "growth_cut" in plain:
+        assert told["growth_cut"].message.startswith(plain["growth_cut"].message)
+
+
+def test_median_anchor_sees_exactly_the_printed_median_at_book_values(small_band):
+    book, facts, live, band = small_band
+    anchor = U.MedianAnchor(book, facts, live, band, n=6)
+    m = anchor.at(book)
+    assert m["central"] == pytest.approx(band.medians(band.lam)["central"], abs=1e-12)
+    shifted = U.trial_book(book, {"valuation.erp": float(book.get("valuation.erp")) + 0.01})
+    assert anchor.at(shifted)["central"] < m["central"]                   # дороже капитал — ниже медиана
+
+
+@pytest.mark.tact
+def test_workers_env(monkeypatch):
+    """Переменная без префикса банка (М§0.6, INTERFACES §8): копия ядра под другой банк её не меняет."""
+    assert U.WORKERS_ENV == "BANK_WORKERS"
+    monkeypatch.setenv("BANK_WORKERS", "3")
+    assert U.workers() == 3
+    monkeypatch.setenv("BANK_WORKERS", "auto")
+    assert 1 <= U.workers() <= U.MAX_WORKERS
+    monkeypatch.setenv("BANK_WORKERS", "zero")
+    with pytest.raises(ValueError):
+        U.workers()
+
+
+@pytest.mark.ci_only
+def test_pool_gives_bit_identical_band(parallel_band):
+    """Пул процессов склеивает куски по порядку точек: числа те же бит в бит."""
+    book, facts = book_and_facts()
+    live = live_from_book(book, facts)
+    serial = U.band(book, facts, live, draws=40, workers=1)
+    with parallel_band():
+        pooled = U.band(book, facts, live, draws=40, workers=3)
+    assert pooled.low_draws == serial.low_draws and pooled.high_draws == serial.high_draws
+
+
+def test_judgements_price_at_axis_ends():
+    book, facts = book_and_facts()
+    book = small_book(book)
+    live = live_from_book(book, facts)
+    band = U.band(book, facts, live, draws=6, workers=1)
+    rows = U.judgements(book, facts, live, band)
+    off = U.off_band_axes(book)
+    assert len(rows) == len(band.axes) + len(off)
+    assert [r["swing"] for r in rows] == sorted((r["swing"] for r in rows), reverse=True)
+    for ax in off:                        # ось вне полосы: цена ошибки есть, вклада нет (М§10)
+        row = next(r for r in rows if r["paths"] == list(ax["paths"]))
+        assert row["in_band"] is False and row["share"] is None and row["rank_corr"] is None
+        assert row["price_low"] is not None and row["price_high"] is not None
+    assert all(r["in_band"] for r in rows if r["paths"] not in [list(a["paths"]) for a in off])
+    erp = next(r for r in rows if r["paths"] == ["valuation.erp"])
+    b2 = U.trial_book(book, {"valuation.erp": erp["high"]})
+    assert erp["price_high"] == pytest.approx(run_grid(b2, facts, live).point, abs=1e-9)
+    assert erp["price_high"] < erp["price_low"]

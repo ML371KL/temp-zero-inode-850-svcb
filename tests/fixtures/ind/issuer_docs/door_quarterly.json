@@ -1,0 +1,49 @@
+{
+ "response": [
+  {
+   "name": "2026",
+   "type": "folder",
+   "children": [
+    {
+     "name": "II кв. 2026",
+     "type": "folder",
+     "children": [
+      {
+       "id": "id-bbbb0002",
+       "name": "Пресс‑релиз МСФО за II кв. 2026",
+       "link": "https://cdn.tbank.ru/static/documents/bbbb0002-0000-4000-8000-000000000002.pdf",
+       "size": "300000",
+       "type": "file",
+       "typeFile": "pdf",
+       "description": "",
+       "disclaimer": null,
+       "publishedAt": "2026-08-11T07:00:15.301Z"
+      },
+      {
+       "id": "id-bbbb0008",
+       "name": "Консолидированная финансовая отчетность МСФО за II кв. 2026",
+       "link": "https://cdn.tbank.ru/static/documents/bbbb0008-0000-4000-8000-000000000008.pdf",
+       "size": "2400000",
+       "type": "file",
+       "typeFile": "pdf",
+       "description": "",
+       "disclaimer": null,
+       "publishedAt": "2026-08-11T07:00:17.652Z"
+      },
+      {
+       "id": "id-bbbb0009",
+       "name": "Презентация МСФО за II кв. 2026",
+       "link": "https://cdn.tbank.ru/static/documents/bbbb0009-0000-4000-8000-000000000009.pdf",
+       "size": "5100000",
+       "type": "file",
+       "typeFile": "pdf",
+       "description": "",
+       "disclaimer": null,
+       "publishedAt": "2026-08-11T09:30:10.543Z"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

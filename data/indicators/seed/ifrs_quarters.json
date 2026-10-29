@@ -1,0 +1,147 @@
+{
+ "unit": "RUB bn",
+ "target": "ni_q",
+ "source": "data/facts/pnl_quarterly.json (ni_shareholders: прибыль квартала в определении книги); дни отчётов — research/facts/svcb_release_calendar.csv",
+ "quarters": {
+  "2023Q1": {
+   "value": {
+    "v": 22.414,
+    "src": "2024Q1_ifrs_fs.pdf, с. 5, sha256 68b5e94221e1ef31"
+   },
+   "report_date": {
+    "v": null,
+    "src": "не найдена"
+   }
+  },
+  "2023Q2": {
+   "value": {
+    "v": 28.837,
+    "src": "2024Q2_ifrs_fs.pdf, с. 5, sha256 a6158b05ec16d1bc; 2024Q1_ifrs_fs.pdf, с. 5, sha256 68b5e94221e1ef31"
+   },
+   "report_date": {
+    "v": null,
+    "src": "не найдена"
+   }
+  },
+  "2023Q3": {
+   "value": {
+    "v": 24.574,
+    "src": "2024Q3_ifrs_fs.pdf, с. 5, sha256 ba45253019d4da2c; 2024Q2_ifrs_fs.pdf, с. 5, sha256 a6158b05ec16d1bc"
+   },
+   "report_date": {
+    "v": null,
+    "src": "не найдена"
+   }
+  },
+  "2023Q4": {
+   "value": {
+    "v": 18.313,
+    "src": "FY2024_ifrs_fs.pdf, с. 12, sha256 c8339c9fd5562fba; 2024Q3_ifrs_fs.pdf, с. 5, sha256 ba45253019d4da2c"
+   },
+   "report_date": {
+    "v": "2024-03-15",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/25 и /26; Интерфакс /business/950551"
+   }
+  },
+  "2024Q1": {
+   "value": {
+    "v": 24.754,
+    "src": "2025Q1_ifrs_fs.pdf, с. 5, sha256 135494127b9ba0f6"
+   },
+   "report_date": {
+    "v": "2024-05-16",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/49; Интерфакс /business/960777"
+   }
+  },
+  "2024Q2": {
+   "value": {
+    "v": 13.193,
+    "src": "2025Q2_ifrs_fs.pdf, с. 5, sha256 f2a4918ae0ab4d33; 2025Q1_ifrs_fs.pdf, с. 5, sha256 135494127b9ba0f6"
+   },
+   "report_date": {
+    "v": "2024-08-15",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/74; Интерфакс /business/976602"
+   }
+  },
+  "2024Q3": {
+   "value": {
+    "v": 17.365,
+    "src": "2025Q3_ifrs_fs.pdf, с. 5, sha256 481ea431fa058208; 2025Q2_ifrs_fs.pdf, с. 5, sha256 f2a4918ae0ab4d33"
+   },
+   "report_date": {
+    "v": "2024-11-15",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/93; Интерфакс /business/992798"
+   }
+  },
+  "2024Q4": {
+   "value": {
+    "v": 20.28,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e; 2025Q3_ifrs_fs.pdf, с. 5, sha256 481ea431fa058208"
+   },
+   "report_date": {
+    "v": "2025-03-14",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/114; Интерфакс /business/1013619"
+   }
+  },
+  "2025Q1": {
+   "value": {
+    "v": 12.021,
+    "src": "2026Q1_ifrs_fs.pdf, с. 5, sha256 abc65f2f75ac4bf1"
+   },
+   "report_date": {
+    "v": "2025-05-16",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/125; Интерфакс /business/1025953"
+   }
+  },
+  "2025Q2": {
+   "value": {
+    "v": 4.207,
+    "src": "2026Q2_ifrs_fs.pdf, с. 5, sha256 0a659c1d3a37e4c1; 2026Q1_ifrs_fs.pdf, с. 5, sha256 abc65f2f75ac4bf1"
+   },
+   "report_date": {
+    "v": "2025-08-15",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/144; Интерфакс /business/1042360 и /1042443"
+   }
+  },
+  "2025Q3": {
+   "value": {
+    "v": 16.76,
+    "src": "2025Q3_ifrs_fs.pdf, с. 5, sha256 481ea431fa058208; 2026Q2_ifrs_fs.pdf, с. 5, sha256 0a659c1d3a37e4c1"
+   },
+   "report_date": {
+    "v": "2025-11-14",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/151 и /155; Интерфакс /business/1057953"
+   }
+  },
+  "2025Q4": {
+   "value": {
+    "v": 15.922,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e; 2025Q3_ifrs_fs.pdf, с. 5, sha256 481ea431fa058208"
+   },
+   "report_date": {
+    "v": "2026-03-13",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/158 и /159"
+   }
+  },
+  "2026Q1": {
+   "value": {
+    "v": 18.977,
+    "src": "2026Q1_ifrs_fs.pdf, с. 5, sha256 abc65f2f75ac4bf1"
+   },
+   "report_date": {
+    "v": "2026-05-15",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/168 и /169; Интерфакс /business/1089626"
+   }
+  },
+  "2026Q2": {
+   "value": {
+    "v": 24.704,
+    "src": "2026Q2_ifrs_fs.pdf, с. 5, sha256 0a659c1d3a37e4c1; 2026Q1_ifrs_fs.pdf, с. 5, sha256 abc65f2f75ac4bf1"
+   },
+   "report_date": {
+    "v": "2026-08-14",
+    "src": "research/facts/svcb_release_calendar.csv: t.me/irsovcombank/186 и /192"
+   }
+  }
+ }
+}

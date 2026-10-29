@@ -1,0 +1,34 @@
+{
+ "area": "nii",
+ "root": "$BANK_HANDOFF_DIR",
+ "files": [
+  {
+   "path": "stage1/calib/nii/backtest/panel_backtest.json",
+   "from": "stage1/calib-nii/out/panel.json",
+   "sha256_full": "e81c202b1d20f525dff9462e8b0ce9212f26720ea28bf82942088772d5b845d9",
+   "sha256_input": "2ce1d3861f59ba427a114b0f1ac5ce83601b852d4df4a10cb9efe55e01bd4831",
+   "filter": "строки 14 кварталов окна: dia, outside_net, nii_ifrs, проценты 12 книг; остатки 12 книг и iea_bank на 15 концов",
+   "rows_kept": 29,
+   "rows_total": 29
+  },
+  {
+   "path": "stage1/calib/nii/backtest/backtest_joint.json",
+   "from": "stage1/calib-nii/out/backtest.json",
+   "sha256_full": "2915afc6fa33cf243f17fae88f1b5f36b815588822cf109107fee1432a3f0d86",
+   "sha256_input": "75c692374bdb4149992a4bd959218509f892f72f4460067fd3321562d36ba047",
+   "filter": "ref и joint (ρ, a, c) двенадцати книг, lambda; плечи joint, ЧПМ модели joint и факта по кварталам окна",
+   "rows_kept": 12,
+   "rows_total": 12
+  },
+  {
+   "path": "stage1/calib/nii/backtest/ref_rates_quarterly.csv",
+   "from": "research/facts/svcb-history/key_rate_quarterly.csv + stage1/calib-nii/inputs/ofz_quarterly_moex_zcyc.csv",
+   "sha256_full": "8e9b4d2b959e8c6cf1686b7ff94f732d1ca61776e65f465b35fb49a6db5c6bd0",
+   "sha256_input": "f4d2a7a709cb3884f05465ca01598dfc84ea34f90567c094bd25998b97ca4eef",
+   "filter": "кварталы 2022К4–2026К2: средняя ключевая (research/facts/svcb-history/key_rate_quarterly.csv) и ОФЗ 1, 3, 5 лет (stage1/calib-nii/inputs/ofz_quarterly_moex_zcyc.csv); sha256_full — двух файлов подряд",
+   "rows_kept": 15,
+   "rows_total": 54
+  }
+ ],
+ "note": "path — место копии под inputs/ (раскладка листа образца); from — файл папки передачи Совкомбанка, хэш которого — sha256_full (у ряда опор — двух файлов подряд)"
+}

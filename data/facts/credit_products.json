@@ -1,0 +1,3079 @@
+{
+ "basis": "МСФО группы и ДАТАБУК банка (определение банка: резервы / средние валовые кредиты)",
+ "as_of": "2026-06-30",
+ "unit": "доли годовых (CoR); млрд ₽ (резервы квартала, валовые остатки)",
+ "note": "Стоимость риска по пяти кредитным книгам ядра (auto, mortgage, cash_loans, cards, corp_loans): датабук по кварталам 4К2018–2К2026 (2К2026 — МСФО 1П2026 минус датабук 1К2026, остатки — книги якоря), МСФО по годам и окна прочтений множителей М7 (лист Б7). Интенсивность состава окна — CoR окна на своём составе к CoR книг окна на долях якоря (решения ведущего № 3, Р3); множители М7 — отношение CoR книги к общей CoR окна (Р11). Лист: stage1/facts/code/make_credit_products.py → sheets/cor_products_quarterly.csv.",
+ "books": [
+  "auto",
+  "mortgage",
+  "cash_loans",
+  "cards",
+  "corp_loans"
+ ],
+ "anchor_weights": {
+  "auto": {
+   "v": 0.161315455,
+   "calc": "balance.books.auto 509.345 / Σ пяти кредитных книг 3157.447"
+  },
+  "mortgage": {
+   "v": 0.136116932,
+   "calc": "balance.books.mortgage 429.782 / Σ пяти кредитных книг 3157.447"
+  },
+  "cash_loans": {
+   "v": 0.083073762,
+   "calc": "balance.books.cash_loans 262.301 / Σ пяти кредитных книг 3157.447"
+  },
+  "cards": {
+   "v": 0.054014842,
+   "calc": "balance.books.cards 170.549 / Σ пяти кредитных книг 3157.447"
+  },
+  "corp_loans": {
+   "v": 0.565479009,
+   "calc": "balance.books.corp_loans 1785.470 / Σ пяти кредитных книг 3157.447"
+  }
+ },
+ "quarters": {
+  "2018Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 74.978,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!C21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 57.801,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!C22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 47.609,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!C19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 20.303,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!C20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 197.46,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!C34, sha256 7d084a1aa835175b"
+    }
+   }
+  },
+  "2019Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 79.847,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 59.77,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 48.669,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 26.601,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 200.44,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.362,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": -0.046,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.396,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.156,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.758,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!D48, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.01870499
+    },
+    "mortgage": {
+     "v": -0.003130024
+    },
+    "cash_loans": {
+     "v": 0.032904713
+    },
+    "cards": {
+     "v": 0.026607539
+    },
+    "corp_loans": {
+     "v": 0.01524001
+    }
+   },
+   "total": {
+    "v": 0.015990598,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.015379981,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.039702104,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2019Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 88.868,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 62.475,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 51.045,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 32.663,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 193.297,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.683,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.419,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.552,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.348,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.28,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!E48, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.032385976
+    },
+    "mortgage": {
+     "v": 0.027420344
+    },
+    "cash_loans": {
+     "v": 0.04428666
+    },
+    "cards": {
+     "v": 0.046976242
+    },
+    "corp_loans": {
+     "v": 0.005689077
+    }
+   },
+   "total": {
+    "v": 0.021638664,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.018390259,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.176637281,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2019Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 97.461,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 64.443,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 55.198,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 38.252,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 197.44,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.475,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": -0.016,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.788,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.534,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.871,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!F48, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.020394034
+    },
+    "mortgage": {
+     "v": -0.001008525
+    },
+    "cash_loans": {
+     "v": 0.059335674
+    },
+    "cards": {
+     "v": 0.060241134
+    },
+    "corp_loans": {
+     "v": 0.017832967
+    }
+   },
+   "total": {
+    "v": 0.024077844,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.021419917,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.124086731,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2019Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 101.943,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 68.046,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 60.947,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 43.206,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 221.367,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.647,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.711,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.393,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.624,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.19,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!G48, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.025957353
+    },
+    "mortgage": {
+     "v": 0.042931866
+    },
+    "cash_loans": {
+     "v": 0.027069611
+    },
+    "cards": {
+     "v": 0.061283115
+    },
+    "corp_loans": {
+     "v": 0.003629357
+    }
+   },
+   "total": {
+    "v": 0.021638653,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.017642373,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.226516015,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2020Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 104.799,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 70.18,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 64.714,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 46.175,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 263.371,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.668,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.562,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.335,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.574,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1.198,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!H50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.025848642
+    },
+    "mortgage": {
+     "v": 0.032526442
+    },
+    "cash_loans": {
+     "v": 0.08499057
+    },
+    "cards": {
+     "v": 0.140880053
+    },
+    "corp_loans": {
+     "v": 0.019771505
+    }
+   },
+   "total": {
+    "v": 0.040867271,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.034447656,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.186358538,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2020Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 104.008,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 70.524,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 63.412,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 47.279,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 304.922,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.73,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.668,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.567,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.068,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.986,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!I50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.066281303
+    },
+    "mortgage": {
+     "v": 0.037980441
+    },
+    "cash_loans": {
+     "v": 0.097841188
+    },
+    "cards": {
+     "v": 0.091424658
+    },
+    "corp_loans": {
+     "v": 0.013880164
+    }
+   },
+   "total": {
+    "v": 0.042261432,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.036777245,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.149119041,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2020Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 110.151,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 74.362,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 65.944,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 57.895,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 291.936,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.924,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.605,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.933,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.459,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.523,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!J50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.034516411
+    },
+    "mortgage": {
+     "v": 0.033405574
+    },
+    "cash_loans": {
+     "v": 0.119546059
+    },
+    "cards": {
+     "v": 0.110977998
+    },
+    "corp_loans": {
+     "v": 0.007010043
+    }
+   },
+   "total": {
+    "v": 0.036585007,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.030004727,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.21930814,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2020Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 108.886,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 82.445,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 68.547,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 60.915,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 356.639,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.295,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.189,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.989,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.668,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.6,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!K50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.010774435
+    },
+    "mortgage": {
+     "v": 0.009642427
+    },
+    "cash_loans": {
+     "v": 0.058829215
+    },
+    "cards": {
+     "v": 0.112313778
+    },
+    "corp_loans": {
+     "v": 0.00740084
+    }
+   },
+   "total": {
+    "v": 0.023422972,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.018189376,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.287728221,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2021Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 111.967,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 90.285,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 71.673,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 64.061,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 447.141,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": -0.038,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.06,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.306,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.605,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1.913,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!L50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": -0.001376481
+    },
+    "mortgage": {
+     "v": 0.002778903
+    },
+    "cash_loans": {
+     "v": 0.074511482
+    },
+    "cards": {
+     "v": 0.038727436
+    },
+    "corp_loans": {
+     "v": 0.019040036
+    }
+   },
+   "total": {
+    "v": 0.0210371,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.019204754,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.095411058,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2021Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 120.783,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 120.618,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 88.129,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 125.009,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 545.694,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": -0.416,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": -0.35,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.271,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 5.515,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 2.601,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!M50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": -0.014298604
+    },
+    "mortgage": {
+     "v": -0.013276245
+    },
+    "cash_loans": {
+     "v": 0.063628741
+    },
+    "cards": {
+     "v": 0.233352727
+    },
+    "corp_loans": {
+     "v": 0.020958165
+    }
+   },
+   "total": {
+    "v": 0.038629744,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.025628084,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.50732078,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2021Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 130.815,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 135.252,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 96.766,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 127.099,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 613.117,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.376,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.214,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 0.537,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.626,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 4.198,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!N50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.01195558
+    },
+    "mortgage": {
+     "v": 0.006690898
+    },
+    "cash_loans": {
+     "v": 0.023234809
+    },
+    "cards": {
+     "v": 0.051596935
+    },
+    "corp_loans": {
+     "v": 0.02898143
+    }
+   },
+   "total": {
+    "v": 0.02643868,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.023944958,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.104143938,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2021Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 140.755,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 156.585,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 136.25,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 106.705,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 684.682,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.11,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.218,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 6.481,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": -1.526,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 8.0,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!O50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.003240417
+    },
+    "mortgage": {
+     "v": 0.005975939
+    },
+    "cash_loans": {
+     "v": 0.222508326
+    },
+    "cards": {
+     "v": -0.052214676
+    },
+    "corp_loans": {
+     "v": 0.049314262
+    }
+   },
+   "total": {
+    "v": 0.045645538,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.044886572,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.016908538,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2022Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 143.99,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 159.788,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 137.423,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 110.135,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 633.334,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.189,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 1.352,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 2.473,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.59,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 14.18,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!P50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.005310014
+    },
+    "mortgage": {
+     "v": 0.034187494
+    },
+    "cash_loans": {
+     "v": 0.072290653
+    },
+    "cards": {
+     "v": 0.095554326
+    },
+    "corp_loans": {
+     "v": 0.086068758
+    }
+   },
+   "total": {
+    "v": 0.069002638,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.065346968,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.055942454,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2022Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 149.501,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 162.739,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 139.223,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 117.642,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 652.624,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.3,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.042,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 4.045,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.988,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 2.094,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Q50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.008177423
+    },
+    "mortgage": {
+     "v": 0.001041773
+    },
+    "cash_loans": {
+     "v": 0.116972593
+    },
+    "cards": {
+     "v": 0.069822677
+    },
+    "corp_loans": {
+     "v": 0.013026864
+    }
+   },
+   "total": {
+    "v": 0.028154932,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.02231618,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.261637605,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2022Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 159.511,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 175.695,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 145.082,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 124.7,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 754.475,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.37,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.443,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 3.432,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.514,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 6.575,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!R50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.009578916
+    },
+    "mortgage": {
+     "v": 0.010471761
+    },
+    "cash_loans": {
+     "v": 0.096572343
+    },
+    "cards": {
+     "v": 0.082990154
+    },
+    "corp_loans": {
+     "v": 0.037381876
+    }
+   },
+   "total": {
+    "v": 0.041326643,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.036614605,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.128692846,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2022Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 166.288,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 186.203,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 148.99,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 125.204,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 831.221,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.527,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.628,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 2.285,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.599,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 3.16,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!S50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.012940494
+    },
+    "mortgage": {
+     "v": 0.013882365
+    },
+    "cash_loans": {
+     "v": 0.062161647
+    },
+    "cards": {
+     "v": 0.083199949
+    },
+    "corp_loans": {
+     "v": 0.015942526
+    }
+   },
+   "total": {
+    "v": 0.026120824,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.022650324,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.153220747,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2023Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 175.671,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 193.975,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 149.554,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 135.169,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 870.233,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.706,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.861,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 2.88,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 0.364,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 5.759,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!T50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.0165166
+    },
+    "mortgage": {
+     "v": 0.018117829
+    },
+    "cash_loans": {
+     "v": 0.077174554
+    },
+    "cards": {
+     "v": 0.011183955
+    },
+    "corp_loans": {
+     "v": 0.027078017
+    }
+   },
+   "total": {
+    "v": 0.028351978,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.027457856,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.032563404,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2023Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 209.115,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 210.717,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 170.854,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 126.119,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 895.203,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.932,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.535,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 4.158,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.354,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 3.056,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!U50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.019377004
+    },
+    "mortgage": {
+     "v": 0.010575944
+    },
+    "cash_loans": {
+     "v": 0.103817633
+    },
+    "cards": {
+     "v": 0.041456171
+    },
+    "corp_loans": {
+     "v": 0.013848137
+    }
+   },
+   "total": {
+    "v": 0.025594511,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.023259976,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.100367051,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2023Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 241.879,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 231.681,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 174.851,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 128.804,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1015.629,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 0.935,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.354,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.659,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 1.58,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1.695,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!V50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.016585587
+    },
+    "mortgage": {
+     "v": 0.006401476
+    },
+    "cash_loans": {
+     "v": 0.038391114
+    },
+    "cards": {
+     "v": 0.0495836
+    },
+    "corp_loans": {
+     "v": 0.007096385
+    }
+   },
+   "total": {
+    "v": 0.014621487,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.013427262,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.088940331,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2023Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 271.935,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 252.598,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 178.01,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 135.377,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1142.874,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.67,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.916,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 8.143,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 3.847,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 9.936,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!W50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.026001627
+    },
+    "mortgage": {
+     "v": 0.015131773
+    },
+    "cash_loans": {
+     "v": 0.184616605
+    },
+    "cards": {
+     "v": 0.116495887
+    },
+    "corp_loans": {
+     "v": 0.036825522
+    }
+   },
+   "total": {
+    "v": 0.051964709,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.048707517,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.066872458,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2024Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 303.96,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 280.031,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 361.928,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 155.251,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1228.716,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.004,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.540116,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 1.978075,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.730251,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 4.472,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!X50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.013946987
+    },
+    "mortgage": {
+     "v": 0.008112454
+    },
+    "cash_loans": {
+     "v": 0.02930818
+    },
+    "cards": {
+     "v": 0.075154521
+    },
+    "corp_loans": {
+     "v": 0.015085238
+    }
+   },
+   "total": {
+    "v": 0.019903017,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.018378693,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.082939744,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2024Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 351.004,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 304.225,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 368.15,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 158.117,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1292.253,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.309,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.453,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 8.267,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 3.398,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 2.748,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Y50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.015988665
+    },
+    "mortgage": {
+     "v": 0.00620276
+    },
+    "cash_loans": {
+     "v": 0.090587581
+    },
+    "cards": {
+     "v": 0.086747849
+    },
+    "corp_loans": {
+     "v": 0.008720456
+    }
+   },
+   "total": {
+    "v": 0.026937933,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.020565877,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.309836362,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2024Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 436.555,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 325.801,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 357.357,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 164.365,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1306.032,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.815,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.751,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 9.016,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.369,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 4.794,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!Z50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.018436714
+    },
+    "mortgage": {
+     "v": 0.009536114
+    },
+    "cash_loans": {
+     "v": 0.099417373
+    },
+    "cards": {
+     "v": 0.058769172
+    },
+    "corp_loans": {
+     "v": 0.014760505
+    }
+   },
+   "total": {
+    "v": 0.029613779,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.024052292,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.231224803,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2024Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 475.119,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 347.613,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 356.656,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 172.914,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1428.774,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 1.994,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.411,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 6.481,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.655,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 5.044,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AA50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.017497483
+    },
+    "mortgage": {
+     "v": 0.004882583
+    },
+    "cash_loans": {
+     "v": 0.072614924
+    },
+    "cards": {
+     "v": 0.06297457
+    },
+    "corp_loans": {
+     "v": 0.014754977
+    }
+   },
+   "total": {
+    "v": 0.024702179,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.021264803,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.161646291,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2025Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 494.921,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 353.029,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 350.958,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 177.094,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1366.655,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 3.314,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.019,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 8.326,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.924,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 0.819,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AB50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.027330832
+    },
+    "mortgage": {
+     "v": 0.000216944
+    },
+    "cash_loans": {
+     "v": 0.094130416
+    },
+    "cards": {
+     "v": 0.066832758
+    },
+    "corp_loans": {
+     "v": 0.002343826
+    }
+   },
+   "total": {
+    "v": 0.022306654,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.017193528,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.297386625,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2025Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 512.878,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 362.448,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 336.177,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 179.965,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1452.481,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 5.771,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.844,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 9.869,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 3.569,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 5.704,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AC50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.045810722
+    },
+    "mortgage": {
+     "v": 0.009437061
+    },
+    "cash_loans": {
+     "v": 0.114900274
+    },
+    "cards": {
+     "v": 0.079964376
+    },
+    "corp_loans": {
+     "v": 0.01618652
+    }
+   },
+   "total": {
+    "v": 0.036883933,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.031692119,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.163820325,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2025Q3": {
+   "gross_end": {
+    "auto": {
+     "v": 527.907,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 380.098,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 319.059,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 180.98,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1606.852,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 5.278,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 1.451,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 7.262,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 3.084,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 7.897,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AD50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.040569378
+    },
+    "mortgage": {
+     "v": 0.015632702
+    },
+    "cash_loans": {
+     "v": 0.088664237
+    },
+    "cards": {
+     "v": 0.068353904
+    },
+    "corp_loans": {
+     "v": 0.020650253
+    }
+   },
+   "total": {
+    "v": 0.034098188,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.031407425,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.085672854,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2025Q4": {
+   "gross_end": {
+    "auto": {
+     "v": 520.624,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 407.705,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 302.447,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 182.225,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1786.343,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 4.485,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 0.246,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 8.906,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 2.527,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 3.624,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AE50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.034219303
+    },
+    "mortgage": {
+     "v": 0.002498086
+    },
+    "cash_loans": {
+     "v": 0.11463767
+    },
+    "cards": {
+     "v": 0.055660027
+    },
+    "corp_loans": {
+     "v": 0.00854416
+    }
+   },
+   "total": {
+    "v": 0.025474394,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.023221527,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.097016313,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2026Q1": {
+   "gross_end": {
+    "auto": {
+     "v": 504.596,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF21, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 417.467,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF22, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 281.682,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF19, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 177.083,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF20, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 1629.183,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF34, sha256 7d084a1aa835175b"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 5.504,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF46, sha256 7d084a1aa835175b"
+    },
+    "mortgage": {
+     "v": 1.817,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF47, sha256 7d084a1aa835175b"
+    },
+    "cash_loans": {
+     "v": 7.487,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF43, sha256 7d084a1aa835175b"
+    },
+    "cards": {
+     "v": 3.166,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF44, sha256 7d084a1aa835175b"
+    },
+    "corp_loans": {
+     "v": 5.14,
+     "src": "DATABOOK_2010-1Q26.xlsx, COR!AF50, sha256 7d084a1aa835175b"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.04294883
+    },
+    "mortgage": {
+     "v": 0.017615721
+    },
+    "cash_loans": {
+     "v": 0.102538994
+    },
+    "cards": {
+     "v": 0.070491055
+    },
+    "corp_loans": {
+     "v": 0.012039141
+    }
+   },
+   "total": {
+    "v": 0.029779583,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.028459853,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.046371627,
+    "calc": "total / on_anchor"
+   }
+  },
+  "2026Q2": {
+   "gross_end": {
+    "auto": {
+     "v": 509.345,
+     "src": "balance.books.auto (якорь 30.06.2026)"
+    },
+    "mortgage": {
+     "v": 429.782,
+     "src": "balance.books.mortgage (якорь 30.06.2026)"
+    },
+    "cash_loans": {
+     "v": 262.301,
+     "src": "balance.books.cash_loans (якорь 30.06.2026)"
+    },
+    "cards": {
+     "v": 170.549,
+     "src": "balance.books.cards (якорь 30.06.2026)"
+    },
+    "corp_loans": {
+     "v": 1785.47,
+     "src": "balance.books.corp_loans (якорь 30.06.2026)"
+    }
+   },
+   "charge": {
+    "auto": {
+     "v": 3.905,
+     "src": "МСФО 6М2026 (лист Б7 ecl_products.csv: auto) 9.409 − датабук 1К2026 COR!AF46"
+    },
+    "mortgage": {
+     "v": 0.705,
+     "src": "МСФО 6М2026 (лист Б7 ecl_products.csv: mortgage) 2.522 − датабук 1К2026 COR!AF47"
+    },
+    "cash_loans": {
+     "v": 6.239,
+     "src": "МСФО 6М2026 (лист Б7 ecl_products.csv: cash) 13.726 − датабук 1К2026 COR!AF43"
+    },
+    "cards": {
+     "v": 1.012,
+     "src": "МСФО 6М2026 (лист Б7 ecl_products.csv: cards) 4.178 − датабук 1К2026 COR!AF44"
+    },
+    "corp_loans": {
+     "v": 5.326,
+     "src": "МСФО 6М2026 (лист Б7 ecl_products.csv: corp_large+regions+sme_other) 10.466 − датабук 1К2026 COR!AF50"
+    }
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.030810471
+    },
+    "mortgage": {
+     "v": 0.006656839
+    },
+    "cash_loans": {
+     "v": 0.091752867
+    },
+    "cards": {
+     "v": 0.023288995
+    },
+    "corp_loans": {
+     "v": 0.012477988
+    }
+   },
+   "total": {
+    "v": 0.022293788,
+    "calc": "Σ резервов × 4 / Σ средних валовых пяти книг"
+   },
+   "on_anchor": {
+    "v": 0.021812561,
+    "calc": "Σ w0_b × CoR_b квартала (w0 — anchor_weights)"
+   },
+   "intensity": {
+    "v": 1.022061897,
+    "calc": "total / on_anchor"
+   }
+  }
+ },
+ "years_ifrs": {
+  "2021": {
+   "total": {
+    "v": 0.034825319
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.000256368
+    },
+    "mortgage": {
+     "v": 0.001188135
+    },
+    "cash_loans": {
+     "v": 0.093702544
+    },
+    "cards": {
+     "v": 0.074215487
+    },
+    "corp_loans": {
+     "v": 0.032913962
+    }
+   },
+   "on_anchor": {
+    "v": 0.030608197,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.137777537,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "2022": {
+   "total": {
+    "v": 0.03860474
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.009028051
+    },
+    "mortgage": {
+     "v": 0.014382067
+    },
+    "cash_loans": {
+     "v": 0.085787407
+    },
+    "cards": {
+     "v": 0.083575885
+    },
+    "corp_loans": {
+     "v": 0.034314861
+    }
+   },
+   "on_anchor": {
+    "v": 0.034459361,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.120297602,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "2023": {
+   "total": {
+    "v": 0.017922249
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.011888924
+    },
+    "mortgage": {
+     "v": 0.005788501
+    },
+    "cash_loans": {
+     "v": 0.05995107
+    },
+    "cards": {
+     "v": 0.041653075
+    },
+    "corp_loans": {
+     "v": 0.011836903
+    }
+   },
+   "on_anchor": {
+    "v": 0.016629546,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.077735372,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "2024": {
+   "total": {
+    "v": 0.028453588
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.016389712
+    },
+    "mortgage": {
+     "v": 0.007190805
+    },
+    "cash_loans": {
+     "v": 0.114826826
+    },
+    "cards": {
+     "v": 0.074968131
+    },
+    "corp_loans": {
+     "v": 0.013322696
+    }
+   },
+   "on_anchor": {
+    "v": 0.024744897,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.149876993,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "2025": {
+   "total": {
+    "v": 0.028750067
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.037857158
+    },
+    "mortgage": {
+     "v": 0.006778602
+    },
+    "cash_loans": {
+     "v": 0.104272018
+    },
+    "cards": {
+     "v": 0.068164859
+    },
+    "corp_loans": {
+     "v": 0.011236567
+    }
+   },
+   "on_anchor": {
+    "v": 0.025727853,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.117468564,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "1П2025": {
+   "total": {
+    "v": 0.029351024
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.036781488
+    },
+    "mortgage": {
+     "v": 0.004861554
+    },
+    "cash_loans": {
+     "v": 0.105046959
+    },
+    "cards": {
+     "v": 0.073600299
+    },
+    "corp_loans": {
+     "v": 0.009105763
+    }
+   },
+   "on_anchor": {
+    "v": 0.024446435,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.200625954,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  },
+  "1П2026": {
+   "total": {
+    "v": 0.025404172
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.036540906
+    },
+    "mortgage": {
+     "v": 0.01204556
+    },
+    "cash_loans": {
+     "v": 0.097218582
+    },
+    "cards": {
+     "v": 0.047373106
+    },
+    "corp_loans": {
+     "v": 0.011757589
+    }
+   },
+   "on_anchor": {
+    "v": 0.024818051,
+    "calc": "Σ w0_b × CoR_b периода"
+   },
+   "intensity": {
+    "v": 1.023616692,
+    "calc": "total / on_anchor"
+   },
+   "src": "примечания МСФО о движении резервов по классам кредитов (лист Б7: начисление периода × 12 / мес. / средние валовые начала и конца периода) — stage1/round2/sheets/ecl_rel.csv"
+  }
+ },
+ "windows_ifrs": {
+  "R_2024_1H2026": {
+   "total": {
+    "v": 0.027885048
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.030453788
+    },
+    "mortgage": {
+     "v": 0.008161091
+    },
+    "cash_loans": {
+     "v": 0.106745756
+    },
+    "cards": {
+     "v": 0.066295395
+    },
+    "corp_loans": {
+     "v": 0.012066683
+    }
+   },
+   "rel": {
+    "auto": {
+     "v": 1.092118897
+    },
+    "mortgage": {
+     "v": 0.292669076
+    },
+    "cash_loans": {
+     "v": 3.828064196
+    },
+    "cards": {
+     "v": 2.377453114
+    },
+    "corp_loans": {
+     "v": 0.432729495
+    }
+   },
+   "on_anchor": {
+    "v": 0.025295692
+   },
+   "intensity": {
+    "v": 1.10236353
+   },
+   "src": "лист Б7 (скептик sk-credit, коммит 0069c25, var/sk/out/b7_mult.json, окно «R 2024–1П2026»; копия — stage1/round3/sheets/b7_mult.json): начисление / средние валовые сумма к сумме, примечания МСФО FY2019–FY2025, 6М2026"
+  },
+  "2019_2025": {
+   "total": {
+    "v": 0.028766485
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.022254047
+    },
+    "mortgage": {
+     "v": 0.008812111
+    },
+    "cash_loans": {
+     "v": 0.093065096
+    },
+    "cards": {
+     "v": 0.070319279
+    },
+    "corp_loans": {
+     "v": 0.016963306
+    }
+   },
+   "rel": {
+    "auto": {
+     "v": 0.773610219
+    },
+    "mortgage": {
+     "v": 0.306332544
+    },
+    "cash_loans": {
+     "v": 3.23519177
+    },
+    "cards": {
+     "v": 2.444486317
+    },
+    "corp_loans": {
+     "v": 0.589689899
+    }
+   },
+   "on_anchor": {
+    "v": 0.025911345
+   },
+   "intensity": {
+    "v": 1.110188812
+   },
+   "src": "лист Б7 (скептик sk-credit, коммит 0069c25, var/sk/out/b7_mult.json, окно «2019–2025»; копия — stage1/round3/sheets/b7_mult.json): начисление / средние валовые сумма к сумме, примечания МСФО FY2019–FY2025, 6М2026"
+  },
+  "2021_2025": {
+   "total": {
+    "v": 0.028720753
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.021180522
+    },
+    "mortgage": {
+     "v": 0.007234398
+    },
+    "cash_loans": {
+     "v": 0.096172381
+    },
+    "cards": {
+     "v": 0.067996434
+    },
+    "corp_loans": {
+     "v": 0.017460991
+    }
+   },
+   "rel": {
+    "auto": {
+     "v": 0.737464014
+    },
+    "mortgage": {
+     "v": 0.251887468
+    },
+    "cash_loans": {
+     "v": 3.348532655
+    },
+    "cards": {
+     "v": 2.367501746
+    },
+    "corp_loans": {
+     "v": 0.607957263
+    }
+   },
+   "on_anchor": {
+    "v": 0.025937511
+   },
+   "intensity": {
+    "v": 1.107305671
+   },
+   "src": "лист Б7 (скептик sk-credit, коммит 0069c25, var/sk/out/b7_mult.json, окно «2021–2025»; копия — stage1/round3/sheets/b7_mult.json): начисление / средние валовые сумма к сумме, примечания МСФО FY2019–FY2025, 6М2026"
+  },
+  "1H2026": {
+   "total": {
+    "v": 0.025404172
+   },
+   "cor_books": {
+    "auto": {
+     "v": 0.036540906
+    },
+    "mortgage": {
+     "v": 0.01204556
+    },
+    "cash_loans": {
+     "v": 0.097218582
+    },
+    "cards": {
+     "v": 0.047373106
+    },
+    "corp_loans": {
+     "v": 0.011757589
+    }
+   },
+   "rel": {
+    "auto": {
+     "v": 1.438382096
+    },
+    "mortgage": {
+     "v": 0.474156776
+    },
+    "cash_loans": {
+     "v": 3.826874734
+    },
+    "cards": {
+     "v": 1.864776639
+    },
+    "corp_loans": {
+     "v": 0.462821183
+    }
+   },
+   "on_anchor": {
+    "v": 0.024818051
+   },
+   "intensity": {
+    "v": 1.023616692
+   },
+   "src": "лист Б7 (скептик sk-credit, коммит 0069c25, var/sk/out/b7_mult.json, окно «1П2026»; копия — stage1/round3/sheets/b7_mult.json): начисление / средние валовые сумма к сумме, примечания МСФО FY2019–FY2025, 6М2026"
+  }
+ },
+ "intensity": {
+  "q2_2026": {
+   "databook": {
+    "v": 1.022061921,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2026Q2…2026Q2 (1 кв.)"
+   },
+   "ifrs": {
+    "v": 1.023616692,
+    "calc": "среднее years_ifrs.<год>.intensity: 1П2026"
+   },
+   "mid": {
+    "v": 1.022839307,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.022061921
+   },
+   "high": {
+    "v": 1.023616692
+   },
+   "keys": [
+    "regimes.soft.cor.2026"
+   ],
+   "window": "2К2026 (нау-каст мягкой посадки); МСФО — 6М2026"
+  },
+  "q1_2026": {
+   "databook": {
+    "v": 1.046371638,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2026Q1…2026Q1 (1 кв.)"
+   },
+   "ifrs": {
+    "v": 1.023616692,
+    "calc": "среднее years_ifrs.<год>.intensity: 1П2026"
+   },
+   "mid": {
+    "v": 1.034994165,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.023616692
+   },
+   "high": {
+    "v": 1.046371638
+   },
+   "keys": [
+    "regimes.downturn.cor.2026",
+    "regimes.crisis.cor.2026"
+   ],
+   "window": "1К2026 (нау-каст спада и кризиса); МСФО — 6М2026"
+  },
+  "norm_2026": {
+   "databook": {
+    "v": 1.09232595,
+    "calc": "((ср. 1К–2К2026 всего + ср. окна R всего) / 2) / ((ср. 1К–2К2026 на якоре + ср. окна R на якоре) / 2); окно R — среднее скользящих 4 кварталов (Р6-2)"
+   },
+   "ifrs": {
+    "v": 1.06153171,
+    "calc": "2 / (1 / I_МСФО(6М2026) + 1 / I_МСФО(окно R Б7)) — середина уровней на якоре"
+   },
+   "mid": {
+    "v": 1.07692883,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.06153171
+   },
+   "high": {
+    "v": 1.09232595
+   },
+   "keys": [
+    "regimes.norm.cor.2026"
+   ],
+   "window": "середина 1П2026 и окна R (как ключ 2026 нормы): датабук — середины уровней всего и на якоре; МСФО — середина уровней на якоре 6М2026 и окна R"
+  },
+  "soft": {
+   "databook": {
+    "v": 1.097979315,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2019Q1…2023Q4 (8 кв.)"
+   },
+   "ifrs": {
+    "v": 1.077735372,
+    "calc": "среднее years_ifrs.<год>.intensity: 2023"
+   },
+   "mid": {
+    "v": 1.087857344,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.077735372
+   },
+   "high": {
+    "v": 1.097979315
+   },
+   "keys": [
+    "regimes.soft.cor.2027",
+    "regimes.soft.cor.2028",
+    "regimes.soft.cor.2029"
+   ],
+   "window": "мягкая посадка 2019 и 2023 (класс устава 2017–2019, 2023: 2017–2018 без данных по продуктам); МСФО — 2023"
+  },
+  "soft_LT": {
+   "databook": {
+    "v": 1.151912095,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2019Q1…2025Q4 (24 кв.)"
+   },
+   "ifrs": {
+    "v": 1.120714616,
+    "calc": "среднее years_ifrs.<год>.intensity: 2021, 2023, 2024, 2025"
+   },
+   "mid": {
+    "v": 1.136313356,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.120714616
+   },
+   "high": {
+    "v": 1.151912095
+   },
+   "keys": [
+    "regimes.soft.cor.LT"
+   ],
+   "window": "сквозь цикл без 2022 года: 2019–2025 без 2022 (2018 — без данных по продуктам); МСФО — 2021–2025 без 2022"
+  },
+  "R": {
+   "databook": {
+    "v": 1.148943842,
+    "calc": "среднее скользящих 4 кварталов total / среднее скользящих 4 кварталов on_anchor, 2024Q2…2026Q2 (6 окон; Р6-2 — было среднее 9 кв., 2К трижды)"
+   },
+   "ifrs": {
+    "v": 1.10236353,
+    "calc": "windows_ifrs.R_2024_1H2026.intensity (лист Б7, сумма к сумме)"
+   },
+   "mid": {
+    "v": 1.125653686,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.10236353
+   },
+   "high": {
+    "v": 1.148943842
+   },
+   "keys": [
+    "regimes.norm.cor.2027",
+    "regimes.norm.cor.2028",
+    "regimes.norm.cor.2029",
+    "regimes.norm.cor.LT"
+   ],
+   "window": "окно R 2К2024–2К2026; МСФО — окно R листа Б7 (2024, 2025, 1П2026 сумма к сумме)"
+  },
+  "downturn": {
+   "databook": {
+    "v": 1.179353729,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2020Q1…2021Q4 (8 кв.)"
+   },
+   "ifrs": {
+    "v": 1.137777537,
+    "calc": "среднее years_ifrs.<год>.intensity: 2021"
+   },
+   "mid": {
+    "v": 1.158565633,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.137777537
+   },
+   "high": {
+    "v": 1.179353729
+   },
+   "keys": [
+    "regimes.downturn.cor.2027Q1",
+    "regimes.downturn.cor.2027Q2",
+    "regimes.downturn.cor.2027Q3",
+    "regimes.downturn.cor.2027Q4",
+    "regimes.downturn.cor.2028",
+    "regimes.downturn.cor.2029",
+    "regimes.downturn.cor.LT"
+   ],
+   "window": "спад 2020–2021; МСФО — 2021"
+  },
+  "crisis": {
+   "databook": {
+    "v": 1.120310293,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2022Q1…2022Q4 (4 кв.)"
+   },
+   "ifrs": {
+    "v": 1.120297602,
+    "calc": "среднее years_ifrs.<год>.intensity: 2022"
+   },
+   "mid": {
+    "v": 1.120303948,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.120297602
+   },
+   "high": {
+    "v": 1.120310293
+   },
+   "keys": [
+    "regimes.crisis.cor.2027Q1",
+    "regimes.crisis.cor.2027Q2",
+    "regimes.crisis.cor.2027Q3",
+    "regimes.crisis.cor.2027Q4"
+   ],
+   "window": "кризисный год 2022 (2015 — без данных по продуктам)"
+  },
+  "post1": {
+   "databook": {
+    "v": 1.068054021,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2023Q1…2023Q4 (4 кв.)"
+   },
+   "ifrs": {
+    "v": 1.077735372,
+    "calc": "среднее years_ifrs.<год>.intensity: 2023"
+   },
+   "mid": {
+    "v": 1.072894697,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.068054021
+   },
+   "high": {
+    "v": 1.077735372
+   },
+   "keys": [
+    "regimes.crisis.cor.2028"
+   ],
+   "window": "год после шока 2023 (2016 — без данных по продуктам)"
+  },
+  "post2": {
+   "databook": {
+    "v": 1.200509247,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2024Q1…2024Q4 (4 кв.)"
+   },
+   "ifrs": {
+    "v": 1.149876993,
+    "calc": "среднее years_ifrs.<год>.intensity: 2024"
+   },
+   "mid": {
+    "v": 1.17519312,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.149876993
+   },
+   "high": {
+    "v": 1.200509247
+   },
+   "keys": [
+    "regimes.crisis.cor.2029"
+   ],
+   "window": "второй год после шока 2024"
+  },
+  "crisis_LT": {
+   "databook": {
+    "v": 1.145749707,
+    "calc": "среднее кварталов total / среднее кварталов on_anchor, 2019Q1…2025Q4 (28 кв.)"
+   },
+   "ifrs": {
+    "v": 1.120631214,
+    "calc": "среднее years_ifrs.<год>.intensity: 2021, 2022, 2023, 2024, 2025"
+   },
+   "mid": {
+    "v": 1.13319046,
+    "calc": "середина двух источников (решения № 3, Р3)"
+   },
+   "low": {
+    "v": 1.120631214
+   },
+   "high": {
+    "v": 1.145749707
+   },
+   "keys": [
+    "regimes.crisis.cor.LT"
+   ],
+   "window": "сквозь цикл 2019–2025 (2015–2018 — без данных по продуктам); МСФО — 2021–2025"
+  }
+ },
+ "m7_readings": {
+  "auto": {
+   "min": {
+    "v": 0.773610219
+   },
+   "max": {
+    "v": 1.438382096
+   },
+   "mid": {
+    "v": 1.105996157
+   },
+   "readings": {
+    "R_2024_1H2026": 1.092118897,
+    "2019_2025": 0.773610219,
+    "1H2026": 1.438382096
+   }
+  },
+  "mortgage": {
+   "min": {
+    "v": 0.292669076
+   },
+   "max": {
+    "v": 0.474156776
+   },
+   "mid": {
+    "v": 0.383412926
+   },
+   "readings": {
+    "R_2024_1H2026": 0.292669076,
+    "2019_2025": 0.306332544,
+    "1H2026": 0.474156776
+   }
+  },
+  "cash_loans": {
+   "min": {
+    "v": 3.23519177
+   },
+   "max": {
+    "v": 3.828064196
+   },
+   "mid": {
+    "v": 3.531627983
+   },
+   "readings": {
+    "R_2024_1H2026": 3.828064196,
+    "2019_2025": 3.23519177,
+    "1H2026": 3.826874734
+   }
+  },
+  "cards": {
+   "min": {
+    "v": 1.864776639
+   },
+   "max": {
+    "v": 2.444486317
+   },
+   "mid": {
+    "v": 2.154631478
+   },
+   "readings": {
+    "R_2024_1H2026": 2.377453114,
+    "2019_2025": 2.444486317,
+    "1H2026": 1.864776639
+   }
+  },
+  "corp_loans": {
+   "min": {
+    "v": 0.432729495
+   },
+   "max": {
+    "v": 0.589689899
+   },
+   "mid": {
+    "v": 0.511209697
+   },
+   "readings": {
+    "R_2024_1H2026": 0.432729495,
+    "2019_2025": 0.589689899,
+    "1H2026": 0.462821183
+   }
+  }
+ }
+}

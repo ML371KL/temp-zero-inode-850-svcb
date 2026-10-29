@@ -1,0 +1,686 @@
+{
+ "basis": "mgmt",
+ "as_of": "2026-06-30",
+ "unit": "доли, годовые; op_np, op_equity — млрд ₽",
+ "note": "напечатанное (презентация 1П2026) — без суффикса; точное — с суффиксом _exact: ДАТАБУК банка (ячейка) до 1К2026, за 2К2026 — расчёт по определению банка из МСФО (ЧПМ 7,555 против напечатанных 7,6; C/I 42,4 против 42), CoR 2К2026 — оценка (резерв по кредитам за квартал не раскрыт)",
+ "quarters": {
+  "2023Q1": {
+   "nim_exact": {
+    "v": 0.06444,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!X6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.028171,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!T6, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.062599,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!T6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.127902,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!T6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q2": {
+   "nim_exact": {
+    "v": 0.068336,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!Y6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.025497,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!U6, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.06331,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!U6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.130254,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!U6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q3": {
+   "nim_exact": {
+    "v": 0.068292,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!Z6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.014576,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!V6, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.077537,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!V6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.148866,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!V6, sha256 7d084a1aa835175b"
+   }
+  },
+  "2023Q4": {
+   "nim_exact": {
+    "v": 0.059127,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AA6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.051646,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!W6, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.106256,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!W6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.175776,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!W6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 262.649,
+    "src": "2024Q3_ifrs_fs.pdf, с. 6, sha256 ba45253019d4da2c",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2024Q1": {
+   "nim_exact": {
+    "v": 0.053695,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AB6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.019885,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!X6, sha256 7d084a1aa835175b"
+   },
+   "cir_exact": {
+    "v": 0.595691,
+    "calc": "(персонал + прочие АХР) / (ЧПД + ЧКД + чистый доход небанковской) = 26.684 / 44.795; определение ДАТАБУКа (NIM!59)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.118926,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!X6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.186165,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!X6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 299.314,
+    "src": "2024Q1_ifrs_fs.pdf, с. 6, sha256 68b5e94221e1ef31",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2024Q2": {
+   "nim_exact": {
+    "v": 0.058894,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AC6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.026916,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!Y6, sha256 7d084a1aa835175b"
+   },
+   "cir_exact": {
+    "v": 0.519572,
+    "calc": "(персонал + прочие АХР) / (ЧПД + ЧКД + чистый доход небанковской) = 31.710 / 61.031; определение ДАТАБУКа (NIM!59)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.126509,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!Y6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.199667,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!Y6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 302.948,
+    "src": "2024Q2_ifrs_fs.pdf, с. 6, sha256 a6158b05ec16d1bc",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2024Q3": {
+   "nim_exact": {
+    "v": 0.053364,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AD6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.029591,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!Z6, sha256 7d084a1aa835175b"
+   },
+   "cir_exact": {
+    "v": 0.523039,
+    "calc": "(персонал + прочие АХР) / (ЧПД + ЧКД + чистый доход небанковской) = 33.974 / 64.955; определение ДАТАБУКа (NIM!59)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.142237,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!Z6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.209676,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!Z6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 313.19,
+    "src": "2024Q3_ifrs_fs.pdf, с. 6, sha256 ba45253019d4da2c",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2024Q4": {
+   "nim": {
+    "v": 0.051,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.050612,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AE6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.024693,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AA6, sha256 7d084a1aa835175b"
+   },
+   "cir_exact": {
+    "v": 0.565032,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AE59, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.162472,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AA6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.224994,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AA6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 329.467,
+    "src": "2025Q3_ifrs_fs.pdf, с. 6, sha256 481ea431fa058208",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2025Q1": {
+   "nim": {
+    "v": 0.043,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.042938,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AF6, sha256 7d084a1aa835175b"
+   },
+   "cor_exact": {
+    "v": 0.022298,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AB6, sha256 7d084a1aa835175b"
+   },
+   "cir": {
+    "v": 0.68,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.678408,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AF59, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.17374,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AB6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield_exact": {
+    "v": 0.226191,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AB6, sha256 7d084a1aa835175b"
+   },
+   "op_equity": {
+    "v": 352.065,
+    "src": "2025Q1_ifrs_fs.pdf, с. 6, sha256 135494127b9ba0f6",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2025Q2": {
+   "nim": {
+    "v": 0.047,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.047343,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AG6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.037,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "CoR = напечатанная ЧПМ − напечатанная ЧПМ с учётом риска (RAM), с. 4; погрешность ±0,1 п.п."
+   },
+   "cor_exact": {
+    "v": 0.03687,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AC6, sha256 7d084a1aa835175b"
+   },
+   "cir": {
+    "v": 0.61,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.606144,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AG59, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding": {
+    "v": 0.176,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.17581,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AC6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield": {
+    "v": 0.229,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "asset_yield_exact": {
+    "v": 0.229144,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AC6, sha256 7d084a1aa835175b"
+   },
+   "ram": {
+    "v": 0.01,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "op_equity": {
+    "v": 353.913,
+    "src": "2025Q2_ifrs_fs.pdf, с. 6, sha256 f2a4918ae0ab4d33",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2025Q3": {
+   "nim": {
+    "v": 0.057,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.056745,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AH6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.034,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "CoR = напечатанная ЧПМ − напечатанная ЧПМ с учётом риска (RAM), с. 4; погрешность ±0,1 п.п."
+   },
+   "cor_exact": {
+    "v": 0.034086,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AD6, sha256 7d084a1aa835175b"
+   },
+   "cir": {
+    "v": 0.51,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.507405,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AH59, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding": {
+    "v": 0.161,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.161427,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AD6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield": {
+    "v": 0.228,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "asset_yield_exact": {
+    "v": 0.227515,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AD6, sha256 7d084a1aa835175b"
+   },
+   "ram": {
+    "v": 0.023,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "op_equity": {
+    "v": 367.975,
+    "src": "2025Q3_ifrs_fs.pdf, с. 6, sha256 481ea431fa058208",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2025Q4": {
+   "nim": {
+    "v": 0.064,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.064105,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AI6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.025,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "CoR = напечатанная ЧПМ − напечатанная ЧПМ с учётом риска (RAM), с. 4; погрешность ±0,1 п.п."
+   },
+   "cor_exact": {
+    "v": 0.025459,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AE6, sha256 7d084a1aa835175b"
+   },
+   "cir": {
+    "v": 0.52,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.521727,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AI59, sha256 7d084a1aa835175b"
+   },
+   "cost_of_funding": {
+    "v": 0.138,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.137957,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AE6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield": {
+    "v": 0.217,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "asset_yield_exact": {
+    "v": 0.216621,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AE6, sha256 7d084a1aa835175b"
+   },
+   "ram": {
+    "v": 0.039,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "op_equity": {
+    "v": 389.192,
+    "src": "2026Q2_ifrs_fs.pdf, с. 6, sha256 0a659c1d3a37e4c1",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2026Q1": {
+   "nim": {
+    "v": 0.07,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.069809,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AJ6, sha256 7d084a1aa835175b"
+   },
+   "cor": {
+    "v": 0.03,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "CoR = напечатанная ЧПМ − напечатанная ЧПМ с учётом риска (RAM), с. 4; погрешность ±0,1 п.п."
+   },
+   "cor_exact": {
+    "v": 0.02977,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!AF6, sha256 7d084a1aa835175b"
+   },
+   "cir": {
+    "v": 0.51,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.509065,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!AJ59, sha256 7d084a1aa835175b"
+   },
+   "roe_exact": {
+    "v": 0.186602,
+    "calc": "op_np × 4 / среднее капитала без бессрочных и НДУ (389.192; 407.711)"
+   },
+   "op_np_exact": {
+    "v": 18.588,
+    "src": "2026Q2_ifrs_fs.pdf, с. 42, sha256 0a659c1d3a37e4c1",
+    "calc": "прибыль акционеров − проценты по бессрочным, вычитаемые в прибыли на акцию (после налога; прим. 22), млрд ₽"
+   },
+   "cost_of_funding": {
+    "v": 0.129,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cost_of_funding_exact": {
+    "v": 0.12838,
+    "src": "DATABOOK_2010-1Q26.xlsx, COF!AF6, sha256 7d084a1aa835175b"
+   },
+   "asset_yield": {
+    "v": 0.21,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "asset_yield_exact": {
+    "v": 0.209542,
+    "src": "DATABOOK_2010-1Q26.xlsx, Yield!AF6, sha256 7d084a1aa835175b"
+   },
+   "ram": {
+    "v": 0.04,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "op_equity": {
+    "v": 407.711,
+    "src": "2026Q1_ifrs_fs.pdf, с. 6, sha256 abc65f2f75ac4bf1",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  },
+  "2026Q2": {
+   "nim": {
+    "v": 0.076,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "nim_exact": {
+    "v": 0.075553,
+    "src": "2026Q2_ifrs_fs.pdf, с. 5; 6; 24; 29; 31, sha256 0a659c1d3a37e4c1; DATABOOK_2010-1Q26.xlsx, NIM!AJ18, sha256 7d084a1aa835175b",
+    "calc": "ЧПД 2К2026 64,775 × 4 / среднее процентных активов банка (31.03.2026 3363.009 — ДАТАБУК; 30.06.2026 3495.742 = средства в банках + кредиты ФЛ нетто + кредиты ЮЛ нетто с кредитами по СС + облигации по АС + инструменты ССПУ и ССПСД целиком); напечатано 7,6 %"
+   },
+   "cor": {
+    "v": 0.022,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "CoR = напечатанная ЧПМ − напечатанная ЧПМ с учётом риска (RAM), с. 4; погрешность ±0,1 п.п."
+   },
+   "cor_exact": {
+    "v": 0.021553,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880; 2026Q2_ifrs_fs.pdf, с. 5, sha256 0a659c1d3a37e4c1",
+    "calc": "estimated: CoR = ЧПМ_exact 7.555 % − напечатанная RAM 5,4 % (±0,05 п.п. округления) → 2.11–2.21 %, центр — середина; по строке ECL ОПУ (с прочими активами и гарантиями) было бы 2.336 % — верх диапазона; 1П2026 напечатано 2,6 %",
+    "estimated": true,
+    "range": [
+     0.021053,
+     0.02336
+    ]
+   },
+   "cir": {
+    "v": 0.42,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 7, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "cir_exact": {
+    "v": 0.423996,
+    "calc": "(персонал + прочие АХР) / (ЧПД + ЧКД + чистый доход небанковской) = 38.607 / 91.055; определение ДАТАБУКа (NIM!59)"
+   },
+   "roe_exact": {
+    "v": 0.233723,
+    "calc": "op_np × 4 / среднее капитала без бессрочных и НДУ (407.711; 425.753)"
+   },
+   "op_np_exact": {
+    "v": 24.35,
+    "src": "2026Q2_ifrs_fs.pdf, с. 42, sha256 0a659c1d3a37e4c1",
+    "calc": "прибыль акционеров − проценты по бессрочным, вычитаемые в прибыли на акцию (после налога; прим. 22), млрд ₽"
+   },
+   "cost_of_funding": {
+    "v": 0.123,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "asset_yield": {
+    "v": 0.207,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "ram": {
+    "v": 0.054,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 4, sha256 cebf14e79a9a2880",
+    "calc": "округление до 0,1 п.п. (до 1 п.п. у C/I и ROE)"
+   },
+   "op_equity": {
+    "v": 425.753,
+    "src": "2026Q2_ifrs_fs.pdf, с. 6, sha256 0a659c1d3a37e4c1",
+    "calc": "капитал акционеров без бессрочных облигаций и НДУ (база ROE банка), млрд ₽"
+   }
+  }
+ },
+ "halfyear": {
+  "2025H1": {
+   "nim": {
+    "v": 0.045,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.03,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "cir": {
+    "v": 0.64,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "roe": {
+    "v": 0.1,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   }
+  },
+  "2026H1": {
+   "nim": {
+    "v": 0.072,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "cor": {
+    "v": 0.026,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "cir": {
+    "v": 0.46,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   },
+   "roe": {
+    "v": 0.21,
+    "src": "2026Q2_ifrs_presentation.pdf, с. 17, sha256 cebf14e79a9a2880"
+   }
+  }
+ },
+ "history_gaps": [
+  {
+   "period": "2023Q1",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2023Q2",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2023Q3",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2023Q4",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2024Q1",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2024Q2",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2024Q3",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: nim, cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2024Q4",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: cor, cir (есть точное из ДАТАБУКа или расчёт)"
+  },
+  {
+   "period": "2025Q1",
+   "basis": "mgmt",
+   "reason": "напечатанное значение квартала не найдено в доступных презентациях: cor (есть точное из ДАТАБУКа или расчёт)"
+  }
+ ],
+ "annual": {
+  "2023": {
+   "nim": {
+    "v": 0.064504,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!BG6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cor": {
+    "v": 0.018268,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!BB6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cir": {
+    "v": null,
+    "calc": "в ДАТАБУКе нет годового значения"
+   },
+   "roe": {
+    "v": null,
+    "calc": "годовой ROE банка в доступной первичке этапа 1 не напечатан (1П2026 — 21 %, 1П2025 — 10 %)"
+   }
+  },
+  "2024": {
+   "nim": {
+    "v": 0.054206,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!BH6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cor": {
+    "v": 0.025579,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!BC6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cir": {
+    "v": 0.547911,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!BH59, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "roe": {
+    "v": null,
+    "calc": "годовой ROE банка в доступной первичке этапа 1 не напечатан (1П2026 — 21 %, 1П2025 — 10 %)"
+   }
+  },
+  "2025": {
+   "nim": {
+    "v": 0.052782,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!BI6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cor": {
+    "v": 0.029448,
+    "src": "DATABOOK_2010-1Q26.xlsx, COR!BD6, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "cir": {
+    "v": 0.568593,
+    "src": "DATABOOK_2010-1Q26.xlsx, NIM!BI59, sha256 7d084a1aa835175b",
+    "calc": "точное годовое значение ДАТАБУКа"
+   },
+   "roe": {
+    "v": null,
+    "calc": "годовой ROE банка в доступной первичке этапа 1 не напечатан (1П2026 — 21 %, 1П2025 — 10 %)"
+   }
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "securities": {
+  "columns": [
+   "SECID",
+   "SHORTNAME",
+   "PREVPRICE",
+   "PREVLEGALCLOSEPRICE",
+   "PREVDATE",
+   "ISSUESIZE"
+  ],
+  "data": [
+   [
+    "T",
+    "Т-Технологии",
+    318.4,
+    318.6,
+    "2026-10-23",
+    2682747860
+   ],
+   [
+    "VTBR",
+    "ВТБ ао",
+    81.2,
+    81.3,
+    "2026-10-23",
+    12927766416
+   ]
+  ]
+ },
+ "marketdata": {
+  "columns": [
+   "SECID",
+   "LAST",
+   "TIME",
+   "UPDATETIME",
+   "SYSTIME",
+   "TRADINGSTATUS"
+  ],
+  "data": [
+   [
+    "T",
+    319.8,
+    "12:24:30",
+    "12:24:30",
+    "2026-10-26 12:39:30",
+    "T"
+   ],
+   [
+    "VTBR",
+    81.55,
+    "12:24:27",
+    "12:24:30",
+    "2026-10-26 12:39:30",
+    "T"
+   ]
+  ]
+ }
+}

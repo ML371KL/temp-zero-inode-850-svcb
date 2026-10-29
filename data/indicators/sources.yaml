@@ -1,0 +1,177 @@
+# Строки эмитента для сборщиков индикаторов (docs/INDICATORS.md, docs/INTERFACES.md).
+# Всё, что называет эмитента (слова поиска новостей, хосты и шаблоны его документов, заголовки,
+# метки таблиц его релиза), живёт здесь, а не в коде `indicators/`. Имя, тикер и регномер —
+# `meta.company` книги. Подстановки: {ticker} — тикер из книги.
+# Ключ, которого здесь нет, читается с умолчанием кода (docs/INDICATORS.md §2); `http.user_agent` —
+# обязателен.
+#
+# Совкомбанк (исследование данных — svcb-850-handoff/research/svcb-data-nowcast.md §7): месячного релиза у
+# эмитента нет (ни МСФО, ни РСБУ) — месячный источник только формы ЦБ банка (рег. 963); сайт банка и страница
+# раскрытия закрыты для скрипта (Qrator 401, e-disclosure 403) — документы отдаёт открытый хост API
+# prod-api.sovcombank.ru по номерам (перечня нет: проба следующих номеров и слот презентации); пресс-релиз МСФО —
+# в посте IR-канала эмитента t.me/s/irsovcombank; формы банковской группы ЦБ не раскрывает с 2К2025.
+
+http:
+  user_agent: "tzi-850-svcb/1.0 (fair value research pipeline; +https://github.com/ML371KL/temp-zero-inode-850-svcb)"
+
+iss:
+  board: TQBR
+  indices: [IMOEX, MOEXFN]            # индекс рынка и индекс финансов (плитки «Рынок», «Сектор»)
+  issue_size: true                    # ряд iss.issue_size.<тикер>: число акций по бирже — сверка с фактами (флаг выходов)
+
+tinvest:
+  class_code: TQBR
+  dividends_days: 500                 # окно календаря дивидендов назад: записи 2023 года (до IPO) не нужны
+  dividends_split_adjusted: true      # размер на акцию брокер отдаёт как объявлен; дроблений не было
+
+dividends:
+  # Ключ записи реестра — квартал прибыли: календарь дивидендов книги квартальный (решения по кварталам прибыли),
+  # и объявленная запись обязана нести период (ядро, М§5.7.6). Эмитент решает раз в год за весь год прибыли
+  # (собрание в июне): запись года — период четвёртого квартала («за 2025 год» → 2025Q4, как стартовый реестр
+  # фактов), тревога реестра — только по нему (`annual_decision`).
+  period_rule: quarterly
+  annual_decision: true
+  record_lag_quarters: 3              # запасное правило периода записи брокера: реестр в июле → четвёртый квартал прошлого года
+  period_patterns:                    # слова решения → квартал прибыли: регулярные выражения, поиск без учёта
+    order: [3, 2, 1, 4]               #   регистра, проверка в этом порядке, первое совпадение — период
+    "1": '(перв\w+ квартал\w*|три месяца|тр[её]х месяцев|\bI квартал\w*)'
+    "2": '(втор\w+ квартал\w*|(перв\w+ )?полугоди\w+|шест\w+ месяц\w+|\bII квартал\w*)'
+    "3": '(трет\w+ квартал\w*|девят\w+ месяц\w+|9 месяц\w+|\bIII квартал\w*)'
+    "4": '(четв[её]рт\w+ квартал\w*|\bIV квартал\w*|за \d{4} год\b|по итогам \d{4} года)'
+    year: '(20\d{2})'                 # год периода — первое совпадение не левее начала найденных слов периода
+  # Второй источник реестра: новость о решении собрания или рекомендации совета. Вид новости (kind в
+  # news/items.json) → слово источника в реестре; засчитывается одна новость. Пост IR-канала эмитента —
+  # документ эмитента (сайт и страница раскрытия для скрипта закрыты): его слово — «документ эмитента».
+  news_kinds: {interfax: "Интерфакс", tass: "ТАСС", kommersant: "Коммерсантъ", vedomosti: "Ведомости",
+               "telegram:irsovcombank": "документ эмитента"}
+  dps_tolerance: 0.005                # ₽: DPS источников совпадает (копейка)
+
+news:
+  issuer_keywords: ["Совкомбанк", "Sovcombank", "#SVCB", "$SVCB"]   # корень «Совкомбанк» покрывает падежи
+  # Новость о дочерней компании и цитата аналитика банка о ставке — не о банке: такие тексты не берутся.
+  exclude: ["Совкомбанк Лизинг", "Совкомбанк Страхование", "Совкомбанк Факторинг", "Совкомбанк Инвестиции",
+            "Совкомбанк Технологии", "аналитик Совкомбанка", "аналитика Совкомбанка"]
+  ras_require: ["МСФО"]               # тема результата — квартальная отчётность группы по МСФО
+  dividend_require: ["дивиденд"]
+  lookback_days: 1                    # архив дня Интерфакса: сегодня и вчера — каждый такт
+  catchup_days: 7                     # дни до недели назад — если не пройдены после своего окончания
+  interfax_day: "https://www.interfax.ru/business/news/{yyyy}/{mm}/{dd}/"
+  smartlab_news: "https://smart-lab.ru/forum/news/{ticker}/"
+  telegram_channels:                  # публичные превью t.me/s/<канал>; каждый канал — свой вид источника
+    # IR-канал эмитента: все посты о банке (числа отчёта в день МСФО, дивиденды, выкуп, сделки); названия файлов
+    # поста («Совкомбанк_МСФО_3м26.pdf») идут в текст поста
+    - {name: irsovcombank, keywords: any, require: [], kind: "telegram:irsovcombank"}
+  outlets:                            # издания: лента RSS → статья; виды — ключи news_kinds
+    - {name: kommersant, format: rss, listing: "https://www.kommersant.ru/rss/news.xml", article: '/doc/\d+'}
+    - {name: vedomosti, format: rss, listing: "https://www.vedomosti.ru/rss/news", article: '/(?:investments|finance|business)/news/'}
+    - {name: tass, format: rss, listing: "https://tass.ru/rss/v2.xml", article: 'tass\.ru/', fetch_article: false}
+  pdf_patterns: ['https://prod-api\.sovcombank\.ru/(?:finance-report/index\?id=\d+|finance-presentations/\d+|documents?/\d+)']
+
+issuer_docs:
+  # Документы — только с открытого хоста API эмитента (общедоверенный сертификат). Перечня документов у хоста нет:
+  # отчётность и презентации — по сквозным номерам (`probe`: следующие номера каждый такт), текущая презентация —
+  # в «слоте», номер которого перезаписывается (`slots`: перекачка и sha256 каждый такт). Заголовок — имя файла из
+  # Content-Disposition. Файл отчётности ложится на хост накануне вечером; сборщик документов идёт утром (≈ 09:20
+  # МСК) и в окне дозора — выпуск будится в утро дня отчёта, не накануне. Пост IR-канала с отчётом МСФО за открытый
+  # квартал — тоже документ эмитента (`posts`, `post_kinds`): сигнал «отчёт вышел», его числа — в запись кандидата.
+  hosts: [prod-api.sovcombank.ru]
+  fallback_hosts: []
+  trusted_root_hosts: []
+  ocr: false
+  probe:
+    - {url: "https://prod-api.sovcombank.ru/finance-report/index?id={id}", next_id: 168, ahead: 3, title: "отчётность МСФО"}
+    - {url: "https://prod-api.sovcombank.ru/finance-presentations/{id}", next_id: 165, ahead: 2, title: "презентации МСФО"}
+  slots:
+    - {url: "https://prod-api.sovcombank.ru/documents/{id}", id: 16976, title: "текущая презентация МСФО"}
+  posts: ["telegram:irsovcombank"]
+  post_kinds:                                            # пост — отчёт МСФО: слова отчётности или имя файла отчёта
+    # «опубликовали отчётность по МСФО», «отчётность МСФО Группы за …», «Результаты_МСФО_за_…» (имя файла поста),
+    # «МСФО_9м26» / «МСФО_1кв26»; упоминание МСФО в посте о сделке или рейтинге сигналом не служит
+    ifrs_press: '(опубликова\w* отч[её]тност\w* (?:по )?мсфо|отч[её]тност\w* (?:по )?мсфо (?:группы )?(?:\S+ ){0,2}за|результат\w*?[ _]+(?:по[ _]+)?мсфо[ _]+за|мсфо[ _-]*(?:[1-4]кв|3[мm]|1[пp]|6[мm]|9[мm]|12[мm])[ _-]?\d{2})'
+  title_kinds:                                           # вид документа по заголовку (имени файла); первый совпавший
+    ifrs_presentation: '(презентаци|prezentac|_pres_|\bpres\b)'
+    databook: '(датабук|databook|_data_)'
+    ifrs_statements: '(мсфо|msfo|ifrs[ _]?fs|ifrs\b|отч[её]тность)'
+    dividend_recommendation: '(рекомендац\w* .{0,80}дивиденд)'
+    meeting_minutes: '(протокол|итоги (?:годового )?(?:общего )?собрания)'
+  title_period_patterns:                                 # период документа из заголовка
+    # «Совкомбанк_МСФО_3м26», «…_1п26», «…_9м25», «…_1кв26», «IFRS_FS_…_12m2021», «…_3m2024», «вебкаста 1П2026»: код
+    # периода (3м/1п/6м/9м/12м — квартал по числу месяцев, 1кв…4кв — номер квартала) и год двумя или четырьмя
+    # цифрами; «SVCB_Pres_2025Q3» — год и квартал; «Совкомбанк_МСФО_2025» и «Group 2025m3» — год
+    code: '(?P<code>[1-4]кв|3[мm]|1[пp]|6[мm]|9[мm]|12[мm])[ _-]?(?P<yy>20\d{2}|\d{2})(?!\d)'
+    yq: '(?P<year>20\d{2})q(?P<qn>[1-4])(?!\d)'
+    group: '(?P<year>20\d{2})m(?P<months>1[02]|[369])\b'
+    year: '(?:мсфо|msfo)[ _-]*(?P<year>20\d{2})(?!\d|m)'
+    quarter: '(?P<q>IV|III|II|I) (?:квартал\w*|кв\.) (?:и \D*)?(?P<year>\d{4})'
+
+cbr_group: {forms: ["805", "803", "802"], suspended_since: "2025Q2"}   # формы группы ЦБ не раскрывает с 2К2025
+
+cbr_forms:
+  # ЧПД банка по форме 0409102 в определении оценки ЧПМ квартала: итоги разделов процентных доходов с разделом
+  # 12000 (комиссионные доходы части 1) минус процентные расходы — следует за ЧПД группы по МСФО с отношением
+  # 1,13–1,25 (2025–2026); без раздела 12000 оценка хуже наивной (исследование данных §6)
+  nii_sections: {plus: ["11000", "12000", "13000", "14000", "16000"], minus: ["31000", "32000", "33000", "34000", "35000", "36000"]}
+
+schedule:
+  monthly: {enabled: false, wakes_release: false}        # месячного релиза у эмитента нет
+  ifrs_quarter: {month_offset: 2, day: [12, 17]}         # МСФО 1–3 кварталов: пятница середины второго месяца
+  ifrs_q4: {month_offset: 3, day: [11, 16]}              # МСФО года: пятница второй недели марта
+  form102_day: [24, 28]                                  # формы ЦБ банка (до накопления истории first_seen)
+  form805_days_after_quarter: [41, 73]                   # окно формы 0409805 (форма не раскрывается с 2К2025)
+  late_days: 3                                           # дозор ждёт после окна ещё столько дней
+  watch_kinds: [ifrs, dividend_recommendation, agm]      # дни дозора: МСФО квартала, рекомендация совета и собрание (виды фактов)
+  watch_window_msk: ["09:31", "16:00"]                   # такт release-watch (ops/systemd): отчёт — пятница ≈ 10:00 МСК
+
+monthly:
+  series_prefix: "ops.release."                          # рядов месячного релиза нет: таблица месяцев пуста
+  main_metric: loans_gross
+  metrics: [loans_gross]
+
+nowcast: {main_benchmark: model}
+
+words:                                                   # слова, которые печатает выпуск в причинах деградации
+  monthly_rows: "формы ЦБ банка по месяцам"
+  monthly_schedule: "расписание форм ЦБ банка"
+  series: {"cbr.f805.": "ЦБ, форма 0409805", "iss.issue_size.": "Мосбиржа ISS, число акций"}
+
+release_watch:
+  tolerance:
+    money: 0.15                       # млрд ₽: два источника согласны
+    share: 0.0005                     # 0,05 п.п.
+    identity: 0.35
+  form102_tolerance: 0.15
+
+# Плитки индикаторов (П§2 `indicators.tiles`). `unit` — код единицы: share — доля, bn — млрд ₽, price — ₽ (цена),
+# level — уровень индекса, number — число без денежной единицы. `basis` — код базиса: ras — РСБУ банка,
+# regulatory — нормативы, market — рынок и ставки. Другой код — ошибка реестра, плитки не выпускаются
+# (`indicators/outputs.py`: TILE_UNITS, TILE_BASES). Нормативы капитала — банка (Н1.0 и Н1.2 — слоты модели);
+# формы банковской группы ЦБ не раскрывает с 2К2025 — плиток Н20.x нет.
+tiles:
+  groups:
+    - {id: forms, title: "Формы ЦБ: банк"}
+    - {id: rates, title: "Ставки и кривая"}
+    - {id: market, title: "Рынок"}
+    - {id: sector, title: "Сектор — справочно"}
+  items:
+    - {id: f135_n1_0, group: forms, title: "Н1.0 банка", unit: share, basis: regulatory, series: [cbr.f135.n1_0], cadence: month, stale_days: 75, change: previous}
+    - {id: f135_n1_2, group: forms, title: "Н1.2 банка", unit: share, basis: regulatory, series: [cbr.f135.n1_2], cadence: month, stale_days: 75, change: previous}
+    - {id: f135_n1_1, group: forms, title: "Н1.1 банка", unit: share, basis: regulatory, series: [cbr.f135.n1_1], cadence: month, stale_days: 75, change: previous}
+    - {id: f123_capital, group: forms, title: "Собственные средства банка, форма 0409123", unit: bn, basis: ras, series: [cbr.f123.capital_total], cadence: month, stale_days: 75, change: previous}
+    - {id: f102_nii_ytd, group: forms, title: "ЧПД банка с начала года, форма 0409102", unit: bn, basis: ras, series: [cbr.f102.nii_ytd], cadence: month, stale_days: 75, change: previous, note: "с комиссионными доходами части 1 формы"}
+    - {id: f102_ni_ytd, group: forms, title: "Прибыль банка по РСБУ с начала года, форма 0409102", unit: bn, basis: ras, series: [cbr.f102.ni_ytd], cadence: month, stale_days: 75, change: previous, note: "прибыль банка, не группы: в апреле 2026 года — с дивидендами дочерних компаний"}
+    - {id: key_rate, group: rates, title: "Ключевая ставка", unit: share, basis: market, series: [cbr.key_rate], cadence: day, stale_days: 7, change: previous_distinct, since: true}
+    - {id: ruonia, group: rates, title: "RUONIA", unit: share, basis: market, series: [cbr.ruonia], cadence: day, stale_days: 7, change: previous}
+    - {id: ofz_1y, group: rates, title: "КБД ОФЗ, 1 год", unit: share, basis: market, series: [iss.zcyc.1], cadence: day, stale_days: 7, change: previous}
+    - {id: ofz_10y, group: rates, title: "КБД ОФЗ, 10 лет", unit: share, basis: market, series: [iss.zcyc.10], cadence: day, stale_days: 7, change: previous}
+    - {id: deposit_top10, group: rates, title: "Максимальная ставка по вкладам топ-10", unit: share, basis: market, series: [cbr.deposit_top10], cadence: decade, stale_days: 25, change: previous}
+    - {id: liquidity, group: rates, title: "Структурный дефицит ликвидности", unit: bn, basis: market, series: [cbr.bliquidity], cadence: day, stale_days: 7, change: previous, note: "плюс — дефицит"}
+    - {id: "price_{ticker}", per_ticker: true, group: market, title: "Цена {ticker}", unit: price, basis: market, series: ["tinvest.price.{ticker}", "iss.price.{ticker}"], history: ["iss.close.{ticker}"], cadence: day, stale_days: 7, change: previous}
+    - {id: brokers_median, group: market, title: "Медиана целей брокеров", unit: price, basis: market, series: ["tinvest.brokers.median.{main_ticker}"], cadence: day, stale_days: 14, change: previous}
+    - {id: imoex, group: market, title: "Индекс Мосбиржи", unit: level, basis: market, series: [iss.index.IMOEX], cadence: day, stale_days: 7, change: previous}
+    - {id: moexfn, group: sector, title: "Индекс финансов Мосбиржи", unit: level, basis: market, series: [iss.index.MOEXFN], cadence: day, stale_days: 7, change: previous}
+
+seed:                                                    # история рядов (python -m indicators.seed; BANK_HANDOFF_DIR)
+  layout: soap                                           # ответы службы ЦБ и факты книги — листов этапа 1 формы образца нет
+  forms: ["primary/cbr-svcb-f102", "primary/cbr-svcb-capital"]
+  release_calendar: "research/facts/svcb_release_calendar.csv"
+  profit_node: ni_shareholders                           # прибыль квартала цели ni_q — отчётная прибыль акционеров

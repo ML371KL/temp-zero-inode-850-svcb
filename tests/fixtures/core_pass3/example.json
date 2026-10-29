@@ -1,0 +1,137 @@
+{
+ "K2b": {
+  "fees_mix_weights": {
+   "corp_loans": 1.0,
+   "auto": 0.22070268368052323,
+   "mortgage": 0.22070268368052323,
+   "cash_loans": 0.22070268368052323,
+   "cards": 0.22070268368052323
+  },
+  "fees_retail_to_corp_weight": 0.22070268368052323,
+  "ins_mix_S_weights": {
+   "auto": 1.0,
+   "mortgage": 1.0,
+   "cash_loans": 1.0,
+   "cards": 1.0,
+   "corp_loans": 0.3029031947550064
+  },
+  "ins_corp_weight_S": 0.3029031947550064,
+  "ins_corp_weight_L": 0.5,
+  "ins_S_share_equiv_of_L": 0.6970968052449936,
+  "fees_axis_all_loans_s_corp": 0.5654790088321355,
+  "anchor_R0": 1371.977,
+  "anchor_L0": 3157.447,
+  "anchor_C0": 1785.47,
+  "index_identity": {
+   "fees_lhs": 1.0212762369923112,
+   "fees_rhs": 1.0212762369923112,
+   "fees_exact": true,
+   "ins_lhs": 1.0263130646730179,
+   "ins_rhs": 1.0263130646730179,
+   "ins_exact": true
+  }
+ },
+ "K8": {
+  "c0": 176.354,
+  "d0_deposits": 3236.582,
+  "c_share_of_deposits": 0.05448772810328921,
+  "l0": 3157.447,
+  "rho_book": 0.14333003847728878,
+  "rho_without_cash": 0.08747668606947322,
+  "w_oa": 1.0493,
+  "w_cash": 0.0672,
+  "w_oa_carved": 1.6763651057374467,
+  "rwa0_growing_part_old": 474.8680601,
+  "rwa0_growing_part_new": 474.8680601,
+  "rwa0_unchanged": true,
+  "quarter": {
+   "loans_x": 1.02,
+   "deposits_x": 1.03,
+   "cash": 181.64462,
+   "oa_new": 560.40668,
+   "oa_old": 558.64314,
+   "d_oa": 1.76354,
+   "rwa_growing_new": 484.48393119,
+   "rwa_growing_old": 484.365421302
+  },
+  "driver_loans_identity": 0.0
+ },
+ "K_T2a": {
+  "days_L": 366,
+  "nu_L": 0.9979303278688525,
+  "psi": 1.0006643835616438,
+  "day_weighted_L": 379.8109068036821,
+  "pbt_terminal_base_old": 285.6527442102866,
+  "pbt_terminal_base_new": 284.8716373011101,
+  "adj": -0.7811069091764765,
+  "adj_share_of_pbt": -0.002734463172534606,
+  "y_x_old": 13.761096997686034,
+  "y_x_new": 13.770239644321483,
+  "non_leap_L_365": {
+   "nu": 1.0006643835616438,
+   "note": "у невисокосного L поправка +0,066 % дневных строк — та же у L и L + 1"
+  }
+ },
+ "K_T2b": {
+  "N_norm_mid": {
+   "bound": true,
+   "extra_pre_tax": 0.1138714400856052,
+   "drag_old_pre_tax": 7.9304583966538935,
+   "extra_share_of_drag": 0.014358746290586567,
+   "d_I_F_after_tax": -0.08314710360746755,
+   "d_TV_fixed_part_w1": -0.5910129891142311
+  },
+  "H_norm_mid": {
+   "h_star": 48.54981084489281,
+   "wt_after_payout": 123.15018915510719,
+   "bound_after_payout": true,
+   "rate_old": "y_bal (WT_Q = 0)",
+   "rate_new": "c_wh + минимум ликвидности"
+  },
+  "tax_factor": "(1 − τ_eff,L)(1 − nci_share) — как у блока К-Т"
+ },
+ "K_T2c": {
+  "N": {
+   "k_T": 0.14068574657230903,
+   "g_T": 0.0556,
+   "n_W": 19.215401727529752,
+   "phi_s0": 0.5,
+   "phi_s1": 0.4596979222374436,
+   "phi_s2": 0.420342097700133,
+   "ratio_s1": 0.9193958444748872
+  },
+  "H": {
+   "k_T": 0.1777,
+   "g_T": 0.0708,
+   "n_W": 15.402299508309916,
+   "phi_s0": 0.5,
+   "phi_s1": 0.4500840493089277,
+   "phi_s2": 0.4016665175222244,
+   "ratio_s1": 0.9001680986178554
+  },
+  "M": {
+   "k_T": 0.21769,
+   "g_T": 0.11447,
+   "n_W": 16.647081151662412,
+   "phi_s0": 0.4999999999999999,
+   "phi_s1": 0.4536909921307884,
+   "phi_s2": 0.4086565547667368,
+   "ratio_s1": 0.9073819842615768
+  },
+  "fade_1": {
+   "phi_s1": 1.0
+  }
+ },
+ "threshold": {
+  "eps": 12.81,
+  "z_core": 2.74,
+  "z_control": -0.12,
+  "at_threshold": true,
+  "excluded": "строки клетки M/downturn/mid с 2027 года: DPS и дивиденд лет ≥ 2027, BV, Н20.0, Н20.1, X_T, Y_X, ROE'_T, TV, V_c (96,0 против 89,2) — с отчётом их числа; слои, точка, цена — не исключаются",
+  "need_to_zero": {
+   "need": 0.58,
+   "eps": 12.81,
+   "at_threshold": true
+  }
+ }
+}

@@ -1,0 +1,397 @@
+{
+ "about": "Замеренные длительности файлов тестов, секунды: rest — тесты вне набора сервера, tact — тесты набора сервера. По ним ops/tools/ptest.py делит файлы на процессы; на исход тестов числа не влияют. alone — файлы, чей тест упёрся в потолок времени подпроцесса рядом с соседями: такой файл идёт без соседей (строку убирают руками). Переписывает `python ops/tools/ptest.py --save-durations`.",
+ "measured_on": "2026-10-14",
+ "alone": [
+  "tests/test_book_evidence.py"
+ ],
+ "files": {
+  "tests/test_book_core.py": {
+   "rest": 9.4,
+   "tact": 0.3
+  },
+  "tests/test_book_evidence.py": {
+   "rest": 137.6,
+   "tact": 1.1
+  },
+  "tests/test_book_gates.py": {
+   "rest": 0.2,
+   "tact": 0.5
+  },
+  "tests/test_book_template.py": {
+   "rest": 0.9,
+   "tact": 2.0
+  },
+  "tests/test_book_texts.py": {
+   "rest": 0.8,
+   "tact": 1.0
+  },
+  "tests/test_book_worlds.py": {
+   "rest": 0.0,
+   "tact": 1.0
+  },
+  "tests/test_control_forms.py": {
+   "rest": 56.5,
+   "tact": 0.9
+  },
+  "tests/test_control_independence.py": {
+   "rest": 18.7,
+   "tact": 3.1
+  },
+  "tests/test_control_model.py": {
+   "rest": 106.5,
+   "tact": 8.8
+  },
+  "tests/test_control_t.py": {
+   "rest": 43.8,
+   "tact": 9.9
+  },
+  "tests/test_core2_agm_guard.py": {
+   "rest": 14.6,
+   "tact": 0.0
+  },
+  "tests/test_core2_attribution.py": {
+   "rest": 9.1,
+   "tact": 0.2
+  },
+  "tests/test_core2_live.py": {
+   "rest": 0.0,
+   "tact": 0.1
+  },
+  "tests/test_core2_nextreport.py": {
+   "rest": 90.0,
+   "tact": 0.2
+  },
+  "tests/test_core2_payload.py": {
+   "rest": 0.0,
+   "tact": 10.5
+  },
+  "tests/test_core2_payload_doc.py": {
+   "rest": 0.1,
+   "tact": 0.0
+  },
+  "tests/test_core2_release_cli.py": {
+   "rest": 49.8,
+   "tact": 1.1
+  },
+  "tests/test_core2_reverse.py": {
+   "rest": 25.4,
+   "tact": 0.0
+  },
+  "tests/test_core2_t_w1.py": {
+   "rest": 0.0,
+   "tact": 3.0
+  },
+  "tests/test_core2_t_w1_release.py": {
+   "rest": 33.3,
+   "tact": 0.0
+  },
+  "tests/test_core2_t_w2.py": {
+   "rest": 29.4,
+   "tact": 7.0
+  },
+  "tests/test_core2_t_w3.py": {
+   "rest": 31.3,
+   "tact": 3.3
+  },
+  "tests/test_core2_t_w4.py": {
+   "rest": 9.4,
+   "tact": 2.8
+  },
+  "tests/test_core2_t_w5.py": {
+   "rest": 30.2,
+   "tact": 0.1
+  },
+  "tests/test_core2_t_w6.py": {
+   "rest": 24.0,
+   "tact": 0.0
+  },
+  "tests/test_core2_uncertainty.py": {
+   "rest": 39.8,
+   "tact": 0.1
+  },
+  "tests/test_core2_w2.py": {
+   "rest": 0.0,
+   "tact": 4.3
+  },
+  "tests/test_core2_w3.py": {
+   "rest": 0.0,
+   "tact": 4.7
+  },
+  "tests/test_core2_w3_band.py": {
+   "rest": 10.5,
+   "tact": 0.0
+  },
+  "tests/test_core2_w4.py": {
+   "rest": 110.7,
+   "tact": 0.0
+  },
+  "tests/test_core_cell.py": {
+   "rest": 0.0,
+   "tact": 0.3
+  },
+  "tests/test_core_checks.py": {
+   "rest": 0.0,
+   "tact": 0.1
+  },
+  "tests/test_core_dividends.py": {
+   "rest": 0.0,
+   "tact": 0.3
+  },
+  "tests/test_core_exdate.py": {
+   "rest": 0.0,
+   "tact": 0.7
+  },
+  "tests/test_core_grid.py": {
+   "rest": 0.0,
+   "tact": 0.9
+  },
+  "tests/test_core_labels.py": {
+   "rest": 0.0,
+   "tact": 8.3
+  },
+  "tests/test_core_literals.py": {
+   "rest": 0.0,
+   "tact": 5.1
+  },
+  "tests/test_core_mutations.py": {
+   "rest": 3745.7,
+   "tact": 0.0
+  },
+  "tests/test_core_paths.py": {
+   "rest": 0.0,
+   "tact": 0.0
+  },
+  "tests/test_core_real.py": {
+   "rest": 0.0,
+   "tact": 1.3
+  },
+  "tests/test_core_schema.py": {
+   "rest": 0.0,
+   "tact": 0.7
+  },
+  "tests/test_core_speed.py": {
+   "rest": 104.7,
+   "tact": 0.0
+  },
+  "tests/test_core_t.py": {
+   "rest": 0.0,
+   "tact": 1.7
+  },
+  "tests/test_core_t_w1.py": {
+   "rest": 0.0,
+   "tact": 7.9
+  },
+  "tests/test_core_t_w2.py": {
+   "rest": 0.0,
+   "tact": 13.1
+  },
+  "tests/test_core_t_w3.py": {
+   "rest": 27.8,
+   "tact": 10.0
+  },
+  "tests/test_core_t_w4.py": {
+   "rest": 72.4,
+   "tact": 8.2
+  },
+  "tests/test_core_t_w5.py": {
+   "rest": 58.4,
+   "tact": 1.6
+  },
+  "tests/test_core_t_w6.py": {
+   "rest": 63.2,
+   "tact": 0.9
+  },
+  "tests/test_core_transmission.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_core_w1.py": {
+   "rest": 0.0,
+   "tact": 4.7
+  },
+  "tests/test_core_w2.py": {
+   "rest": 0.0,
+   "tact": 5.0
+  },
+  "tests/test_core_w2_band.py": {
+   "rest": 5.4,
+   "tact": 0.0
+  },
+  "tests/test_core_w3.py": {
+   "rest": 0.0,
+   "tact": 6.1
+  },
+  "tests/test_core_w4.py": {
+   "rest": 3.2,
+   "tact": 0.8
+  },
+  "tests/test_core_worlds.py": {
+   "rest": 0.0,
+   "tact": 0.0
+  },
+  "tests/test_facts_anchor.py": {
+   "rest": 0.0,
+   "tact": 1.0
+  },
+  "tests/test_facts_docs.py": {
+   "rest": 0.1,
+   "tact": 0.0
+  },
+  "tests/test_facts_identities.py": {
+   "rest": 0.0,
+   "tact": 0.3
+  },
+  "tests/test_facts_register.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_facts_schema.py": {
+   "rest": 0.1,
+   "tact": 0.8
+  },
+  "tests/test_facts_texts.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_ind_calendar_release.py": {
+   "rest": 0.0,
+   "tact": 0.7
+  },
+  "tests/test_ind_cbr_forms.py": {
+   "rest": 0.0,
+   "tact": 0.8
+  },
+  "tests/test_ind_cbr_group.py": {
+   "rest": 0.0,
+   "tact": 0.5
+  },
+  "tests/test_ind_collect_outputs.py": {
+   "rest": 0.0,
+   "tact": 10.2
+  },
+  "tests/test_ind_docs.py": {
+   "rest": 0.3,
+   "tact": 0.0
+  },
+  "tests/test_ind_http.py": {
+   "rest": 0.0,
+   "tact": 1.3
+  },
+  "tests/test_ind_iss_cbr.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_ind_issuer_docs.py": {
+   "rest": 0.0,
+   "tact": 1.2
+  },
+  "tests/test_ind_journal.py": {
+   "rest": 0.0,
+   "tact": 1.3
+  },
+  "tests/test_ind_literals.py": {
+   "rest": 0.0,
+   "tact": 2.0
+  },
+  "tests/test_ind_news.py": {
+   "rest": 0.0,
+   "tact": 0.4
+  },
+  "tests/test_ind_nowcast.py": {
+   "rest": 0.0,
+   "tact": 4.6
+  },
+  "tests/test_ind_register.py": {
+   "rest": 0.0,
+   "tact": 0.5
+  },
+  "tests/test_ind_seed.py": {
+   "rest": 0.0,
+   "tact": 0.7
+  },
+  "tests/test_ind_sources.py": {
+   "rest": 0.0,
+   "tact": 0.1
+  },
+  "tests/test_ind_store.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_ind_tinvest.py": {
+   "rest": 0.0,
+   "tact": 0.1
+  },
+  "tests/test_integrate_regression.py": {
+   "rest": 129.2,
+   "tact": 0.0
+  },
+  "tests/test_ops_ci.py": {
+   "rest": 8.5,
+   "tact": 0.0
+  },
+  "tests/test_ops_docs.py": {
+   "rest": 0.7,
+   "tact": 0.0
+  },
+  "tests/test_ops_git_sandbox.py": {
+   "rest": 0.5,
+   "tact": 4.3
+  },
+  "tests/test_ops_publish.py": {
+   "rest": 256.4,
+   "tact": 0.3
+  },
+  "tests/test_ops_run_sh.py": {
+   "rest": 322.8,
+   "tact": 4.5
+  },
+  "tests/test_ops_tact.py": {
+   "rest": 0.0,
+   "tact": 0.2
+  },
+  "tests/test_ops_tact_suite.py": {
+   "rest": 0.0,
+   "tact": 2.2
+  },
+  "tests/test_ops_tools.py": {
+   "rest": 57.8,
+   "tact": 0.1
+  },
+  "tests/test_ops_units.py": {
+   "rest": 0.0,
+   "tact": 1.8
+  },
+  "tests/test_public_hygiene.py": {
+   "rest": 0.0,
+   "tact": 4.1
+  },
+  "tests/test_reanchor.py": {
+   "rest": 143.4,
+   "tact": 20.1
+  },
+  "tests/test_reanchor_facts.py": {
+   "rest": 13.5,
+   "tact": 2.0
+  },
+  "tests/test_reanchor_keys.py": {
+   "rest": 99.6,
+   "tact": 9.3
+  },
+  "tests/test_reanchor_t.py": {
+   "rest": 76.6,
+   "tact": 0.1
+  },
+  "tests/test_web_contract.py": {
+   "rest": 0.5,
+   "tact": 1.3
+  },
+  "tests/test_web_node.py": {
+   "rest": 7.2,
+   "tact": 0.0
+  },
+  "tests/test_web_static.py": {
+   "rest": 0.0,
+   "tact": 1.5
+  }
+ }
+}

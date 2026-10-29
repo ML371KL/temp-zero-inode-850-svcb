@@ -1,0 +1,429 @@
+{
+ "basis": "IFRS",
+ "as_of": "2026-06-30",
+ "unit": "DPS — ₽ на акцию; суммы — млрд ₽; доли",
+ "policy": {
+  "name": "Дивидендная политика ПАО «Совкомбанк»",
+  "doc": "POLICY_dividend_v2_2023-11-20.pdf",
+  "doc_title": "Дивидендная политика ПАО «Совкомбанк», версия 2.0",
+  "sha256": "06e0991f944ac4c16aac8b1d02baf2d9bf3e3c688488d7d95556fd3d73a4fad0",
+  "approved": "2023-11-20",
+  "approved_by": "Наблюдательный совет, протокол № 29 от 20.11.2023",
+  "frequency": "annual",
+  "payout_low": {
+   "v": 0.25,
+   "src": "POLICY_dividend_v2_2023-11-20.pdf, с. 4, sha256 06e0991f944ac4c1",
+   "calc": "п. 5.2(б): от 25 % чистой прибыли по МСФО"
+  },
+  "payout_high": {
+   "v": 0.5,
+   "src": "POLICY_dividend_v2_2023-11-20.pdf, с. 4, sha256 06e0991f944ac4c1",
+   "calc": "п. 5.2(б): до 50 %"
+  },
+  "cap": {
+   "v": 0.5,
+   "src": "POLICY_dividend_v2_2023-11-20.pdf, с. 4, sha256 06e0991f944ac4c1",
+   "calc": "верх политики (50 %)"
+  },
+  "threshold": {
+   "v": 0.115,
+   "src": "POLICY_dividend_v2_2023-11-20.pdf, с. 5, sha256 06e0991f944ac4c1",
+   "calc": "п. 5.2(г): выплата не снижает фактический Н1.0 банка ниже 11,5 % (порог политики, не требование ЦБ)"
+  },
+  "base": "ifrs_ni (политика: «чистая прибыль по МСФО», без уточнения доли акционеров); факт 2025: 14,8 % всей прибыли, 16,1 % прибыли акционеров",
+  "divisor": "outstanding_bank (выпущенные − собственные акции банка; shares.dividend_eligible)",
+  "valid_until": {
+   "v": null,
+   "calc": "срок действия в политике не указан (п. 8.1: изменения утверждает НС)"
+  },
+  "valid_until_note": "политика действует до пересмотра Наблюдательным советом",
+  "text": "Банк стремится распределять от 25 % до 50 % чистой прибыли по МСФО не реже раза в год; выплата не должна снижать Н1.0 банка ниже 11,5 %. С 2024 года выплата ниже политики (10–16 %).",
+  "src": "POLICY_dividend_v2_2023-11-20.pdf, с. 4–5, sha256 06e0991f944ac4c1"
+ },
+ "history": [
+  {
+   "year": 2023,
+   "period": "2023Q4",
+   "label": "за 2023 год (годовые)",
+   "dps": {
+    "v": 1.14,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "решение собрания, ₽ на акцию"
+   },
+   "dps_ordinary": {
+    "v": 1.14,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "одна категория акций"
+   },
+   "dps_pre_split": {
+    "v": 1.14,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "дробления не было"
+   },
+   "split_factor": 1,
+   "recommended_date": "2024-05-23",
+   "decided_date": "2024-06-28",
+   "decided_by": "годовое общее собрание акционеров",
+   "record_date": "2024-07-08",
+   "last_buy_date": "2024-07-05",
+   "ex_date": "2024-07-08",
+   "pay_date": "2024-07-22",
+   "pay_deadline_others": null,
+   "settlement": "T+1",
+   "pool_declared": {
+    "v": 23.506,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "сумма решения, млрд ₽"
+   },
+   "ni_shareholders": {
+    "v": 94.138,
+    "src": "FY2024_ifrs_fs.pdf, с. 12, sha256 c8339c9fd5562fba",
+    "calc": "отчётная прибыль акционеров за год (МСФО)"
+   },
+   "ni_total": {
+    "v": 95.036,
+    "src": "FY2024_ifrs_fs.pdf, с. 12, sha256 c8339c9fd5562fba"
+   },
+   "at1_coupon": {
+    "v": 1.067,
+    "src": "FY2024_ifrs_fs.pdf, с. 15, sha256 c8339c9fd5562fba",
+    "calc": "купон бессрочных за год величиной (отчёт об изменениях капитала)"
+   },
+   "tax_statutory": {
+    "v": 0.2,
+    "calc": "законная ставка налога на прибыль года (20 % до 2024 года, 25 % с 2025 года)"
+   },
+   "payout_shareholders": {
+    "v": 0.249697,
+    "calc": "pool_declared / ni_shareholders"
+   },
+   "sources": [
+    "manual: 23 506 млн ₽ (FY2024 прим. 34; equity_flows 2024); ГОСА 28.06.2024 (дата решения — по календарю дивидендов брокера T-Invest), реестр 08.07.2024; вместе с промежуточными 0,25 ₽ (5 000 млн ₽, до IPO) — 30,3 % прибыли акционеров 2023 г.",
+    "news: канал IR t.me/irsovcombank; сверка — календарь дивидендов брокера T-Invest (снимок соседа svcb-capital-shares, 21.10.2026)"
+   ],
+   "pay_deadline_decision": "2024-07-22"
+  },
+  {
+   "year": 2024,
+   "period": "2024Q4",
+   "label": "за 2024 год (первый этап)",
+   "dps": {
+    "v": 0.35,
+    "src": "2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1; svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "решение собрания, ₽ на акцию"
+   },
+   "dps_ordinary": {
+    "v": 0.35,
+    "src": "2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1; svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "одна категория акций"
+   },
+   "dps_pre_split": {
+    "v": 0.35,
+    "src": "2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1; svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "дробления не было"
+   },
+   "split_factor": 1,
+   "recommended_date": "2025-05-22",
+   "decided_date": "2025-06-27",
+   "decided_by": "годовое общее собрание акционеров",
+   "record_date": "2025-07-08",
+   "last_buy_date": "2025-07-07",
+   "ex_date": "2025-07-08",
+   "pay_date": "2025-07-22",
+   "pay_deadline_others": "2025-08-12",
+   "settlement": "T+1",
+   "pool_declared": {
+    "v": 7.856117,
+    "src": "2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1; svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "сумма решения, млрд ₽ = 0.35 × 22 446 048 592 акций"
+   },
+   "ni_shareholders": {
+    "v": 75.592,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e",
+    "calc": "отчётная прибыль акционеров за год (МСФО)"
+   },
+   "ni_total": {
+    "v": 77.234,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e"
+   },
+   "at1_coupon": {
+    "v": 3.814,
+    "src": "FY2025_ifrs_fs.pdf, с. 7, sha256 7b07a3201da4929e",
+    "calc": "купон бессрочных за год величиной (отчёт об изменениях капитала)"
+   },
+   "tax_statutory": {
+    "v": 0.2,
+    "calc": "законная ставка налога на прибыль года (20 % до 2024 года, 25 % с 2025 года)"
+   },
+   "payout_shareholders": {
+    "v": 0.103928,
+    "calc": "pool_declared / ni_shareholders"
+   },
+   "sources": [
+    "manual: ГОСА 27.06.2025 (t.me/irsovcombank/135), реестр 08.07.2025, последний день покупки 07.07.2025 (T-Invest); второй этап за 2024 год (решение НС в окт. 2025) не состоялся; сумма 7 856 млн ₽ (прим. 22 отчёта 6М2026: обязательство на 30.06.2025); делитель — акции в обращении после присоединения ХКФ [Р]",
+    "news: канал IR t.me/irsovcombank; сверка — календарь дивидендов брокера T-Invest (снимок соседа svcb-capital-shares, 21.10.2026)"
+   ],
+   "eligible_shares": {
+    "v": 22446.048592,
+    "src": "2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1; svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "акций в расчёте суммы, млн шт."
+   }
+  },
+  {
+   "year": 2025,
+   "period": "2025Q4",
+   "label": "за 2025 год",
+   "dps": {
+    "v": 0.35,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "решение собрания, ₽ на акцию"
+   },
+   "dps_ordinary": {
+    "v": 0.35,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "одна категория акций"
+   },
+   "dps_pre_split": {
+    "v": 0.35,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "дробления не было"
+   },
+   "split_factor": 1,
+   "recommended_date": "2026-05-28",
+   "decided_date": "2026-06-30",
+   "decided_by": "годовое общее собрание акционеров (заочное)",
+   "record_date": "2026-07-13",
+   "last_buy_date": "2026-07-10",
+   "ex_date": "2026-07-13",
+   "pay_date": "2026-07-27",
+   "pay_deadline_others": "2026-08-17",
+   "settlement": "T+1",
+   "pool_declared": {
+    "v": 7.856117,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "сумма решения, млрд ₽ = 0.35 × 22 446 048 592 акций"
+   },
+   "ni_shareholders": {
+    "v": 48.91,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e",
+    "calc": "отчётная прибыль акционеров за год (МСФО)"
+   },
+   "ni_total": {
+    "v": 53.232,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e"
+   },
+   "at1_coupon": {
+    "v": 1.654,
+    "src": "FY2025_ifrs_fs.pdf, с. 7, sha256 7b07a3201da4929e",
+    "calc": "купон бессрочных за год величиной (отчёт об изменениях капитала)"
+   },
+   "tax_statutory": {
+    "v": 0.25,
+    "calc": "законная ставка налога на прибыль года (20 % до 2024 года, 25 % с 2025 года)"
+   },
+   "payout_shareholders": {
+    "v": 0.160624,
+    "calc": "pool_declared / ni_shareholders"
+   },
+   "sources": [
+    "manual: решение: 7 856 117 007,20 ₽ (0,35 ₽ на акцию), реестр 13.07.2026, выплата до 28.07.2026; рекомендация НС 28.05.2026 (t.me/irsovcombank/179); последний день покупки 10.07.2026 (T-Invest, T+1); pay_date — 10 рабочих дней после реестра (политика п. 4.7), pay_deadline_others — 25 рабочих дней; обязательство 7,856 на 30.06.2026 в прочих обязательствах (прим. 21) и вычтено из капитала МСФО за 6М2026",
+    "news: канал IR t.me/irsovcombank; сверка — календарь дивидендов брокера T-Invest (снимок соседа svcb-capital-shares, 21.10.2026)"
+   ],
+   "eligible_shares": {
+    "v": 22446.048592,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "акций в расчёте суммы, млн шт."
+   },
+   "pay_deadline_decision": "2026-07-28"
+  }
+ ],
+ "history_before": [
+  {
+   "year": "2023-interim",
+   "label": "промежуточные за 9М2023 (до IPO)",
+   "dps": {
+    "v": 0.25,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv; сверка — календарь дивидендов брокера T-Invest"
+   },
+   "total": {
+    "v": 5.0,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv; сверка — календарь дивидендов брокера T-Invest"
+   },
+   "decided_date": "2023-11-02",
+   "record_date": "2023-11-13",
+   "kind": "interim",
+   "note": "получатели — прежние акционеры (до IPO)"
+  },
+  {
+   "year": "2021",
+   "label": "выплачено в 2021 г.",
+   "dps": {
+    "v": 0.35,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2021_ifrs_fs.txt:5535)"
+   },
+   "total": {
+    "v": 6.567,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2021_ifrs_fs.txt:5535)"
+   },
+   "decided_date": "2021-02-03 | 2021-06-30",
+   "record_date": "2021-02-14 | 2021-07-11",
+   "kind": "paid_in_year",
+   "note": "0,27–0,28 + ≈0,06 ₽ на акцию; до IPO"
+  },
+  {
+   "year": "2020",
+   "label": "не выплачивались (рекомендация ЦБ)",
+   "dps": {
+    "v": 0.0,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2020_ifrs_fs.txt:5150)"
+   },
+   "total": {
+    "v": 0.0,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2020_ifrs_fs.txt:5150)"
+   },
+   "decided_date": null,
+   "record_date": null,
+   "kind": "none",
+   "note": ""
+  },
+  {
+   "year": "2019",
+   "label": "выплачено в 2019 г. (четыре решения) и 01.2020",
+   "dps": {
+    "v": 0.5,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv; equity_flows 2019 (10 250 млн ₽)"
+   },
+   "total": {
+    "v": 10.25,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv; equity_flows 2019 (10 250 млн ₽)"
+   },
+   "decided_date": "2019",
+   "record_date": "2019-01-21 | 2019-05-11 | 2019-07-01 | 2019-09-26 | 2020-01-04",
+   "kind": "paid_in_year",
+   "note": "0,40 ₽ в 2019 г. + 0,10–0,11 ₽ в январе 2020 г.; до IPO"
+  },
+  {
+   "year": "2018",
+   "label": "выплачено в 2018 г.",
+   "dps": {
+    "v": 0.4,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2018_ifrs_fs.txt:5481)"
+   },
+   "total": {
+    "v": 7.32,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2018_ifrs_fs.txt:5481)"
+   },
+   "decided_date": "2018",
+   "record_date": null,
+   "kind": "paid_in_year",
+   "note": "до IPO"
+  },
+  {
+   "year": "2017",
+   "label": "выплачено в 2017 г.",
+   "dps": {
+    "v": 0.2,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2018_ifrs_fs.txt:5481)"
+   },
+   "total": {
+    "v": 3.053,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv (L/FY2018_ifrs_fs.txt:5481)"
+   },
+   "decided_date": "2017",
+   "record_date": null,
+   "kind": "paid_in_year",
+   "note": "до IPO"
+  },
+  {
+   "year": "2022",
+   "label": "не выплачивались",
+   "dps": {
+    "v": 0.0,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv"
+   },
+   "total": {
+    "v": 0.0,
+    "src": "svcb_dividends.csv, sha256 41843ddad4ff7ad0",
+    "calc": "research/facts/svcb_dividends.csv"
+   },
+   "decided_date": null,
+   "record_date": null,
+   "kind": "none",
+   "note": ""
+  }
+ ],
+ "years": {
+  "2023": {
+   "ni_shareholders": {
+    "v": 94.138,
+    "src": "FY2024_ifrs_fs.pdf, с. 12, sha256 c8339c9fd5562fba"
+   },
+   "complete": true,
+   "through": "2023Q4"
+  },
+  "2024": {
+   "ni_shareholders": {
+    "v": 75.592,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e"
+   },
+   "complete": true,
+   "through": "2024Q4"
+  },
+  "2025": {
+   "ni_shareholders": {
+    "v": 48.91,
+    "src": "FY2025_ifrs_fs.pdf, с. 5, sha256 7b07a3201da4929e"
+   },
+   "complete": true,
+   "through": "2025Q4"
+  },
+  "2026": {
+   "ni_shareholders": {
+    "v": 43.681,
+    "src": "2026Q2_ifrs_fs.pdf, с. 5, sha256 0a659c1d3a37e4c1"
+   },
+   "complete": false,
+   "through": "2026Q2"
+  }
+ },
+ "register_seed": [
+  {
+   "year": 2025,
+   "period": "2025Q4",
+   "label": "за 2025 год",
+   "dps": {
+    "v": 0.35,
+    "src": "AGM_2026_materials.pdf, с. 4, sha256 a3bbbaa6b0b8c569; 2026Q2_ifrs_fs.pdf, с. 41, sha256 0a659c1d3a37e4c1",
+    "calc": "решение собрания, ₽ на акцию"
+   },
+   "status": "paid",
+   "recommended_date": "2026-05-28",
+   "decided_date": "2026-06-30",
+   "record_date": "2026-07-13",
+   "last_buy_date": "2026-07-10",
+   "ex_date": "2026-07-13",
+   "pay_date": "2026-07-27",
+   "sources": [
+    "manual: материалы ГОСА 30.06.2026, с. 4 — 0,35 ₽, реестр 13.07.2026, выплата до 28.07.2026",
+    "news: пост 184 канала IR эмитента в Telegram (30.06.2026) — решение годового собрания акционеров; брокер T-Invest — последний день покупки 10.07.2026"
+   ]
+  }
+ ],
+ "register_seed_note": "решение 30.06.2026 с экс-датой 13.07.2026 позже якоря — запись реестра (status paid: выплачено в июле 2026 года; обязательство 7,856 на якоре — balance.dividends_payable). У Сбера при том же календаре список пуст — выбор формы за сборщиком; вклад записи в мост цены на 20.10.2026 — ноль (вычет и экс-дата оба до даты оценки)",
+ "dates_rule": "Реестр (record_date) — решение собрания; торги T+1: последний день покупки — рабочий день до реестра, экс-дата = дата реестра. Срок выплаты номинальным держателям — 10 рабочих дней после реестра, прочим — 25 (политика, п. 4.7; закон об АО); решение 2026 года: «в срок до 28 июля 2026 года».",
+ "broker_check": "DPS и даты реестра за 2023–2025 годы сверены с календарём дивидендов брокера T-Invest (снимок соседа svcb-capital-shares, 21.10.2026): 1,14 ₽ / 08.07.2024; 0,35 ₽ / 08.07.2025; 0,35 ₽ / 13.07.2026 — совпало",
+ "snapshot": "2026-10-21"
+}

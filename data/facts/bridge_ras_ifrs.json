@@ -1,0 +1,508 @@
+{
+ "basis": "RAS→IFRS",
+ "as_of": "2026-06-30",
+ "unit": "млрд ₽ за квартал; отношения — доли",
+ "definition": "справочный ряд (ядру не нужен; нау-каст): ratio = отчётная прибыль акционеров группы (МСФО) / прибыль банка по РСБУ за квартал (форма 0409102, рег. 963); ЧПД — то же",
+ "quarters": [
+  {
+   "period": "2023Q3",
+   "ras_ni": {
+    "v": 25.45,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 24.574,
+    "calc": "pnl_quarterly.2023Q3.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.96558,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2023Q4",
+   "ras_ni": {
+    "v": 13.9,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 18.313,
+    "calc": "pnl_quarterly.2023Q4.ni_shareholders"
+   },
+   "ratio": {
+    "v": 1.317482,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2024Q1",
+   "ras_ni": {
+    "v": 11.44,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 24.754,
+    "calc": "pnl_quarterly.2024Q1.ni_shareholders"
+   },
+   "ratio": {
+    "v": 2.163811,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2024Q2",
+   "ras_ni": {
+    "v": 16.4,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 13.193,
+    "calc": "pnl_quarterly.2024Q2.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.804451,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2024Q3",
+   "ras_ni": {
+    "v": 7.73,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 17.365,
+    "calc": "pnl_quarterly.2024Q3.ni_shareholders"
+   },
+   "ratio": {
+    "v": 2.246442,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2024Q4",
+   "ras_ni": {
+    "v": 7.26,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 20.28,
+    "calc": "pnl_quarterly.2024Q4.ni_shareholders"
+   },
+   "ratio": {
+    "v": 2.793388,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2025Q1",
+   "ras_ni": {
+    "v": -16.35,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 12.021,
+    "calc": "pnl_quarterly.2025Q1.ni_shareholders"
+   },
+   "ratio": {
+    "v": -0.735229,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2025Q2",
+   "ras_ni": {
+    "v": 20.29,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 4.207,
+    "calc": "pnl_quarterly.2025Q2.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.207344,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2025Q3",
+   "ras_ni": {
+    "v": 19.05,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 16.76,
+    "calc": "pnl_quarterly.2025Q3.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.87979,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2025Q4",
+   "ras_ni": {
+    "v": 21.1,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 15.922,
+    "calc": "pnl_quarterly.2025Q4.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.754597,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2026Q1",
+   "ras_ni": {
+    "v": 15.9,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 18.977,
+    "calc": "pnl_quarterly.2026Q1.ni_shareholders"
+   },
+   "ratio": {
+    "v": 1.193522,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  },
+  {
+   "period": "2026Q2",
+   "ras_ni": {
+    "v": 48.32,
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+    "calc": "прибыль банка за квартал по форме 0409102 (рег. 963)"
+   },
+   "ifrs_ni_sh": {
+    "v": 24.704,
+    "calc": "pnl_quarterly.2026Q2.ni_shareholders"
+   },
+   "ratio": {
+    "v": 0.511258,
+    "calc": "ifrs_ni_sh / ras_ni"
+   },
+   "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+  }
+ ],
+ "by_quarter": {
+  "1": {
+   "v": null,
+   "calc": "нет данных: прибыль банка по РСБУ не предсказывает прибыль группы (отношение −0,77…2,85 за 2023К3–2026К2)"
+  },
+  "2": {
+   "v": null,
+   "calc": "нет данных: прибыль банка по РСБУ не предсказывает прибыль группы (отношение −0,77…2,85 за 2023К3–2026К2)"
+  },
+  "3": {
+   "v": null,
+   "calc": "нет данных: прибыль банка по РСБУ не предсказывает прибыль группы (отношение −0,77…2,85 за 2023К3–2026К2)"
+  },
+  "4": {
+   "v": null,
+   "calc": "нет данных: прибыль банка по РСБУ не предсказывает прибыль группы (отношение −0,77…2,85 за 2023К3–2026К2)"
+  }
+ },
+ "nii": {
+  "definition": "ras — ЧПД банка за квартал по форме 0409102; ifrs — ЧПД движка группы (pnl_quarterly.nii: ЧПД формы МСФО + финансовые расходы страхования)",
+  "method": "prev_quarter",
+  "method_note": "value — отношение последнего отчётного квартала",
+  "window": [
+   "2026Q2",
+   "2026Q2"
+  ],
+  "quarters": [
+   {
+    "period": "2023Q3",
+    "ras": {
+     "v": 20.9,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 36.309829,
+     "calc": "pnl_quarterly.2023Q3.nii"
+    },
+    "ratio": {
+     "v": 1.737312,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2023Q4",
+    "ras": {
+     "v": 16.34,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 33.9501,
+     "calc": "pnl_quarterly.2023Q4.nii"
+    },
+    "ratio": {
+     "v": 2.077729,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2024Q1",
+    "ras": {
+     "v": 15.27,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 34.879,
+     "calc": "pnl_quarterly.2024Q1.nii"
+    },
+    "ratio": {
+     "v": 2.284152,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2024Q2",
+    "ras": {
+     "v": 12.45,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 42.408,
+     "calc": "pnl_quarterly.2024Q2.nii"
+    },
+    "ratio": {
+     "v": 3.406265,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2024Q3",
+    "ras": {
+     "v": 22.14,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 40.453,
+     "calc": "pnl_quarterly.2024Q3.nii"
+    },
+    "ratio": {
+     "v": 1.827145,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2024Q4",
+    "ras": {
+     "v": 11.39,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 35.568,
+     "calc": "pnl_quarterly.2024Q4.nii"
+    },
+    "ratio": {
+     "v": 3.122739,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2025Q1",
+    "ras": {
+     "v": 8.02,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 30.334,
+     "calc": "pnl_quarterly.2025Q1.nii"
+    },
+    "ratio": {
+     "v": 3.782294,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2025Q2",
+    "ras": {
+     "v": 10.68,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 33.1,
+     "calc": "pnl_quarterly.2025Q2.nii"
+    },
+    "ratio": {
+     "v": 3.099251,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2025Q3",
+    "ras": {
+     "v": 19.47,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 43.851,
+     "calc": "pnl_quarterly.2025Q3.nii"
+    },
+    "ratio": {
+     "v": 2.252234,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2025Q4",
+    "ras": {
+     "v": 27.19,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 56.651,
+     "calc": "pnl_quarterly.2025Q4.nii"
+    },
+    "ratio": {
+     "v": 2.083523,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2026Q1",
+    "ras": {
+     "v": 31.55,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 55.839,
+     "calc": "pnl_quarterly.2026Q1.nii"
+    },
+    "ratio": {
+     "v": 1.769857,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   },
+   {
+    "period": "2026Q2",
+    "ras": {
+     "v": 38.41,
+     "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59",
+     "calc": "ЧПД банка за квартал по форме 0409102"
+    },
+    "ifrs": {
+     "v": 62.41,
+     "calc": "pnl_quarterly.2026Q2.nii"
+    },
+    "ratio": {
+     "v": 1.624837,
+     "calc": "ifrs / ras"
+    },
+    "src": "bridge_ras_ifrs_quarterly.csv, sha256 5831616dd4ce9d59"
+   }
+  ],
+  "value": {
+   "v": 1.624837,
+   "calc": "ratio квартала 2026Q2"
+  },
+  "n": {
+   "v": 1,
+   "calc": "кварталов в окне"
+  },
+  "sd": {
+   "v": 0.838111,
+   "calc": "выборочное стандартное отклонение ratio за последние 6 кварталов"
+  },
+  "by_quarter": {
+   "1": {
+    "v": null,
+    "calc": "сезонности нет: ряд короткий и сдвигается со ставкой"
+   },
+   "2": {
+    "v": null,
+    "calc": "сезонности нет: ряд короткий и сдвигается со ставкой"
+   },
+   "3": {
+    "v": null,
+    "calc": "сезонности нет: ряд короткий и сдвигается со ставкой"
+   },
+   "4": {
+    "v": null,
+    "calc": "сезонности нет: ряд короткий и сдвигается со ставкой"
+   }
+  }
+ },
+ "iea": {
+  "basis": "RAS (банк соло)",
+  "definition": "процентные активы банка по форме 0409101 — для нау-каста ЧПМ; разметка кодов счетов — работа сборщика фаз 4–5",
+  "codes": null,
+  "codes_required": null,
+  "codes_note": "не размечено на этапе 1",
+  "by_quarter": {
+   "1": {
+    "v": null,
+    "calc": "моста активов нет"
+   },
+   "2": {
+    "v": null,
+    "calc": "моста активов нет"
+   },
+   "3": {
+    "v": null,
+    "calc": "моста активов нет"
+   },
+   "4": {
+    "v": null,
+    "calc": "моста активов нет"
+   }
+  },
+  "value": {
+   "v": null,
+   "calc": "процентные активы по форме 0409101 не размечены (поток facts этапа 1)"
+  }
+ },
+ "cor": {
+  "v": null,
+  "calc": "моста резервов нет: резервы РСБУ и МСФО несопоставимы поквартально (отношение 0,28–1,59)"
+ }
+}

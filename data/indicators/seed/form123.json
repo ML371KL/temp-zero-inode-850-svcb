@@ -1,0 +1,296 @@
+{
+ "basis": "ras",
+ "unit": "RUB bn",
+ "source": "primary/cbr-svcb-capital: ответы ЦБ SOAP формы 0409123 (разбор сборщика)",
+ "note": "дата формы — на 1-е число месяца после месяца данных; момент первой выкладки до запуска сборщика неизвестен",
+ "months": {
+  "2023M09": {
+   "form_date": "2023-10-01",
+   "sha256": "4d66379d49286051c3dd3661b433e1146afebb7db10a4b2f6a8ba3cf4465603e",
+   "capital_total": 307.181831,
+   "capital_base": 229.879735,
+   "capital_additional": 40.064651,
+   "capital_tier2": 37.237445
+  },
+  "2023M10": {
+   "form_date": "2023-11-01",
+   "sha256": "defa826c44c5a19f9c5285fbe26249542875f9c35e55e874451c0324cc857c42",
+   "capital_total": 309.518251,
+   "capital_base": 241.637824,
+   "capital_additional": 38.349123,
+   "capital_tier2": 29.531304
+  },
+  "2023M11": {
+   "form_date": "2023-12-01",
+   "sha256": "dd68fc6c2842d1cee458392281ba17ec92b812daedfd5db520b22485cd5985a7",
+   "capital_total": 319.338716,
+   "capital_base": 237.679916,
+   "capital_additional": 36.556192,
+   "capital_tier2": 45.102608
+  },
+  "2023M12": {
+   "form_date": "2024-01-01",
+   "sha256": "c042a7e32d034a5a48e2c0f9fcab9b70bc813583fe1e0939151f5bf25163ddca",
+   "capital_total": 332.227438,
+   "capital_base": 253.238477,
+   "capital_additional": 35.464241,
+   "capital_tier2": 43.52472
+  },
+  "2024M01": {
+   "form_date": "2024-02-01",
+   "sha256": "c0d22ecb0a08819c5a27398279f6e91c8a3df1fe81b648ae897e9fb6d6003660",
+   "capital_total": 332.441519,
+   "capital_base": 255.633791,
+   "capital_additional": 35.306233,
+   "capital_tier2": 41.501495
+  },
+  "2024M02": {
+   "form_date": "2024-03-01",
+   "sha256": "1668293c4f91dff76dfeaac6725d9d94edcb850136f628a6d1ea2740fc9505ea",
+   "capital_total": 335.15097,
+   "capital_base": 255.865077,
+   "capital_additional": 36.363261,
+   "capital_tier2": 42.922632
+  },
+  "2024M03": {
+   "form_date": "2024-04-01",
+   "sha256": "081dbba2a62ad44ef31d86bb6050b17e334e9c73365dae9655d0284423e9597d",
+   "capital_total": 333.039747,
+   "capital_base": 271.468347,
+   "capital_additional": 36.559902,
+   "capital_tier2": 25.011498
+  },
+  "2024M04": {
+   "form_date": "2024-05-01",
+   "sha256": "1cf59db78eab431daee2b269853da151cf7223fe7c75ea3da14c5c06c1486cbf",
+   "capital_total": 342.799304,
+   "capital_base": 271.761586,
+   "capital_additional": 36.327598,
+   "capital_tier2": 34.71012
+  },
+  "2024M05": {
+   "form_date": "2024-06-01",
+   "sha256": "793d89135625a8559b4dec884bfc3148b5e94820c4e54ac7a5c4386ad1cb63d3",
+   "capital_total": 345.480649,
+   "capital_base": 267.292323,
+   "capital_additional": 47.315317,
+   "capital_tier2": 30.873009
+  },
+  "2024M06": {
+   "form_date": "2024-07-01",
+   "sha256": "b1d29065d1bb6cade4c460b6637325b9f1ca86e7beae3ff0f445269e58092270",
+   "capital_total": 370.011719,
+   "capital_base": 271.784667,
+   "capital_additional": 45.160424,
+   "capital_tier2": 53.066628
+  },
+  "2024M07": {
+   "form_date": "2024-08-01",
+   "sha256": "45fcf6465a129429c82edb4966aff8add857515e1e0c7edc86c46e9b084a9ee3",
+   "capital_total": 364.872,
+   "capital_base": 267.769927,
+   "capital_additional": 45.937886,
+   "capital_tier2": 51.164187
+  },
+  "2024M08": {
+   "form_date": "2024-09-01",
+   "sha256": "84de97e98a100c1e0f048f133dcd362848ed62ae32b1bd064c49141880c90899",
+   "capital_total": 364.458456,
+   "capital_base": 264.325858,
+   "capital_additional": 48.823678,
+   "capital_tier2": 51.30892
+  },
+  "2024M09": {
+   "form_date": "2024-10-01",
+   "sha256": "596ed07a8666579ae5490f1789810b8b8ee3f9237b2391429f67c6f23b42310f",
+   "capital_total": 366.235082,
+   "capital_base": 284.393215,
+   "capital_additional": 50.15182,
+   "capital_tier2": 31.690047
+  },
+  "2024M10": {
+   "form_date": "2024-11-01",
+   "sha256": "801bdc551b510cf61a2e16af0f2a111918131bc0d8cc3a55fbede0481c6a45aa",
+   "capital_total": 357.798579,
+   "capital_base": 272.158078,
+   "capital_additional": 52.916854,
+   "capital_tier2": 32.723647
+  },
+  "2024M11": {
+   "form_date": "2024-12-01",
+   "sha256": "399ba5767ae35290e47252ffc661edf34ffc37dd70bc1b1b08cac92ca54be123",
+   "capital_total": 363.704279,
+   "capital_base": 268.155639,
+   "capital_additional": 59.965818,
+   "capital_tier2": 35.582822
+  },
+  "2024M12": {
+   "form_date": "2025-01-01",
+   "sha256": "ce2456efcd4bc40d2fae3eebac58c33ce699568f4a732cc1691be533dfe31d65",
+   "capital_total": 369.217983,
+   "capital_base": 278.795227,
+   "capital_additional": 56.487669,
+   "capital_tier2": 33.935087
+  },
+  "2025M01": {
+   "form_date": "2025-02-01",
+   "sha256": "1fc625627ab8d222941162eebdbd43d55a49519b2d1844c7c7bcbd64b82137a2",
+   "capital_total": 370.374477,
+   "capital_base": 280.484763,
+   "capital_additional": 54.373596,
+   "capital_tier2": 35.516118
+  },
+  "2025M02": {
+   "form_date": "2025-03-01",
+   "sha256": "9bd4f5cfc9870f48dc7a42d8b3b31849a29fde8bd3dc2176fd81cfd30e7ddb39",
+   "capital_total": 357.83597,
+   "capital_base": 277.992535,
+   "capital_additional": 47.142637,
+   "capital_tier2": 32.700798
+  },
+  "2025M03": {
+   "form_date": "2025-04-01",
+   "sha256": "6266741fd307c1fbeaf06e338deaaad2424fcfb88e613cbc919fcbf49557d490",
+   "capital_total": 347.969347,
+   "capital_base": 271.686458,
+   "capital_additional": 44.883944,
+   "capital_tier2": 31.398945
+  },
+  "2025M04": {
+   "form_date": "2025-05-01",
+   "sha256": "88c9412c3b6261ad540ba7c6c5154a40f2bee5c0aa7fda8f9d3ffd16b2ee3dd9",
+   "capital_total": 391.682687,
+   "capital_base": 325.395583,
+   "capital_additional": 48.138416,
+   "capital_tier2": 18.148688
+  },
+  "2025M05": {
+   "form_date": "2025-06-01",
+   "sha256": "6ffec2f6f4619c3e6e05be11087269caba63b84914cd35ce58462ab78266b163",
+   "capital_total": 394.2937,
+   "capital_base": 325.426588,
+   "capital_additional": 47.059167,
+   "capital_tier2": 21.807945
+  },
+  "2025M06": {
+   "form_date": "2025-07-01",
+   "sha256": "6a4194a5d23f0f54bd33ab69e97cae96b747b191ef273f7662390aac70b8a630",
+   "capital_total": 429.70559,
+   "capital_base": 326.124849,
+   "capital_additional": 46.948367,
+   "capital_tier2": 56.632374
+  },
+  "2025M07": {
+   "form_date": "2025-08-01",
+   "sha256": "b2e5fd73be35da639fe7269b843c00fffa9d7aa80f1192e0b6f23188841d3621",
+   "capital_total": 427.138996,
+   "capital_base": 315.218734,
+   "capital_additional": 48.945075,
+   "capital_tier2": 62.975187
+  },
+  "2025M08": {
+   "form_date": "2025-09-01",
+   "sha256": "d756385a1e6a319c50e534a66a09e325fd7517adaaa8d03f981a6d4ceb53e2ec",
+   "capital_total": 424.904515,
+   "capital_base": 324.382099,
+   "capital_additional": 47.913327,
+   "capital_tier2": 52.609089
+  },
+  "2025M09": {
+   "form_date": "2025-10-01",
+   "sha256": "20cac9118f3328ab27576dee3274a8e96c061abf3ae32efee3592fbaafd817ee",
+   "capital_total": 435.582933,
+   "capital_base": 323.637517,
+   "capital_additional": 48.849861,
+   "capital_tier2": 63.095555
+  },
+  "2025M10": {
+   "form_date": "2025-11-01",
+   "sha256": "f4b49e8166e199cfb91bae74d847a9b3395bf3a312aa0290e23a3ebd2b727a81",
+   "capital_total": 431.434313,
+   "capital_base": 334.952369,
+   "capital_additional": 47.44502,
+   "capital_tier2": 49.036924
+  },
+  "2025M11": {
+   "form_date": "2025-12-01",
+   "sha256": "f4ee7ca2c269559fe91d16a20be46c28ca8d50d3de5a137f52668307c00c00a1",
+   "capital_total": 444.415105,
+   "capital_base": 340.343798,
+   "capital_additional": 46.092833,
+   "capital_tier2": 57.978474
+  },
+  "2025M12": {
+   "form_date": "2026-01-01",
+   "sha256": "8ff4cc73f5671a92ecdef554ca0e4304e69552b9fd81162dfdd4fcc4c39eb713",
+   "capital_total": 464.437191,
+   "capital_base": 341.009356,
+   "capital_additional": 46.468307,
+   "capital_tier2": 76.959528
+  },
+  "2026M01": {
+   "form_date": "2026-02-01",
+   "sha256": "7988f97ea9b9655cbe75227f5a8bca4b1d9d48f343f3f63534f539172710bdfe",
+   "capital_total": 463.808847,
+   "capital_base": 344.485354,
+   "capital_additional": 44.960081,
+   "capital_tier2": 74.363412
+  },
+  "2026M02": {
+   "form_date": "2026-03-01",
+   "sha256": "d7846b185d03c556d17d370a0bc07e59671ac41e51378cd851dc26af40cb4fc1",
+   "capital_total": 465.86412,
+   "capital_base": 344.70665,
+   "capital_additional": 45.87582,
+   "capital_tier2": 75.28165
+  },
+  "2026M03": {
+   "form_date": "2026-04-01",
+   "sha256": "ede1aa1c7e8f508340b769284857cf46731eb8861f9307a1d30b8a31639f99a4",
+   "capital_total": 463.241664,
+   "capital_base": 358.876782,
+   "capital_additional": 48.265989,
+   "capital_tier2": 56.098893
+  },
+  "2026M04": {
+   "form_date": "2026-05-01",
+   "sha256": "de6890a26b437ab07e33334c6a8fba3ee8856ee2ceccdc5fc906028183e155cd",
+   "capital_total": 469.398786,
+   "capital_base": 351.633537,
+   "capital_additional": 44.453388,
+   "capital_tier2": 73.311861
+  },
+  "2026M05": {
+   "form_date": "2026-06-01",
+   "sha256": "30a27ca1ea1a69a6d891ef36f97d57b9b2e13b3aac59b0b48ca36c7ce6ba93bd",
+   "capital_total": 468.35692,
+   "capital_base": 349.523653,
+   "capital_additional": 42.160519,
+   "capital_tier2": 76.672748
+  },
+  "2026M06": {
+   "form_date": "2026-07-01",
+   "sha256": "dcd8ba18a470d1c0084e1067aaa06bac05547abfa4d5e3886b26aeaf24feb41f",
+   "capital_total": 479.516488,
+   "capital_base": 371.536958,
+   "capital_additional": 46.160946,
+   "capital_tier2": 61.818584
+  },
+  "2026M07": {
+   "form_date": "2026-08-01",
+   "sha256": "b9239ba0352fb5f80ed0b74b376b7869594cd08d830f9dbd4839e0f3c9ee789b",
+   "capital_total": 480.966359,
+   "capital_base": 365.072023,
+   "capital_additional": 47.393632,
+   "capital_tier2": 68.500704
+  },
+  "2026M08": {
+   "form_date": "2026-09-01",
+   "sha256": "be203ed37c5cc75dac3a7ba9eff32dffdbc2973a38c37db91440ef1bf5a694d8",
+   "capital_total": 491.417792,
+   "capital_base": 364.236601,
+   "capital_additional": 50.823881,
+   "capital_tier2": 76.35731
+  }
+ }
+}

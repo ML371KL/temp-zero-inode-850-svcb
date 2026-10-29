@@ -1,0 +1,96 @@
+{
+ "basis": "IFRS",
+ "as_of": "2026-06-30",
+ "period": "2026Q2",
+ "days": 91,
+ "books": {
+  "cards": {
+   "rate_anchor": {
+    "v": 0.32,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "cash_loans": {
+   "rate_anchor": {
+    "v": 0.277,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "auto": {
+   "rate_anchor": {
+    "v": 0.192,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "mortgage": {
+   "rate_anchor": {
+    "v": 0.173,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "sme_loans": {
+   "rate_anchor": {
+    "v": 0.41,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "corp_loans": {
+   "rate_anchor": {
+    "v": 0.149,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "securities": {
+   "rate_anchor": {
+    "v": 0.116,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "liquidity": {
+   "rate_anchor": {
+    "v": 0.134,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "retail_current": {
+   "rate_anchor": {
+    "v": 0.057,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "retail_term": {
+   "rate_anchor": {
+    "v": 0.131,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "corp_funds": {
+   "rate_anchor": {
+    "v": 0.066,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  },
+  "wholesale": {
+   "rate_anchor": {
+    "v": 0.108,
+    "calc": "фикстура core_t: ставка квартала якоря, act/365"
+   }
+  }
+ },
+ "dia_q": {
+  "v": 4.6,
+  "calc": "фикстура core_t: синтетическое число порядка величин эмитента"
+ },
+ "current_share_anchor": {
+  "v": null,
+  "calc": "считается из книг средств физлиц"
+ },
+ "key_avg_anchor_q": {
+  "v": 0.14618,
+  "calc": "средняя ключевая квартала якоря"
+ },
+ "nim_eng_q": {
+  "v": 0.114807,
+  "calc": "ЧПД × 365 / 91 / средние процентные активы"
+ }
+}

@@ -1,0 +1,70 @@
+[Unit]
+Description=Совкомбанк 850 · суточный прогон: сбор, нау-каст, выпуск, публикация в репозиторий данных
+Documentation=https://github.com/ML371KL/temp-zero-inode-850-svcb/blob/main/ops/README.md
+# Именно network-online: первый шаг идёт на T-Invest, MOEX ISS и ЦБ.
+Wants=network-online.target
+After=network-online.target
+# Окно перезапуска вмещает три самых долгих прогона с паузами (systemd
+# отсчитывает его от первого старта): не больше 3 стартов за окно, дальше юнит
+# стоит до следующего таймера. Расчёт — ops/budgets.json (restart); числа
+# вписывает `python ops/tools/budgets.py --write`, равенство сверяет
+# tests/test_ops_units.py.
+StartLimitIntervalSec=30180
+StartLimitBurst=3
+
+[Service]
+# Type=exec, а не oneshot: systemd отказывается загружать oneshot с Restart!=no.
+Type=exec
+User=dash
+Group=dash
+WorkingDirectory=/srv/dash/repo-850-svcb
+# Env-файл читает сам run.sh (см. svcb850-collect.service): строки
+# EnvironmentFile нет намеренно.
+Environment=ENV_FILE=/usr/local/etc/svcb-850/env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/bash /srv/dash/repo-850-svcb/ops/run.sh daily
+# Упавший шаг (код 1) повторяется через 3 минуты: моргнувший push в
+# репозиторий данных или временный отказ критического источника лечатся
+# повтором. Тревога (код 8: все шаги выполнены, выпуск на витрине, но прогон
+# требует внимания) НЕ повторяется — повтор её не снимет, а стоил бы ещё двух
+# полных прогонов. 64/78 — ошибки настройки. Повтор по коду 1 ограничен окном
+# StartLimit: стойкий отказ (гейт, защита заголовка, отозванный ключ) даёт три
+# прогона, а не повтор до утра.
+Restart=on-failure
+RestartSec=180
+RestartPreventExitStatus=8 64 78
+# Потолок = прогон с запасом (сбор, нау-каст, тесты такта, сборка, публикация,
+# сверка до своего окна) + ожидание замка (LOCK_WAIT_SECONDS).
+# Число вписывает `python ops/tools/budgets.py --write` из ops/budgets.json;
+# руками не правится, равенство сверяет tests/test_ops_units.py. Оценка это
+# или замер сервера — ops/budgets.json, status (ops/README.md §9).
+RuntimeMaxSec=9780
+SyslogIdentifier=svcb850
+
+StateDirectory=svcb-850
+# Каталог состояния закрыт от прочих учётных записей сервера (сырой архив
+# ответов источников, журналы, клон данных): без этой строки systemd при
+# каждом старте юнита возвращает каталогу режим 0755.
+StateDirectoryMode=0750
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+# Репозиторий пишется: git reset при обновлении кода, pip в .venv, var/ тестов.
+# Клон ветки release живёт в StateDirectory. /srv/dash/.ssh (ssh-алиас и ключ
+# записи в репозиторий данных) нужен ДЛЯ ЧТЕНИЯ — его не закрывать.
+ReadWritePaths=/srv/dash/repo-850-svcb
+
+# Сборка считает полосу пулом процессов; их число — `workers` бюджета (такт
+# берёт его сам, когда BANK_WORKERS в env-файле пуст). Потолок памяти и число
+# процессов стоят на ОДНОМ замере (ops/budgets.json, ops/README.md §9): числа
+# вписывает `python ops/tools/budgets.py --write`. Оценка это или замер
+# сервера — ops/budgets.json, status.
+MemoryHigh=832M
+MemoryMax=1024M
+Nice=10
+
+# Мост тревог (см. svcb850-collect.service).
+ExecStopPost=-+/usr/local/sbin/dash-alert %n
+
+# Секции [Install] намеренно НЕТ: юнит запускается таймером.

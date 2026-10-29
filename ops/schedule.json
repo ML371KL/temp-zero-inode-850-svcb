@@ -1,0 +1,75 @@
+{
+ "about": "Расписание тактов — единственное место, где оно пишется руками. Из него считаются строки OnCalendar таймеров ops/systemd/*-<такт>.timer: вписывает `python ops/tools/schedule.py --write`, сверяет `--check` (без ключей — таблица в UTC и по Москве); равенство и правила ниже держит tests/test_ops_units.py. Время — UTC; московское = UTC + msk_offset_hours. ТАКТЫ. collect — раз в сутки в at_utc; daily — в at_utc по дням days; rebuild — каждый час в минуты minutes (шаг между ними один и тот же); release-watch — по дням days каждые every_min минут в окне window_msk: первая проверка — в начале окна, последняя — раньше его конца. Окно дозора — то же, что справочный ключ schedule.watch_window_msk в data/indicators/sources.yaml (код сборщиков его не читает; тест сверяет ключ с таймером). СОСЕДИ. Сервер общий: neighbours — такты соседних панелей по списку таймеров сервера на день checked_on (минуты пересборки и дозора — остаток от деления на шаг; null — в записях нет: сверить `systemctl list-timers` перед включением таймеров, ops/README.md §5). Расписание обязано держать расстояние gaps_min до каждого соседа: утренние сборы — сборщики форм четырёх панелей банков ходят на SOAP ЦБ с одного адреса, а на плотные серии ЦБ отвечает отказом; суточные такты — две сборки разом на четырёх ядрах растягивают обе; пересборки и проверки дозора — на своих минутах. Расписание, которое подходит к соседу ближе, инструмент называет строкой «расписание: …» и в таймеры не пишет.",
+ "msk_offset_hours": 3,
+ "timers": {
+  "collect": {
+   "at_utc": "06:20"
+  },
+  "release-watch": {
+   "days": "Mon..Fri",
+   "window_msk": [
+    "09:31",
+    "16:00"
+   ],
+   "every_min": 10
+  },
+  "daily": {
+   "days": "Mon..Fri",
+   "at_utc": "20:40"
+  },
+  "rebuild": {
+   "minutes": [
+    9,
+    24,
+    39,
+    54
+   ]
+  }
+ },
+ "gaps_min": {
+  "collect": 25,
+  "daily": 25,
+  "rebuild": 2,
+  "release-watch": 1
+ },
+ "neighbours": {
+  "checked_on": "2026-10-21",
+  "panels": [
+   {
+    "panel": "Магнит",
+    "collect_utc": "03:10",
+    "daily_utc": "16:40",
+    "watch_minute": null,
+    "rebuild_minute": 5
+   },
+   {
+    "panel": "Лента",
+    "collect_utc": "04:20",
+    "daily_utc": "17:25",
+    "watch_minute": null,
+    "rebuild_minute": 7
+   },
+   {
+    "panel": "Сбер",
+    "collect_utc": "04:50",
+    "daily_utc": "18:10",
+    "watch_minute": 5,
+    "rebuild_minute": 12
+   },
+   {
+    "panel": "Т",
+    "collect_utc": "05:20",
+    "daily_utc": "19:00",
+    "watch_minute": 0,
+    "rebuild_minute": 2
+   },
+   {
+    "panel": "ВТБ",
+    "collect_utc": "05:50",
+    "daily_utc": "19:50",
+    "watch_minute": 6,
+    "rebuild_minute": 4
+   }
+  ]
+ }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetF805XmlResponse xmlns="http://web.cbr.ru/"><GetF805XmlResult><Docs OnDate="01.12.2025 0:00:00" xmlns=""><F805_4>
+  <Item NAME_NORM="Н20.0" FAKT_ZN="12.400" PRIM="" KORR_GR="" />
+  <Item NAME_NORM="Н20.1" FAKT_ZN="9.300" PRIM="" KORR_GR="" />
+  <Item NAME_NORM="Н20.2" FAKT_ZN="11.700" PRIM="" KORR_GR="" />
+  <Item NAME_NORM="Н20.4" FAKT_ZN="" PRIM="" KORR_GR="" />
+  <Item NAME_NORM="H28" FAKT_ZN="" PRIM="" KORR_GR="" />
+</F805_4></Docs></GetF805XmlResult></GetF805XmlResponse></soap:Body></soap:Envelope>

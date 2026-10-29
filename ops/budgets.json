@@ -1,0 +1,148 @@
+{
+ "about": "Бюджет времени и памяти тактов — единственное место, где его числа пишутся руками. Из него считаются потолки юнитов (RuntimeMaxSec), ожидание замка (LOCK_WAIT_SECONDS в ops/run.sh), окна перезапуска (StartLimitIntervalSec), память юнитов (MemoryHigh, MemoryMax), число процессов полосы тактов (BUDGET_WORKERS в ops/run.sh) и потолки заданий CI. ОДНА ПРАВКА — ОДНА ПЕРЕГЕНЕРАЦИЯ: поменять числа здесь, затем `python ops/tools/budgets.py --write` (вписывает производные числа в ops/systemd/*.service, ops/run.sh и .github/workflows/*.yml; `--check` сверяет, без ключей — печатает таблицу); равенство держат tests/test_ops_units.py и tests/test_ops_ci.py. ФОРМУЛЫ. Потолок юнита = (сумма шагов × safety) вверх до round_to; у тактов, ждущих замок (lock_waiters), плюс ожидание замка = наибольший потолок держателей замка (lock_holders: пересборка и дозор со сборкой; сами они на занятом замке тихо выходят). Повтор сбора (collect_retry): утренний такт повторяет сбор сам, внутри прогона, только при отказе невосполнимого источника — до attempts попыток с паузой pause_s; шаг collect_retries = (attempts − 1) × (collect_morning + pause_s). Перезапуск systemd (restart): у юнитов units — StartLimitBurst = burst, RestartSec = pause_s, RestartPreventExitStatus = no_restart_codes (тревога 8 и ошибки настройки 64, 78 не повторяются), StartLimitIntervalSec = burst × (потолок юнита + pause_s + stop_s) вверх до round_to: окно systemd отсчитывается от первого старта и не скользит, поэтому оно обязано вмещать burst самых долгих прогонов с паузами и остановкой (stop_s — предел ExecStopPost). Окно обязано быть короче суток — иначе оно заперло бы и завтрашний запуск по таймеру: бюджет с окном длиннее (долгая сборка при малом числе процессов) инструмент называет строкой «бюджет: restart …» и производных чисел не пишет. Потолок задания CI = (ci.setup_s + время части набора на ноутбуке × ci.runner_factor) × ci.safety, в минутах вверх до ci.round_to_min. СТАТУС. status: estimate — замера на сервере нет: basis несёт замер ноутбука, и числа пересчитаны на сервер запасами; measured — basis несёт замер сервера (ручная сборка вне systemd до включения таймеров, ops/README.md §5, шаг 8), measured_on — его день, запасов на сервер в basis нет. Замеры basis: build_s, build_worst_s, memory_tree_mb — числом или списком прогонов; memory_process_mb, tact_tests_s, tact_tests_memory_mb — одним числом (наибольший из прогонов). ПРАВИЛО БЮДЖЕТА (сверяют `--check` и тест, в обоих статусах): бюджет не ниже замера, на котором стоит. СБОРКА: seconds.build не меньше верха замеров сборки × basis.workers / workers × basis.server_factor (полоса делится между процессами поровну; basis.server_factor — запас оценки с ноутбука на скорость ядра сервера, не меньше 2; у замера с сервера поля нет). Замеров сборки два: basis.build_s — обычный случай (цена дня замера) и basis.build_worst_s — худший. Время сборки зависит от цены: строка обратного расчёта, у которой решение попадает в диапазон книги, уточняется на полной полосе, и чем ближе цена к медиане, тем больше таких строк (на самой медиане поиска нет вовсе — это лучший случай). Худший случай меряет `python ops/tools/worst_build.py`: сборка в памяти на цене чуть выше и чуть ниже медианы, время достроено до полного числа шагов уточнения у каждой строки в диапазоне; бюджет стоит на верхе обоих замеров. build_target — цель времени сборки на сервере (30 минут); сборка в бюджете дольше build_stop (45 минут) — до включения таймеров решает ведущий: инструмент называет это строкой «ВНИМАНИЕ», бюджету это не противоречит. build_laptop_goal — цель времени сборки на рабочей машине: обычный случай (usual_s, 15 минут) и худший (worst_s, 25 минут) при workers процессах полосы; у оценки с ноутбука инструмент сверяет с ней замеры basis.build_s и basis.build_worst_s (пересчитанные на workers цели) и замер дольше цели называет строкой «ВНИМАНИЕ» — бюджету это тоже не противоречит. ТЕСТЫ ТАКТА: seconds.tact_tests и seconds.future_tests не меньше basis.tact_tests_s × basis.tact_server_factor (запас оценки с ноутбука, не меньше 1,5: у соседней панели на том же сервере набор идёт в 1,4–1,7 раза дольше, чем на ноутбуке; у замера с сервера поля нет); seconds.tact_tests не больше tact_tests_target — цели времени всего набора тестов такта на сервере (сверяется замером шага 8 установки и шагом «тесты такта» журнала такта). Набор такта на ноутбуке — не дольше tact_tests_laptop_limit; дольше цели или предела — метка tact снимается с самых долгих тестов. tact_tests_ci_ceiling — потолок шага CI «Тесты такта — замер времени»: дольше — шаг краснеет, а время дольше цели сервера он печатает предупреждением; раннер целью сервера не служит (у соседней панели он идёт примерно как ноутбук). ПАМЯТЬ: memory.high_mb не меньше (наибольшее из памяти сборки при workers процессах и памяти набора такта) × safety, где память сборки = basis.memory_process_mb + (верх basis.memory_tree_mb − basis.memory_process_mb) × workers / basis.workers. workers — число процессов полосы, на которое посчитан бюджет: такт берёт его сам, когда BANK_WORKERS в env-файле пуст, и говорит строкой «ВНИМАНИЕ», когда в env-файле стоит другое число. Шаги сбора, публикации и сверки (collect_*, watch, nowcast, health, status_health, data_sync, publish, pip) — оценка по соседней панели семейства: до первого сбора на сервере своего замера у них нет. СТОРОЖ ВЕТКИ ДАННЫХ: data_branch_alert_mb — размер дерева ветки release, с которого ops/publish.py публикует с тревогой (предел сайта GitHub Pages — 1 ГБ).",
+ "status": "estimate",
+ "measured_on": null,
+ "basis": {
+  "machine": "ноутбук разработки (8 ядер): замер панели-образца — полный расчёт её книги 1.0 на этом же ядре, худший случай по ценам у медианы, набор тестов такта; своей книги у копии на день записи нет — её замер на ноутбуке и замер сервера впереди; ДО ЗАМЕРА НА СЕРВЕРЕ",
+  "measured_on": "2026-10-09",
+  "workers": 4,
+  "server_factor": 2,
+  "tact_server_factor": 1.8,
+  "build_s": [
+   640,
+   751
+  ],
+  "build_worst_s": 748,
+  "tact_tests_s": 121,
+  "tact_tests_memory_mb": 552,
+  "memory_tree_mb": [
+   347,
+   357,
+   348
+  ],
+  "memory_process_mb": 215
+ },
+ "server_cores": 4,
+ "workers": 4,
+ "safety": 1.5,
+ "round_to": 60,
+ "seconds": {
+  "pip": 120,
+  "collect_morning": 600,
+  "collect_retries": 1560,
+  "future_tests": 300,
+  "status_health": 60,
+  "collect_evening": 420,
+  "watch": 300,
+  "nowcast": 120,
+  "health": 30,
+  "data_sync": 60,
+  "tact_tests": 220,
+  "build": 1600,
+  "publish": 120,
+  "verify_timeout": 600
+ },
+ "units": {
+  "collect": [
+   "pip",
+   "collect_morning",
+   "collect_retries",
+   "future_tests",
+   "status_health"
+  ],
+  "release-watch": [
+   "pip",
+   "watch",
+   "nowcast",
+   "tact_tests",
+   "data_sync",
+   "build",
+   "publish",
+   "verify_timeout"
+  ],
+  "daily": [
+   "pip",
+   "collect_evening",
+   "nowcast",
+   "health",
+   "tact_tests",
+   "data_sync",
+   "build",
+   "publish",
+   "verify_timeout",
+   "status_health"
+  ],
+  "rebuild": [
+   "pip",
+   "tact_tests",
+   "data_sync",
+   "build",
+   "publish",
+   "verify_timeout"
+  ]
+ },
+ "lock_holders": [
+  "rebuild",
+  "release-watch"
+ ],
+ "lock_waiters": [
+  "collect",
+  "daily"
+ ],
+ "collect_retry": {
+  "attempts": 3,
+  "pause_s": 180
+ },
+ "restart": {
+  "units": [
+   "collect",
+   "daily"
+  ],
+  "burst": 3,
+  "pause_s": 180,
+  "stop_s": 90,
+  "no_restart_codes": [
+   8,
+   64,
+   78
+  ]
+ },
+ "memory": {
+  "high_mb": 832,
+  "max_mb": 1024
+ },
+ "ci": {
+  "about": "Время заданий CI на ноутбуке и пересчёт на раннер GitHub: набор такта (tact) — замер одного прогона; остальное (rest) — весь набор без файла мутаций за вычетом набора такта (замер рядом со сборкой выпуска — оценка сверху); файл мутаций — матрицей из 10 частей (mutations-1 … mutations-10: мутанты с номером i mod 10 = K − 1, подлинное ядро — в части 1; переменная BANK_MUTATION_SHARD); время части — оценка до полного прогона pmut на этом дереве: 492 мутанта × ≈ 320 с подпроцесса при 7 соседях (прогон pmut медленного круга упирался в потолок 300 с; подлинное ядро одно — 211 с) / 7 подпроцессов / 10 частей ≈ 2250 с; полный прогон pmut (приёмка) даёт замер — время частей вписывается сюда, потолки — budgets.py --write; контракт выпуска (release-contract) — быстрая сборка в памяти; docs (задание docs.yml) — набор такта и тесты документов. До первого прогона CI это оценка: его журнал (--durations) даёт настоящие времена, они вписываются сюда. runner_factor — запас потолков заданий, а не ожидание: у соседней панели раннер идёт примерно как ноутбук.",
+  "laptop_seconds": {
+   "tact": 121,
+   "rest": 1105,
+   "mutations-1": 2250,
+   "mutations-2": 2250,
+   "mutations-3": 2250,
+   "mutations-4": 2250,
+   "mutations-5": 2250,
+   "mutations-6": 2250,
+   "mutations-7": 2250,
+   "mutations-8": 2250,
+   "mutations-9": 2250,
+   "mutations-10": 2250,
+   "release-contract": 10,
+   "docs": 135
+  },
+  "setup_s": 180,
+  "runner_factor": 2.5,
+  "safety": 1.5,
+  "round_to_min": 10
+ },
+ "data_branch_alert_mb": 700,
+ "build_target": 1800,
+ "build_stop": 2700,
+ "build_laptop_goal": {
+  "workers": 4,
+  "usual_s": 900,
+  "worst_s": 1500
+ },
+ "tact_tests_target": 270,
+ "tact_tests_laptop_limit": 150,
+ "tact_tests_ci_ceiling": 300
+}

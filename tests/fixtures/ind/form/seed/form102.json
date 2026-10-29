@@ -1,0 +1,332 @@
+{
+ "basis": "ras",
+ "unit": "RUB bn",
+ "source": "stage1/ras/cbr_f102_summary.csv (ЦБ SOAP Data102FXML)",
+ "note": "дата формы — на 1-е число месяца после месяца данных; момент первой выкладки до запуска сборщика неизвестен; резервы и расходы — плюс значит расход",
+ "months": {
+  "2019M12": {
+   "form_date": "2020-01-01",
+   "sha256": "3cfb0d774382e6334ac6497df556e428484a1beb73ef8b893da7b70220f9f378",
+   "ni_ytd": 27.457778,
+   "pretax_ytd": 34.90363,
+   "nii_ytd": 69.127917,
+   "prov_ytd": 21.504396,
+   "opex_ytd": 46.189905
+  },
+  "2020M03": {
+   "form_date": "2020-04-01",
+   "sha256": "cc9e7660547f7a55fb0ec1e81e29acd89d50efde68fd8687970b401eccd26ff5",
+   "ni_ytd": 12.210526,
+   "pretax_ytd": 14.337345,
+   "nii_ytd": 21.768862,
+   "prov_ytd": 10.75066,
+   "opex_ytd": 9.963855
+  },
+  "2020M06": {
+   "form_date": "2020-07-01",
+   "sha256": "a9403081aeb4837bbf59cc765f7eefbbd04e865d0de664c3934107bfbd569064",
+   "ni_ytd": 16.208391,
+   "pretax_ytd": 19.618165,
+   "nii_ytd": 43.641778,
+   "prov_ytd": 25.592506,
+   "opex_ytd": 22.213157
+  },
+  "2020M09": {
+   "form_date": "2020-10-01",
+   "sha256": "6fc58329c105eaa16e290fe806f7fc8842a0a88a5a49b4ba6cbf5039859321db",
+   "ni_ytd": 25.363014,
+   "pretax_ytd": 32.723053,
+   "nii_ytd": 64.626478,
+   "prov_ytd": 30.9606,
+   "opex_ytd": 35.972401
+  },
+  "2020M12": {
+   "form_date": "2021-01-01",
+   "sha256": "2bbb402a5ca518d64425c239fb4ade1fa83c8ea68aee9644fa2e43671c9dc6d1",
+   "ni_ytd": 36.9147,
+   "pretax_ytd": 43.069337,
+   "nii_ytd": 87.187901,
+   "prov_ytd": 37.257184,
+   "opex_ytd": 55.740025
+  },
+  "2021M03": {
+   "form_date": "2021-04-01",
+   "sha256": "ee26fd9c2e4a515e84fb3b89bacea772cb01ca668cd5933c02f361ce6a8f680e",
+   "ni_ytd": 13.853584,
+   "pretax_ytd": 14.039335,
+   "nii_ytd": 23.703586,
+   "prov_ytd": 7.991976,
+   "opex_ytd": 16.734524
+  },
+  "2021M06": {
+   "form_date": "2021-07-01",
+   "sha256": "149ac34c29ec3254c7bdced4ea56ffad25aacacdccee04362f4b8dde6b895e4e",
+   "ni_ytd": 23.398712,
+   "pretax_ytd": 26.803077,
+   "nii_ytd": 50.657118,
+   "prov_ytd": 14.537312,
+   "opex_ytd": 41.238961
+  },
+  "2021M09": {
+   "form_date": "2021-10-01",
+   "sha256": "1382e222fc57c508e7014c011563031ac23bfa7ed6858954d34a0aa8e971d946",
+   "ni_ytd": 40.204488,
+   "pretax_ytd": 47.81262,
+   "nii_ytd": 79.545932,
+   "prov_ytd": 21.492251,
+   "opex_ytd": 67.075759
+  },
+  "2021M12": {
+   "form_date": "2022-01-01",
+   "sha256": "3559667aabb410b5ee6e4b3cee5a4a771bc5743fdab35a72c1170c0c50755c15",
+   "ni_ytd": 52.405372,
+   "pretax_ytd": 62.572633,
+   "nii_ytd": 108.682796,
+   "prov_ytd": 28.495663,
+   "opex_ytd": 99.015749
+  },
+  "2023M06": {
+   "form_date": "2023-07-01",
+   "sha256": "1fa4658c0e684f046a274b5a17ab9b774a28fbf63e49dac304faf32d6c5fa7db",
+   "ni_ytd": 19.125701,
+   "pretax_ytd": 25.30179,
+   "nii_ytd": 91.692706,
+   "prov_ytd": 27.720731,
+   "opex_ytd": 88.524872
+  },
+  "2023M09": {
+   "form_date": "2023-10-01",
+   "sha256": "5eafbb9cfe9004d488abc30053ae918fcd28e83f78c2402905e40c8cbf0b1827",
+   "ni_ytd": 33.624726,
+   "pretax_ytd": 39.33005,
+   "nii_ytd": 142.467682,
+   "prov_ytd": 42.5108,
+   "opex_ytd": 144.337629
+  },
+  "2023M12": {
+   "form_date": "2024-01-01",
+   "sha256": "9d7d67b80ee86a90b18412b8002a7d4fd5b7f3e461868d62e385e31b0f1e604f",
+   "ni_ytd": 46.263476,
+   "pretax_ytd": 55.314924,
+   "nii_ytd": 196.681012,
+   "prov_ytd": 57.142142,
+   "opex_ytd": 204.956527
+  },
+  "2024M03": {
+   "form_date": "2024-04-01",
+   "sha256": "f344a47f5121cddfba444ecb477cff3350ceb0f50e728d27ad0b4ea0e4fa38d1",
+   "ni_ytd": 17.34043,
+   "pretax_ytd": 18.006028,
+   "nii_ytd": 56.279981,
+   "prov_ytd": 19.501003,
+   "opex_ytd": 54.63166
+  },
+  "2024M06": {
+   "form_date": "2024-07-01",
+   "sha256": "a705a2da56da26f6d4f35ffc932f9f66ff1480909b433d5ab598930bfda626ce",
+   "ni_ytd": 28.870451,
+   "pretax_ytd": 36.020188,
+   "nii_ytd": 115.676267,
+   "prov_ytd": 46.04824,
+   "opex_ytd": 119.719394
+  },
+  "2024M09": {
+   "form_date": "2024-10-01",
+   "sha256": "4e1a2b3a4f8196d474eca90d2e30080526155b72b405d174f4ce44b019dc2a71",
+   "ni_ytd": 42.627362,
+   "pretax_ytd": 55.267307,
+   "nii_ytd": 184.794341,
+   "prov_ytd": 75.687836,
+   "opex_ytd": 194.08816
+  },
+  "2024M12": {
+   "form_date": "2025-01-01",
+   "sha256": "41ab1c2a7fb48390c2e053b30b2e7ed75b44db599b86aa629614bf1a464a10a1",
+   "ni_ytd": 60.718836,
+   "pretax_ytd": 73.303325,
+   "nii_ytd": 249.373134,
+   "prov_ytd": 97.502502,
+   "opex_ytd": 273.687321
+  },
+  "2025M01": {
+   "form_date": "2025-02-01",
+   "sha256": "5632c24bc60bd75f4111470933fc585022608d7d219a58d1adfc8dd67b674d5b",
+   "ni_ytd": 0.860517,
+   "pretax_ytd": 0.860517,
+   "nii_ytd": 22.485343,
+   "prov_ytd": 14.20188,
+   "opex_ytd": 23.765122
+  },
+  "2025M02": {
+   "form_date": "2025-03-01",
+   "sha256": "47474f576a040cbe2844a827fca1010b4f6fb5112f9f7bc62a27f7287c9ceebc",
+   "ni_ytd": 2.503531,
+   "pretax_ytd": 3.132815,
+   "nii_ytd": 42.900703,
+   "prov_ytd": 26.845061,
+   "opex_ytd": 48.714268
+  },
+  "2025M03": {
+   "form_date": "2025-04-01",
+   "sha256": "636a951c9a971ac9bb3b41c1cc00f992ba00eed07aa49e4eea6ffbb6fe462950",
+   "ni_ytd": 6.426987,
+   "pretax_ytd": 7.716627,
+   "nii_ytd": 66.747014,
+   "prov_ytd": 39.947851,
+   "opex_ytd": 80.087729
+  },
+  "2025M04": {
+   "form_date": "2025-05-01",
+   "sha256": "2cdc2afc735e9031f6c27c3fbee4da74782a1dcab657bd0535fe93d35be5a487",
+   "ni_ytd": 8.741946,
+   "pretax_ytd": 12.366235,
+   "nii_ytd": 90.465906,
+   "prov_ytd": 54.43868,
+   "opex_ytd": 114.942347
+  },
+  "2025M05": {
+   "form_date": "2025-06-01",
+   "sha256": "1d69a0edf67edf160c2c92c50fa99315694db96f3af16b8bfbafcbe7997695c3",
+   "ni_ytd": 8.912582,
+   "pretax_ytd": 15.155078,
+   "nii_ytd": 116.158173,
+   "prov_ytd": 70.5316,
+   "opex_ytd": 146.833244
+  },
+  "2025M06": {
+   "form_date": "2025-07-01",
+   "sha256": "c2a1e6a5bb5d90802ee65d9b9466ec13b96bb87c91abf40ecc2041eaf141f033",
+   "ni_ytd": 12.770111,
+   "pretax_ytd": 19.865154,
+   "nii_ytd": 142.958665,
+   "prov_ytd": 85.79311,
+   "opex_ytd": 179.179172
+  },
+  "2025M07": {
+   "form_date": "2025-08-01",
+   "sha256": "e9233ae9a50e1103bcbe624da60f467b98500d64f1c99d2b54b681bf9fa6714b",
+   "ni_ytd": 25.545783,
+   "pretax_ytd": 28.897277,
+   "nii_ytd": 172.36519,
+   "prov_ytd": 100.317432,
+   "opex_ytd": 214.970033
+  },
+  "2025M08": {
+   "form_date": "2025-09-01",
+   "sha256": "432294277b796d5f9d929dcb8c4b03c156408df6c13388fe77be1609c5c1ef1d",
+   "ni_ytd": 33.26774,
+   "pretax_ytd": 38.749866,
+   "nii_ytd": 199.721892,
+   "prov_ytd": 115.936765,
+   "opex_ytd": 244.744744
+  },
+  "2025M09": {
+   "form_date": "2025-10-01",
+   "sha256": "1a6a1322c00f2c9cc1470356cca443ef9084d086bd28a7c51158b31c921cec9f",
+   "ni_ytd": 48.118869,
+   "pretax_ytd": 55.648697,
+   "nii_ytd": 229.254743,
+   "prov_ytd": 128.562333,
+   "opex_ytd": 278.135952
+  },
+  "2025M10": {
+   "form_date": "2025-11-01",
+   "sha256": "48cb8f37f4487e89a330efad1d39df6a2abb070130c235a81632a42961535b21",
+   "ni_ytd": 67.61515,
+   "pretax_ytd": 81.661755,
+   "nii_ytd": 260.048062,
+   "prov_ytd": 135.31945,
+   "opex_ytd": 313.255933
+  },
+  "2025M11": {
+   "form_date": "2025-12-01",
+   "sha256": "5318e049070f6738fba5be7bcc2417a4129970a691206916287eaf9d204f9320",
+   "ni_ytd": 87.903967,
+   "pretax_ytd": 105.868255,
+   "nii_ytd": 292.62259,
+   "prov_ytd": 146.216151,
+   "opex_ytd": 344.96071
+  },
+  "2025M12": {
+   "form_date": "2026-01-01",
+   "sha256": "005b7a4591ed24ca5b3e9ca71fa82aa9687f48b82737088f6621f363b2a0c529",
+   "ni_ytd": 112.146272,
+   "pretax_ytd": 133.992379,
+   "nii_ytd": 327.353827,
+   "prov_ytd": 158.121106,
+   "opex_ytd": 382.889606
+  },
+  "2026M01": {
+   "form_date": "2026-02-01",
+   "sha256": "8ad76edcabbac8dba62b50365ae4dfdad321ffb1c5661089e44d0d6c75fdb7ff",
+   "ni_ytd": 19.352313,
+   "pretax_ytd": 22.524487,
+   "nii_ytd": 32.807999,
+   "prov_ytd": 12.333664,
+   "opex_ytd": 21.744755
+  },
+  "2026M02": {
+   "form_date": "2026-03-01",
+   "sha256": "42f82d8c8eeff12ee1d66e6f60c444f900a4c4dcd274e83fc8e136a0ad507a6f",
+   "ni_ytd": 33.117877,
+   "pretax_ytd": 40.192071,
+   "nii_ytd": 63.263679,
+   "prov_ytd": 20.664339,
+   "opex_ytd": 49.675083
+  },
+  "2026M03": {
+   "form_date": "2026-04-01",
+   "sha256": "683bb35631f6c2190eada4f0a2530c04dc45b677e698059bd073be381293ef18",
+   "ni_ytd": 50.394446,
+   "pretax_ytd": 61.309178,
+   "nii_ytd": 99.899259,
+   "prov_ytd": 36.27909,
+   "opex_ytd": 79.780857
+  },
+  "2026M04": {
+   "form_date": "2026-05-01",
+   "sha256": "c922a818b411d3ed398b641a2de7c2fa8c7b90f85ec5758ed7338d1521b57560",
+   "ni_ytd": 57.703088,
+   "pretax_ytd": 75.872642,
+   "nii_ytd": 137.219585,
+   "prov_ytd": 42.058256,
+   "opex_ytd": 118.420938
+  },
+  "2026M05": {
+   "form_date": "2026-06-01",
+   "sha256": "f92ed52dab2d747299068c3e183070a1bc2884e61aef0ea183e126133622aa9c",
+   "ni_ytd": 73.562486,
+   "pretax_ytd": 96.08336,
+   "nii_ytd": 174.448426,
+   "prov_ytd": 59.161371,
+   "opex_ytd": 149.536823
+  },
+  "2026M06": {
+   "form_date": "2026-07-01",
+   "sha256": "e4c745e33a65a7427abb309b298c7eaf5bcbde022bc1e016138c8c267e0f3211",
+   "ni_ytd": 88.24899,
+   "pretax_ytd": 115.157182,
+   "nii_ytd": 212.127953,
+   "prov_ytd": 73.287368,
+   "opex_ytd": 183.248033
+  },
+  "2026M07": {
+   "form_date": "2026-08-01",
+   "sha256": "bbe537be8ec22aeae87645bf91eef925b92bf75f828e9f3841f4624d8d8a2aa8",
+   "ni_ytd": 107.347134,
+   "pretax_ytd": 138.938455,
+   "nii_ytd": 252.791663,
+   "prov_ytd": 85.19282,
+   "opex_ytd": 219.160208
+  },
+  "2026M08": {
+   "form_date": "2026-09-01",
+   "sha256": "d0f1a892a1c4b4272f94652e25b2dc7fd14d5d543607357254b249187453e8f1",
+   "ni_ytd": 131.76609,
+   "pretax_ytd": 168.516017,
+   "nii_ytd": 293.48591,
+   "prov_ytd": 97.31931,
+   "opex_ytd": 250.529499
+  }
+ }
+}

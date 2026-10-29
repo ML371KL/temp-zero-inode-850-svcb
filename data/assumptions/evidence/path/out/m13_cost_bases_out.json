@@ -1,0 +1,2273 @@
+{
+ "rows": [
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 7.1968,
+   "c_RF": 0.0,
+   "c_CL": 3.4881,
+   "c_CF": 0.0,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 2.0633,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0428,
+   "w_SL_full": 0.2785,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 5.6898,
+   "c_RF": 2.0914,
+   "c_CL": 2.3856,
+   "c_CF": 0.6416,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 2.385,
+   "w_RF": 0.8767,
+   "w_CF": 0.2689,
+   "w_SL": 0.0626,
+   "w_SL_full": 0.4073,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 4.1829,
+   "c_RF": 4.1829,
+   "c_CL": 1.2832,
+   "c_CF": 1.2832,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 3.2596,
+   "w_RF": 3.2596,
+   "w_CF": 1.0,
+   "w_SL": 0.1163,
+   "w_SL_full": 0.7571,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 6.8978,
+   "c_RF": 0.0,
+   "c_CL": 2.6847,
+   "c_CF": 0.0,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 2.5693,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0556,
+   "w_SL_full": 0.3619,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 5.4534,
+   "c_RF": 2.0045,
+   "c_CL": 1.8362,
+   "c_CF": 0.4938,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 2.97,
+   "w_RF": 1.0917,
+   "w_CF": 0.2689,
+   "w_SL": 0.0813,
+   "w_SL_full": 0.5291,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 4.0091,
+   "c_RF": 4.0091,
+   "c_CL": 0.9877,
+   "c_CF": 0.9877,
+   "c_SL": 0.1493,
+   "c_SL_full": 0.9716,
+   "w_RL": 4.0591,
+   "w_RF": 4.0591,
+   "w_CF": 1.0,
+   "w_SL": 0.1512,
+   "w_SL_full": 0.9837,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 7.1968,
+   "c_RF": 0.0,
+   "c_CL": 3.4881,
+   "c_CF": 0.0,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 2.0633,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0476,
+   "w_SL_full": 0.3097,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 5.6898,
+   "c_RF": 2.0914,
+   "c_CL": 2.3856,
+   "c_CF": 0.6416,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 2.385,
+   "w_RF": 0.8767,
+   "w_CF": 0.2689,
+   "w_SL": 0.0696,
+   "w_SL_full": 0.4529,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 4.1829,
+   "c_RF": 4.1829,
+   "c_CL": 1.2832,
+   "c_CF": 1.2832,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 3.2596,
+   "w_RF": 3.2596,
+   "w_CF": 1.0,
+   "w_SL": 0.1294,
+   "w_SL_full": 0.8419,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 6.8978,
+   "c_RF": 0.0,
+   "c_CL": 2.6847,
+   "c_CF": 0.0,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 2.5693,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0618,
+   "w_SL_full": 0.4024,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 5.4534,
+   "c_RF": 2.0045,
+   "c_CL": 1.8362,
+   "c_CF": 0.4938,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 2.97,
+   "w_RF": 1.0917,
+   "w_CF": 0.2689,
+   "w_SL": 0.0904,
+   "w_SL_full": 0.5884,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2024",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 4.0091,
+   "c_RF": 4.0091,
+   "c_CL": 0.9877,
+   "c_CF": 0.9877,
+   "c_SL": 0.166,
+   "c_SL_full": 1.0804,
+   "w_RL": 4.0591,
+   "w_RF": 4.0591,
+   "w_CF": 1.0,
+   "w_SL": 0.1681,
+   "w_SL_full": 1.0939,
+   "phi_R": 0.0416,
+   "phi_C": 0.2303,
+   "fee_cost_per_net_fee": 0.3095,
+   "fee_pool": 12.585
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 6.2598,
+   "c_RF": 0.0,
+   "c_CL": 3.7358,
+   "c_CF": 0.0,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 1.6756,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0476,
+   "w_SL_full": 0.6455,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.8716,
+   "c_RF": 1.7417,
+   "c_CL": 2.6234,
+   "c_CF": 0.7555,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 1.857,
+   "w_RF": 0.6639,
+   "w_CF": 0.288,
+   "w_SL": 0.0678,
+   "w_SL_full": 0.9192,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.4834,
+   "c_RF": 3.4834,
+   "c_CL": 1.511,
+   "c_CF": 1.511,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 2.3054,
+   "w_RF": 2.3054,
+   "w_CF": 1.0,
+   "w_SL": 0.1177,
+   "w_SL_full": 1.5959,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 6.0767,
+   "c_RF": 0.0,
+   "c_CL": 2.575,
+   "c_CF": 0.0,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 2.3599,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0691,
+   "w_SL_full": 0.9365,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.7291,
+   "c_RF": 1.6908,
+   "c_CL": 1.8082,
+   "c_CF": 0.5207,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 2.6153,
+   "w_RF": 0.935,
+   "w_CF": 0.288,
+   "w_SL": 0.0984,
+   "w_SL_full": 1.3335,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.3815,
+   "c_RF": 3.3815,
+   "c_CL": 1.0415,
+   "c_CF": 1.0415,
+   "c_SL": 0.1779,
+   "c_SL_full": 2.4113,
+   "w_RL": 3.2468,
+   "w_RF": 3.2468,
+   "w_CF": 1.0,
+   "w_SL": 0.1708,
+   "w_SL_full": 2.3153,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 6.2598,
+   "c_RF": 0.0,
+   "c_CL": 3.7358,
+   "c_CF": 0.0,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 1.6756,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0642,
+   "w_SL_full": 0.8698,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.8716,
+   "c_RF": 1.7417,
+   "c_CL": 2.6234,
+   "c_CF": 0.7555,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 1.857,
+   "w_RF": 0.6639,
+   "w_CF": 0.288,
+   "w_SL": 0.0914,
+   "w_SL_full": 1.2387,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.4834,
+   "c_RF": 3.4834,
+   "c_CL": 1.511,
+   "c_CF": 1.511,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 2.3054,
+   "w_RF": 2.3054,
+   "w_CF": 1.0,
+   "w_SL": 0.1587,
+   "w_SL_full": 2.1506,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 6.0767,
+   "c_RF": 0.0,
+   "c_CL": 2.575,
+   "c_CF": 0.0,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 2.3599,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0931,
+   "w_SL_full": 1.262,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.7291,
+   "c_RF": 1.6908,
+   "c_CL": 1.8082,
+   "c_CF": 0.5207,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 2.6153,
+   "w_RF": 0.935,
+   "w_CF": 0.288,
+   "w_SL": 0.1326,
+   "w_SL_full": 1.7971,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "FY2025",
+   "transfer": "—",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.3815,
+   "c_RF": 3.3815,
+   "c_CL": 1.0415,
+   "c_CF": 1.0415,
+   "c_SL": 0.2397,
+   "c_SL_full": 3.2496,
+   "w_RL": 3.2468,
+   "w_RF": 3.2468,
+   "w_CF": 1.0,
+   "w_SL": 0.2302,
+   "w_SL_full": 3.1201,
+   "phi_R": 0.0293,
+   "phi_C": 0.3107,
+   "fee_cost_per_net_fee": 0.3405,
+   "fee_pool": 17.271
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 5.9577,
+   "c_RF": 0.0,
+   "c_CL": 3.7226,
+   "c_CF": 0.0,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 1.6004,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.0902,
+   "w_SL_full": 0.6029,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.5989,
+   "c_RF": 1.6201,
+   "c_CL": 2.6598,
+   "c_CF": 0.7985,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 1.7291,
+   "w_RF": 0.6091,
+   "w_CF": 0.3002,
+   "w_SL": 0.1263,
+   "w_SL_full": 0.8438,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.2401,
+   "c_RF": 3.2401,
+   "c_CL": 1.597,
+   "c_CF": 1.597,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 2.0289,
+   "w_RF": 2.0289,
+   "w_CF": 1.0,
+   "w_SL": 0.2103,
+   "w_SL_full": 1.4053,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 5.685,
+   "c_RF": 0.0,
+   "c_CL": 2.6637,
+   "c_CF": 0.0,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 2.1343,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1261,
+   "w_SL_full": 0.8425,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.3884,
+   "c_RF": 1.5459,
+   "c_CL": 1.9032,
+   "c_CF": 0.5714,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 2.3058,
+   "w_RF": 0.8123,
+   "w_CF": 0.3002,
+   "w_SL": 0.1765,
+   "w_SL_full": 1.1792,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.0918,
+   "c_RF": 3.0918,
+   "c_CL": 1.1427,
+   "c_CF": 1.1427,
+   "c_SL": 0.3358,
+   "c_SL_full": 2.2443,
+   "w_RL": 2.7056,
+   "w_RF": 2.7056,
+   "w_CF": 1.0,
+   "w_SL": 0.2939,
+   "w_SL_full": 1.964,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 5.9577,
+   "c_RF": 0.0,
+   "c_CL": 3.7226,
+   "c_CF": 0.0,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 1.6004,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1387,
+   "w_SL_full": 0.9271,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.5989,
+   "c_RF": 1.6201,
+   "c_CL": 2.6598,
+   "c_CF": 0.7985,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 1.7291,
+   "w_RF": 0.6091,
+   "w_CF": 0.3002,
+   "w_SL": 0.1942,
+   "w_SL_full": 1.2975,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.2401,
+   "c_RF": 3.2401,
+   "c_CL": 1.597,
+   "c_CF": 1.597,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 2.0289,
+   "w_RF": 2.0289,
+   "w_CF": 1.0,
+   "w_SL": 0.3234,
+   "w_SL_full": 2.161,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 5.685,
+   "c_RF": 0.0,
+   "c_CL": 2.6637,
+   "c_CF": 0.0,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 2.1343,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1939,
+   "w_SL_full": 1.2956,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.3884,
+   "c_RF": 1.5459,
+   "c_CL": 1.9032,
+   "c_CF": 0.5714,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 2.3058,
+   "w_RF": 0.8123,
+   "w_CF": 0.3002,
+   "w_SL": 0.2713,
+   "w_SL_full": 1.8132,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "from_corp",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.0918,
+   "c_RF": 3.0918,
+   "c_CL": 1.1427,
+   "c_CF": 1.1427,
+   "c_SL": 0.5164,
+   "c_SL_full": 3.451,
+   "w_RL": 2.7056,
+   "w_RF": 2.7056,
+   "w_CF": 1.0,
+   "w_SL": 0.4519,
+   "w_SL_full": 3.02,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3745,
+   "fee_pool": 19.433
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 6.2203,
+   "c_RF": 0.0,
+   "c_CL": 3.4431,
+   "c_CF": 0.0,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 1.8066,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1072,
+   "w_SL_full": 0.6615,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.8016,
+   "c_RF": 1.6915,
+   "c_CL": 2.4601,
+   "c_CF": 0.7385,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 1.9518,
+   "w_RF": 0.6876,
+   "w_CF": 0.3002,
+   "w_SL": 0.1501,
+   "w_SL_full": 0.9259,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.3829,
+   "c_RF": 3.3829,
+   "c_CL": 1.4771,
+   "c_CF": 1.4771,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 2.2903,
+   "w_RF": 2.2903,
+   "w_CF": 1.0,
+   "w_SL": 0.25,
+   "w_SL_full": 1.542,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 5.9356,
+   "c_RF": 0.0,
+   "c_CL": 2.4637,
+   "c_CF": 0.0,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 2.4092,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1499,
+   "w_SL_full": 0.9245,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.5819,
+   "c_RF": 1.614,
+   "c_CL": 1.7603,
+   "c_CF": 0.5285,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 2.6028,
+   "w_RF": 0.9169,
+   "w_CF": 0.3002,
+   "w_SL": 0.2098,
+   "w_SL_full": 1.2939,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "model_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.2281,
+   "c_RF": 3.2281,
+   "c_CL": 1.0569,
+   "c_CF": 1.0569,
+   "c_SL": 0.3692,
+   "c_SL_full": 2.2777,
+   "w_RL": 3.0542,
+   "w_RF": 3.0542,
+   "w_CF": 1.0,
+   "w_SL": 0.3493,
+   "w_SL_full": 2.155,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "loans",
+   "c_RL": 6.2203,
+   "c_RF": 0.0,
+   "c_CL": 3.4431,
+   "c_CF": 0.0,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 1.8066,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.1649,
+   "w_SL_full": 1.0172,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "mid",
+   "c_RL": 4.8016,
+   "c_RF": 1.6915,
+   "c_CL": 2.4601,
+   "c_CF": 0.7385,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 1.9518,
+   "w_RF": 0.6876,
+   "w_CF": 0.3002,
+   "w_SL": 0.2308,
+   "w_SL_full": 1.4237,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "none",
+   "split": "balance",
+   "c_RL": 3.3829,
+   "c_RF": 3.3829,
+   "c_CL": 1.4771,
+   "c_CF": 1.4771,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 2.2903,
+   "w_RF": 2.2903,
+   "w_CF": 1.0,
+   "w_SL": 0.3844,
+   "w_SL_full": 2.3711,
+   "phi_R": 0.0,
+   "phi_C": 0.0,
+   "fee_cost_per_net_fee": 0.0,
+   "fee_pool": 0.0
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "loans",
+   "c_RL": 5.9356,
+   "c_RF": 0.0,
+   "c_CL": 2.4637,
+   "c_CF": 0.0,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 2.4092,
+   "w_RF": 0.0,
+   "w_CF": 0.0,
+   "w_SL": 0.2304,
+   "w_SL_full": 1.4216,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "mid",
+   "c_RL": 4.5819,
+   "c_RF": 1.614,
+   "c_CL": 1.7603,
+   "c_CF": 0.5285,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 2.6028,
+   "w_RF": 0.9169,
+   "w_CF": 0.3002,
+   "w_SL": 0.3225,
+   "w_SL_full": 1.9896,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  },
+  {
+   "window": "1H2026",
+   "transfer": "equal_growth",
+   "sl_base": "treas_sl",
+   "franchise": "fees",
+   "split": "balance",
+   "c_RL": 3.2281,
+   "c_RF": 3.2281,
+   "c_CL": 1.0569,
+   "c_CF": 1.0569,
+   "c_SL": 0.5678,
+   "c_SL_full": 3.5024,
+   "w_RL": 3.0542,
+   "w_RF": 3.0542,
+   "w_CF": 1.0,
+   "w_SL": 0.5372,
+   "w_SL_full": 3.3137,
+   "phi_R": 0.0458,
+   "phi_C": 0.2844,
+   "fee_cost_per_net_fee": 0.3554,
+   "fee_pool": 18.443
+  }
+ ],
+ "summary": {
+  "none/loans": {
+   "w_RL": {
+    "min": 1.6004,
+    "max": 2.0633,
+    "mid": 1.8318
+   },
+   "w_RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0
+   },
+   "w_CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0
+   },
+   "w_SL": {
+    "min": 0.0428,
+    "max": 0.1072,
+    "mid": 0.075
+   },
+   "w_SL_full": {
+    "min": 0.2785,
+    "max": 0.6615,
+    "mid": 0.47
+   }
+  },
+  "none/mid": {
+   "w_RL": {
+    "min": 1.7291,
+    "max": 2.385,
+    "mid": 2.057
+   },
+   "w_RF": {
+    "min": 0.6091,
+    "max": 0.8767,
+    "mid": 0.7429
+   },
+   "w_CF": {
+    "min": 0.2689,
+    "max": 0.3002,
+    "mid": 0.2845
+   },
+   "w_SL": {
+    "min": 0.0626,
+    "max": 0.1501,
+    "mid": 0.1064
+   },
+   "w_SL_full": {
+    "min": 0.4073,
+    "max": 0.9259,
+    "mid": 0.6666
+   }
+  },
+  "none/balance": {
+   "w_RL": {
+    "min": 2.0289,
+    "max": 3.2596,
+    "mid": 2.6442
+   },
+   "w_RF": {
+    "min": 2.0289,
+    "max": 3.2596,
+    "mid": 2.6442
+   },
+   "w_CF": {
+    "min": 1.0,
+    "max": 1.0,
+    "mid": 1.0
+   },
+   "w_SL": {
+    "min": 0.1163,
+    "max": 0.25,
+    "mid": 0.1832
+   },
+   "w_SL_full": {
+    "min": 0.7571,
+    "max": 1.5959,
+    "mid": 1.1765
+   }
+  },
+  "fees/loans": {
+   "w_RL": {
+    "min": 2.1343,
+    "max": 2.5693,
+    "mid": 2.3518
+   },
+   "w_RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0
+   },
+   "w_CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0
+   },
+   "w_SL": {
+    "min": 0.0556,
+    "max": 0.1499,
+    "mid": 0.1028
+   },
+   "w_SL_full": {
+    "min": 0.3619,
+    "max": 0.9365,
+    "mid": 0.6492
+   }
+  },
+  "fees/mid": {
+   "w_RL": {
+    "min": 2.3058,
+    "max": 2.97,
+    "mid": 2.6379
+   },
+   "w_RF": {
+    "min": 0.8123,
+    "max": 1.0917,
+    "mid": 0.952
+   },
+   "w_CF": {
+    "min": 0.2689,
+    "max": 0.3002,
+    "mid": 0.2845
+   },
+   "w_SL": {
+    "min": 0.0813,
+    "max": 0.2098,
+    "mid": 0.1455
+   },
+   "w_SL_full": {
+    "min": 0.5291,
+    "max": 1.3335,
+    "mid": 0.9313
+   }
+  },
+  "fees/balance": {
+   "w_RL": {
+    "min": 2.7056,
+    "max": 4.0591,
+    "mid": 3.3823
+   },
+   "w_RF": {
+    "min": 2.7056,
+    "max": 4.0591,
+    "mid": 3.3823
+   },
+   "w_CF": {
+    "min": 1.0,
+    "max": 1.0,
+    "mid": 1.0
+   },
+   "w_SL": {
+    "min": 0.1512,
+    "max": 0.3493,
+    "mid": 0.2502
+   },
+   "w_SL_full": {
+    "min": 0.9837,
+    "max": 2.3153,
+    "mid": 1.6495
+   }
+  }
+ },
+ "kernel_weights": {
+  "loans/none": {
+   "RL": {
+    "min": 1.6004,
+    "max": 2.0633,
+    "mid": 1.8319,
+    "mean": 1.8141,
+    "windows": {
+     "FY2024": 2.063271,
+     "FY2025": 1.675623,
+     "1H2026": 1.703526
+    }
+   },
+   "SL": {
+    "min": 0.0428,
+    "max": 0.1072,
+    "mid": 0.075,
+    "mean": 0.063,
+    "windows": {
+     "FY2024": 0.042801,
+     "FY2025": 0.047621,
+     "1H2026": 0.098727
+    }
+   },
+   "RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   }
+  },
+  "loans/iea": {
+   "RL": {
+    "min": 1.9585,
+    "max": 2.3802,
+    "mid": 2.1694,
+    "mean": 2.2017,
+    "windows": {
+     "FY2024": 2.3802,
+     "FY2025": 2.152531,
+     "1H2026": 2.072274
+    }
+   },
+   "SL": {
+    "min": 0.1694,
+    "max": 0.2845,
+    "mid": 0.227,
+    "mean": 0.2178,
+    "windows": {
+     "FY2024": 0.169421,
+     "FY2025": 0.211047,
+     "1H2026": 0.272993
+    }
+   },
+   "RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "loans/loans": {
+   "RL": {
+    "min": 1.9179,
+    "max": 2.3167,
+    "mid": 2.1173,
+    "mean": 2.1491,
+    "windows": {
+     "FY2024": 2.316739,
+     "FY2025": 2.104319,
+     "1H2026": 2.02627
+    }
+   },
+   "SL": {
+    "min": 0.0467,
+    "max": 0.1207,
+    "mid": 0.0837,
+    "mean": 0.0714,
+    "windows": {
+     "FY2024": 0.046659,
+     "FY2025": 0.056105,
+     "1H2026": 0.111348
+    }
+   },
+   "RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "loans/share": {
+   "RL": {
+    "min": 1.4837,
+    "max": 1.8511,
+    "mid": 1.6674,
+    "mean": 1.6285,
+    "windows": {
+     "FY2024": 1.65642,
+     "FY2025": 1.483717,
+     "1H2026": 1.745506
+    }
+   },
+   "SL": {
+    "min": 0.0556,
+    "max": 0.1519,
+    "mid": 0.1038,
+    "mean": 0.0886,
+    "windows": {
+     "FY2024": 0.055609,
+     "FY2025": 0.070408,
+     "1H2026": 0.139863
+    }
+   },
+   "RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.1422,
+    "max": 0.2277,
+    "mid": 0.1849,
+    "mean": 0.1864,
+    "windows": {
+     "FY2024": 0.227673,
+     "1H2026": 0.145101
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.231,
+    "max": 0.3718,
+    "mid": 0.3014,
+    "mean": 0.3144,
+    "windows": {
+     "FY2024": 0.340546,
+     "FY2025": 0.371848,
+     "1H2026": 0.230952
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "loans/share_f": {
+   "RL": {
+    "min": 2.1343,
+    "max": 2.5693,
+    "mid": 2.3518,
+    "mean": 2.4003,
+    "windows": {
+     "FY2024": 2.569325,
+     "FY2025": 2.359908,
+     "1H2026": 2.27173
+    }
+   },
+   "SL": {
+    "min": 0.0556,
+    "max": 0.1499,
+    "mid": 0.1027,
+    "mean": 0.0876,
+    "windows": {
+     "FY2024": 0.055609,
+     "FY2025": 0.06909,
+     "1H2026": 0.137972
+    }
+   },
+   "RF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "CF": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "mid/none": {
+   "RL": {
+    "min": 1.7291,
+    "max": 2.385,
+    "mid": 2.0571,
+    "mean": 2.0275,
+    "windows": {
+     "FY2024": 2.385031,
+     "FY2025": 1.856979,
+     "1H2026": 1.84044
+    }
+   },
+   "SL": {
+    "min": 0.0626,
+    "max": 0.1501,
+    "mid": 0.1063,
+    "mean": 0.0895,
+    "windows": {
+     "FY2024": 0.062579,
+     "FY2025": 0.067814,
+     "1H2026": 0.138176
+    }
+   },
+   "RF": {
+    "min": 0.6091,
+    "max": 0.8767,
+    "mid": 0.7429,
+    "mean": 0.7296,
+    "windows": {
+     "FY2024": 0.876675,
+     "FY2025": 0.663911,
+     "1H2026": 0.648329
+    }
+   },
+   "CF": {
+    "min": 0.2689,
+    "max": 0.3002,
+    "mid": 0.2846,
+    "mean": 0.2857,
+    "windows": {
+     "FY2024": 0.268949,
+     "FY2025": 0.287985,
+     "1H2026": 0.30021
+    }
+   },
+   "pool_share": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   }
+  },
+  "mid/iea": {
+   "RL": {
+    "min": 2.0391,
+    "max": 2.6412,
+    "mid": 2.3402,
+    "mean": 2.3603,
+    "windows": {
+     "FY2024": 2.641194,
+     "FY2025": 2.285854,
+     "1H2026": 2.153924
+    }
+   },
+   "SL": {
+    "min": 0.2346,
+    "max": 0.3745,
+    "mid": 0.3046,
+    "mean": 0.2922,
+    "windows": {
+     "FY2024": 0.234643,
+     "FY2025": 0.282285,
+     "1H2026": 0.359558
+    }
+   },
+   "RF": {
+    "min": 0.6464,
+    "max": 0.9095,
+    "mid": 0.7779,
+    "mean": 0.78,
+    "windows": {
+     "FY2024": 0.909483,
+     "FY2025": 0.744321,
+     "1H2026": 0.686075
+    }
+   },
+   "CF": {
+    "min": 0.2241,
+    "max": 0.2389,
+    "mid": 0.2315,
+    "mean": 0.2305,
+    "windows": {
+     "FY2024": 0.224059,
+     "FY2025": 0.229246,
+     "1H2026": 0.238266
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "mid/loans": {
+   "RL": {
+    "min": 1.9818,
+    "max": 2.5385,
+    "mid": 2.2602,
+    "mean": 2.281,
+    "windows": {
+     "FY2024": 2.538499,
+     "FY2025": 2.21491,
+     "1H2026": 2.089601
+    }
+   },
+   "SL": {
+    "min": 0.0635,
+    "max": 0.1567,
+    "mid": 0.1101,
+    "mean": 0.0941,
+    "windows": {
+     "FY2024": 0.063497,
+     "FY2025": 0.073997,
+     "1H2026": 0.144685
+    }
+   },
+   "RF": {
+    "min": 0.6107,
+    "max": 0.8526,
+    "mid": 0.7317,
+    "mean": 0.7346,
+    "windows": {
+     "FY2024": 0.852573,
+     "FY2025": 0.703255,
+     "1H2026": 0.647847
+    }
+   },
+   "CF": {
+    "min": 0.21,
+    "max": 0.2257,
+    "mid": 0.2179,
+    "mean": 0.2172,
+    "windows": {
+     "FY2024": 0.210039,
+     "FY2025": 0.216598,
+     "1H2026": 0.224998
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "mid/share": {
+   "RL": {
+    "min": 1.6443,
+    "max": 1.9999,
+    "mid": 1.8221,
+    "mean": 1.8149,
+    "windows": {
+     "FY2024": 1.914733,
+     "FY2025": 1.644303,
+     "1H2026": 1.885794
+    }
+   },
+   "SL": {
+    "min": 0.0813,
+    "max": 0.2126,
+    "mid": 0.147,
+    "mean": 0.1258,
+    "windows": {
+     "FY2024": 0.081306,
+     "FY2025": 0.100263,
+     "1H2026": 0.19575
+    }
+   },
+   "RF": {
+    "min": 0.5879,
+    "max": 0.7045,
+    "mid": 0.6462,
+    "mean": 0.652,
+    "windows": {
+     "FY2024": 0.703806,
+     "FY2025": 0.587875,
+     "1H2026": 0.664306
+    }
+   },
+   "CF": {
+    "min": 0.2689,
+    "max": 0.3002,
+    "mid": 0.2846,
+    "mean": 0.2857,
+    "windows": {
+     "FY2024": 0.268949,
+     "FY2025": 0.287985,
+     "1H2026": 0.30021
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.1422,
+    "max": 0.2277,
+    "mid": 0.1849,
+    "mean": 0.1864,
+    "windows": {
+     "FY2024": 0.227673,
+     "1H2026": 0.145101
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.231,
+    "max": 0.3718,
+    "mid": 0.3014,
+    "mean": 0.3144,
+    "windows": {
+     "FY2024": 0.340546,
+     "FY2025": 0.371848,
+     "1H2026": 0.230952
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "mid/share_f": {
+   "RL": {
+    "min": 2.3058,
+    "max": 2.97,
+    "mid": 2.6379,
+    "mean": 2.6799,
+    "windows": {
+     "FY2024": 2.970003,
+     "FY2025": 2.615326,
+     "1H2026": 2.454312
+    }
+   },
+   "SL": {
+    "min": 0.0813,
+    "max": 0.2098,
+    "mid": 0.1455,
+    "mean": 0.1243,
+    "windows": {
+     "FY2024": 0.081306,
+     "FY2025": 0.098386,
+     "1H2026": 0.193103
+    }
+   },
+   "RF": {
+    "min": 0.8123,
+    "max": 1.0917,
+    "mid": 0.952,
+    "mean": 0.9638,
+    "windows": {
+     "FY2024": 1.091695,
+     "FY2025": 0.935037,
+     "1H2026": 0.864577
+    }
+   },
+   "CF": {
+    "min": 0.2689,
+    "max": 0.3002,
+    "mid": 0.2846,
+    "mean": 0.2857,
+    "windows": {
+     "FY2024": 0.268949,
+     "FY2025": 0.287985,
+     "1H2026": 0.30021
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "balance/none": {
+   "RL": {
+    "min": 2.0289,
+    "max": 3.2596,
+    "mid": 2.6443,
+    "mean": 2.5749,
+    "windows": {
+     "FY2024": 3.259632,
+     "FY2025": 2.305364,
+     "1H2026": 2.159588
+    }
+   },
+   "SL": {
+    "min": 0.1163,
+    "max": 0.25,
+    "mid": 0.1832,
+    "mean": 0.1547,
+    "windows": {
+     "FY2024": 0.11634,
+     "FY2025": 0.117739,
+     "1H2026": 0.230133
+    }
+   },
+   "RF": {
+    "min": 2.0289,
+    "max": 3.2596,
+    "mid": 2.6443,
+    "mean": 2.5749,
+    "windows": {
+     "FY2024": 3.259632,
+     "FY2025": 2.305364,
+     "1H2026": 2.159588
+    }
+   },
+   "CF": {
+    "min": 1.0,
+    "max": 1.0,
+    "mid": 1.0,
+    "mean": 1.0,
+    "windows": {
+     "FY2024": 1.0,
+     "FY2025": 1.0,
+     "1H2026": 1.0
+    }
+   },
+   "pool_share": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   }
+  },
+  "balance/iea": {
+   "RL": {
+    "min": 2.1949,
+    "max": 3.2289,
+    "mid": 2.7119,
+    "mean": 2.6985,
+    "windows": {
+     "FY2024": 3.228924,
+     "FY2025": 2.555041,
+     "1H2026": 2.311412
+    }
+   },
+   "SL": {
+    "min": 0.3815,
+    "max": 0.5477,
+    "mid": 0.4646,
+    "mean": 0.4447,
+    "windows": {
+     "FY2024": 0.381517,
+     "FY2025": 0.426117,
+     "1H2026": 0.526517
+    }
+   },
+   "RF": {
+    "min": 1.8955,
+    "max": 2.9575,
+    "mid": 2.4265,
+    "mean": 2.4046,
+    "windows": {
+     "FY2024": 2.957541,
+     "FY2025": 2.247148,
+     "1H2026": 2.009256
+    }
+   },
+   "CF": {
+    "min": 0.6921,
+    "max": 0.7286,
+    "mid": 0.7104,
+    "mean": 0.7062,
+    "windows": {
+     "FY2024": 0.728617,
+     "FY2025": 0.692107,
+     "1H2026": 0.697845
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "balance/loans": {
+   "RL": {
+    "min": 2.1007,
+    "max": 3.0107,
+    "mid": 2.5557,
+    "mean": 2.549,
+    "windows": {
+     "FY2024": 3.010698,
+     "FY2025": 2.429071,
+     "1H2026": 2.207084
+    }
+   },
+   "SL": {
+    "min": 0.0994,
+    "max": 0.2234,
+    "mid": 0.1614,
+    "mean": 0.1382,
+    "windows": {
+     "FY2024": 0.099351,
+     "FY2025": 0.108647,
+     "1H2026": 0.206514
+    }
+   },
+   "RF": {
+    "min": 1.746,
+    "max": 2.668,
+    "mid": 2.207,
+    "mean": 2.1942,
+    "windows": {
+     "FY2024": 2.667979,
+     "FY2025": 2.065112,
+     "1H2026": 1.849455
+    }
+   },
+   "CF": {
+    "min": 0.636,
+    "max": 0.6573,
+    "mid": 0.6467,
+    "mean": 0.6452,
+    "windows": {
+     "FY2024": 0.657281,
+     "FY2025": 0.636041,
+     "1H2026": 0.642371
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "balance/share": {
+   "RL": {
+    "min": 2.0413,
+    "max": 2.6169,
+    "mid": 2.3291,
+    "mean": 2.2903,
+    "windows": {
+     "FY2024": 2.616874,
+     "FY2025": 2.041335,
+     "1H2026": 2.212806
+    }
+   },
+   "SL": {
+    "min": 0.1512,
+    "max": 0.3541,
+    "mid": 0.2526,
+    "mean": 0.2171,
+    "windows": {
+     "FY2024": 0.151155,
+     "FY2025": 0.174076,
+     "1H2026": 0.326023
+    }
+   },
+   "RF": {
+    "min": 2.0413,
+    "max": 2.6169,
+    "mid": 2.3291,
+    "mean": 2.2903,
+    "windows": {
+     "FY2024": 2.616874,
+     "FY2025": 2.041335,
+     "1H2026": 2.212806
+    }
+   },
+   "CF": {
+    "min": 1.0,
+    "max": 1.0,
+    "mid": 1.0,
+    "mean": 1.0,
+    "windows": {
+     "FY2024": 1.0,
+     "FY2025": 1.0,
+     "1H2026": 1.0
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.1422,
+    "max": 0.2277,
+    "mid": 0.1849,
+    "mean": 0.1864,
+    "windows": {
+     "FY2024": 0.227673,
+     "1H2026": 0.145101
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.231,
+    "max": 0.3718,
+    "mid": 0.3014,
+    "mean": 0.3144,
+    "windows": {
+     "FY2024": 0.340546,
+     "FY2025": 0.371848,
+     "1H2026": 0.230952
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  },
+  "balance/share_f": {
+   "RL": {
+    "min": 2.7056,
+    "max": 4.0591,
+    "mid": 3.3824,
+    "mean": 3.3953,
+    "windows": {
+     "FY2024": 4.059115,
+     "FY2025": 3.246821,
+     "1H2026": 2.87991
+    }
+   },
+   "SL": {
+    "min": 0.1512,
+    "max": 0.3493,
+    "mid": 0.2502,
+    "mean": 0.2145,
+    "windows": {
+     "FY2024": 0.151155,
+     "FY2025": 0.170817,
+     "1H2026": 0.321614
+    }
+   },
+   "RF": {
+    "min": 2.7056,
+    "max": 4.0591,
+    "mid": 3.3824,
+    "mean": 3.3953,
+    "windows": {
+     "FY2024": 4.059115,
+     "FY2025": 3.246821,
+     "1H2026": 2.87991
+    }
+   },
+   "CF": {
+    "min": 1.0,
+    "max": 1.0,
+    "mid": 1.0,
+    "mean": 1.0,
+    "windows": {
+     "FY2024": 1.0,
+     "FY2025": 1.0,
+     "1H2026": 1.0
+    }
+   },
+   "line_fees": {
+    "min": 0.1014,
+    "max": 0.1354,
+    "mid": 0.1184,
+    "mean": 0.1187,
+    "windows": {
+     "FY2024": 0.101412,
+     "FY2025": 0.122827,
+     "1H2026": 0.131965
+    }
+   },
+   "line_ins": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "phi_ins_R": {
+    "min": 0.0,
+    "max": 0.0,
+    "mid": 0.0,
+    "mean": 0.0,
+    "windows": {
+     "FY2024": 0.0,
+     "FY2025": 0.0,
+     "1H2026": 0.0
+    }
+   },
+   "pool_share": {
+    "min": 0.1026,
+    "max": 0.1383,
+    "mid": 0.1204,
+    "mean": 0.1205,
+    "windows": {
+     "FY2024": 0.102618,
+     "FY2025": 0.12413,
+     "1H2026": 0.134892
+    }
+   }
+  }
+ }
+}

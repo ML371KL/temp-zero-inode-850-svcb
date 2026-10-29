@@ -1,0 +1,522 @@
+{
+ "basis": "IFRS",
+ "as_of": "2026-06-30",
+ "period": "2026Q2",
+ "first_period": "2026Q3",
+ "last_period": "2036Q4",
+ "valuation_date": "2026-10-20",
+ "note": "якорь — МСФО группы ПАО «Совкомбанк» за 6 месяцев 2026 года (обобщённая промежуточная отчётность, формы — сканы: числа форм — перепись соседа svcb-history, сведённая 651 тождеством; примечания — текстовый слой). Цена рынка — LEGALCLOSEPRICE ISS (на 19.10.2026 — 10,105 ₽), её берёт сборщик книги. Черновик потока facts этапа 1 (21.10.2026): собран скриптом stage1/facts/code/build_draft_facts.py из листов stage1/facts/sheets; сборщик фактов Совкомбанка (фаза 4) обязан воспроизвести эти файлы бит в бит.",
+ "documents": [
+  {
+   "key": "2024Q1_ifrs_fs",
+   "file": "primary/2024Q1_ifrs_fs.pdf",
+   "sha256": "68b5e94221e1ef31ed0cdb2d4b0795fc2e6978f8d1d71e57d02aaadcc16ebd63",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=158",
+   "title": "Совкомбанк: промежуточная консолидированная отчётность МСФО за 3 месяца 2024 года"
+  },
+  {
+   "key": "2024Q2_ifrs_fs",
+   "file": "primary/2024Q2_ifrs_fs.pdf",
+   "sha256": "a6158b05ec16d1bc55511221d39773949fafb5119a01bc6934a57034b033c565",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=159",
+   "title": "Совкомбанк: промежуточная консолидированная отчётность МСФО за 6 месяцев 2024 года"
+  },
+  {
+   "key": "2024Q3_ifrs_fs",
+   "file": "primary/2024Q3_ifrs_fs.pdf",
+   "sha256": "ba45253019d4da2cd4774c47710be3ad6a9e510a43b7086e667b5d917afd8644",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=160",
+   "title": "Совкомбанк: промежуточная консолидированная отчётность МСФО за 9 месяцев 2024 года"
+  },
+  {
+   "key": "2025Q1_ifrs_fs",
+   "file": "primary/2025Q1_ifrs_fs.pdf",
+   "sha256": "135494127b9ba0f6eec343cc2b783e0e13707da2862a5ccae73057a0c2ba49a9",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=162",
+   "title": "Совкомбанк: обобщённая промежуточная консолидированная отчётность МСФО за 3 месяца 2025 года"
+  },
+  {
+   "key": "2025Q2_ifrs_fs",
+   "file": "primary/2025Q2_ifrs_fs.pdf",
+   "sha256": "f2a4918ae0ab4d330ffa5029d9395671967dffc127e707682a1f1a7f6c0ce394",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=163",
+   "title": "Совкомбанк: обобщённая промежуточная консолидированная отчётность МСФО за 6 месяцев 2025 года"
+  },
+  {
+   "key": "2025Q3_ifrs_fs",
+   "file": "primary/2025Q3_ifrs_fs.pdf",
+   "sha256": "481ea431fa05820847f27255988af56775ac2002fae82d83bd20fc5d0aaf0da1",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=164",
+   "title": "Совкомбанк: обобщённая промежуточная консолидированная отчётность МСФО за 9 месяцев 2025 года"
+  },
+  {
+   "key": "2026Q1_ifrs_fs",
+   "file": "primary/2026Q1_ifrs_fs.pdf",
+   "sha256": "abc65f2f75ac4bf1fee05399da6178d7b078d0e165d198322d6ad5c2e1d6d6b8",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=166",
+   "title": "Совкомбанк: обобщённая промежуточная консолидированная отчётность МСФО за 3 месяца 2026 года"
+  },
+  {
+   "key": "2026Q2_ifrs_fs",
+   "file": "primary/2026Q2_ifrs_fs.pdf",
+   "sha256": "0a659c1d3a37e4c1c4645d2a4ee06bb029950e0ee2abab166f1d4ccf46af5f31",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=167",
+   "title": "Совкомбанк: обобщённая промежуточная консолидированная отчётность МСФО за 6 месяцев 2026 года"
+  },
+  {
+   "key": "2026Q2_ifrs_presentation",
+   "file": "primary/2026Q2_ifrs_presentation.pdf",
+   "sha256": "cebf14e79a9a288018ae226d213437d38e8bb5cfa0edb2e4997a6e06583bc348",
+   "url": "https://sovcombank.ru/document/16976",
+   "title": "Совкомбанк: презентация результатов по МСФО за 1-е полугодие 2026 года"
+  },
+  {
+   "key": "AGM_2026_materials",
+   "file": "primary/AGM_2026_materials.pdf",
+   "sha256": "a3bbbaa6b0b8c569729a91e18fec0347b2aac7cc28058248b3588f4530a6b573",
+   "url": "https://sovcombank.ru/document/18509",
+   "title": "Совкомбанк: материалы годового общего собрания акционеров 30.06.2026"
+  },
+  {
+   "key": "DATABOOK_2010-1Q26",
+   "file": "primary/DATABOOK_2010-1Q26.xlsx",
+   "sha256": "7d084a1aa835175b1727587a3e69a185ee697033f329571a69dd813f191e6e89",
+   "url": "https://sovcombank.ru/document/16131",
+   "title": "Совкомбанк: датабук (справочник аналитика) 2010 – 1-й квартал 2026 года"
+  },
+  {
+   "key": "FY2023_ifrs_fs",
+   "file": "primary/FY2023_ifrs_fs.pdf",
+   "sha256": "b03183eb2a9ea19f2f4883a1ba3a4c7626093958afc2c51137f7b3780b5843f2",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=157",
+   "title": "Совкомбанк: консолидированная отчётность МСФО за 2023 год"
+  },
+  {
+   "key": "FY2024_ifrs_fs",
+   "file": "primary/FY2024_ifrs_fs.pdf",
+   "sha256": "c8339c9fd5562fba0f90693751730dfc5895cf681db9e392b3d28f3cd8feea56",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=161",
+   "title": "Совкомбанк: консолидированная отчётность МСФО за 2024 год"
+  },
+  {
+   "key": "FY2025_ifrs_fs",
+   "file": "primary/FY2025_ifrs_fs.pdf",
+   "sha256": "7b07a3201da4929ef68499e4e6293ab2edd6482a1621043844d4debc4d71e259",
+   "url": "https://prod-api.sovcombank.ru/finance-report/index?id=165",
+   "title": "Совкомбанк: обобщённая консолидированная отчётность МСФО за 2025 год"
+  },
+  {
+   "key": "IPO_2023-12_investor_presentation",
+   "file": "primary/IPO_2023-12_investor_presentation.pdf",
+   "sha256": "be021aa589c8e47dfa6b5b0b8335eb6aa6d2cc00e23a8b9c4c8fac06c657ec7e",
+   "url": "https://sovcombank.ru/document/12978",
+   "title": "Совкомбанк: презентация для инвесторов к IPO (декабрь 2023 года)"
+  },
+  {
+   "key": "POLICY_dividend_v2_2023-11-20",
+   "file": "primary/POLICY_dividend_v2_2023-11-20.pdf",
+   "sha256": "06e0991f944ac4c16aac8b1d02baf2d9bf3e3c688488d7d95556fd3d73a4fad0",
+   "url": "https://prod-api.sovcombank.ru/document/index?id=1246",
+   "title": "Совкомбанк: дивидендная политика, версия 2.0 (НС 20.11.2023)"
+  },
+  {
+   "key": "SH_2025-02_merger_issue_terms",
+   "file": "primary/SH_2025-02_merger_issue_terms.pdf",
+   "sha256": "f54d3859a8dd05605d0462bc9721840953849df045b089244fa07b2301d854f6",
+   "url": "https://sovcombank.ru/document/15446",
+   "title": "Совкомбанк: условия дополнительного выпуска акций при присоединении АО «Хоум Капитал»"
+  },
+  {
+   "key": "f123_reg963_2025-01-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-01-01.xml",
+   "sha256": "ce2456efcd4bc40d2fae3eebac58c33ce699568f4a732cc1691be533dfe31d65",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-01-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-02-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-02-01.xml",
+   "sha256": "1fc625627ab8d222941162eebdbd43d55a49519b2d1844c7c7bcbd64b82137a2",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-02-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-03-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-03-01.xml",
+   "sha256": "9bd4f5cfc9870f48dc7a42d8b3b31849a29fde8bd3dc2176fd81cfd30e7ddb39",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-03-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-04-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-04-01.xml",
+   "sha256": "6266741fd307c1fbeaf06e338deaaad2424fcfb88e613cbc919fcbf49557d490",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-04-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-05-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-05-01.xml",
+   "sha256": "88c9412c3b6261ad540ba7c6c5154a40f2bee5c0aa7fda8f9d3ffd16b2ee3dd9",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-05-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-06-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-06-01.xml",
+   "sha256": "6ffec2f6f4619c3e6e05be11087269caba63b84914cd35ce58462ab78266b163",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-06-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-07-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-07-01.xml",
+   "sha256": "6a4194a5d23f0f54bd33ab69e97cae96b747b191ef273f7662390aac70b8a630",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-07-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-08-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-08-01.xml",
+   "sha256": "b2e5fd73be35da639fe7269b843c00fffa9d7aa80f1192e0b6f23188841d3621",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-08-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-09-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-09-01.xml",
+   "sha256": "d756385a1e6a319c50e534a66a09e325fd7517adaaa8d03f981a6d4ceb53e2ec",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-09-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-10-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-10-01.xml",
+   "sha256": "20cac9118f3328ab27576dee3274a8e96c061abf3ae32efee3592fbaafd817ee",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-10-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-11-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-11-01.xml",
+   "sha256": "f4b49e8166e199cfb91bae74d847a9b3395bf3a312aa0290e23a3ebd2b727a81",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-11-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2025-12-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2025-12-01.xml",
+   "sha256": "f4ee7ca2c269559fe91d16a20be46c28ca8d50d3de5a137f52668307c00c00a1",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2025-12-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-01-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-01-01.xml",
+   "sha256": "8ff4cc73f5671a92ecdef554ca0e4304e69552b9fd81162dfdd4fcc4c39eb713",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-01-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-02-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-02-01.xml",
+   "sha256": "7988f97ea9b9655cbe75227f5a8bca4b1d9d48f343f3f63534f539172710bdfe",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-02-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-03-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-03-01.xml",
+   "sha256": "d7846b185d03c556d17d370a0bc07e59671ac41e51378cd851dc26af40cb4fc1",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-03-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-04-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-04-01.xml",
+   "sha256": "ede1aa1c7e8f508340b769284857cf46731eb8861f9307a1d30b8a31639f99a4",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-04-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-05-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-05-01.xml",
+   "sha256": "de6890a26b437ab07e33334c6a8fba3ee8856ee2ceccdc5fc906028183e155cd",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-05-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-06-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-06-01.xml",
+   "sha256": "30a27ca1ea1a69a6d891ef36f97d57b9b2e13b3aac59b0b48ca36c7ce6ba93bd",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-06-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-07-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-07-01.xml",
+   "sha256": "dcd8ba18a470d1c0084e1067aaa06bac05547abfa4d5e3886b26aeaf24feb41f",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-07-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-08-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-08-01.xml",
+   "sha256": "b9239ba0352fb5f80ed0b74b376b7869594cd08d830f9dbd4839e0f3c9ee789b",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-08-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f123_reg963_2026-09-01",
+   "file": "primary/cbr-svcb-capital/f123_reg963_2026-09-01.xml",
+   "sha256": "be203ed37c5cc75dac3a7ba9eff32dffdbc2973a38c37db91440ef1bf5a694d8",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091123 ПАО «Совкомбанк» (рег. № 963) на 2026-09-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-01-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-01-01.xml",
+   "sha256": "d2eceaa2c78293ab9ab7b4566c16ab002c077b9a715ff32d78b9fdf0c73e79e0",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-01-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-02-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-02-01.xml",
+   "sha256": "e9709d2e681d7e292028a4921816bda7ce778fd41c9906324a817dce0538f0f2",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-02-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-03-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-03-01.xml",
+   "sha256": "b92fe27048dc15a96e14edea9d0154e31f87a20229b95c49f1a2fbc676e5e045",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-03-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-04-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-04-01.xml",
+   "sha256": "1b535590903b4b8c9dd823a305b7cc0da77cafa456da7bf892e71a9aaa2777f3",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-04-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-05-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-05-01.xml",
+   "sha256": "d3628188b7d80998a9442fc58be152af7b4da5236796da5e08aa9aa7848f6d69",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-05-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-06-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-06-01.xml",
+   "sha256": "c1cb0d9f620173c5e253334deb12728e61e97b66ac5124d68208bc60f5fc5680",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-06-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-07-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-07-01.xml",
+   "sha256": "fc122ade1188b8e4af33ee2af597b175ecad84b0ad35d3c381aa1f62dcbd21ca",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-07-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-08-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-08-01.xml",
+   "sha256": "f90beeb7c82030a071e5daa7234fe6e055484e542bcf35a5ee9dc5f0c913ec8e",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-08-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-09-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-09-01.xml",
+   "sha256": "b5a31b43469d7523af3a5707023e75ddc3d61b74db8977e1aed6485b991839f9",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-09-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-10-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-10-01.xml",
+   "sha256": "97e2c6f9ec7846b216954aa6e9aab40ee7b702e3822ff2e406c38a7584f7993e",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-10-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-11-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-11-01.xml",
+   "sha256": "0d5b6d6c426d948380f02ee22ddace2bb4e9df7adc21e2ddab2bd1734fa7eebe",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-11-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2025-12-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2025-12-01.xml",
+   "sha256": "c8bebc90f6913df852ca9a288f8999f09fa48720d7c49840eddb3a0b0cc50363",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2025-12-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-01-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-01-01.xml",
+   "sha256": "d11b0bbbe4d28f2a3e88662a9aedf6528b3c5a7cffc16601f8013ead1e904630",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-01-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-02-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-02-01.xml",
+   "sha256": "d7f4c0140ed221bd73198ec481ecc62126d47705a8fb76d5b53ff3b52a4106ed",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-02-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-03-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-03-01.xml",
+   "sha256": "05e16e340ab65a31a31fd3b684fac14b4bc0d8c30b7d280c9ec7f280c8e05c43",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-03-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-04-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-04-01.xml",
+   "sha256": "eb3b0948b8ed58e7c15333ad60a826fefbb1d5a308616b748d94293ad1a64873",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-04-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-05-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-05-01.xml",
+   "sha256": "0ecb871203a963d468a0cfa960f11d0f37d351df83b5d87d5b404f23880c817f",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-05-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-06-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-06-01.xml",
+   "sha256": "408c0ae59f247ded9237cd771501e022320051665f2ee931925b861455870a0f",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-06-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-07-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-07-01.xml",
+   "sha256": "8b974743f1d8f901555fb0a4b8d79ce33835b25ac42bb407dca92df7be144490",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-07-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-08-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-08-01.xml",
+   "sha256": "ae019fdee8a6a0b624cfc7b771980f46cc0b1984c5715f7229d91e1bc0d5b515",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-08-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "f135_reg963_2026-09-01",
+   "file": "primary/cbr-svcb-capital/f135_reg963_2026-09-01.xml",
+   "sha256": "916e0ef3ed255ac85a363cd15810072ce4348b52911044100cce153f54d60191",
+   "url": "https://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx",
+   "title": "Банк России: форма 04091135 ПАО «Совкомбанк» (рег. № 963) на 2026-09-01 (SOAP CreditOrgInfo)"
+  },
+  {
+   "key": "srm_cbr_cal_mp_20261021",
+   "file": "primary/srm_cbr_cal_mp_20261021.html",
+   "sha256": "3362cffa65b67cfd64e0d367aca9ed300eac4ba264814135ea2d5a3e0c3629b6",
+   "url": "https://www.cbr.ru/dkp/cal_mp/",
+   "title": "Банк России: календарь решений по ключевой ставке на 2026 и 2027 годы (снимок 21.10.2026)"
+  },
+  {
+   "key": "research_bridge_ras_ifrs_quarterly",
+   "file": "research/facts/sdn/bridge_ras_ifrs_quarterly.csv",
+   "sha256": "5831616dd4ce9d5947b01b520cb0c0ad59a88803b56f2a04dfe0e423dbe964e2",
+   "url": "",
+   "title": "Таблица исследования: квартальный мост прибыли РСБУ банка и МСФО группы"
+  },
+  {
+   "key": "research_key_rate_daily",
+   "file": "research/facts/svcb-history/key_rate_daily.csv",
+   "sha256": "8330295342d83fa3cadcc268359b4af40c1986dc265b94b1491488f39c3fa83d",
+   "url": "",
+   "title": "Таблица исследования: ключевая ставка Банка России по дням"
+  },
+  {
+   "key": "research_manual_long",
+   "file": "research/facts/svcb-history/manual_long.csv",
+   "sha256": "4e2628bb5f2d35927bbbcdd2c0420c8bc36d7687bf5e433f9fdbb5ad31fcac49",
+   "url": "",
+   "title": "Таблица исследования: ручная перепись форм отчётности МСФО группы"
+  },
+  {
+   "key": "research_calendar_2026Q4_2028",
+   "file": "research/facts/svcb-regulation-macro/calendar_2026Q4_2028.tsv",
+   "sha256": "00515ecb79d6e9705606880ec8cd9286d410cf358be875c45ab0eaca6dc70f00",
+   "url": "",
+   "title": "Таблица исследования: календарь регулирования и макроданных до 2028 года"
+  },
+  {
+   "key": "research_svcb_capital",
+   "file": "research/facts/svcb_capital.csv",
+   "sha256": "963c97fa459bcabdfb9f3b75b2e90d29b4246a12d4ffeceed5d1d4bf0ab8a64a",
+   "url": "",
+   "title": "Таблица исследования: капитал и нормативы Совкомбанка"
+  },
+  {
+   "key": "research_svcb_capital_instruments",
+   "file": "research/facts/svcb_capital_instruments.csv",
+   "sha256": "da456a3281f44858b10a9bd1a5d5448be8fa99ebebcea840d30b49f7ea56867f",
+   "url": "",
+   "title": "Таблица исследования: инструменты капитала Совкомбанка"
+  },
+  {
+   "key": "research_svcb_cbr_n1_capital_reg963",
+   "file": "research/facts/svcb_cbr_n1_capital_reg963.csv",
+   "sha256": "f8a3b01a08f877e63c0f9b2b09599bfcf4e6d70efa86de46045a668748dd0c51",
+   "url": "",
+   "title": "Таблица исследования: нормативы Н1 и капитал банка по формам Банка России"
+  },
+  {
+   "key": "research_svcb_dividends",
+   "file": "research/facts/svcb_dividends.csv",
+   "sha256": "41843ddad4ff7ad0d6887e22aff0fce3904340f0d36b08f9de73e0d21ef54589",
+   "url": "",
+   "title": "Таблица исследования: история дивидендов Совкомбанка"
+  },
+  {
+   "key": "research_svcb_quarterly",
+   "file": "research/facts/svcb_quarterly.csv",
+   "sha256": "c5568642ccba31a9bdad542b7d34c18c69326c8783c7563badd836c07f332009",
+   "url": "",
+   "title": "Таблица исследования: квартальные показатели МСФО Совкомбанка"
+  },
+  {
+   "key": "research_svcb_release_calendar",
+   "file": "research/facts/svcb_release_calendar.csv",
+   "sha256": "e1336a22107fa282bd2385e87fa9c9d397d1bea6d556d0421ad5a976571f088a",
+   "url": "",
+   "title": "Таблица исследования: календарь публикаций и дивидендных дат Совкомбанка"
+  },
+  {
+   "key": "research_svcb_shares",
+   "file": "research/facts/svcb_shares.csv",
+   "sha256": "9610183c6204c787ff2f489fbfb3d806703f017bc3e335f0b50bbf27f6d2f98a",
+   "url": "",
+   "title": "Таблица исследования: история акционерного капитала Совкомбанка"
+  },
+  {
+   "key": "research_svcb-business_tg_irsovcombank_20261021",
+   "file": "research/samples/svcb-business_tg_irsovcombank_20261021.json",
+   "sha256": "eeb63e2bdbb16fd731ad8359578d9148b47c41af41efae8c0909b6087d5356de",
+   "url": "",
+   "title": "Таблица исследования: посты канала IR Совкомбанка на 21.10.2026"
+  },
+  {
+   "key": "research_iss_totals_SVCB_issuesize",
+   "file": "research/samples/svcb-capital-shares/iss_totals_SVCB_issuesize.csv",
+   "sha256": "b466a06a7c5bcd3376fc890bc4311c76c8af45c0ac1eb5384eaf4bb185a552a4",
+   "url": "",
+   "title": "Таблица исследования: число акций выпуска по данным Московской биржи"
+  }
+ ]
+}

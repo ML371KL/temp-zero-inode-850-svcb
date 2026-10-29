@@ -1,0 +1,54 @@
+{
+ "response": [
+  {
+   "name": "default",
+   "type": "folder",
+   "children": [
+    {
+     "id": "id-bbbb0004",
+     "name": "Протокол № 16 от 02.10.2026",
+     "link": "https://cdn.tbank.ru/static/documents/bbbb0004-0000-4000-8000-000000000004.pdf",
+     "size": "300000",
+     "type": "file",
+     "typeFile": "pdf",
+     "description": "",
+     "disclaimer": null,
+     "publishedAt": "2026-10-02T11:36:05.265Z"
+    },
+    {
+     "id": "id-bbbb0006",
+     "name": "Протокол № 15 от 21.09.2026",
+     "link": "https://cdn.tbank.ru/static/documents/bbbb0006-0000-4000-8000-000000000006.pdf",
+     "size": "300000",
+     "type": "file",
+     "typeFile": "pdf",
+     "description": "",
+     "disclaimer": null,
+     "publishedAt": "2026-09-22T07:00:25.824Z"
+    },
+    {
+     "id": "id-bbbb0003",
+     "name": "Рекомендации Совета директоров МКПАО «Т‑Технологии» по размеру дивиденда по акциям МКПАО «Т‑Технологии» и порядку его выплаты",
+     "link": "https://cdn.tbank.ru/static/documents/bbbb0003-0000-4000-8000-000000000003.pdf",
+     "size": "300000",
+     "type": "file",
+     "typeFile": "pdf",
+     "description": "",
+     "disclaimer": null,
+     "publishedAt": "2026-09-15T08:09:20.842Z"
+    },
+    {
+     "id": "id-bbbb000a",
+     "name": "Проекты решений по вопросам повестки дня",
+     "link": "https://cdn.tbank.ru/static/documents/bbbb000a-0000-4000-8000-00000000000a.pdf",
+     "size": "300000",
+     "type": "file",
+     "typeFile": "pdf",
+     "description": "",
+     "disclaimer": null,
+     "publishedAt": "2026-09-15T08:09:30.000Z"
+    }
+   ]
+  }
+ ]
+}

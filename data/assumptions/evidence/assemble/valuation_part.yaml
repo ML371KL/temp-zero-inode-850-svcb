@@ -1,0 +1,157 @@
+# ------------------------------------------------------------------ ОЦЕНКА (A-V*) — сборщик; β, премия, делитель — лист capital (valuation_block.yaml)
+valuation:
+  shares_basis: outstanding                                    # A-V6: делитель — акции в обращении по МСФО (22 431,1 млн на 30.06.2026: выпущено 22 516,2 − у группы 85,1,
+                                                               #   из них у банка 70,18, у страховой дочки 14,94) [Ф: МСФО 6М2026 прим. 22 с. 41]; устав §3: «акции в обращении
+                                                               #   минус путь выкупа» — путь выкупа в share_count_adj
+  share_count_adj: -0.12798                                    # путь выкупа дочкой до 2028К4 по 10,105 ₽: −2 870,8 млн акций / 22 431,1 [Р: stage1/calib-capital/sheets/buyback_path.csv]
+                                                               #   делитель 19 560,3 млн; связка трёх ключей (equity.other_movements, share_count_adj, dividends.policy.payout) —
+                                                               #   одно суждение (класс 1); цена выкупа одна на все миры (класс 2, решения № 1, п. 12 — принять для первых чисел; М3)
+  beta_e: 0.91                                                 # A-V1 [Р: Недельная доходность к индексу полной доходности, вся история с IPO]
+                                                               #   правило семейства — окно 3 года; у SVCB торги с 15.12.2023 ⇒ вся история: 0,916 (без 4 недель после IPO —
+                                                               #   0,910; ст. ош. 0,09); 1 год 0,69, 2 года 0,88 [Р: research/facts/svcb_beta.csv; перепроверка — calib-capital/code/cc_beta.py]
+  erp: 0.0557                                                  # A-V2: конвенция семейства [Ф: Премия за риск по Дамодарану на январь 2026 года; решение владельца 30.09.2026]
+  roll_along_forwards: true                                    # A-V10: перекат по форвардам (MODEL §0.5)
+  governance:                                                  # A-V7: дисконт за управление — 0, каналы не заводились (фаза 3; лист evidence/governance Совкомбанка не делался)
+    discount: 0.0
+    components: []
+  terminal:                                                    # как в книге Т
+    real_growth: 0.015                                         # A-V3b: g_real [В: Суждение книги; потенциальный рост экономики по Банку России — 1,5–2,5 %]
+    fade: 0.5                                                  # A-V4: угасание избыточной доходности [В: Суждение книги: избыточная доходность сходит за 15 лет после 2036 года]
+    excess_capital_multiple: 1.0                               # избыток капитала на T — 1:1 [В]
+    timing: year_end
+  headline:
+    print_step: 0.1                                            # A-V12: шаг печати, ₽ — устав §5: ≈1 % цены (у семейства 0,8–1,6 %); он же порог «устоялось»
+    diagnostics: median
+    search_tol_rub: 0.01                                       # стоп поисков по медиане, ₽ — десятая шага печати (у Т 0,5 при шаге 5)
+    jump_guard: {median_pct: 0.08, v0_pct: 0.08}               # защита заголовка, доли цены [В: как в книгах Т и Сбера]
+    ceiling_x_market: 3.0                                      # потолок заголовка, кратных цене [В: как у Т]
+  sensitivities: {cor_pp: 0.001, nim_pp: 0.001, roe_pp: 0.01, buffer_pp: 0.01, rank_window: [0.40, 0.60]}
+                                                               # A-V13: шаги строк «₽ за 0,1 п.п. CoR / 0,1 п.п. ЧПМ / 1 п.п. ROE / 1 п.п. запаса» (MODEL §8.3), как у Т
+  uncertainty:
+    draws: 2000
+    seed: 20261020                                             # дата книги ГГГГММДД
+    quantiles: [0.10, 0.25, 0.50, 0.75, 0.90]
+    median_draws: 200
+    reverse_bounds: follow_center
+    median_refine: 2
+    axes:                                                      # оси полосы — устав §3 и листы этапа 1 (решения № 1); оси Т без смысла у Совкомбанка (пакет Яндекса,
+                                                               #   скорость схода ЧПМ, дисконт за управление) сняты
+      - {name: "ЧПМ мира N на составе якоря (опр. банка 6,92–7,28 %; ключ ядра)", kind: shift, paths: [nii.nim_lt_target_mgmt], low: -0.002594, high: 0.001142, dist: triangular, unit: pp}
+                                                               # устав §3 и решения № 1, п. 1: способы переноса окна L, прошедшие бэктест, 6,92 … 7,28 % опр. банка; концы в ключе ядра
+                                                               #   0,070371 … 0,074107 — точным мостом (банк × R − ife_N × l_ins) / b; ВЫВОДИТ КОМАНДА (шаг bridge). Вид shift —
+                                                               #   ось-связка β книги страховых тоже двигает ключ (приращения складываются, MODEL §10)
+      - {name: "Передача ключевой в ЧПМ (опр. банка −0,15…+0,03; базис движка)", kind: shift, paths: [nii.transmission.target], low: -0.077976, high: 0.077977, dist: triangular, unit: number}
+                                                               # устав §3: регрессия history −0,15…+0,03 в опр. банка; в базис движка — банк × R − β_ins × l_ins: −0,157171 … −0,001218
+                                                               #   (ВЫВОДИТ КОМАНДА, шаг bridge); вид shift — как у оси уровня
+      - {name: "Стоимость риска сквозь цикл: сдвиг уровня всех режимов", kind: shift, paths: [regimes.soft.cor.LT, regimes.norm.cor.LT, regimes.downturn.cor.LT, regimes.crisis.cor.LT], low: -0.0035, high: 0.006, dist: triangular, unit: pp}
+                                                               # лист pnl: ось LT −0,35…+0,6 п.п. (асимметрия — розничный хвост: этап 3 ФЛ 7 %, покрытие 51 %)
+      - {name: "Стоимость риска к реальной ставке: перенос уровня окна в другие миры", kind: value, paths: [credit.kappa], low: 0.0, high: 0.17, dist: triangular, unit: number}
+      - {name: "Вероятности режимов (P(кризис) 10–25 %)", kind: dict, paths: [joint.regime_prob], low: {soft: 0.3706, norm: 0.3176, downturn: 0.2118, crisis: 0.10}, high: {soft: 0.3088, norm: 0.2647, downturn: 0.1765, crisis: 0.25}, dist: triangular}
+                                                               # концы: вероятность кризиса 10 и 25 %, остальные — пропорционально книге (лист pnl)
+      - {name: "Кризис: сдвиг CoR 2027", kind: shift, paths: [regimes.crisis.cor.2027, regimes.crisis.cor.2027Q1, regimes.crisis.cor.2027Q2, regimes.crisis.cor.2027Q3, regimes.crisis.cor.2027Q4], low: -0.009, high: 0.009, dist: triangular, unit: pp}
+                                                               # лист pnl: кризисные годы 3,97…5,76 % (центр 4,9 %)
+      - {name: "Спад: сдвиг CoR 2027", kind: shift, paths: [regimes.downturn.cor.2027, regimes.downturn.cor.2027Q1, regimes.downturn.cor.2027Q2, regimes.downturn.cor.2027Q3, regimes.downturn.cor.2027Q4], low: -0.005, high: 0.005, dist: triangular, unit: pp}
+                                                               # напряжённый класс устава 3,0–4,0 % (центр 3,5 %)
+      - {name: "Кризис: сдвиг ЧПМ 2027 (базис движка)", kind: value, paths: [regimes.crisis.nim_shift.2027], low: -0.0171, high: -0.0073, dist: triangular, unit: pp}
+                                                               # решения № 1, п. 8: два прочтения эпизода 2022 года — «только остаток» … «остаток и ставочная часть» (мост R_iea)
+      - {name: "Кризис: разовый убыток", kind: value, paths: [regimes.crisis.one_off_loss.amount], low: -74.0, high: 0.0, dist: triangular, unit: bn}
+      - {name: "Кризис: роспуск макронадбавок", kind: value, paths: [regimes.crisis.rwa_density_mult.2027], low: 0.93, high: 1.00, dist: triangular, unit: number}
+      - {name: "Расходы к средним активам (3,42–4,05 %): реальный рост 2027–2030", kind: shift, paths: [opex.real_growth.2027, opex.real_growth.2028, opex.real_growth.2029, opex.real_growth.2030], low: -0.01, high: 0.01, dist: triangular, unit: pp}
+                                                               # ВЫВОДИТСЯ НА ЯДРЕ: концы — сдвиг ключей 2027–2030, при котором расходы к средним активам слоя «рыночные ставки как
+                                                               #   есть» в 2030 году — 3,42 и 4,05 % (кварталы окна R, устав §3)
+      - {name: "Комиссии к средним активам (0,87–1,56 %): рост к формуле связи 2027–2030", kind: shift, paths: [fees.growth_vs_wages.2027, fees.growth_vs_wages.2028, fees.growth_vs_wages.2029, fees.growth_vs_wages.2030], low: -0.01, high: 0.01, dist: triangular, unit: pp}
+                                                               # ВЫВОДИТСЯ НА ЯДРЕ: концы — уровень 2030 года на кварталах окна R с резервом по гарантиям 0,87 и 1,56 % (решения № 1, п. 4)
+      - {name: "Страхование и небанковское к средним активам (0,90–2,09 %): рост к зарплатам 2027–2030", kind: shift, paths: [other.insurance_growth_vs_wages.2027, other.insurance_growth_vs_wages.2027Q1, other.insurance_growth_vs_wages.2027Q2, other.insurance_growth_vs_wages.2027Q3, other.insurance_growth_vs_wages.2027Q4, other.insurance_growth_vs_wages.2028, other.insurance_growth_vs_wages.2029, other.insurance_growth_vs_wages.2030], low: -0.02, high: 0.02, dist: triangular, unit: pp}
+                                                               # ВЫВОДИТСЯ НА ЯДРЕ: концы — уровень 2030 года на кварталах окна R без финансовых расходов 0,90 и 2,09 % (решения № 1, п. 6)
+      - {name: "Премия роста кредитов к сектору", kind: shift, paths: [volumes.loan_share_drift.corporate, volumes.loan_share_drift.mortgage, volumes.loan_share_drift.retail_other], low: -0.05, high: 0.05, dist: triangular, unit: pp}
+      - {name: "Премия роста средств клиентов к сектору (2027–2029)", kind: bundle, paths: [volumes.funds_share_drift.retail.2027, volumes.funds_share_drift.retail.2028, volumes.funds_share_drift.retail.2029, volumes.funds_share_drift.corporate.2027, volumes.funds_share_drift.corporate.2028, volumes.funds_share_drift.corporate.2029], low: {volumes.funds_share_drift.retail.2027: -0.136, volumes.funds_share_drift.retail.2028: -0.107, volumes.funds_share_drift.retail.2029: -0.059, volumes.funds_share_drift.corporate.2027: -0.063, volumes.funds_share_drift.corporate.2028: -0.059, volumes.funds_share_drift.corporate.2029: -0.034}, high: {volumes.funds_share_drift.retail.2027: -0.036, volumes.funds_share_drift.retail.2028: -0.007, volumes.funds_share_drift.retail.2029: 0.001, volumes.funds_share_drift.corporate.2027: 0.037, volumes.funds_share_drift.corporate.2028: 0.041, volumes.funds_share_drift.corporate.2029: 0.026}, dist: triangular, unit: pp}
+                                                               # лист nii: ось-связка ±5 п.п. в 2027–2028, ±3 в 2029 вокруг центра; с 2030 года премия равна нулю (класс 5)
+      - {name: "Запас менеджмента над требованием (оба норматива)", kind: value, paths: [capital.mgmt_buffer.n20_0, capital.mgmt_buffer.n1_1], low: 0.004, high: 0.014, dist: triangular, unit: pp}
+      - {name: "Дрейф плотности RWA до 2027 года", kind: value, paths: [capital.rwa.density_drift_rate], low: -0.029, high: 0.010, dist: triangular, unit: pct}
+      - {name: "Инструменты капитала банка (сдвиг пути)", kind: shift, paths: [capital.n20.t2], low: -15.0, high: 15.0, dist: triangular, unit: bn}
+      - {name: "Поправка Н1.0 (форма ядра против формы банка)", kind: value, paths: [capital.n20.gap_pp], low: -0.003, high: 0.003, dist: triangular, unit: pp}
+      - {name: "Вычет консолидации страховщиков «жёсткого» сценария", kind: value, paths: [capital.reg_scenarios.strict.deduction_pp.n20_0.LT, capital.reg_scenarios.strict.deduction_pp.n1_1.LT], low: 0.0, high: 0.009, dist: triangular, unit: pp}
+      - {name: "Признание фонда ССПСД в нормативе", kind: value, paths: [capital.n20.fvoci_recognition], low: 0.25, high: 0.75, dist: triangular, unit: pct}
+      - {name: "Отклонение выплаты от центра 20 %", kind: shift, paths: [dividends.payout_deviation], low: -0.10, high: 0.10, dist: triangular, unit: pp}
+      - {name: "Выплата избытка капитала ε с прибыли 2028 года", kind: value, paths: [dividends.excess.epsilon], low: 0.0, high: 1.0, dist: triangular, unit: pct}
+      - {name: "Выкуп дочкой: нет после 3К2026 … до конца сетки (связка)", kind: bundle, paths: [equity.other_movements.2026Q4, equity.other_movements.2027, equity.other_movements.2028, equity.other_movements.LT, valuation.share_count_adj, dividends.policy.payout.2026, dividends.policy.payout.2027, dividends.policy.payout.LT], low: {equity.other_movements.2026Q4: -3.0, equity.other_movements.2027: -3.0, equity.other_movements.2028: -3.0, equity.other_movements.LT: -3.0, valuation.share_count_adj: -0.36385, dividends.policy.payout.2026: 0.1911, dividends.policy.payout.2027: 0.1816, dividends.policy.payout.LT: 0.1494}, high: {equity.other_movements.2026Q4: 0.0, equity.other_movements.2027: 0.0, equity.other_movements.2028: 0.0, equity.other_movements.LT: 0.0, valuation.share_count_adj: -0.00887, dividends.policy.payout.2026: 0.1988, dividends.policy.payout.2027: 0.1988, dividends.policy.payout.LT: 0.1988}, dist: triangular, unit: number}
+                                                               # лист capital: три ключа одного суждения идут вместе; низ — до конца сетки по форвардной цене, верх — выкупа нет после 3К2026
+      - {name: "Книга страховых обязательств: β 0,58–0,72 (связка со спредом, уровнем и передачей)", kind: bundle, paths: [nii.books.insurance_liab.beta, nii.books.insurance_liab.spread.2026, nii.books.insurance_liab.spread.2027, nii.books.insurance_liab.spread.2028, nii.books.insurance_liab.spread.2029, nii.books.insurance_liab.spread.2030, nii.books.insurance_liab.spread.LT, nii.nim_lt_target_mgmt, nii.transmission.target], low: {nii.books.insurance_liab.beta: 0.58, nii.books.insurance_liab.spread.2026: -0.02646, nii.books.insurance_liab.spread.2027: -0.02323, nii.books.insurance_liab.spread.2028: -0.0200, nii.books.insurance_liab.spread.2029: -0.0200, nii.books.insurance_liab.spread.2030: -0.0200, nii.books.insurance_liab.spread.LT: -0.0200, nii.nim_lt_target_mgmt: 0.073074, nii.transmission.target: -0.076264}, high: {nii.books.insurance_liab.beta: 0.72, nii.books.insurance_liab.spread.2026: -0.04606, nii.books.insurance_liab.spread.2027: -0.04538, nii.books.insurance_liab.spread.2028: -0.0447, nii.books.insurance_liab.spread.2029: -0.0447, nii.books.insurance_liab.spread.2030: -0.0447, nii.books.insurance_liab.spread.LT: -0.0447, nii.nim_lt_target_mgmt: 0.073751, nii.transmission.target: -0.082125}, dist: triangular, unit: number}
+                                                               # решения № 1, п. 6 (ось β 0,58–0,72) в форме класса 4 (поток sheetsfix, флаг 3): β и спред подбора книги идут вместе
+                                                               #   (−2,00 / −4,47 п.п.), ближние ключи — правило A-N1n от ставки якоря 5,47 %; ключ уровня и цель передачи — тот же
+                                                               #   7,17 % и −0,06 опр. банка через точный мост при β конца
+      - {name: "Угасание избыточной доходности", kind: value, paths: [valuation.terminal.fade], low: 0.25, high: 1.0, dist: triangular, unit: number}
+      - {name: "β_E", kind: value, paths: [valuation.beta_e], low: 0.70, high: 1.10, dist: triangular, unit: number}
+      - {name: "ERP", kind: value, paths: [valuation.erp], low: 0.049, high: 0.062, dist: triangular, unit: pct}
+      - {name: "Реальный рост терминала", kind: value, paths: [valuation.terminal.real_growth], low: 0.005, high: 0.025, dist: triangular, unit: pct}
+      - {name: "Налог: эффективная ставка 22–25 %", kind: value, paths: [tax.effective_gap], low: -0.03, high: 0.0, dist: triangular, unit: pp}
+      - {name: "Разовый налог: вероятность", kind: value, paths: [tax.one_off.prob], low: 0.0, high: 0.30, dist: triangular, unit: pct}
+      - {name: "Бумаги, валюта и прочее (цены 2026)", kind: shift, paths: [other.misc_net_real], low: -4.0, high: 4.0, dist: triangular, unit: bn}
+                                                               # лист pnl: уровень 0,26–0,45 % активов (годы окна без разовых 0,28–0,41 %)
+      - {name: "Доля неконтролирующих акционеров в прибыли", kind: value, paths: [pnl.nci_share], low: 0.035, high: 0.081, dist: triangular, unit: pct}
+      - {name: "Веса миров", kind: dict, paths: [joint.world_prob], low: {N: 0.25, H: 0.50, M: 0.25}, high: {N: 0.40, H: 0.45, M: 0.15}, dist: triangular}   # запись семейства (как у Т)
+      - {name: "Инфляция мира M", kind: shift, paths: [worlds.M.cpi, worlds.M.wage_growth, worlds.M.lt_inflation], low: -0.003, high: 0.005, dist: triangular, unit: pp}   # запись семейства (как у Т)
+      - {name: "Сдвиг уровня маржи: доля на кредитных книгах (A-N7)", kind: value, paths: [nii.sigma0_split], low: 0.0, high: 1.0, dist: triangular, unit: pct}
+                                                               # ВЫВОДИТСЯ НА ЯДРЕ: низ — весь сдвиг на средствах клиентов; верх — значение книги
+      - {name: "Сжатие маржи при высокой ставке: доля на кредитных книгах (A-N8)", kind: value, paths: [nii.phi_split], low: 0.35, high: 0.72, dist: triangular, unit: pct}
+                                                               # ВЫВОДИТСЯ НА ЯДРЕ: верх — предел гейта пола спреда; низ — порог гейта стоимости средств клиентов (лист nii 0,35 … 0,72)
+      - {name: "Доля текущих счетов: чувствительность к ключевой (ψ)", kind: value, paths: [nii.retail_current_share.psi], low: 0.0, high: 0.21, dist: triangular, unit: number}
+                                                               # лист nii: динамический подбор 0,00 … регрессия уровней 0,21
+      - {name: "LT-спред оптового фондирования", kind: value, paths: [nii.books.wholesale.spread.LT], low: -0.0098, high: 0.0077, dist: triangular, unit: pp}
+                                                               # лист nii: депозиты юрлиц (ключевая − 0,98 п.п.) … облигации (+0,77 п.п.)
+      - {name: "Дюрация ССПСД", kind: value, paths: [oci.fvoci_duration], low: 1.3, high: 2.7, dist: triangular, unit: years}
+      - {name: "Срок подтягивания ССПСД", kind: value, paths: [oci.fvoci_maturity], low: 5.0, high: 10.0, dist: triangular, unit: years}
+      - {name: "Дюрация облигаций ССПУ", kind: value, paths: [oci.fvtpl_bond_duration], low: 0.6, high: 2.7, dist: triangular, unit: years}
+    off_band_axes: []
+  reverse_dcf:                                                 # обратный расчёт медианы (MODEL §11): строки — главные суждения устава; рублёвые допуски — пропорционально шагу печати Т
+    subsample: 200
+    edge_refine_rub: 0.1                                       # шаг печати (у Т 5,0 при шаге 5 ₽)
+    axis_follow: both
+    refine_rows: [nii.nim_lt_target_mgmt, "regimes.*.cor.LT"]
+    axes:
+      - {name: "ЧПМ мира N на составе якоря (ключ ядра)", kind: value, paths: [nii.nim_lt_target_mgmt], search: [0.04, 0.11], range: [0.070371, 0.074107], unit: "%"}
+      - {name: "CoR сквозь цикл (сдвиг LT)", kind: shift, paths: [regimes.soft.cor.LT, regimes.norm.cor.LT, regimes.downturn.cor.LT, regimes.crisis.cor.LT], search: [-0.02, 0.06], range: [-0.0035, 0.006], unit: "п.п."}
+      - {name: "Передача ставки в ЧПМ (базис движка)", kind: value, paths: [nii.transmission.target], search: [-0.40, 0.30], range: [-0.157171, -0.001218], unit: ""}
+      - {name: "Запас над требованием норматива", kind: value, paths: [capital.mgmt_buffer.n20_0, capital.mgmt_buffer.n1_1], search: [0.0, 0.06], range: [0.004, 0.014], unit: "п.п."}
+      - {name: "Выплата (отклонение доли от центра)", kind: shift, paths: [dividends.payout_deviation], search: [-0.17, 0.80], range: [-0.10, 0.10], unit: "п.п."}
+      - {name: "β_E", kind: value, paths: [valuation.beta_e], search: [0.3, 3.5], range: [0.70, 1.10], unit: ""}
+      - {name: "ERP", kind: value, paths: [valuation.erp], search: [0.02, 0.25], range: [0.049, 0.062], unit: "%"}
+    bank_rows: [implied_roe_through_cycle, implied_cost_of_equity, market_cap_minus_bv, value_without_excess_growth, book_value_per_share, excess_return_years]
+  next_report:                                                 # «что даст отчёт» (MODEL §13); значения — упр. базис (опр. банка), в движок — мостом
+    period: "2026Q3"                                           # МСФО 9М2026 — 13.11.2026
+    cor_values: [0.020, 0.025, 0.030, 0.035, 0.040]            # накрывает пути режимов 2П2026 2,34–2,99 % и факт 2К2026 2,16 % [В]
+    nim_values: [0.068, 0.071, 0.074, 0.077, 0.080]            # накрывает нау-каст 3К2026 7,4–7,5 % и факт 2К2026 7,56 % [В]
+    search_pad: 0.002
+    value_tol: 0.0001
+  reference_variants:                                          # справочные варианты (MODEL §14.5): развилки устава §6 и решений ведущего № 1 — ПЕРЕЧЕНЬ ПОДМЕН; цену
+                                                               #   считает следующий круг. Выведенные на ядре числа (доли раскладки, ближний сдвиг, корни) у варианта — книги
+    - {id: margin_hump_new_level, title: "Маржа: «горб» 2026 года — новый уровень (мир M 6,8 %, передача −0,10)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.066193, nii.transmission.target: -0.113851}}
+                                                               # устав §6, № 1; ключ — 6,8 % опр. банка мира M точным мостом (ife_M = 0,65 × 17 % − 2,34 п.п.), передача −0,10 × R − β × l_ins
+    - {id: margin_middle, title: "Маржа: середина (мир M 6,4 %, передача −0,06)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.062043}}
+    - {id: nim_level_window_composition, title: "Уровень мира N на составе окна L: 6,60 % (опр. банка)", overrides: {nii.nim_lt_target_mgmt: 0.067051}}
+                                                               # решения № 1, п. 1: 6,60 — справочным вариантом с ценой; при нём решатель нарушает пол спреда юрлиц в мире M
+    - {id: bridge_literal, title: "Мост банк ↔ движок буквально: ключ 0,0717 × b, передача −0,06 × b", overrides: {nii.nim_lt_target_mgmt: 0.0717, nii.transmission.target: -0.0501}}
+                                                               # поток sheetsfix, флаг 1: стационар N в опр. банка 7,05 %; решение ведущего не принято
+    - {id: cor_retail_tail, title: "Стоимость риска: розничный хвост (+0,3 п.п. ко всем путям режимов)", overrides: {regimes.soft.cor: {"2026": 0.0264, "2027": 0.0230, "2028": 0.0195, "2029": 0.0195, LT: 0.028, LT_from: 2032}, regimes.norm.cor: {"2026": 0.0303, "2027": 0.0313, "2028": 0.0313, "2029": 0.0313, LT: 0.0313, LT_from: 2032}, regimes.downturn.cor: {"2026": 0.0329, "2027": 0.0380, "2027Q1": 0.035, "2027Q2": 0.037, "2027Q3": 0.039, "2027Q4": 0.041, "2028": 0.0355, "2029": 0.0330, LT: 0.033, LT_from: 2032}, regimes.crisis.cor: {"2026": 0.0329, "2027": 0.0520, "2027Q1": 0.065, "2027Q2": 0.053, "2027Q3": 0.047, "2027Q4": 0.043, "2028": 0.0415, "2029": 0.0291, LT: 0.034, LT_from: 2032}}}
+                                                               # устав §6, № 3: ФЛ к верху оси — +0,3 п.п. смеси
+    - {id: serial_acquirer, title: "M&A: «серийный покупатель» — выгодные приобретения 6 млрд ₽ в год без налога", overrides: {noncore.result_real: {"2026": 0.0, "2027": 7.8, "2028": 7.8, "2029": 7.8, "2030": 7.8, "2031": 7.8, "2032": 7.8, "2033": 7.8, "2034": 7.8, "2035": 7.8, "2036": 7.8, LT: 7.8}}}
+                                                               # устав §6, № 4; лист pnl: 6,0 / (1 − 0,233) = 7,8 до налога; RWA и резервы «первого дня» купленного вариант НЕ несёт (завышен)
+    - {id: buyback_none, title: "Выкупа нет после 3-го квартала 2026 года (куплено на 2 млрд ₽)", overrides: {equity.other_movements: {"2026Q3": -2.0, "2026Q4": 0.0, "2027": 0.0, "2028": 0.0, LT: 0.0, LT_from: 2029}, valuation.share_count_adj: -0.00887, dividends.policy.payout: {"2026": 0.1988, "2027": 0.1988, LT: 0.1988, LT_from: 2028}}}
+                                                               # устав §6, № 5 (лист capital, buyback_keys.yaml)
+    - {id: buyback_to_grid_end, title: "Выкуп 3 млрд ₽ в квартал до конца 2036 года по форвардной цене", overrides: {equity.other_movements: {"2026Q3": -2.0, "2026Q4": -3.0, "2027": -3.0, "2028": -3.0, LT: -3.0, LT_from: 2029}, valuation.share_count_adj: -0.36385, dividends.policy.payout: {"2026": 0.1911, "2027": 0.1816, "2028": 0.1729, "2029": 0.1649, "2030": 0.1577, "2031": 0.151, "2032": 0.145, "2033": 0.1394, "2034": 0.1344, "2035": 0.1298, LT: 0.1298}}}
+    - {id: buyback_2028_forward_price, title: "Выкуп до 2028 года по форвардной цене (рост 9,5 % в год)", overrides: {equity.other_movements: {"2026Q3": -2.0, "2026Q4": -3.0, "2027": -3.0, "2028": -3.0, LT: 0.0, LT_from: 2029}, valuation.share_count_adj: -0.11714, dividends.policy.payout: {"2026": 0.1911, "2027": 0.1816, LT: 0.1771, LT_from: 2028}}}
+                                                               # решения № 1, п. 12: цена выкупа по форварду — справочно
+    - {id: at1_coupon_2026_remainder, title: "Купон AT1 2026 года остатком: 4К2026 вычитает 0,99, а не 1,98", overrides: {equity.other_movements: {"2026Q3": -2.0, "2026Q4": -2.2575, "2027": -3.0, "2028": -3.0, LT: 0.0, LT_from: 2029}}}
+                                                               # решения № 1, п. 13: схема остаток купона года якоря не выражает (coupon_annual — одно число) — обход прочими движениями
+    - {id: payout_flat_20, title: "Доля выплаты 20 % без поправки на акции дочки", overrides: {dividends.policy.payout: {"2026": 0.2, "2027": 0.2, LT: 0.2, LT_from: 2028}}}
+                                                               # решения № 1, п. 11 — в центре поправка принята
+    - {id: nonworking_money_grows, title: "Неработающие деньги растут с кредитами (как у ВТБ, B2), а не постоянны в рублях", overrides: {volumes.other_assets_fixed: 97.035, capital.rwa.density.other_assets: 1.0493, capital.rwa.density.other_assets_fixed: 1.3861}}
+                                                               # решения № 1, п. 3 ставят деньги (176,4) в постоянную часть (поток sheetsfix, флаг 4)
+    - {id: audit_cutoffs_annual, title: "Прибыль входит в основной капитал только после годового аудита", overrides: {capital.n11.audit_cutoffs: [4]}}
+                                                               # лист capital; Ded11_0 у варианта — книги (числом): вариант печатает и сдвиг Н1.2 якоря
+    - {id: density_drift_zero, title: "Плотность RWA без дрейфа", overrides: {capital.rwa.density_drift_rate: 0.0}}
+    - {id: density_drift_fact, title: "Дрейф плотности RWA по факту 2025–2026 годов: −2,9 % в год до 2027 года", overrides: {capital.rwa.density_drift_rate: -0.029}}
+    - {id: segment_cor_off, title: "Сегментная стоимость риска выключена (как у Т и Сбера)", overrides: {credit.segment_relative.enabled: false}}
+                                                               # лист pnl: вариант «выключено»
+    - {id: kappa_zero, title: "Стоимость риска не зависит от реальной ставки: уровень окна во всех мирах", overrides: {credit.kappa: 0.0}}
+    - {id: fade_symmetric, title: "Угасание доходности к стоимости капитала с обеих сторон", overrides: {valuation.terminal.fade_mode: symmetric}}

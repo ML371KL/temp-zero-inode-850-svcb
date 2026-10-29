@@ -1,0 +1,2675 @@
+{
+ "bridge": {
+  "nim": 0.834987,
+  "cor": 0.000159,
+  "cir": -0.014238,
+  "R": 0.866402,
+  "l_ins": 0.041862,
+  "beta_ins": 0.65,
+  "spread_lt_ins": -0.02343,
+  "key_lt": {
+   "N": 0.08,
+   "H": 0.105,
+   "M": 0.17
+  },
+  "ife": {
+   "N": 0.02857,
+   "H": 0.04482,
+   "M": 0.08707
+  },
+  "key": 0.072965,
+  "target": -0.079195,
+  "key_axis": [
+   0.070371,
+   0.074107
+  ],
+  "target_axis": [
+   -0.157171,
+   -0.001218
+  ],
+  "key_axis_shift": [
+   -0.002594,
+   0.001142
+  ],
+  "target_axis_shift": [
+   -0.077976,
+   0.077977
+  ],
+  "beta_ends": {
+   "low": {
+    "beta": 0.58,
+    "c_lt": -0.01087,
+    "spread_2026": -0.02646,
+    "spread_2027": -0.01867,
+    "key": 0.072616,
+    "target": -0.076264
+   },
+   "high": {
+    "beta": 0.72,
+    "c_lt": -0.03598,
+    "spread_2026": -0.04606,
+    "spread_2027": -0.04102,
+    "key": 0.073314,
+    "target": -0.082125
+   }
+  },
+  "bank": {
+   "nim_n": 0.0717,
+   "transmission": -0.06
+  },
+  "ins_fit_centre": {
+   "beta": 0.65,
+   "c": -0.0234268,
+   "D": -0.92355,
+   "rmse": 0.04748,
+   "c_book": -0.02343,
+   "c_ok": true
+  }
+ },
+ "anchor": {
+  "density_corp_loans": 1.202666,
+  "density_corp_before": 1.202666,
+  "rwa_before": 4365.1938,
+  "rwa_fact": 4365.193,
+  "rwa_model": 4365.1938,
+  "bvreg0": 442.7781,
+  "at1": 19.75,
+  "t2_0": 42.59,
+  "own_funds": 479.516488,
+  "main_capital": 417.697904,
+  "e0": 24.704,
+  "ded20": 25.602,
+  "ded11": 0.376,
+  "n20_model": 0.1098499,
+  "n20_fact": 0.10985,
+  "n11_model": 0.0961863,
+  "n11_fact": 0.09619,
+  "n20_ok": true,
+  "n11_ok": true,
+  "fvoci_axis_ends": {
+   "low": {
+    "capital.n20.fvoci_recognition": 0.0,
+    "capital.n20.deductions_anchor": 34.324,
+    "capital.n11.deductions_anchor": 9.098
+   },
+   "high": {
+    "capital.n20.fvoci_recognition": 0.975,
+    "capital.n20.deductions_anchor": 16.88,
+    "capital.n11.deductions_anchor": -8.346
+   }
+  },
+  "e0_annual": 43.681,
+  "ded11_annual": -18.601,
+  "ccf_axis_ends": {
+   "low": {
+    "capital.rwa.guarantees.ccf.nonfinancial": 0.35,
+    "capital.rwa.guarantees.weight": 1.0924,
+    "capital.rwa.density.auto": 1.0924,
+    "capital.rwa.density.mortgage": 0.5462,
+    "capital.rwa.density.cash_loans": 1.7478,
+    "capital.rwa.density.cards": 1.7478,
+    "capital.rwa.density.corp_loans": 1.178628,
+    "capital.rwa.density.securities": 0.2185,
+    "capital.rwa.density.liquidity": 0.0508,
+    "capital.rwa.density.other_assets": 1.0257,
+    "capital.rwa.density.other_assets_fixed": 1.3548,
+    "capital.rwa.density.cash_assets": 0.0657016
+   },
+   "high": {
+    "capital.rwa.guarantees.ccf.nonfinancial": 0.5,
+    "capital.rwa.guarantees.weight": 1.0518,
+    "capital.rwa.density.auto": 1.0518,
+    "capital.rwa.density.mortgage": 0.5259,
+    "capital.rwa.density.cash_loans": 1.6828,
+    "capital.rwa.density.cards": 1.6828,
+    "capital.rwa.density.corp_loans": 1.225719,
+    "capital.rwa.density.securities": 0.2104,
+    "capital.rwa.density.liquidity": 0.0489,
+    "capital.rwa.density.other_assets": 0.9875,
+    "capital.rwa.density.other_assets_fixed": 1.3044,
+    "capital.rwa.density.cash_assets": 0.0632598
+   }
+  }
+ },
+ "near_spreads": {
+  "auto": {
+   "rate_anchor": 0.197958,
+   "ref_H": 0.1596,
+   "slope": 1.0,
+   "2026": 0.03836,
+   "2027": 0.05189,
+   "before": [
+    0.03836,
+    0.05189
+   ],
+   "spread": {
+    "2026": 0.03836,
+    "2027": 0.05189,
+    "2028": 0.06542,
+    "2029": 0.06542,
+    "2030": 0.06542,
+    "LT": 0.06542,
+    "LT_from": 2031
+   }
+  },
+  "mortgage": {
+   "rate_anchor": 0.170022,
+   "ref_H": 0.14,
+   "slope": 1.0,
+   "2026": 0.03002,
+   "2027": 0.03334,
+   "before": [
+    0.03002,
+    0.03334
+   ],
+   "spread": {
+    "2026": 0.03002,
+    "2027": 0.03334,
+    "2028": 0.03667,
+    "2029": 0.03691,
+    "2030": 0.03707,
+    "LT": 0.03722,
+    "LT_from": 2031
+   }
+  },
+  "cash_loans": {
+   "rate_anchor": 0.222676,
+   "ref_H": 0.1596,
+   "slope": 1.0,
+   "2026": 0.06308,
+   "2027": 0.07287,
+   "before": [
+    0.06308,
+    0.07287
+   ],
+   "spread": {
+    "2026": 0.06308,
+    "2027": 0.07287,
+    "2028": 0.08267,
+    "2029": 0.08811,
+    "2030": 0.0913,
+    "LT": 0.09478,
+    "LT_from": 2031
+   }
+  },
+  "cards": {
+   "rate_anchor": 0.297981,
+   "ref_H": 0.14,
+   "slope": 1.0,
+   "2026": 0.15798,
+   "2027": 0.15804,
+   "before": [
+    0.15798,
+    0.15804
+   ],
+   "spread": {
+    "2026": 0.15798,
+    "2027": 0.15804,
+    "2028": 0.15809,
+    "2029": 0.16467,
+    "2030": 0.16879,
+    "LT": 0.1729,
+    "LT_from": 2031
+   }
+  },
+  "corp_loans": {
+   "rate_anchor": 0.173389,
+   "ref_H": 0.14,
+   "slope": 1.0,
+   "2026": 0.03339,
+   "2027": 0.02954,
+   "before": [
+    0.03339,
+    0.02954
+   ],
+   "spread": {
+    "2026": 0.03339,
+    "2027": 0.02954,
+    "2028": 0.02568,
+    "2029": 0.02721,
+    "2030": 0.02817,
+    "LT": 0.02912,
+    "LT_from": 2031
+   }
+  },
+  "securities": {
+   "rate_anchor": 0.143912,
+   "ref_H": 0.1396,
+   "slope": 1.0,
+   "2026": 0.00431,
+   "2027": 0.00414,
+   "before": [
+    0.00431,
+    0.00414
+   ],
+   "spread": {
+    "2026": 0.00431,
+    "2027": 0.00414,
+    "2028": 0.00398,
+    "2029": 0.00398,
+    "2030": 0.00398,
+    "LT": 0.00398,
+    "LT_from": 2031
+   }
+  },
+  "liquidity": {
+   "rate_anchor": 0.150141,
+   "ref_H": 0.14,
+   "slope": 1.0,
+   "2026": 0.01014,
+   "2027": -0.00106,
+   "before": [
+    0.01014,
+    -0.00106
+   ],
+   "spread": {
+    "2026": 0.01014,
+    "2027": -0.00106,
+    "2028": -0.01225,
+    "2029": -0.01084,
+    "2030": -0.00995,
+    "LT": -0.00906,
+    "LT_from": 2031
+   }
+  },
+  "retail_current": {
+   "rate_anchor": 0.070319,
+   "ref_H": 0.14,
+   "slope": 0.216,
+   "2026": 0.04008,
+   "2027": 0.0355,
+   "before": [
+    0.04008,
+    0.0355
+   ],
+   "spread": {
+    "2026": 0.04008,
+    "2027": 0.0355,
+    "2028": 0.03093,
+    "2029": 0.03093,
+    "2030": 0.03093,
+    "LT": 0.03093,
+    "LT_from": 2031
+   }
+  },
+  "retail_term": {
+   "rate_anchor": 0.137942,
+   "ref_H": 0.14,
+   "slope": 0.969,
+   "2026": 0.00228,
+   "2027": -0.00434,
+   "before": [
+    0.00228,
+    -0.00434
+   ],
+   "spread": {
+    "2026": 0.00228,
+    "2027": -0.00434,
+    "2028": -0.01097,
+    "2029": -0.01097,
+    "2030": -0.01097,
+    "LT": -0.01097,
+    "LT_from": 2031
+   }
+  },
+  "corp_term": {
+   "rate_anchor": 0.136426,
+   "ref_H": 0.14,
+   "slope": 0.949,
+   "2026": 0.00357,
+   "2027": -4e-05,
+   "before": [
+    0.00357,
+    -4e-05
+   ],
+   "spread": {
+    "2026": 0.00357,
+    "2027": -4e-05,
+    "2028": -0.00365,
+    "2029": -0.00365,
+    "2030": -0.00365,
+    "LT": -0.00365,
+    "LT_from": 2031
+   }
+  },
+  "corp_current": {
+   "rate_anchor": 0.065666,
+   "ref_H": 0.14,
+   "slope": 0.46,
+   "2026": 0.00127,
+   "2027": -0.00622,
+   "before": [
+    0.00127,
+    -0.00622
+   ],
+   "spread": {
+    "2026": 0.00127,
+    "2027": -0.00622,
+    "2028": -0.0137,
+    "2029": -0.0137,
+    "2030": -0.0137,
+    "LT": -0.0137,
+    "LT_from": 2031
+   }
+  },
+  "wholesale": {
+   "rate_anchor": 0.134051,
+   "ref_H": 0.14,
+   "slope": 1.0,
+   "2026": -0.00595,
+   "2027": -0.0035,
+   "before": [
+    -0.00595,
+    -0.0035
+   ],
+   "spread": {
+    "2026": -0.00595,
+    "2027": -0.0035,
+    "2028": -0.00105,
+    "2029": -0.00105,
+    "2030": -0.00105,
+    "LT": -0.00105,
+    "LT_from": 2031
+   }
+  },
+  "insurance_liab": {
+   "rate_anchor": 0.054744,
+   "ref_H": 0.14,
+   "slope": 0.65,
+   "2026": -0.03626,
+   "2027": -0.02985,
+   "before": [
+    -0.03626,
+    -0.02985
+   ],
+   "spread": {
+    "2026": -0.03626,
+    "2027": -0.02985,
+    "2028": -0.02343,
+    "2029": -0.02343,
+    "2030": -0.02343,
+    "LT": -0.02343,
+    "LT_from": 2031
+   }
+  }
+ },
+ "level": {
+  "key": 0.072965,
+  "world": "N",
+  "stationary": 0.072965,
+  "stationary_ok": true,
+  "stationary_by_world_mgmt": {
+   "N": 0.072965,
+   "H": 0.072554,
+   "M": 0.064429
+  },
+  "stationary_by_world_bank": {
+   "N": 0.0717,
+   "H": 0.072089,
+   "M": 0.0663
+  },
+  "bank_level_world": 0.0717,
+  "reference_world": "H",
+  "sigma0": -0.001592,
+  "phi": 0.483988
+ },
+ "splits": {
+  "sigma0_split": 0.5,
+  "sigma0_limit": 1.0,
+  "phi_split": 0.48,
+  "phi_type": "Б",
+  "phi_bound": "low",
+  "phi_asymmetry": [
+   0.0,
+   0.15
+  ],
+  "phi_by_history": 0.4215,
+  "phi_limit": 0.9168,
+  "phi_limit_at": [
+   "corp_loans",
+   "M"
+  ],
+  "history_compression": 0.204,
+  "phi": 0.484,
+  "phi_evidence": [
+   0.1723,
+   0.6356
+  ],
+  "phi_evidence_compression": [
+   0.0834,
+   0.3076
+  ],
+  "phi_gate_low": 0.48,
+  "phi_gate_at_low": 0.8755,
+  "axis_sigma0": [
+   0.0,
+   1.0
+  ],
+  "axis_phi": [
+   0.48,
+   0.63
+  ],
+  "floor_headroom": [
+   0.01374,
+   "corp_loans",
+   "M"
+  ],
+  "lt_spread": {
+   "auto": {
+    "N": 0.06383,
+    "H": 0.06383,
+    "M": 0.06383
+   },
+   "mortgage": {
+    "N": 0.03784,
+    "H": 0.03722,
+    "M": 0.03562
+   },
+   "cash_loans": {
+    "N": 0.1122,
+    "H": 0.09319,
+    "M": 0.06497
+   },
+   "cards": {
+    "N": 0.18935,
+    "H": 0.1729,
+    "M": 0.13013
+   },
+   "corp_loans": {
+    "N": 0.03206,
+    "H": 0.02753,
+    "M": 0.01574
+   }
+  },
+  "book_slopes": {
+   "auto": 1.0,
+   "mortgage": 0.9754,
+   "cash_loans": 0.4205,
+   "cards": 0.342,
+   "corp_loans": 0.8187,
+   "securities": 1.0,
+   "liquidity": 0.8581,
+   "retail_current": 0.3733,
+   "retail_term": 1.1263,
+   "corp_term": 1.1063,
+   "corp_current": 0.6173,
+   "wholesale": 0.7523,
+   "insurance_liab": 0.65
+  },
+  "phi_shares": {
+   "mortgage": 0.0246,
+   "cash_loans": 0.3472,
+   "cards": 0.658,
+   "corp_loans": -0.051,
+   "liquidity": 0.1419,
+   "wholesale": 0.2477
+  }
+ },
+ "near": {
+  "target_bank": 0.0745,
+  "target_core": 0.074558,
+  "shift_q3": 0.001036,
+  "layer": "analytical",
+  "nim_mgmt_path": {
+   "2026Q3": 0.07456,
+   "2026Q4": 0.07448,
+   "2027Q1": 0.06973,
+   "2027Q2": 0.07016,
+   "2027Q3": 0.07062,
+   "2027Q4": 0.07057,
+   "2028Q1": 0.07269,
+   "2028Q2": 0.07293,
+   "2028Q3": 0.07307,
+   "2028Q4": 0.07295,
+   "2029Q1": 0.07352,
+   "2029Q2": 0.07337,
+   "2029Q3": 0.07289,
+   "2029Q4": 0.07257,
+   "2030Q1": 0.07287,
+   "2030Q2": 0.07273,
+   "2030Q3": 0.07215,
+   "2030Q4": 0.07185
+  },
+  "nim_mgmt_path_modal_cell": {
+   "2026Q3": 0.07465,
+   "2026Q4": 0.0748,
+   "2027Q1": 0.0734,
+   "2027Q2": 0.07427,
+   "2027Q3": 0.07468,
+   "2027Q4": 0.07503,
+   "2028Q1": 0.07433,
+   "2028Q2": 0.0752,
+   "2028Q3": 0.07622,
+   "2028Q4": 0.07664,
+   "2029Q1": 0.07784,
+   "2029Q2": 0.07781,
+   "2029Q3": 0.0776,
+   "2029Q4": 0.07746,
+   "2030Q1": 0.07799,
+   "2030Q2": 0.07798,
+   "2030Q3": 0.07764,
+   "2030Q4": 0.07749
+  },
+  "free_q3": null
+ },
+ "levels": {
+  "opex": {
+   "roots": {
+    "anchor": 0.030971,
+    "lt": 0.0,
+    "g0": -0.002502
+   },
+   "goal": 0.0234423,
+   "base": "weighted",
+   "goal_rule": "mid_evidence",
+   "evidence": 0.02299340857312056,
+   "window": {
+    "base": "weighted",
+    "window": [
+     "2024Q2",
+     "2026Q2"
+    ],
+    "mean": 0.023891269518390944,
+    "mean_sum9": 0.023760014983812493,
+    "rule": "среднее скользящих 4 кварталов (равный вес календарных кварталов, Р6-2)",
+    "quarters": [
+     0.022203421857942836,
+     0.02522905295431483
+    ],
+    "rolling4": [
+     0.023729284116808157,
+     0.024021967861198094
+    ],
+    "rolling4_list": [
+     0.024022,
+     0.023893,
+     0.023894,
+     0.023887,
+     0.023922,
+     0.023729
+    ]
+   },
+   "anchor_goal": {
+    "last_quarter": -0.013919,
+    "reported_part_of_year": 0.030874,
+    "rule": "mid",
+    "perimeter_lift": 1.042171,
+    "goal": 0.051006
+   },
+   "anchor_growth": 0.051006,
+   "path": {
+    "2027": 0.023551,
+    "2028": 0.023497,
+    "2029": 0.023442,
+    "2030": 0.023444,
+    "2031": 0.023445,
+    "2032": 0.023444,
+    "2033": 0.023443,
+    "2034": 0.023443,
+    "2035": 0.023443,
+    "2036": 0.023443
+   }
+  },
+  "fees": {
+   "roots": {
+    "anchor": -0.072044,
+    "lt": 0.0,
+    "g0": 0.016603
+   },
+   "goal": 0.0148982,
+   "base": "books",
+   "goal_rule": "mid_evidence",
+   "evidence": 0.013668376093035459,
+   "window": {
+    "base": "books",
+    "window": [
+     "2024Q2",
+     "2026Q2"
+    ],
+    "mean": 0.016127980665365537,
+    "mean_sum9": 0.015750810042088323,
+    "rule": "среднее скользящих 4 кварталов (равный вес календарных кварталов, Р6-2)",
+    "quarters": [
+     0.013124006396437272,
+     0.024084876997343733
+    ],
+    "rolling4": [
+     0.014714042605580815,
+     0.01724567293827578
+    ],
+    "rolling4_list": [
+     0.016846,
+     0.017152,
+     0.017246,
+     0.015296,
+     0.015514,
+     0.014714
+    ]
+   },
+   "anchor_goal": {
+    "last_quarter": -0.064788,
+    "reported_part_of_year": 0.08929,
+    "rule": "mid",
+    "goal": 0.012251
+   },
+   "anchor_growth": 0.012251,
+   "path": {
+    "2027": 0.014408,
+    "2028": 0.01465,
+    "2029": 0.014898,
+    "2030": 0.014899,
+    "2031": 0.014901,
+    "2032": 0.0149,
+    "2033": 0.014898,
+    "2034": 0.014898,
+    "2035": 0.014898,
+    "2036": 0.014898
+   }
+  },
+  "ins": {
+   "roots": {
+    "anchor": -0.145038,
+    "lt": 0.0,
+    "g0": 0.003718
+   },
+   "goal": 0.0222509,
+   "base": "books",
+   "goal_rule": "mid_evidence",
+   "evidence": 0.019186274537191097,
+   "window": {
+    "base": "books",
+    "window": [
+     "2024Q2",
+     "2026Q2"
+    ],
+    "mean": 0.025315509578387588,
+    "mean_sum9": 0.02414812043070482,
+    "rule": "среднее скользящих 4 кварталов (равный вес календарных кварталов, Р6-2)",
+    "quarters": [
+     0.018181060784292515,
+     0.03218591598729631
+    ],
+    "rolling4": [
+     0.021825031741026242,
+     0.02803028644599014
+    ],
+    "rolling4_list": [
+     0.026066,
+     0.027888,
+     0.02803,
+     0.024677,
+     0.023407,
+     0.021825
+    ]
+   },
+   "anchor_goal": {
+    "last_quarter": -0.242911,
+    "reported_part_of_year": -0.206806,
+    "rule": "mid",
+    "perimeter_lift": 1.152663,
+    "goal": -0.106523
+   },
+   "anchor_growth": -0.106523,
+   "path": {
+    "2027": 0.020702,
+    "2028": 0.021622,
+    "2029": 0.022251,
+    "2030": 0.022533,
+    "2031": 0.022514,
+    "2032": 0.022599,
+    "2033": 0.02281,
+    "2034": 0.022844,
+    "2035": 0.022825,
+    "2036": 0.022806
+   }
+  }
+ },
+ "perimeter": {
+  "ends": "центр",
+  "rows": 143,
+  "steps": {
+   "ins": {
+    "2027Q1": 0.16715,
+    "2027Q2": 0.051916
+   },
+   "opex": {
+    "2027Q1": 0.041842,
+    "2027Q2": 0.016577
+   }
+  }
+ },
+ "share_roots": {
+  "insurance": {
+   "kappa": {
+    "2026Q3": -0.068259,
+    "2026Q4": -0.08215,
+    "2027Q1": -0.071375,
+    "2027Q2": -0.056969,
+    "2027Q3": -0.044285,
+    "2027Q4": -0.033889,
+    "2028Q1": -0.037479,
+    "2028Q2": -0.03854,
+    "2028Q3": -0.043646,
+    "2028Q4": -0.038403,
+    "2029Q1": -0.036059,
+    "2029Q2": -0.025643,
+    "2029Q3": -0.022268,
+    "2029Q4": -0.017497,
+    "LT": 0.0,
+    "LT_from": 2030
+   },
+   "rounds": [
+    9.999999999992654e-07,
+    0.0
+   ],
+   "converged": true
+  }
+ },
+ "driver_roots": {
+  "insurance": {
+   "rho": {
+    "2026Q3": -0.076491,
+    "2026Q4": -0.087814,
+    "2027Q1": -0.061509,
+    "2027Q2": -0.052431,
+    "2027Q3": -0.038962,
+    "2027Q4": -0.02878,
+    "2028Q1": -0.039261,
+    "2028Q2": -0.037827,
+    "2028Q3": -0.040989,
+    "2028Q4": -0.035831,
+    "2029Q1": -0.030175,
+    "2029Q2": -0.021193,
+    "2029Q3": -0.019466,
+    "2029Q4": -0.015553,
+    "LT": 0.0,
+    "LT_from": 2030
+   },
+   "rounds": [
+    9.999999999992654e-07,
+    0.0
+   ],
+   "converged": true
+  }
+ },
+ "convergence": {
+  "tol": 0.0001,
+  "rounds": [
+   {
+    "round": 1,
+    "max_relative_change": 0.00014627516389928959,
+    "at": "volumes.liability_driver_roots.insurance.2029Q4"
+   },
+   {
+    "round": 2,
+    "max_relative_change": 1.0157987174517932e-06,
+    "at": "volumes.liability_driver_roots.insurance.2029Q4"
+   }
+  ],
+  "converged": true
+ },
+ "share_roots_frozen": {
+  "rounds": [
+   4.999999999999796e-06,
+   0.0
+  ],
+  "converged": true
+ },
+ "frozen_check": {
+  "nim_stationary": 0.072965,
+  "nim_stationary_ok": true,
+  "nim_bank_level_world": 0.0717,
+  "near_q3": 0.0745585,
+  "near_q3_modal_cell": 0.0746503,
+  "near_target": 0.0745583,
+  "near_after": 0.0,
+  "anchor_n20_gap": -1e-07,
+  "anchor_n11_gap": -3.7e-06,
+  "anchor_rwa_gap": 0.0008,
+  "levels": {
+   "opex": {
+    "2029": 7e-07,
+    "2036": 7e-07,
+    "anchor_growth_miss": 2.99e-05,
+    "max_tail_dev": 2.7e-06
+   },
+   "fees": {
+    "2029": -2e-07,
+    "2036": 8e-07,
+    "anchor_growth_miss": 4.79e-05,
+    "max_tail_dev": 2.8e-06
+   },
+   "ins": {
+    "2029": -9e-07,
+    "2036": 0.0005541,
+    "anchor_growth_miss": 3.96e-05,
+    "max_tail_dev": 2.6e-05,
+    "link": 0.37,
+    "tail_drift": {
+     "2029": -9e-07,
+     "2030": 0.0002811,
+     "2031": 0.0002621,
+     "2032": 0.0003471,
+     "2033": 0.0005581,
+     "2034": 0.0005921,
+     "2035": 0.0005731,
+     "2036": 0.0005541
+    },
+    "tail_range": [
+     0.0191863,
+     0.0253155
+    ],
+    "tail_outside_range": 0.0
+   }
+  },
+  "share_roots": {
+   "insurance": {
+    "max_dev": 4.5e-07,
+    "rule_change": 0.0
+   }
+  },
+  "driver_roots": {
+   "insurance": {
+    "max_dev": 5.12e-07,
+    "jensen": 5.22e-07,
+    "rule_change": 0.0
+   }
+  }
+ },
+ "modal_cell": {
+  "label": "H/soft/mid",
+  "years": {
+   "2026": {
+    "loans_to_funds": 0.9216,
+    "wholesale_share": 0.0883,
+    "lam_min": 0.0,
+    "n20": 0.1202,
+    "n11": 0.101
+   },
+   "2027": {
+    "loans_to_funds": 0.9433,
+    "wholesale_share": 0.0883,
+    "lam_min": 0.427,
+    "n20": 0.1308,
+    "n11": 0.1122
+   },
+   "2028": {
+    "loans_to_funds": 0.969,
+    "wholesale_share": 0.0952,
+    "lam_min": 0.076,
+    "n20": 0.135,
+    "n11": 0.1174
+   },
+   "2029": {
+    "loans_to_funds": 0.9971,
+    "wholesale_share": 0.1116,
+    "lam_min": 1.0,
+    "n20": 0.1407,
+    "n11": 0.1243
+   },
+   "2030": {
+    "loans_to_funds": 1.0011,
+    "wholesale_share": 0.1077,
+    "lam_min": 1.0,
+    "n20": 0.1459,
+    "n11": 0.1311
+   },
+   "2031": {
+    "loans_to_funds": 1.0039,
+    "wholesale_share": 0.1072,
+    "lam_min": 1.0,
+    "n20": 0.1474,
+    "n11": 0.1339
+   },
+   "2032": {
+    "loans_to_funds": 1.0053,
+    "wholesale_share": 0.1066,
+    "lam_min": 1.0,
+    "n20": 0.148,
+    "n11": 0.1359
+   },
+   "2033": {
+    "loans_to_funds": 1.0053,
+    "wholesale_share": 0.1037,
+    "lam_min": 1.0,
+    "n20": 0.1495,
+    "n11": 0.1377
+   },
+   "2034": {
+    "loans_to_funds": 1.0053,
+    "wholesale_share": 0.1017,
+    "lam_min": 1.0,
+    "n20": 0.1502,
+    "n11": 0.1389
+   },
+   "2035": {
+    "loans_to_funds": 1.0053,
+    "wholesale_share": 0.1003,
+    "lam_min": 1.0,
+    "n20": 0.1504,
+    "n11": 0.1395
+   },
+   "2036": {
+    "loans_to_funds": 1.0053,
+    "wholesale_share": 0.0991,
+    "lam_min": 1.0,
+    "n20": 0.1506,
+    "n11": 0.14
+   }
+  },
+  "roe_t": 0.1805,
+  "k_t": 0.1777,
+  "terminal_share": 0.4997,
+  "flags": [
+   "dividend_cut",
+   "dividend_token",
+   "growth_cut"
+  ]
+ },
+ "keys": {
+  "nii.nim_lt_target_mgmt": 0.072965,
+  "nii.transmission.target": -0.079195,
+  "capital.rwa.density": {
+   "auto": 1.0717,
+   "mortgage": 0.5358,
+   "cash_loans": 1.7147,
+   "cards": 1.7147,
+   "corp_loans": 1.202666,
+   "securities": 0.2143,
+   "liquidity": 0.0498,
+   "other_assets": 1.0062,
+   "other_assets_fixed": 1.3292,
+   "cash_assets": 0.0644566
+  },
+  "capital.n20.deductions_anchor": 25.602,
+  "capital.n11.deductions_anchor": 0.376,
+  "nii.books.auto.spread": {
+   "2026": 0.03836,
+   "2027": 0.05189,
+   "2028": 0.06542,
+   "2029": 0.06542,
+   "2030": 0.06542,
+   "LT": 0.06542,
+   "LT_from": 2031
+  },
+  "nii.books.mortgage.spread": {
+   "2026": 0.03002,
+   "2027": 0.03334,
+   "2028": 0.03667,
+   "2029": 0.03691,
+   "2030": 0.03707,
+   "LT": 0.03722,
+   "LT_from": 2031
+  },
+  "nii.books.cash_loans.spread": {
+   "2026": 0.06308,
+   "2027": 0.07287,
+   "2028": 0.08267,
+   "2029": 0.08811,
+   "2030": 0.0913,
+   "LT": 0.09478,
+   "LT_from": 2031
+  },
+  "nii.books.cards.spread": {
+   "2026": 0.15798,
+   "2027": 0.15804,
+   "2028": 0.15809,
+   "2029": 0.16467,
+   "2030": 0.16879,
+   "LT": 0.1729,
+   "LT_from": 2031
+  },
+  "nii.books.corp_loans.spread": {
+   "2026": 0.03339,
+   "2027": 0.02954,
+   "2028": 0.02568,
+   "2029": 0.02721,
+   "2030": 0.02817,
+   "LT": 0.02912,
+   "LT_from": 2031
+  },
+  "nii.books.securities.spread": {
+   "2026": 0.00431,
+   "2027": 0.00414,
+   "2028": 0.00398,
+   "2029": 0.00398,
+   "2030": 0.00398,
+   "LT": 0.00398,
+   "LT_from": 2031
+  },
+  "nii.books.liquidity.spread": {
+   "2026": 0.01014,
+   "2027": -0.00106,
+   "2028": -0.01225,
+   "2029": -0.01084,
+   "2030": -0.00995,
+   "LT": -0.00906,
+   "LT_from": 2031
+  },
+  "nii.books.retail_current.spread": {
+   "2026": 0.04008,
+   "2027": 0.0355,
+   "2028": 0.03093,
+   "2029": 0.03093,
+   "2030": 0.03093,
+   "LT": 0.03093,
+   "LT_from": 2031
+  },
+  "nii.books.retail_term.spread": {
+   "2026": 0.00228,
+   "2027": -0.00434,
+   "2028": -0.01097,
+   "2029": -0.01097,
+   "2030": -0.01097,
+   "LT": -0.01097,
+   "LT_from": 2031
+  },
+  "nii.books.corp_term.spread": {
+   "2026": 0.00357,
+   "2027": -4e-05,
+   "2028": -0.00365,
+   "2029": -0.00365,
+   "2030": -0.00365,
+   "LT": -0.00365,
+   "LT_from": 2031
+  },
+  "nii.books.corp_current.spread": {
+   "2026": 0.00127,
+   "2027": -0.00622,
+   "2028": -0.0137,
+   "2029": -0.0137,
+   "2030": -0.0137,
+   "LT": -0.0137,
+   "LT_from": 2031
+  },
+  "nii.books.wholesale.spread": {
+   "2026": -0.00595,
+   "2027": -0.0035,
+   "2028": -0.00105,
+   "2029": -0.00105,
+   "2030": -0.00105,
+   "LT": -0.00105,
+   "LT_from": 2031
+  },
+  "nii.books.insurance_liab.spread": {
+   "2026": -0.03626,
+   "2027": -0.02985,
+   "2028": -0.02343,
+   "2029": -0.02343,
+   "2030": -0.02343,
+   "LT": -0.02343,
+   "LT_from": 2031
+  },
+  "nii.sigma0_split": 0.5,
+  "nii.phi_split": 0.48,
+  "regimes.near_nim_shift": {
+   "2026Q3": 0.001036,
+   "2026Q4": 0.000962,
+   "2026": 0.000999,
+   "2027Q1": 0.000888,
+   "2027Q2": 0.000814,
+   "2027Q3": 0.00074,
+   "2027Q4": 0.000666,
+   "2027": 0.000777,
+   "2028Q1": 0.000592,
+   "2028Q2": 0.000518,
+   "2028Q3": 0.000444,
+   "2028Q4": 0.00037,
+   "2028": 0.000481,
+   "2029Q1": 0.000296,
+   "2029Q2": 0.000222,
+   "2029Q3": 0.000148,
+   "2029Q4": 7.4e-05,
+   "2029": 0.000185,
+   "LT": 0.0,
+   "LT_from": 2030
+  },
+  "opex.real_growth": {
+   "2026": 0.031,
+   "2027Q1": 0.0393,
+   "2027Q2": 0.0141,
+   "2027Q3": -0.0025,
+   "2027Q4": -0.0025,
+   "2028": -0.0025,
+   "2029": -0.0025,
+   "LT": 0.0,
+   "LT_from": 2030
+  },
+  "fees.growth_vs_wages": {
+   "2026": -0.072,
+   "2027": 0.0166,
+   "2028": 0.0166,
+   "2029": 0.0166,
+   "LT": 0.0,
+   "LT_from": 2030
+  },
+  "other.insurance_growth_vs_wages": {
+   "2026": -0.145,
+   "2027Q1": 0.1708,
+   "2027Q2": 0.0556,
+   "2027Q3": 0.0037,
+   "2027Q4": 0.0037,
+   "2028": 0.0037,
+   "2029": 0.0037,
+   "LT": 0.0,
+   "LT_from": 2030
+  },
+  "opex.line_share_roots": {
+   "insurance": {
+    "2026Q3": -0.068259,
+    "2026Q4": -0.08215,
+    "2027Q1": -0.071375,
+    "2027Q2": -0.056969,
+    "2027Q3": -0.044285,
+    "2027Q4": -0.033889,
+    "2028Q1": -0.037479,
+    "2028Q2": -0.038541,
+    "2028Q3": -0.043647,
+    "2028Q4": -0.038404,
+    "2029Q1": -0.036061,
+    "2029Q2": -0.025645,
+    "2029Q3": -0.022271,
+    "2029Q4": -0.017501,
+    "LT": 0.0,
+    "LT_from": 2030
+   }
+  },
+  "volumes.liability_driver_roots": {
+   "insurance": {
+    "2026Q3": -0.076491,
+    "2026Q4": -0.087814,
+    "2027Q1": -0.061508,
+    "2027Q2": -0.052431,
+    "2027Q3": -0.038962,
+    "2027Q4": -0.028781,
+    "2028Q1": -0.039262,
+    "2028Q2": -0.037827,
+    "2028Q3": -0.04099,
+    "2028Q4": -0.035831,
+    "2029Q1": -0.030177,
+    "2029Q2": -0.021196,
+    "2029Q3": -0.01947,
+    "2029Q4": -0.015558,
+    "LT": 0.0,
+    "LT_from": 2030
+   }
+  }
+ },
+ "transmission": {
+  "axis": [
+   -0.157171,
+   -0.001218
+  ],
+  "level_world": "N",
+  "level_world_fixed": true,
+  "level_world_drift": 2.7755575615628914e-17,
+  "rows": {
+   "low": {
+    "target": -0.157171,
+    "phi": 0.6415,
+    "t_real": -0.157171,
+    "solved": true,
+    "nss_bank": {
+     "N": 0.0717,
+     "H": 0.06972,
+     "M": 0.0582
+    },
+    "pairs": {
+     "N_H": -0.0958,
+     "H_M": -0.1808
+    },
+    "floor_headroom": [
+     0.00719,
+     "corp_loans",
+     "M"
+    ]
+   },
+   "centre": {
+    "target": -0.079195,
+    "phi": 0.484,
+    "t_real": -0.079195,
+    "solved": true,
+    "nss_bank": {
+     "N": 0.0717,
+     "H": 0.07209,
+     "M": 0.0663
+    },
+    "pairs": {
+     "N_H": -0.0137,
+     "H_M": -0.1044
+    },
+    "floor_headroom": [
+     0.01374,
+     "corp_loans",
+     "M"
+    ]
+   },
+   "high": {
+    "target": -0.001218,
+    "phi": 0.3264,
+    "t_real": -0.001218,
+    "solved": true,
+    "nss_bank": {
+     "N": 0.0717,
+     "H": 0.07446,
+     "M": 0.0744
+    },
+    "pairs": {
+     "N_H": 0.0684,
+     "H_M": -0.028
+    },
+    "floor_headroom": [
+     0.0203,
+     "corp_loans",
+     "M"
+    ]
+   }
+  }
+ },
+ "ends": {
+  "funds_cost_gate": {
+   "max": 0.876,
+   "funds": "clients"
+  },
+  "phi_axis": {
+   "low": 0.48,
+   "high": 0.63,
+   "centre": 0.48,
+   "mid_axis": 0.555,
+   "evidence": [
+    0.1723,
+    0.6356
+   ],
+   "gate_max": 0.876,
+   "gate_funds": "clients",
+   "at_low": 0.8755,
+   "at_centre": 0.8755,
+   "at_evidence_low": 0.91
+  },
+  "level_axes": {
+   "opex": {
+    "low": -0.0064,
+    "high": 0.0064,
+    "low_raw": -0.006449642676019585,
+    "high_raw": 0.006357911070801717,
+    "window": [
+     0.022993,
+     0.023891
+    ],
+    "year": 2029,
+    "base": "weighted",
+    "ends_rule": "evidence"
+   },
+   "fees": {
+    "low": -0.0288,
+    "high": 0.0272,
+    "low_raw": -0.02876857129748576,
+    "high_raw": 0.027211460273985195,
+    "window": [
+     0.013668,
+     0.016128
+    ],
+    "year": 2029,
+    "base": "books",
+    "ends_rule": "evidence"
+   },
+   "ins": {
+    "low": -0.052,
+    "high": 0.0478,
+    "low_raw": -0.0520187835089749,
+    "high_raw": 0.0478344256797643,
+    "window": [
+     0.019186,
+     0.025316
+    ],
+    "year": 2029,
+    "base": "books",
+    "ends_rule": "evidence"
+   }
+  },
+  "m13_axis": {
+   "low": {
+    "opex.volume_weights.auto": 1.6285,
+    "opex.volume_weights.mortgage": 1.6285,
+    "opex.volume_weights.cash_loans": 1.6285,
+    "opex.volume_weights.cards": 1.6285,
+    "opex.volume_weights.securities": 0.0886,
+    "opex.volume_weights.liquidity": 0.0886,
+    "opex.volume_weights.retail_current": 0.0,
+    "opex.volume_weights.retail_term": 0.0,
+    "opex.volume_weights.corp_term": 0.0,
+    "opex.volume_weights.corp_current": 0.0,
+    "opex.real_growth.2026": 0.0275,
+    "opex.real_growth.2027Q1": 0.0399,
+    "opex.real_growth.2027Q2": 0.0147,
+    "opex.real_growth.2027Q3": -0.0019,
+    "opex.real_growth.2027Q4": -0.0019,
+    "opex.real_growth.2028": -0.0019,
+    "opex.real_growth.2029": -0.0019,
+    "opex.line_share_roots.insurance.2026Q3": -0.068263,
+    "opex.line_share_roots.insurance.2026Q4": -0.082158,
+    "opex.line_share_roots.insurance.2027Q1": -0.071381,
+    "opex.line_share_roots.insurance.2027Q2": -0.05695,
+    "opex.line_share_roots.insurance.2027Q3": -0.044229,
+    "opex.line_share_roots.insurance.2027Q4": -0.033821,
+    "opex.line_share_roots.insurance.2028Q1": -0.03743,
+    "opex.line_share_roots.insurance.2028Q2": -0.038478,
+    "opex.line_share_roots.insurance.2028Q3": -0.043451,
+    "opex.line_share_roots.insurance.2028Q4": -0.03802,
+    "opex.line_share_roots.insurance.2029Q1": -0.035261,
+    "opex.line_share_roots.insurance.2029Q2": -0.024322,
+    "opex.line_share_roots.insurance.2029Q3": -0.020659,
+    "opex.line_share_roots.insurance.2029Q4": -0.015694,
+    "volumes.liability_driver_roots.insurance.2026Q3": -0.0765,
+    "volumes.liability_driver_roots.insurance.2026Q4": -0.087821,
+    "volumes.liability_driver_roots.insurance.2027Q1": -0.061514,
+    "volumes.liability_driver_roots.insurance.2027Q2": -0.052388,
+    "volumes.liability_driver_roots.insurance.2027Q3": -0.038893,
+    "volumes.liability_driver_roots.insurance.2027Q4": -0.028712,
+    "volumes.liability_driver_roots.insurance.2028Q1": -0.039232,
+    "volumes.liability_driver_roots.insurance.2028Q2": -0.037731,
+    "volumes.liability_driver_roots.insurance.2028Q3": -0.040696,
+    "volumes.liability_driver_roots.insurance.2028Q4": -0.03536,
+    "volumes.liability_driver_roots.insurance.2029Q1": -0.029052,
+    "volumes.liability_driver_roots.insurance.2029Q2": -0.019682,
+    "volumes.liability_driver_roots.insurance.2029Q3": -0.01776,
+    "volumes.liability_driver_roots.insurance.2029Q4": -0.013657
+   },
+   "high": {
+    "opex.volume_weights.auto": 2.2903,
+    "opex.volume_weights.mortgage": 2.2903,
+    "opex.volume_weights.cash_loans": 2.2903,
+    "opex.volume_weights.cards": 2.2903,
+    "opex.volume_weights.securities": 0.2171,
+    "opex.volume_weights.liquidity": 0.2171,
+    "opex.volume_weights.retail_current": 2.2903,
+    "opex.volume_weights.retail_term": 2.2903,
+    "opex.volume_weights.corp_term": 1.0,
+    "opex.volume_weights.corp_current": 1.0,
+    "opex.real_growth.2026": 0.0346,
+    "opex.real_growth.2027Q1": 0.0387,
+    "opex.real_growth.2027Q2": 0.0135,
+    "opex.real_growth.2027Q3": -0.0031,
+    "opex.real_growth.2027Q4": -0.0031,
+    "opex.real_growth.2028": -0.0031,
+    "opex.real_growth.2029": -0.0031,
+    "opex.line_share_roots.insurance.2026Q3": -0.068254,
+    "opex.line_share_roots.insurance.2026Q4": -0.082141,
+    "opex.line_share_roots.insurance.2027Q1": -0.071367,
+    "opex.line_share_roots.insurance.2027Q2": -0.056985,
+    "opex.line_share_roots.insurance.2027Q3": -0.044338,
+    "opex.line_share_roots.insurance.2027Q4": -0.033956,
+    "opex.line_share_roots.insurance.2028Q1": -0.037524,
+    "opex.line_share_roots.insurance.2028Q2": -0.038601,
+    "opex.line_share_roots.insurance.2028Q3": -0.04381,
+    "opex.line_share_roots.insurance.2028Q4": -0.038763,
+    "opex.line_share_roots.insurance.2029Q1": -0.036675,
+    "opex.line_share_roots.insurance.2029Q2": -0.026735,
+    "opex.line_share_roots.insurance.2029Q3": -0.023771,
+    "opex.line_share_roots.insurance.2029Q4": -0.019155,
+    "volumes.liability_driver_roots.insurance.2026Q3": -0.076482,
+    "volumes.liability_driver_roots.insurance.2026Q4": -0.087806,
+    "volumes.liability_driver_roots.insurance.2027Q1": -0.061501,
+    "volumes.liability_driver_roots.insurance.2027Q2": -0.052471,
+    "volumes.liability_driver_roots.insurance.2027Q3": -0.039028,
+    "volumes.liability_driver_roots.insurance.2027Q4": -0.028847,
+    "volumes.liability_driver_roots.insurance.2028Q1": -0.039285,
+    "volumes.liability_driver_roots.insurance.2028Q2": -0.037923,
+    "volumes.liability_driver_roots.insurance.2028Q3": -0.041221,
+    "volumes.liability_driver_roots.insurance.2028Q4": -0.036317,
+    "volumes.liability_driver_roots.insurance.2029Q1": -0.03092,
+    "volumes.liability_driver_roots.insurance.2029Q2": -0.022623,
+    "volumes.liability_driver_roots.insurance.2029Q3": -0.021041,
+    "volumes.liability_driver_roots.insurance.2029Q4": -0.017293
+   }
+  },
+  "base_axes": {
+   "fees": {
+    "low": {
+     "fees.volume_base.mix.corporate.share": 0.764,
+     "fees.volume_base.mix.retail.share": 0.236,
+     "fees.growth_vs_wages.2026": -0.0616,
+     "fees.growth_vs_wages.2027": 0.0146,
+     "fees.growth_vs_wages.2028": 0.0146,
+     "fees.growth_vs_wages.2029": 0.0146,
+     "opex.line_share_roots.insurance.2026Q3": -0.06826,
+     "opex.line_share_roots.insurance.2026Q4": -0.082151,
+     "opex.line_share_roots.insurance.2027Q1": -0.071389,
+     "opex.line_share_roots.insurance.2027Q2": -0.057008,
+     "opex.line_share_roots.insurance.2027Q3": -0.044347,
+     "opex.line_share_roots.insurance.2027Q4": -0.033968,
+     "opex.line_share_roots.insurance.2028Q1": -0.037558,
+     "opex.line_share_roots.insurance.2028Q2": -0.038637,
+     "opex.line_share_roots.insurance.2028Q3": -0.043779,
+     "opex.line_share_roots.insurance.2028Q4": -0.038571,
+     "opex.line_share_roots.insurance.2029Q1": -0.036291,
+     "opex.line_share_roots.insurance.2029Q2": -0.025909,
+     "opex.line_share_roots.insurance.2029Q3": -0.022565,
+     "opex.line_share_roots.insurance.2029Q4": -0.01784,
+     "volumes.liability_driver_roots.insurance.2026Q3": -0.076494,
+     "volumes.liability_driver_roots.insurance.2026Q4": -0.087815,
+     "volumes.liability_driver_roots.insurance.2027Q1": -0.061536,
+     "volumes.liability_driver_roots.insurance.2027Q2": -0.052482,
+     "volumes.liability_driver_roots.insurance.2027Q3": -0.039035,
+     "volumes.liability_driver_roots.insurance.2027Q4": -0.028863,
+     "volumes.liability_driver_roots.insurance.2028Q1": -0.039337,
+     "volumes.liability_driver_roots.insurance.2028Q2": -0.037944,
+     "volumes.liability_driver_roots.insurance.2028Q3": -0.041137,
+     "volumes.liability_driver_roots.insurance.2028Q4": -0.036017,
+     "volumes.liability_driver_roots.insurance.2029Q1": -0.030452,
+     "volumes.liability_driver_roots.insurance.2029Q2": -0.021448,
+     "volumes.liability_driver_roots.insurance.2029Q3": -0.019805,
+     "volumes.liability_driver_roots.insurance.2029Q4": -0.015903,
+     "opex.real_growth.2026": 0.0323,
+     "opex.real_growth.2027Q1": 0.0391,
+     "opex.real_growth.2027Q2": 0.0139,
+     "opex.real_growth.2027Q3": -0.0027,
+     "opex.real_growth.2027Q4": -0.0027,
+     "opex.real_growth.2028": -0.0027,
+     "opex.real_growth.2029": -0.0027
+    },
+    "high": {
+     "fees.volume_base.mix.corporate.share": 0.8924,
+     "fees.volume_base.mix.retail.share": 0.1076,
+     "fees.growth_vs_wages.2026": -0.0804,
+     "fees.growth_vs_wages.2027": 0.0183,
+     "fees.growth_vs_wages.2028": 0.0183,
+     "fees.growth_vs_wages.2029": 0.0183,
+     "opex.line_share_roots.insurance.2026Q3": -0.068258,
+     "opex.line_share_roots.insurance.2026Q4": -0.082148,
+     "opex.line_share_roots.insurance.2027Q1": -0.071364,
+     "opex.line_share_roots.insurance.2027Q2": -0.056937,
+     "opex.line_share_roots.insurance.2027Q3": -0.044233,
+     "opex.line_share_roots.insurance.2027Q4": -0.033825,
+     "opex.line_share_roots.insurance.2028Q1": -0.037413,
+     "opex.line_share_roots.insurance.2028Q2": -0.038461,
+     "opex.line_share_roots.insurance.2028Q3": -0.043538,
+     "opex.line_share_roots.insurance.2028Q4": -0.038266,
+     "opex.line_share_roots.insurance.2029Q1": -0.035877,
+     "opex.line_share_roots.insurance.2029Q2": -0.025441,
+     "opex.line_share_roots.insurance.2029Q3": -0.022034,
+     "opex.line_share_roots.insurance.2029Q4": -0.017217,
+     "volumes.liability_driver_roots.insurance.2026Q3": -0.076489,
+     "volumes.liability_driver_roots.insurance.2026Q4": -0.087813,
+     "volumes.liability_driver_roots.insurance.2027Q1": -0.061486,
+     "volumes.liability_driver_roots.insurance.2027Q2": -0.052389,
+     "volumes.liability_driver_roots.insurance.2027Q3": -0.038901,
+     "volumes.liability_driver_roots.insurance.2027Q4": -0.028711,
+     "volumes.liability_driver_roots.insurance.2028Q1": -0.039199,
+     "volumes.liability_driver_roots.insurance.2028Q2": -0.037731,
+     "volumes.liability_driver_roots.insurance.2028Q3": -0.040868,
+     "volumes.liability_driver_roots.insurance.2028Q4": -0.035679,
+     "volumes.liability_driver_roots.insurance.2029Q1": -0.029965,
+     "volumes.liability_driver_roots.insurance.2029Q2": -0.021,
+     "volumes.liability_driver_roots.insurance.2029Q3": -0.019191,
+     "volumes.liability_driver_roots.insurance.2029Q4": -0.01527,
+     "opex.real_growth.2026": 0.0299,
+     "opex.real_growth.2027Q1": 0.0395,
+     "opex.real_growth.2027Q2": 0.0143,
+     "opex.real_growth.2027Q3": -0.0023,
+     "opex.real_growth.2027Q4": -0.0023,
+     "opex.real_growth.2028": -0.0023,
+     "opex.real_growth.2029": -0.0023
+    }
+   },
+   "ins": {
+    "low": {
+     "other.insurance_volume_base.mix.corporate.share": 0.0,
+     "other.insurance_volume_base.mix.retail.share": 1.0,
+     "other.insurance_growth_vs_wages.2026": -0.1442,
+     "other.insurance_growth_vs_wages.2027Q1": 0.1697,
+     "other.insurance_growth_vs_wages.2027Q2": 0.0545,
+     "other.insurance_growth_vs_wages.2027Q3": 0.0026,
+     "other.insurance_growth_vs_wages.2027Q4": 0.0026,
+     "other.insurance_growth_vs_wages.2028": 0.0026,
+     "other.insurance_growth_vs_wages.2029": 0.0026,
+     "opex.line_share_roots.insurance.2026Q3": -0.070281,
+     "opex.line_share_roots.insurance.2026Q4": -0.083483,
+     "opex.line_share_roots.insurance.2027Q1": -0.072756,
+     "opex.line_share_roots.insurance.2027Q2": -0.058335,
+     "opex.line_share_roots.insurance.2027Q3": -0.04506,
+     "opex.line_share_roots.insurance.2027Q4": -0.034408,
+     "opex.line_share_roots.insurance.2028Q1": -0.037811,
+     "opex.line_share_roots.insurance.2028Q2": -0.038794,
+     "opex.line_share_roots.insurance.2028Q3": -0.04389,
+     "opex.line_share_roots.insurance.2028Q4": -0.038687,
+     "opex.line_share_roots.insurance.2029Q1": -0.036415,
+     "opex.line_share_roots.insurance.2029Q2": -0.026057,
+     "opex.line_share_roots.insurance.2029Q3": -0.022708,
+     "opex.line_share_roots.insurance.2029Q4": -0.017955,
+     "volumes.liability_driver_roots.insurance.2026Q3": -0.078224,
+     "volumes.liability_driver_roots.insurance.2026Q4": -0.088755,
+     "volumes.liability_driver_roots.insurance.2027Q1": -0.063339,
+     "volumes.liability_driver_roots.insurance.2027Q2": -0.053328,
+     "volumes.liability_driver_roots.insurance.2027Q3": -0.039612,
+     "volumes.liability_driver_roots.insurance.2027Q4": -0.029163,
+     "volumes.liability_driver_roots.insurance.2028Q1": -0.039543,
+     "volumes.liability_driver_roots.insurance.2028Q2": -0.038051,
+     "volumes.liability_driver_roots.insurance.2028Q3": -0.041252,
+     "volumes.liability_driver_roots.insurance.2028Q4": -0.036136,
+     "volumes.liability_driver_roots.insurance.2029Q1": -0.030582,
+     "volumes.liability_driver_roots.insurance.2029Q2": -0.021614,
+     "volumes.liability_driver_roots.insurance.2029Q3": -0.019925,
+     "volumes.liability_driver_roots.insurance.2029Q4": -0.01601,
+     "opex.real_growth.2026": 0.0315,
+     "opex.real_growth.2027Q1": 0.0392,
+     "opex.real_growth.2027Q2": 0.014,
+     "opex.real_growth.2027Q3": -0.0026,
+     "opex.real_growth.2027Q4": -0.0026,
+     "opex.real_growth.2028": -0.0026,
+     "opex.real_growth.2029": -0.0026
+    },
+    "high": {
+     "other.insurance_volume_base.mix.corporate.share": 0.0303,
+     "other.insurance_volume_base.mix.retail.share": 0.9697,
+     "other.insurance_growth_vs_wages.2026": -0.1455,
+     "other.insurance_growth_vs_wages.2027Q1": 0.1715,
+     "other.insurance_growth_vs_wages.2027Q2": 0.0563,
+     "other.insurance_growth_vs_wages.2027Q3": 0.0044,
+     "other.insurance_growth_vs_wages.2027Q4": 0.0044,
+     "other.insurance_growth_vs_wages.2028": 0.0044,
+     "other.insurance_growth_vs_wages.2029": 0.0044,
+     "opex.line_share_roots.insurance.2026Q3": -0.06707,
+     "opex.line_share_roots.insurance.2026Q4": -0.081367,
+     "opex.line_share_roots.insurance.2027Q1": -0.070564,
+     "opex.line_share_roots.insurance.2027Q2": -0.056166,
+     "opex.line_share_roots.insurance.2027Q3": -0.043829,
+     "opex.line_share_roots.insurance.2027Q4": -0.033584,
+     "opex.line_share_roots.insurance.2028Q1": -0.037283,
+     "opex.line_share_roots.insurance.2028Q2": -0.038391,
+     "opex.line_share_roots.insurance.2028Q3": -0.043502,
+     "opex.line_share_roots.insurance.2028Q4": -0.038234,
+     "opex.line_share_roots.insurance.2029Q1": -0.035848,
+     "opex.line_share_roots.insurance.2029Q2": -0.025398,
+     "opex.line_share_roots.insurance.2029Q3": -0.022007,
+     "opex.line_share_roots.insurance.2029Q4": -0.017226,
+     "volumes.liability_driver_roots.insurance.2026Q3": -0.075473,
+     "volumes.liability_driver_roots.insurance.2026Q4": -0.087262,
+     "volumes.liability_driver_roots.insurance.2027Q1": -0.060433,
+     "volumes.liability_driver_roots.insurance.2027Q2": -0.051905,
+     "volumes.liability_driver_roots.insurance.2027Q3": -0.038579,
+     "volumes.liability_driver_roots.insurance.2027Q4": -0.028554,
+     "volumes.liability_driver_roots.insurance.2028Q1": -0.039095,
+     "volumes.liability_driver_roots.insurance.2028Q2": -0.037693,
+     "volumes.liability_driver_roots.insurance.2028Q3": -0.040833,
+     "volumes.liability_driver_roots.insurance.2028Q4": -0.035649,
+     "volumes.liability_driver_roots.insurance.2029Q1": -0.029934,
+     "volumes.liability_driver_roots.insurance.2029Q2": -0.020944,
+     "volumes.liability_driver_roots.insurance.2029Q3": -0.019195,
+     "volumes.liability_driver_roots.insurance.2029Q4": -0.015284,
+     "opex.real_growth.2026": 0.0307,
+     "opex.real_growth.2027Q1": 0.0393,
+     "opex.real_growth.2027Q2": 0.0141,
+     "opex.real_growth.2027Q3": -0.0025,
+     "opex.real_growth.2027Q4": -0.0025,
+     "opex.real_growth.2028": -0.0025,
+     "opex.real_growth.2029": -0.0025
+    }
+   }
+  },
+  "link_axis": {
+   "low": {
+    "other.insurance_volume_link": 0.0,
+    "other.insurance_growth_vs_wages.2026": -0.1807,
+    "other.insurance_growth_vs_wages.2027Q1": 0.1465,
+    "other.insurance_growth_vs_wages.2027Q2": 0.0313,
+    "other.insurance_growth_vs_wages.2027Q3": -0.0206,
+    "other.insurance_growth_vs_wages.2027Q4": -0.0206,
+    "other.insurance_growth_vs_wages.2028": -0.0206,
+    "other.insurance_growth_vs_wages.2029": -0.0206,
+    "opex.line_share_roots.insurance.2026Q3": -0.104177,
+    "opex.line_share_roots.insurance.2026Q4": -0.124402,
+    "opex.line_share_roots.insurance.2027Q1": -0.108648,
+    "opex.line_share_roots.insurance.2027Q2": -0.087283,
+    "opex.line_share_roots.insurance.2027Q3": -0.068274,
+    "opex.line_share_roots.insurance.2027Q4": -0.052527,
+    "opex.line_share_roots.insurance.2028Q1": -0.058102,
+    "opex.line_share_roots.insurance.2028Q2": -0.059807,
+    "opex.line_share_roots.insurance.2028Q3": -0.067563,
+    "opex.line_share_roots.insurance.2028Q4": -0.059679,
+    "opex.line_share_roots.insurance.2029Q1": -0.056017,
+    "opex.line_share_roots.insurance.2029Q2": -0.040059,
+    "opex.line_share_roots.insurance.2029Q3": -0.035155,
+    "opex.line_share_roots.insurance.2029Q4": -0.028145,
+    "volumes.liability_driver_roots.insurance.2026Q3": -0.116205,
+    "volumes.liability_driver_roots.insurance.2026Q4": -0.132556,
+    "volumes.liability_driver_roots.insurance.2027Q1": -0.094046,
+    "volumes.liability_driver_roots.insurance.2027Q2": -0.080488,
+    "volumes.liability_driver_roots.insurance.2027Q3": -0.060236,
+    "volumes.liability_driver_roots.insurance.2027Q4": -0.044712,
+    "volumes.liability_driver_roots.insurance.2028Q1": -0.060903,
+    "volumes.liability_driver_roots.insurance.2028Q2": -0.058723,
+    "volumes.liability_driver_roots.insurance.2028Q3": -0.06358,
+    "volumes.liability_driver_roots.insurance.2028Q4": -0.055791,
+    "volumes.liability_driver_roots.insurance.2029Q1": -0.046915,
+    "volumes.liability_driver_roots.insurance.2029Q2": -0.033289,
+    "volumes.liability_driver_roots.insurance.2029Q3": -0.03102,
+    "volumes.liability_driver_roots.insurance.2029Q4": -0.025304
+   },
+   "high": {
+    "other.insurance_volume_link": 0.74,
+    "other.insurance_growth_vs_wages.2026": -0.1062,
+    "other.insurance_growth_vs_wages.2027Q1": 0.1954,
+    "other.insurance_growth_vs_wages.2027Q2": 0.0802,
+    "other.insurance_growth_vs_wages.2027Q3": 0.0283,
+    "other.insurance_growth_vs_wages.2027Q4": 0.0283,
+    "other.insurance_growth_vs_wages.2028": 0.0283,
+    "other.insurance_growth_vs_wages.2029": 0.0283,
+    "opex.line_share_roots.insurance.2026Q3": -0.029345,
+    "opex.line_share_roots.insurance.2026Q4": -0.035619,
+    "opex.line_share_roots.insurance.2027Q1": -0.030775,
+    "opex.line_share_roots.insurance.2027Q2": -0.024396,
+    "opex.line_share_roots.insurance.2027Q3": -0.018842,
+    "opex.line_share_roots.insurance.2027Q4": -0.014343,
+    "opex.line_share_roots.insurance.2028Q1": -0.015857,
+    "opex.line_share_roots.insurance.2028Q2": -0.016292,
+    "opex.line_share_roots.insurance.2028Q3": -0.018504,
+    "opex.line_share_roots.insurance.2028Q4": -0.016223,
+    "opex.line_share_roots.insurance.2029Q1": -0.015222,
+    "opex.line_share_roots.insurance.2029Q2": -0.01077,
+    "opex.line_share_roots.insurance.2029Q3": -0.009282,
+    "opex.line_share_roots.insurance.2029Q4": -0.007162,
+    "volumes.liability_driver_roots.insurance.2026Q3": -0.033049,
+    "volumes.liability_driver_roots.insurance.2026Q4": -0.03821,
+    "volumes.liability_driver_roots.insurance.2027Q1": -0.026395,
+    "volumes.liability_driver_roots.insurance.2027Q2": -0.022408,
+    "volumes.liability_driver_roots.insurance.2027Q3": -0.016531,
+    "volumes.liability_driver_roots.insurance.2027Q4": -0.012153,
+    "volumes.liability_driver_roots.insurance.2028Q1": -0.0166,
+    "volumes.liability_driver_roots.insurance.2028Q2": -0.015988,
+    "volumes.liability_driver_roots.insurance.2028Q3": -0.017344,
+    "volumes.liability_driver_roots.insurance.2028Q4": -0.015111,
+    "volumes.liability_driver_roots.insurance.2029Q1": -0.012707,
+    "volumes.liability_driver_roots.insurance.2029Q2": -0.008879,
+    "volumes.liability_driver_roots.insurance.2029Q3": -0.008045,
+    "volumes.liability_driver_roots.insurance.2029Q4": -0.006292
+   }
+  },
+  "cor_intensity": {
+   "low": {
+    "regimes.norm.cor.LT": 0.024664,
+    "regimes.soft.cor.2026": 0.021102,
+    "regimes.soft.cor.2027": 0.018029,
+    "regimes.soft.cor.2028": 0.015944,
+    "regimes.soft.cor.2029": 0.01597,
+    "regimes.soft.cor.LT": 0.023189,
+    "regimes.norm.cor.2026": 0.025653,
+    "regimes.norm.cor.2027": 0.024632,
+    "regimes.norm.cor.2028": 0.02452,
+    "regimes.norm.cor.2029": 0.024545,
+    "regimes.downturn.cor.2026": 0.029112,
+    "regimes.downturn.cor.2027Q1": 0.030437,
+    "regimes.downturn.cor.2027Q2": 0.032195,
+    "regimes.downturn.cor.2027Q3": 0.033952,
+    "regimes.downturn.cor.2027Q4": 0.035711,
+    "regimes.downturn.cor.2028": 0.030768,
+    "regimes.downturn.cor.2029": 0.028594,
+    "regimes.downturn.cor.LT": 0.02871,
+    "regimes.crisis.cor.2026": 0.029112,
+    "regimes.crisis.cor.2028": 0.037639,
+    "regimes.crisis.cor.2029": 0.023666,
+    "regimes.crisis.cor.LT": 0.027634
+   },
+   "high": {
+    "regimes.norm.cor.LT": 0.023664,
+    "regimes.soft.cor.2026": 0.021134,
+    "regimes.soft.cor.2027": 0.017696,
+    "regimes.soft.cor.2028": 0.01565,
+    "regimes.soft.cor.2029": 0.015675,
+    "regimes.soft.cor.LT": 0.022561,
+    "regimes.norm.cor.2026": 0.02493,
+    "regimes.norm.cor.2027": 0.023633,
+    "regimes.norm.cor.2028": 0.023526,
+    "regimes.norm.cor.2029": 0.02355,
+    "regimes.downturn.cor.2026": 0.028479,
+    "regimes.downturn.cor.2027Q1": 0.029364,
+    "regimes.downturn.cor.2027Q2": 0.03106,
+    "regimes.downturn.cor.2027Q3": 0.032755,
+    "regimes.downturn.cor.2027Q4": 0.034452,
+    "regimes.downturn.cor.2028": 0.029683,
+    "regimes.downturn.cor.2029": 0.027586,
+    "regimes.downturn.cor.LT": 0.027698,
+    "regimes.crisis.cor.2026": 0.028479,
+    "regimes.crisis.cor.2028": 0.03798,
+    "regimes.crisis.cor.2029": 0.022668,
+    "regimes.crisis.cor.LT": 0.027028
+   },
+   "windows": {
+    "regimes.norm.cor.LT": "R",
+    "regimes.soft.cor.2026": "q2_2026",
+    "regimes.soft.cor.2027": "soft",
+    "regimes.soft.cor.2028": "soft",
+    "regimes.soft.cor.2029": "soft",
+    "regimes.soft.cor.LT": "soft_LT",
+    "regimes.norm.cor.2026": "norm_2026",
+    "regimes.norm.cor.2027": "R",
+    "regimes.norm.cor.2028": "R",
+    "regimes.norm.cor.2029": "R",
+    "regimes.downturn.cor.2026": "q1_2026",
+    "regimes.downturn.cor.2027Q1": "downturn",
+    "regimes.downturn.cor.2027Q2": "downturn",
+    "regimes.downturn.cor.2027Q3": "downturn",
+    "regimes.downturn.cor.2027Q4": "downturn",
+    "regimes.downturn.cor.2028": "downturn",
+    "regimes.downturn.cor.2029": "downturn",
+    "regimes.downturn.cor.LT": "downturn",
+    "regimes.crisis.cor.2026": "q1_2026",
+    "regimes.crisis.cor.2028": "post1",
+    "regimes.crisis.cor.2029": "post2",
+    "regimes.crisis.cor.LT": "crisis_LT"
+   }
+  },
+  "perimeter_axes": {
+   "kl_ins": {
+    "low": {
+     "values": {
+      "other.insurance_growth_vs_wages.2026": -0.1552,
+      "other.insurance_growth_vs_wages.2027Q1": 0.1306,
+      "other.insurance_growth_vs_wages.2027Q2": 0.0524,
+      "other.insurance_growth_vs_wages.2027Q3": 0.0005,
+      "other.insurance_growth_vs_wages.2027Q4": 0.0005,
+      "other.insurance_growth_vs_wages.2028": 0.0005,
+      "other.insurance_growth_vs_wages.2029": 0.0005,
+      "opex.line_share_roots.insurance.2026Q3": -0.06827,
+      "opex.line_share_roots.insurance.2026Q4": -0.082193,
+      "opex.line_share_roots.insurance.2027Q1": -0.071581,
+      "opex.line_share_roots.insurance.2027Q2": -0.057321,
+      "opex.line_share_roots.insurance.2027Q3": -0.044681,
+      "opex.line_share_roots.insurance.2027Q4": -0.034337,
+      "opex.line_share_roots.insurance.2028Q1": -0.037846,
+      "opex.line_share_roots.insurance.2028Q2": -0.038927,
+      "opex.line_share_roots.insurance.2028Q3": -0.044191,
+      "opex.line_share_roots.insurance.2028Q4": -0.039073,
+      "opex.line_share_roots.insurance.2029Q1": -0.036986,
+      "opex.line_share_roots.insurance.2029Q2": -0.026786,
+      "opex.line_share_roots.insurance.2029Q3": -0.023565,
+      "opex.line_share_roots.insurance.2029Q4": -0.018914,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076513,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087879,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061855,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052789,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.039396,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.02924,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039538,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.038321,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.041585,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.036575,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.031284,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.022368,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.020885,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.016968
+     },
+     "degenerate": false
+    },
+    "high": {
+     "values": {
+      "other.insurance_growth_vs_wages.2026": -0.1348,
+      "other.insurance_growth_vs_wages.2027Q1": 0.2118,
+      "other.insurance_growth_vs_wages.2027Q2": 0.0588,
+      "other.insurance_growth_vs_wages.2027Q3": 0.0069,
+      "other.insurance_growth_vs_wages.2027Q4": 0.0069,
+      "other.insurance_growth_vs_wages.2028": 0.0069,
+      "other.insurance_growth_vs_wages.2029": 0.0069,
+      "opex.line_share_roots.insurance.2026Q3": -0.068248,
+      "opex.line_share_roots.insurance.2026Q4": -0.082107,
+      "opex.line_share_roots.insurance.2027Q1": -0.071168,
+      "opex.line_share_roots.insurance.2027Q2": -0.056613,
+      "opex.line_share_roots.insurance.2027Q3": -0.043851,
+      "opex.line_share_roots.insurance.2027Q4": -0.033403,
+      "opex.line_share_roots.insurance.2028Q1": -0.037106,
+      "opex.line_share_roots.insurance.2028Q2": -0.038148,
+      "opex.line_share_roots.insurance.2028Q3": -0.043103,
+      "opex.line_share_roots.insurance.2028Q4": -0.037733,
+      "opex.line_share_roots.insurance.2029Q1": -0.035077,
+      "opex.line_share_roots.insurance.2029Q2": -0.024487,
+      "opex.line_share_roots.insurance.2029Q3": -0.021025,
+      "opex.line_share_roots.insurance.2029Q4": -0.016097,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076469,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.08775,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061159,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052069,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.038458,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.028313,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.038979,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.037324,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.040403,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035077,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.028968,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.02009,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.018086,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.014134
+     },
+     "degenerate": false
+    }
+   },
+   "T": {
+    "low": {
+     "values": {
+      "opex.real_growth.2026": 0.0155,
+      "opex.real_growth.2027Q1": 0.0239,
+      "opex.real_growth.2027Q2": -0.0026,
+      "opex.real_growth.2027Q3": -0.0026,
+      "opex.real_growth.2027Q4": -0.0026,
+      "opex.real_growth.2028": -0.0026,
+      "opex.real_growth.2029": -0.0026,
+      "other.insurance_growth_vs_wages.2026": -0.2031,
+      "other.insurance_growth_vs_wages.2027Q1": 0.0695,
+      "other.insurance_growth_vs_wages.2027Q2": 0.0016,
+      "other.insurance_growth_vs_wages.2027Q3": 0.0016,
+      "other.insurance_growth_vs_wages.2027Q4": 0.0016,
+      "other.insurance_growth_vs_wages.2028": 0.0016,
+      "other.insurance_growth_vs_wages.2029": 0.0016,
+      "opex.line_share_roots.insurance.2026Q3": -0.068287,
+      "opex.line_share_roots.insurance.2026Q4": -0.082236,
+      "opex.line_share_roots.insurance.2027Q1": -0.071705,
+      "opex.line_share_roots.insurance.2027Q2": -0.057534,
+      "opex.line_share_roots.insurance.2027Q3": -0.04495,
+      "opex.line_share_roots.insurance.2027Q4": -0.034629,
+      "opex.line_share_roots.insurance.2028Q1": -0.038069,
+      "opex.line_share_roots.insurance.2028Q2": -0.039139,
+      "opex.line_share_roots.insurance.2028Q3": -0.044472,
+      "opex.line_share_roots.insurance.2028Q4": -0.039408,
+      "opex.line_share_roots.insurance.2029Q1": -0.037398,
+      "opex.line_share_roots.insurance.2029Q2": -0.027263,
+      "opex.line_share_roots.insurance.2029Q3": -0.023993,
+      "opex.line_share_roots.insurance.2029Q4": -0.019246,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076548,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087931,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.062052,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.05302,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.039702,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.029518,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039706,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.038573,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.041894,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.036933,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.031749,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.022857,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.021253,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.017267
+     },
+     "degenerate": false
+    },
+    "high": {
+     "values": {
+      "opex.real_growth.2026": 0.0464,
+      "opex.real_growth.2027Q1": 0.0548,
+      "opex.real_growth.2027Q2": 0.0308,
+      "opex.real_growth.2027Q3": -0.0024,
+      "opex.real_growth.2027Q4": -0.0024,
+      "opex.real_growth.2028": -0.0024,
+      "opex.real_growth.2029": -0.0024,
+      "other.insurance_growth_vs_wages.2026": -0.0965,
+      "other.insurance_growth_vs_wages.2027Q1": 0.2555,
+      "other.insurance_growth_vs_wages.2027Q2": 0.1006,
+      "other.insurance_growth_vs_wages.2027Q3": 0.0052,
+      "other.insurance_growth_vs_wages.2027Q4": 0.0052,
+      "other.insurance_growth_vs_wages.2028": 0.0052,
+      "other.insurance_growth_vs_wages.2029": 0.0052,
+      "opex.line_share_roots.insurance.2026Q3": -0.068241,
+      "opex.line_share_roots.insurance.2026Q4": -0.082104,
+      "opex.line_share_roots.insurance.2027Q1": -0.071182,
+      "opex.line_share_roots.insurance.2027Q2": -0.056637,
+      "opex.line_share_roots.insurance.2027Q3": -0.04387,
+      "opex.line_share_roots.insurance.2027Q4": -0.033432,
+      "opex.line_share_roots.insurance.2028Q1": -0.037153,
+      "opex.line_share_roots.insurance.2028Q2": -0.038203,
+      "opex.line_share_roots.insurance.2028Q3": -0.043166,
+      "opex.line_share_roots.insurance.2028Q4": -0.037818,
+      "opex.line_share_roots.insurance.2029Q1": -0.035196,
+      "opex.line_share_roots.insurance.2029Q2": -0.024621,
+      "opex.line_share_roots.insurance.2029Q3": -0.021174,
+      "opex.line_share_roots.insurance.2029Q4": -0.016285,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076455,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087758,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061178,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052098,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.038465,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.028363,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039026,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.037388,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.040468,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035182,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.029099,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.020225,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.018249,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.014347
+     },
+     "degenerate": false
+    }
+   },
+   "gold": {
+    "low": {
+     "values": {
+      "other.insurance_growth_vs_wages.2027Q2": 0.0533,
+      "other.insurance_growth_vs_wages.2026": -0.145,
+      "other.insurance_growth_vs_wages.2027Q1": 0.1685,
+      "other.insurance_growth_vs_wages.2027Q3": 0.0014,
+      "other.insurance_growth_vs_wages.2027Q4": 0.0014,
+      "other.insurance_growth_vs_wages.2028": 0.0014,
+      "other.insurance_growth_vs_wages.2029": 0.0014,
+      "opex.line_share_roots.insurance.2026Q3": -0.068259,
+      "opex.line_share_roots.insurance.2026Q4": -0.08215,
+      "opex.line_share_roots.insurance.2027Q1": -0.071382,
+      "opex.line_share_roots.insurance.2027Q2": -0.056988,
+      "opex.line_share_roots.insurance.2027Q3": -0.044318,
+      "opex.line_share_roots.insurance.2027Q4": -0.033934,
+      "opex.line_share_roots.insurance.2028Q1": -0.037527,
+      "opex.line_share_roots.insurance.2028Q2": -0.038608,
+      "opex.line_share_roots.insurance.2028Q3": -0.043748,
+      "opex.line_share_roots.insurance.2028Q4": -0.03854,
+      "opex.line_share_roots.insurance.2029Q1": -0.036263,
+      "opex.line_share_roots.insurance.2029Q2": -0.025893,
+      "opex.line_share_roots.insurance.2029Q3": -0.022562,
+      "opex.line_share_roots.insurance.2029Q4": -0.017844,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076491,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087815,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061522,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052457,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.039002,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.028829,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039309,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.037913,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.041107,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035986,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.030427,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.021441,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.019806,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.01591
+     },
+     "degenerate": false
+    },
+    "high": {
+     "values": {
+      "other.insurance_growth_vs_wages.2027Q2": 0.0579,
+      "other.insurance_growth_vs_wages.2026": -0.145,
+      "other.insurance_growth_vs_wages.2027Q1": 0.1731,
+      "other.insurance_growth_vs_wages.2027Q3": 0.006,
+      "other.insurance_growth_vs_wages.2027Q4": 0.006,
+      "other.insurance_growth_vs_wages.2028": 0.006,
+      "other.insurance_growth_vs_wages.2029": 0.006,
+      "opex.line_share_roots.insurance.2026Q3": -0.068259,
+      "opex.line_share_roots.insurance.2026Q4": -0.08215,
+      "opex.line_share_roots.insurance.2027Q1": -0.071369,
+      "opex.line_share_roots.insurance.2027Q2": -0.056949,
+      "opex.line_share_roots.insurance.2027Q3": -0.044252,
+      "opex.line_share_roots.insurance.2027Q4": -0.033845,
+      "opex.line_share_roots.insurance.2028Q1": -0.03743,
+      "opex.line_share_roots.insurance.2028Q2": -0.038474,
+      "opex.line_share_roots.insurance.2028Q3": -0.043545,
+      "opex.line_share_roots.insurance.2028Q4": -0.038267,
+      "opex.line_share_roots.insurance.2029Q1": -0.035863,
+      "opex.line_share_roots.insurance.2029Q2": -0.025407,
+      "opex.line_share_roots.insurance.2029Q3": -0.021983,
+      "opex.line_share_roots.insurance.2029Q4": -0.017153,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076491,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087815,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061496,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052406,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.038923,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.02873,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039213,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.03774,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.040871,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035677,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.029938,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.02096,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.019131,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.015203
+     },
+     "degenerate": false
+    }
+   },
+   "hcf": {
+    "low": {
+     "values": {
+      "opex.real_growth.2027Q2": 0.0141,
+      "opex.real_growth.2026": 0.031,
+      "opex.real_growth.2027Q1": 0.0393,
+      "opex.real_growth.2027Q3": -0.0025,
+      "opex.real_growth.2027Q4": -0.0025,
+      "opex.real_growth.2028": -0.0025,
+      "opex.real_growth.2029": -0.0025,
+      "opex.line_share_roots.insurance.2026Q3": -0.068259,
+      "opex.line_share_roots.insurance.2026Q4": -0.08215,
+      "opex.line_share_roots.insurance.2027Q1": -0.071375,
+      "opex.line_share_roots.insurance.2027Q2": -0.056967,
+      "opex.line_share_roots.insurance.2027Q3": -0.044283,
+      "opex.line_share_roots.insurance.2027Q4": -0.033886,
+      "opex.line_share_roots.insurance.2028Q1": -0.037475,
+      "opex.line_share_roots.insurance.2028Q2": -0.038538,
+      "opex.line_share_roots.insurance.2028Q3": -0.043641,
+      "opex.line_share_roots.insurance.2028Q4": -0.038397,
+      "opex.line_share_roots.insurance.2029Q1": -0.036051,
+      "opex.line_share_roots.insurance.2029Q2": -0.025632,
+      "opex.line_share_roots.insurance.2029Q3": -0.022257,
+      "opex.line_share_roots.insurance.2029Q4": -0.017483,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076491,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087814,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061508,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.05243,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.038959,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.028777,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039258,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.037822,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.040984,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035823,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.030165,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.021183,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.019453,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.01554
+     },
+     "degenerate": false
+    },
+    "high": {
+     "values": {
+      "opex.real_growth.2027Q2": 0.0141,
+      "opex.real_growth.2026": 0.031,
+      "opex.real_growth.2027Q1": 0.0393,
+      "opex.real_growth.2027Q3": -0.0025,
+      "opex.real_growth.2027Q4": -0.0025,
+      "opex.real_growth.2028": -0.0025,
+      "opex.real_growth.2029": -0.0025,
+      "opex.line_share_roots.insurance.2026Q3": -0.068259,
+      "opex.line_share_roots.insurance.2026Q4": -0.08215,
+      "opex.line_share_roots.insurance.2027Q1": -0.071375,
+      "opex.line_share_roots.insurance.2027Q2": -0.056969,
+      "opex.line_share_roots.insurance.2027Q3": -0.044285,
+      "opex.line_share_roots.insurance.2027Q4": -0.03389,
+      "opex.line_share_roots.insurance.2028Q1": -0.03748,
+      "opex.line_share_roots.insurance.2028Q2": -0.038544,
+      "opex.line_share_roots.insurance.2028Q3": -0.043651,
+      "opex.line_share_roots.insurance.2028Q4": -0.038409,
+      "opex.line_share_roots.insurance.2029Q1": -0.036069,
+      "opex.line_share_roots.insurance.2029Q2": -0.025654,
+      "opex.line_share_roots.insurance.2029Q3": -0.022281,
+      "opex.line_share_roots.insurance.2029Q4": -0.017513,
+      "volumes.liability_driver_roots.insurance.2026Q3": -0.076491,
+      "volumes.liability_driver_roots.insurance.2026Q4": -0.087814,
+      "volumes.liability_driver_roots.insurance.2027Q1": -0.061509,
+      "volumes.liability_driver_roots.insurance.2027Q2": -0.052432,
+      "volumes.liability_driver_roots.insurance.2027Q3": -0.038963,
+      "volumes.liability_driver_roots.insurance.2027Q4": -0.028781,
+      "volumes.liability_driver_roots.insurance.2028Q1": -0.039262,
+      "volumes.liability_driver_roots.insurance.2028Q2": -0.03783,
+      "volumes.liability_driver_roots.insurance.2028Q3": -0.040994,
+      "volumes.liability_driver_roots.insurance.2028Q4": -0.035838,
+      "volumes.liability_driver_roots.insurance.2029Q1": -0.030188,
+      "volumes.liability_driver_roots.insurance.2029Q2": -0.021205,
+      "volumes.liability_driver_roots.insurance.2029Q3": -0.019481,
+      "volumes.liability_driver_roots.insurance.2029Q4": -0.01557
+     },
+     "degenerate": false
+    }
+   }
+  },
+  "wholesale_share": {
+   "funds": "clients",
+   "anchor": 0.1287,
+   "min": 0.0883,
+   "max": 0.2062,
+   "max_cell": "N/soft/schedule",
+   "corridor": [
+    0.08,
+    0.25
+   ],
+   "margin": 0.05,
+   "structural_floor": 0.08834
+  },
+  "window": {
+   "quarters": [
+    "2024Q2",
+    "2024Q3",
+    "2024Q4",
+    "2025Q1",
+    "2025Q2",
+    "2025Q3",
+    "2025Q4",
+    "2026Q1",
+    "2026Q2"
+   ],
+   "cor": {
+    "min": 0.0172,
+    "max": 0.0317,
+    "mean": 0.0251,
+    "min_quarter": "2025Q1",
+    "max_quarter": "2025Q2"
+   },
+   "cor_window_composition": {
+    "min": 0.0216,
+    "max": 0.0369,
+    "mean": 0.0288,
+    "min_quarter": "2026Q2",
+    "max_quarter": "2025Q2"
+   },
+   "cir": {
+    "min": 0.424,
+    "max": 0.6784,
+    "mean": 0.5598,
+    "min_quarter": "2026Q2",
+    "max_quarter": "2025Q1"
+   },
+   "nim": {
+    "min": 0.0408,
+    "max": 0.0755,
+    "mean": 0.0537,
+    "min_quarter": "2025Q1",
+    "max_quarter": "2026Q2"
+   },
+   "loans_share": 0.7663
+  },
+  "cir_lt": {
+   "target": 0.4834,
+   "tolerance": 0.009,
+   "years": [
+    2033,
+    2034,
+    2035,
+    2036
+   ],
+   "opex_level": 0.0234423,
+   "opex_ends": [
+    0.0229934,
+    0.0238913
+   ],
+   "layer_mean": 0.4834,
+   "rows": {
+    "2033": {
+     "centre": 0.48439,
+     "low": 0.47539,
+     "high": 0.4934,
+     "layer": 0.48441
+    },
+    "2034": {
+     "centre": 0.48388,
+     "low": 0.47489,
+     "high": 0.49287,
+     "layer": 0.4839
+    },
+    "2035": {
+     "centre": 0.48329,
+     "low": 0.4743,
+     "high": 0.49227,
+     "layer": 0.4833
+    },
+    "2036": {
+     "centre": 0.48197,
+     "low": 0.47301,
+     "high": 0.49093,
+     "layer": 0.48199
+    }
+   }
+  },
+  "retail_tail": {
+   "regimes.soft.cor": {
+    "2026": 0.023783,
+    "2027": 0.020526,
+    "2028": 0.018461,
+    "2029": 0.018486,
+    "LT": 0.025536,
+    "LT_from": 2032
+   },
+   "regimes.norm.cor": {
+    "2026": 0.027951,
+    "2027": 0.026787,
+    "2028": 0.026678,
+    "2029": 0.026702,
+    "LT": 0.026819,
+    "LT_from": 2032
+   },
+   "regimes.downturn.cor": {
+    "2026": 0.031457,
+    "2027Q1": 0.032556,
+    "2027Q2": 0.034282,
+    "2027Q3": 0.036008,
+    "2027Q4": 0.037735,
+    "2028": 0.032881,
+    "2029": 0.030746,
+    "LT": 0.03086,
+    "LT_from": 2032
+   },
+   "regimes.crisis.cor": {
+    "2026": 0.031457,
+    "2027Q1": 0.061581,
+    "2027Q2": 0.05087,
+    "2027Q3": 0.045514,
+    "2027Q4": 0.041943,
+    "2028": 0.040474,
+    "2029": 0.025821,
+    "LT": 0.029993,
+    "LT_from": 2032
+   }
+  },
+  "retail_tail_pp": {
+   "window": 0.003,
+   "intensity": 1.125653686,
+   "anchor": 0.002665
+  },
+  "need": {
+   "year": 2030,
+   "shape": {
+    "2027": 1.0,
+    "2028": 0.66,
+    "2029": 0.34
+   },
+   "level": -0.0557,
+   "layer": "analytical",
+   "loans_to_funds_book": 0.9272,
+   "loans_to_funds_book_modal_cell": 1.0011,
+   "probes": [
+    [
+     0.0,
+     0.88295
+    ],
+    [
+     0.05,
+     0.79051
+    ],
+    [
+     -0.06331,
+     1.01719
+    ],
+    [
+     -0.05472,
+     0.99785
+    ],
+    [
+     -0.05567,
+     0.99996
+    ]
+   ],
+   "fact_readings": {
+    "retail": -0.066787,
+    "corporate": 0.060973
+   },
+   "axis": {
+    "low": {
+     "volumes.funds_share_drift.retail.2027": -0.0668,
+     "volumes.funds_share_drift.retail.2028": -0.0441,
+     "volumes.funds_share_drift.retail.2029": -0.0227,
+     "volumes.funds_share_drift.corporate.2027": -0.0557,
+     "volumes.funds_share_drift.corporate.2028": -0.0368,
+     "volumes.funds_share_drift.corporate.2029": -0.0189
+    },
+    "high": {
+     "volumes.funds_share_drift.retail.2027": -0.0557,
+     "volumes.funds_share_drift.retail.2028": -0.0368,
+     "volumes.funds_share_drift.retail.2029": -0.0189,
+     "volumes.funds_share_drift.corporate.2027": 0.061,
+     "volumes.funds_share_drift.corporate.2028": 0.0403,
+     "volumes.funds_share_drift.corporate.2029": 0.0207
+    }
+   }
+  },
+  "roe_bound": {
+   "bound": 0.1424,
+   "layer": "слой M",
+   "year": 2028,
+   "years": [
+    2027,
+    2036
+   ],
+   "layers_min": {
+    "смесь точки": [
+     2027,
+     0.1532
+    ],
+    "свой взгляд": [
+     2036,
+     0.16
+    ],
+    "слой M": [
+     2028,
+     0.1424
+    ]
+   },
+   "windows": {
+    "3К2025–2К2026": {
+     "roe": 0.1751,
+     "inside": true,
+     "used_by_book": true,
+     "line": "pnl.nci_share",
+     "role": "центр"
+    },
+    "2К2025–1К2026": {
+     "roe": 0.1299,
+     "inside": false,
+     "used_by_book": false,
+     "line": "pnl.nci_share",
+     "role": "центр"
+    },
+    "2П2025": {
+     "roe": 0.1527,
+     "inside": true,
+     "used_by_book": true,
+     "line": "pnl.nci_share",
+     "role": "ось"
+    },
+    "1П2026": {
+     "roe": 0.1955,
+     "inside": true,
+     "used_by_book": true,
+     "line": "pnl.nci_share",
+     "role": "ось"
+    },
+    "FY2024": {
+     "roe": 0.1912,
+     "inside": true,
+     "used_by_book": true,
+     "line": "франшиза страхования (М13)",
+     "role": "центр и ось"
+    },
+    "FY2025": {
+     "roe": 0.0998,
+     "inside": false,
+     "used_by_book": false,
+     "line": "франшиза страхования (М13)",
+     "role": "центр и ось"
+    },
+    "1П2026 (М13)": {
+     "roe": 0.1955,
+     "inside": true,
+     "used_by_book": true,
+     "line": "франшиза страхования (М13)",
+     "role": "центр и ось"
+    }
+   },
+   "ok": true
+  },
+  "kappa_ends": {
+   "tol": 5e-05,
+   "level_tol": 0.0001,
+   "rule_change_max": 1.8e-05,
+   "max_dev_max": 3.2037e-05,
+   "ok": true,
+   "rows": [
+    {
+     "axis": "База расходов: доля расходов сегмента за средствами («только кредиты» … «баланс»)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 3e-06,
+     "max_dev": 7.797e-06
+    },
+    {
+     "axis": "База расходов: доля расходов сегмента за средствами («только кредиты» … «баланс»)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 9e-06,
+     "max_dev": 1.77e-05
+    },
+    {
+     "axis": "База комиссий: окна сегментов МСФО — доля КБ 0,764…0,892 (строка с резервом по гарантиям; место выручки)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 3e-06,
+     "max_dev": 1.632e-06
+    },
+    {
+     "axis": "База комиссий: окна сегментов МСФО — доля КБ 0,764…0,892 (строка с резервом по гарантиям; место выручки)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 6e-06,
+     "max_dev": 1.1659e-05
+    },
+    {
+     "axis": "База страхования: только розница … верх окон доли КБ (место выручки, строка без финрасходов МСФО 17)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1e-05,
+     "max_dev": 1.7241e-05
+    },
+    {
+     "axis": "База страхования: только розница … верх окон доли КБ (место выручки, строка без финрасходов МСФО 17)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.8e-05,
+     "max_dev": 2.9663e-05
+    },
+    {
+     "axis": "Связь страхования с базой: доля «кредитного» страхования в строке (не раскрыта; граница ≤ 0,74: 0…0,74)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 5e-06,
+     "max_dev": 6.489e-06
+    },
+    {
+     "axis": "Связь страхования с базой: доля «кредитного» страхования в строке (не раскрыта; граница ≤ 0,74: 0…0,74)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 2e-06,
+     "max_dev": 2.919e-06
+    },
+    {
+     "axis": "Периметр окна R: вклад КЛСЖ в страхование 0,44…1,51 млрд ₽ в квартал",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 6e-06,
+     "max_dev": 1.221e-05
+    },
+    {
+     "axis": "Периметр окна R: вклад КЛСЖ в страхование 0,44…1,51 млрд ₽ в квартал",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1e-06,
+     "max_dev": 7.73e-07
+    },
+    {
+     "axis": "Периметр окна R: расходы двух страховщиков 1,10…2,38 млрд ₽ за квартал с парной выручкой ОМС",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1e-05,
+     "max_dev": 1.7403e-05
+    },
+    {
+     "axis": "Периметр окна R: расходы двух страховщиков 1,10…2,38 млрд ₽ за квартал с парной выручкой ОМС",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 8e-06,
+     "max_dev": 1.6829e-05
+    },
+    {
+     "axis": "Периметр окна R: золотодобытчик 0…1,68 млрд ₽ в квартал в 2К–4К2024",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 3e-06,
+     "max_dev": 7.45e-06
+    },
+    {
+     "axis": "Периметр окна R: золотодобытчик 0…1,68 млрд ₽ в квартал в 2К–4К2024",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 8e-06,
+     "max_dev": 1.2274e-05
+    },
+    {
+     "axis": "Периметр окна R: разовые расходы интеграции ХКФ 3,62…4,1 млрд ₽",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.8e-05,
+     "max_dev": 3.2037e-05
+    },
+    {
+     "axis": "Периметр окна R: разовые расходы интеграции ХКФ 3,62…4,1 млрд ₽",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.3e-05,
+     "max_dev": 2.1283e-05
+    }
+   ]
+  },
+  "rho_ends": {
+   "tol": 5e-05,
+   "level_tol": 0.0001,
+   "rule_change_max": 1.9e-05,
+   "max_dev_max": 3.5027e-05,
+   "jensen_max": 3.1031e-05,
+   "ok": true,
+   "rows": [
+    {
+     "axis": "База расходов: доля расходов сегмента за средствами («только кредиты» … «баланс»)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 3e-06,
+     "max_dev": 8.23e-06,
+     "jensen": 7.262e-06
+    },
+    {
+     "axis": "База расходов: доля расходов сегмента за средствами («только кредиты» … «баланс»)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 9e-06,
+     "max_dev": 1.9788e-05,
+     "jensen": 1.7597e-05
+    },
+    {
+     "axis": "База комиссий: окна сегментов МСФО — доля КБ 0,764…0,892 (строка с резервом по гарантиям; место выручки)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 2e-06,
+     "max_dev": 2.039e-06,
+     "jensen": 2.04e-06
+    },
+    {
+     "axis": "База комиссий: окна сегментов МСФО — доля КБ 0,764…0,892 (строка с резервом по гарантиям; место выручки)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 7e-06,
+     "max_dev": 1.2865e-05,
+     "jensen": 1.1388e-05
+    },
+    {
+     "axis": "База страхования: только розница … верх окон доли КБ (место выручки, строка без финрасходов МСФО 17)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1e-05,
+     "max_dev": 1.7802e-05,
+     "jensen": 1.5815e-05
+    },
+    {
+     "axis": "База страхования: только розница … верх окон доли КБ (место выручки, строка без финрасходов МСФО 17)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.9e-05,
+     "max_dev": 3.2031e-05,
+     "jensen": 2.8328e-05
+    },
+    {
+     "axis": "Связь страхования с базой: доля «кредитного» страхования в строке (не раскрыта; граница ≤ 0,74: 0…0,74)",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 6e-06,
+     "max_dev": 7.797e-06,
+     "jensen": 6.905e-06
+    },
+    {
+     "axis": "Связь страхования с базой: доля «кредитного» страхования в строке (не раскрыта; граница ≤ 0,74: 0…0,74)",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 2e-06,
+     "max_dev": 3.398e-06,
+     "jensen": 3.013e-06
+    },
+    {
+     "axis": "Периметр окна R: вклад КЛСЖ в страхование 0,44…1,51 млрд ₽ в квартал",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 7e-06,
+     "max_dev": 1.3053e-05,
+     "jensen": 1.1614e-05
+    },
+    {
+     "axis": "Периметр окна R: вклад КЛСЖ в страхование 0,44…1,51 млрд ₽ в квартал",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1e-06,
+     "max_dev": 7.32e-07,
+     "jensen": 7.34e-07
+    },
+    {
+     "axis": "Периметр окна R: расходы двух страховщиков 1,10…2,38 млрд ₽ за квартал с парной выручкой ОМС",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 9e-06,
+     "max_dev": 1.8718e-05,
+     "jensen": 1.668e-05
+    },
+    {
+     "axis": "Периметр окна R: расходы двух страховщиков 1,10…2,38 млрд ₽ за квартал с парной выручкой ОМС",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 7e-06,
+     "max_dev": 1.7754e-05,
+     "jensen": 1.5669e-05
+    },
+    {
+     "axis": "Периметр окна R: золотодобытчик 0…1,68 млрд ₽ в квартал в 2К–4К2024",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 5e-06,
+     "max_dev": 8.866e-06,
+     "jensen": 7.861e-06
+    },
+    {
+     "axis": "Периметр окна R: золотодобытчик 0…1,68 млрд ₽ в квартал в 2К–4К2024",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 7e-06,
+     "max_dev": 1.1842e-05,
+     "jensen": 1.0482e-05
+    },
+    {
+     "axis": "Периметр окна R: разовые расходы интеграции ХКФ 3,62…4,1 млрд ₽",
+     "end": "low",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.8e-05,
+     "max_dev": 3.5027e-05,
+     "jensen": 3.1031e-05
+    },
+    {
+     "axis": "Периметр окна R: разовые расходы интеграции ХКФ 3,62…4,1 млрд ₽",
+     "end": "high",
+     "line": "insurance",
+     "carried": true,
+     "rule_change": 1.2e-05,
+     "max_dev": 2.2366e-05,
+     "jensen": 1.9814e-05
+    }
+   ]
+  }
+ },
+ "evaluations": {
+  "cells": 44,
+  "grids": 633
+ }
+}

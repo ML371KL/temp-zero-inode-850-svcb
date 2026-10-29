@@ -1,0 +1,19 @@
+{
+ "basis": "IFRS",
+ "corporate_actions": [
+  {
+   "date": "2024-08-15",
+   "kind": "issue",
+   "title": "Дополнительный выпуск",
+   "shares_before": 199.3,
+   "shares_after": 268.3
+  },
+  {
+   "date": "2026-04-15",
+   "kind": "split",
+   "factor": 10,
+   "first_trade_date": "2026-04-17",
+   "title": "Дробление акций 1:10"
+  }
+ ]
+}

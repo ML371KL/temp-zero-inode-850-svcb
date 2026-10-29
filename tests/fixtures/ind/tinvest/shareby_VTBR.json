@@ -1,0 +1,10 @@
+{
+ "_note": "синтетика в формате ответа T-Invest (только поля, которые читает indicators/tinvest.py); не ответ API",
+ "instrument": {
+  "uid": "00000000-0000-4000-8000-00000000b002",
+  "figi": "TEST0000VTBR",
+  "ticker": "VTBR",
+  "classCode": "TQBR",
+  "issueSize": "1000000000"
+ }
+}

@@ -1,0 +1,37 @@
+# Заглушка книги для тестов индикаторов: то, что индикаторы читают из книги (формат прил. A MODEL):
+# эмитент, дата фактов и первый квартал сетки, квартальный календарь дивидендов, подписи реестра,
+# периодов и целей нау-каста, перечень пунктов гайденса.
+meta:
+  facts_date: "2026-06-30"
+  first_period: "2026Q3"
+  company:
+    name: "Т-Технологии"
+    tickers: [T]
+    main_ticker: T
+    cbr_regnum: 2673
+    fiscal_year_end: "12-31"
+  labels:
+    register:
+      collector_alarm: "нет записи реестра {label} к сроку решения ({end}): {detail} — проверить документы эмитента или внести `record-dividend` со ссылкой на документ эмитента"
+    periods:
+      "1": "за первый квартал {year} года"
+      "2": "за полугодие {year} года"
+      "3": "за девять месяцев {year} года"
+      "4": "за {year} год"
+    nowcast:
+      targets:
+        ni_q: {title: "Операционная прибыль акционеров квартала", basis: mgmt, title_long: "Операционная прибыль акционеров за квартал (определение эмитента)"}
+        nim_q: {title: "ЧПМ квартала", basis: mgmt, title_long: "ЧПМ квартала"}
+        cor_q: {title: "Стоимость риска квартала", basis: mgmt, title_long: "Стоимость риска квартала"}
+dividends:
+  calendar:
+    frequency: quarterly
+    decision_lag_quarters: {"1": 2, "2": 2, "3": 1, "4": 2}
+    reg_deduction_lag_quarters: 2
+    payment_lag_quarters: 2
+    checkpoints_ahead: 0
+checks:
+  guidance_items:
+    - {key: op_np_growth}
+    - {key: dps_growth}
+    - {key: roe_target}

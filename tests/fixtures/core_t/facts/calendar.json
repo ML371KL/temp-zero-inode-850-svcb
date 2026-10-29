@@ -1,0 +1,79 @@
+{
+ "as_of": "2026-09-30",
+ "events": [
+  {
+   "id": "record-2026Q2",
+   "kind": "record",
+   "date": "2026-10-12",
+   "title": "Дата реестра: дивиденд за полугодие 2026 года",
+   "covers": "2026Q2",
+   "confirmed": true,
+   "precision": "day",
+   "src": "фикстура core_t"
+  },
+  {
+   "id": "cbr-2026-10-23",
+   "kind": "cbr_rate",
+   "date": "2026-10-23",
+   "title": "Заседание Банка России",
+   "covers": null,
+   "confirmed": true,
+   "precision": "day",
+   "src": "календарь ЦБ"
+  },
+  {
+   "id": "ifrs-2026Q3",
+   "kind": "ifrs",
+   "date": "2026-11-19",
+   "title": "МСФО за третий квартал 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "precision": "window",
+   "estimated": true,
+   "earliest": "2026-11-01",
+   "latest": "2026-11-30",
+   "src": "фикстура core_t"
+  },
+  {
+   "id": "form805-2026Q3",
+   "kind": "form805",
+   "date": "2026-11-25",
+   "title": "Форма 0409805 на 1 октября 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "precision": "window",
+   "estimated": true,
+   "earliest": "2026-11-10",
+   "latest": "2026-12-12",
+   "src": "фикстура core_t"
+  },
+  {
+   "id": "div-2026Q3",
+   "kind": "dividend_decision",
+   "date": "2026-12-17",
+   "title": "Решение о дивиденде за девять месяцев 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "precision": "window",
+   "estimated": true,
+   "earliest": "2026-12-01",
+   "latest": "2026-12-31",
+   "src": "фикстура core_t"
+  },
+  {
+   "id": "deal-2026",
+   "kind": "deal",
+   "date": "2026-12-31",
+   "title": "Закрытие сделки (фикстура)",
+   "covers": null,
+   "confirmed": false,
+   "precision": "window",
+   "estimated": true,
+   "earliest": "2026-12-01",
+   "latest": "2027-01-31",
+   "in_book": false,
+   "note": "сделки в книге нет",
+   "src": "фикстура core_t"
+  }
+ ]
+}

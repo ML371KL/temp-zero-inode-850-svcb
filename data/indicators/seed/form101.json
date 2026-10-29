@@ -1,0 +1,9 @@
+{
+ "basis": "ras",
+ "unit": "RUB bn",
+ "codes": null,
+ "codes_required": null,
+ "source": "процентные активы банка по форме 0409101 не размечены в фактах (bridge_ras_ifrs.iea.codes): истории нет",
+ "months": {},
+ "quarters": {}
+}

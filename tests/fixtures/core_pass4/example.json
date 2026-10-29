@@ -1,0 +1,249 @@
+{
+ "tree": "p3 @ c709f22 + прототип proto_apply.py",
+ "bundle_sum": {
+  "path": "opex.real_growth.2028",
+  "centre": 0.0039,
+  "terms": [
+   {
+    "axis": "Расходы: скользящие 4 квартала окна R (Б3): реальный рост 2027–2029",
+    "kind": "shift",
+    "s": 0.5,
+    "end": 0.0066,
+    "increment": 0.0033
+   },
+   {
+    "axis": "Расходы М13: доля расходов сегмента за средствами («только кредиты» … «баланс»)",
+    "kind": "bundle",
+    "s": -0.6,
+    "end": 0.0049,
+    "increment": 0.0005999999999999998
+   },
+   {
+    "axis": "База страхования: розница … все кредиты (доли смеси на якоре; К2б, Р4-1)",
+    "kind": "bundle",
+    "s": 0.3,
+    "end": 0.0061,
+    "increment": 0.00066
+   },
+   {
+    "axis": "База комиссий: все кредиты … только юрлица (доля КБ на якоре; К2б, Р4-2)",
+    "kind": "bundle",
+    "s": -1.0,
+    "end": 0.0023,
+    "increment": -0.0015999999999999999
+   }
+  ],
+  "value": 0.00686,
+  "value_core": 0.00686,
+  "equal": true,
+  "order_independent": true,
+  "trial_centre": 0.005,
+  "trial_value": 0.00796,
+  "trial_value_core": 0.00796,
+  "trial_equal": true
+ },
+ "k5": {
+  "cell": "H/soft/mid",
+  "G0": 616.3592387225001,
+  "E_corp_0": 1785.47,
+  "notional": {
+   "nonfinancial": 1029.221,
+   "financial": 137.704
+  },
+  "rows": [
+   {
+    "q": 1,
+    "E_corp_q": 1785.47,
+    "G_q_component": 616.3592387225001,
+    "rwa_guar_component": 614.1905623938598,
+    "multiplier_drift_fx_regime": 0.9964814734778126,
+    "G_q_mix_formula": 614.8312391892817,
+    "rwa_guar_mix": 612.6679391675249
+   },
+   {
+    "q": 2,
+    "E_corp_q": 1785.47,
+    "G_q_component": 616.3592387225001,
+    "rwa_guar_component": 612.0295166103999,
+    "multiplier_drift_fx_regime": 0.9929753269845129,
+    "G_q_mix_formula": 613.3412805370748,
+    "rwa_guar_mix": 609.0327585944016
+   },
+   {
+    "q": 3,
+    "E_corp_q": 1845.692236170796,
+    "G_q_component": 637.1484604066495,
+    "rwa_guar_component": 630.4466251323079,
+    "multiplier_drift_fx_regime": 0.98948151696064,
+    "G_q_mix_formula": 633.4755643292463,
+    "rwa_guar_mix": 626.8123623500001
+   },
+   {
+    "q": 4,
+    "E_corp_q": 1922.4841265187922,
+    "G_q_component": 663.6576658679302,
+    "rwa_guar_component": 654.3664585457791,
+    "multiplier_drift_fx_regime": 0.9859999999999999,
+    "G_q_mix_formula": 658.2278984512664,
+    "rwa_guar_mix": 649.0127078729486
+   },
+   {
+    "q": 5,
+    "E_corp_q": 1971.872331103179,
+    "G_q_component": 680.7068888621578,
+    "rwa_guar_component": 668.8154383691826,
+    "multiplier_drift_fx_regime": 0.9825307328491233,
+    "G_q_mix_formula": 673.5669758554063,
+    "rwa_guar_mix": 661.8002544101801
+   },
+   {
+    "q": 6,
+    "E_corp_q": 2016.4577228123703,
+    "G_q_component": 696.0981405169164,
+    "rwa_guar_component": 681.5313627913929,
+    "multiplier_drift_fx_regime": 0.9790736724067294,
+    "G_q_mix_formula": 688.0097518950713,
+    "rwa_guar_mix": 673.6122344395503
+   }
+  ],
+  "point_fees_base": 18.0000715701684,
+  "point_fees_component": 17.955464115058504
+ },
+ "mult": {
+  "cell": "H/soft/mid",
+  "link_fees": 1.0,
+  "link_ins": 1.0,
+  "rows": [
+   {
+    "q": 1,
+    "period": "2026Q3",
+    "wage": 0.095,
+    "r_fees": -0.0813,
+    "r_ins": -0.1346,
+    "fees": {
+     "F_q_mult_core": 11.579458274910818,
+     "F_q_additive_core_same_roots": 11.700853641559616,
+     "A_q": 3198.0838284289384,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    },
+    "ins": {
+     "F_q_mult_core": 16.58525398926059,
+     "F_q_additive_core_same_roots": 16.636784479293492,
+     "A_q": 3095.9691417367458,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    }
+   },
+   {
+    "q": 2,
+    "period": "2026Q4",
+    "wage": 0.095,
+    "r_fees": -0.0813,
+    "r_ins": -0.1346,
+    "fees": {
+     "F_q_mult_core": 11.714659809283079,
+     "F_q_additive_core_same_roots": 11.750866283251419,
+     "A_q": 3190.244518881927,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    },
+    "ins": {
+     "F_q_mult_core": 10.564454978834098,
+     "F_q_additive_core_same_roots": 10.523751618250634,
+     "A_q": 3058.2444301179157,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    }
+   },
+   {
+    "q": 3,
+    "period": "2027Q1",
+    "wage": 0.095,
+    "r_fees": 0.0392,
+    "r_ins": 0.2032,
+    "fees": {
+     "F_q_mult_core": 11.923709955086965,
+     "F_q_additive_core_same_roots": 11.90546807134461,
+     "A_q": 3238.0703866894432,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    },
+    "ins": {
+     "F_q_mult_core": 16.949812210887345,
+     "F_q_additive_core_same_roots": 16.992799251349908,
+     "A_q": 3073.1251637952846,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    }
+   },
+   {
+    "q": 4,
+    "period": "2027Q2",
+    "wage": 0.095,
+    "r_fees": 0.0392,
+    "r_ins": 0.088,
+    "fees": {
+     "F_q_mult_core": 11.405518096837657,
+     "F_q_additive_core_same_roots": 11.374012180523804,
+     "A_q": 3354.2924033241907,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    },
+    "ins": {
+     "F_q_mult_core": 16.342157073335112,
+     "F_q_additive_core_same_roots": 16.31811964590511,
+     "A_q": 3148.150275866394,
+     "A_q_minus_4": null,
+     "F_q_minus_4": null
+    }
+   },
+   {
+    "q": 5,
+    "period": "2027Q3",
+    "wage": 0.095,
+    "r_fees": 0.0392,
+    "r_ins": 0.0361,
+    "fees": {
+     "F_q_mult_core": 13.01227184120667,
+     "F_q_additive_core_same_roots": 13.115640182693374,
+     "A_q": 3458.243670383954,
+     "A_q_minus_4": 3198.0838284289384,
+     "F_q_minus_4": 11.579458274910818,
+     "F_q_mult_formula": 13.01227184120667
+    },
+    "ins": {
+     "F_q_mult_core": 17.843665755332008,
+     "F_q_additive_core_same_roots": 17.880054859183964,
+     "A_q": 3214.8217830165518,
+     "A_q_minus_4": 3095.9691417367458,
+     "F_q_minus_4": 16.58525398926059,
+     "F_q_mult_formula": 17.843665755332008
+    }
+   },
+   {
+    "q": 6,
+    "period": "2027Q4",
+    "wage": 0.095,
+    "r_fees": 0.0392,
+    "r_ins": 0.0361,
+    "fees": {
+     "F_q_mult_core": 13.490863467161653,
+     "F_q_additive_core_same_roots": 13.487880379472122,
+     "A_q": 3535.3702162527575,
+     "A_q_minus_4": 3190.244518881927,
+     "F_q_minus_4": 11.714659809283079,
+     "F_q_mult_formula": 13.490863467161653
+    },
+    "ins": {
+     "F_q_mult_core": 11.681912237100715,
+     "F_q_additive_core_same_roots": 11.614422397154982,
+     "A_q": 3263.9038926751473,
+     "A_q_minus_4": 3058.2444301179157,
+     "F_q_minus_4": 10.564454978834098,
+     "F_q_mult_formula": 11.681912237100715
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "as_of": "2026-10-20",
+ "events": [
+  {"id": "ras-2026-10", "kind": "ras", "date": "2026-10-26", "title": "Формы банка на 01.10.2026", "covers": "2026M09",
+   "confirmed": false, "precision": "window", "estimated": true, "earliest": "2026-10-24", "latest": "2026-10-28",
+   "src": "заглушка теста"},
+  {"id": "ras-2026-11", "kind": "ras", "date": "2026-11-26", "title": "Формы банка на 01.11.2026", "covers": "2026M10",
+   "confirmed": false, "precision": "window", "estimated": true, "earliest": "2026-11-24", "latest": "2026-11-28",
+   "src": "заглушка теста"},
+  {"id": "ifrs-2026Q3", "kind": "ifrs", "date": "2026-11-13", "title": "МСФО группы за 9 месяцев 2026 года",
+   "covers": "2026Q3", "confirmed": false, "precision": "window", "estimated": true, "earliest": "2026-11-13",
+   "latest": "2026-11-16", "src": "заглушка теста"},
+  {"id": "divrec-2026", "kind": "dividend_recommendation", "date": "2027-05-28",
+   "title": "Рекомендация совета по дивидендам за 2026 год", "covers": "2026Q4", "confirmed": false,
+   "precision": "window", "estimated": true, "earliest": "2027-05-21", "latest": "2027-06-04", "src": "заглушка теста"},
+  {"id": "agm-2027", "kind": "agm", "date": "2027-06-30", "title": "Годовое собрание: дивиденд за 2026 год",
+   "covers": "2026Q4", "confirmed": false, "precision": "window", "estimated": true, "earliest": "2027-06-24",
+   "latest": "2027-07-01", "src": "заглушка теста"}
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "as_of": "2026-10-07",
+ "events": [
+  {
+   "id": "cbr-2026-10-23",
+   "kind": "cbr_rate",
+   "date": "2026-10-23",
+   "title": "Совет директоров ЦБ по ключевой ставке",
+   "covers": null,
+   "confirmed": true,
+   "precision": "day",
+   "src": "заглушка теста"
+  },
+  {
+   "id": "record-2026Q2",
+   "kind": "record",
+   "date": "2026-10-12",
+   "title": "Дата реестра по дивиденду за полугодие 2026 года",
+   "covers": "2026Q2",
+   "confirmed": true,
+   "precision": "day",
+   "src": "заглушка теста"
+  },
+  {
+   "id": "ifrs-2026Q3",
+   "kind": "ifrs",
+   "date": "2026-11-19",
+   "title": "МСФО за 3 квартал 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "estimated": true,
+   "precision": "window",
+   "earliest": "2026-11-01",
+   "latest": "2026-11-30",
+   "src": "заглушка теста"
+  },
+  {
+   "id": "form805-2026Q3",
+   "kind": "form805",
+   "date": "2026-11-25",
+   "title": "Форма 0409805 за 3 квартал 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "estimated": true,
+   "precision": "window",
+   "earliest": "2026-11-10",
+   "latest": "2026-12-12",
+   "src": "заглушка теста"
+  },
+  {
+   "id": "dividend-2026Q3",
+   "kind": "dividend_decision",
+   "date": "2026-12-17",
+   "title": "Решение собрания о дивиденде за девять месяцев 2026 года",
+   "covers": "2026Q3",
+   "confirmed": false,
+   "estimated": true,
+   "precision": "window",
+   "earliest": "2026-12-01",
+   "latest": "2026-12-31",
+   "src": "заглушка теста"
+  }
+ ]
+}

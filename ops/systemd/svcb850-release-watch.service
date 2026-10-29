@@ -1,0 +1,63 @@
+[Unit]
+Description=Совкомбанк 850 · дозор релизов МСФО и решений о дивидендах: приём, нау-каст, выпуск, публикация
+Documentation=https://github.com/ML371KL/temp-zero-inode-850-svcb/blob/main/ops/README.md
+# Дозор читает новости и документы эмитента, публикация пушит в репозиторий
+# данных.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+# Таймер будит `run.sh release-watch` каждые 10 минут в окне релизов по
+# будням. Почти всегда делать нечего: вне окна релиза по календарю индикаторов
+# (и без отложенного — принято, но не опубликовано) выход 0 без единой строки.
+# В день релиза: дозор (новости и документы эмитента); принято новое — новый
+# кандидат МСФО (или месяц релиза, если сборщики его принимают) — нау-каст,
+# тесты такта, сборка, публикация, сверка.
+#
+# Перезапуска нет (Restart=no по умолчанию) — намеренно: следующая проверка
+# через 10 минут, а принятое, но не опубликованное помнит отметка
+# release_watch.pending — выпуск соберёт следующий такт дозора или суточный.
+Type=exec
+User=dash
+Group=dash
+WorkingDirectory=/srv/dash/repo-850-svcb
+# Env-файл читает сам run.sh (см. svcb850-collect.service): строки
+# EnvironmentFile нет намеренно.
+Environment=ENV_FILE=/usr/local/etc/svcb-850/env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/bash /srv/dash/repo-850-svcb/ops/run.sh release-watch
+# Потолок = дозор + нау-каст + тесты такта + сборка + публикация + сверка до
+# своего окна, с запасом; он же (вместе с пересборкой) задаёт LOCK_WAIT_SECONDS
+# в run.sh.
+# Число вписывает `python ops/tools/budgets.py --write` из ops/budgets.json;
+# руками не правится, равенство сверяет tests/test_ops_units.py. Оценка это
+# или замер сервера — ops/budgets.json, status (ops/README.md §9).
+RuntimeMaxSec=4740
+SyslogIdentifier=svcb850
+
+StateDirectory=svcb-850
+# Каталог состояния закрыт от прочих учётных записей сервера (сырой архив
+# ответов источников, журналы, клон данных): без этой строки systemd при
+# каждом старте юнита возвращает каталогу режим 0755.
+StateDirectoryMode=0750
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+# Репозиторий пишется: git reset при обновлении кода, pip в .venv, var/ тестов.
+# /srv/dash/.ssh нужен для чтения: публикация пушит через ssh-алиас ключа записи.
+ReadWritePaths=/srv/dash/repo-850-svcb
+
+# Сборка считает полосу пулом процессов; их число — `workers` бюджета (такт
+# берёт его сам, когда BANK_WORKERS в env-файле пуст). Потолок памяти и число
+# процессов стоят на ОДНОМ замере (ops/budgets.json, ops/README.md §9): числа
+# вписывает `python ops/tools/budgets.py --write`. Оценка это или замер
+# сервера — ops/budgets.json, status.
+MemoryHigh=832M
+MemoryMax=1024M
+Nice=10
+
+# Мост тревог шлёт СМЕНУ состояния: тихие проверки с кодом 0 ничего не присылают.
+ExecStopPost=-+/usr/local/sbin/dash-alert %n
+
+# Секции [Install] намеренно НЕТ: юнит запускается таймером.

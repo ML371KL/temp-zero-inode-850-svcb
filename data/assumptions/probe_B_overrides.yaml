@@ -1,0 +1,26 @@
+# Проба Б «как Сбер» — файл подмен книги Совкомбанка (фаза 3, 21.10.2026): годовой календарь дивидендов, рост по капиталу
+# ВЫКЛЮЧЕН. Основная книга — проба А «как Т» (квартальная машина с годовыми лагами, capital.growth_constraint.enabled: true).
+# Источник — лист capital: svcb-850-handoff/stage1/calib-capital/dividends_block_B.yaml (устав §6, развилка № 2; решение
+# владельца О4: первые числа на ядре Т пробами «как Т» и «как Сбер» с ценой правила).
+#
+# Расчёт сетки с подменами (из корня рабочей копии):
+#   python -B ops/tools/probe_grid.py --overrides data/assumptions/probe_B_overrides.yaml
+# Выведенные на ядре числа (доли раскладки, ближний сдвиг маржи, корни расходов, комиссий и страхования) подмена НЕ
+# пересчитывает: у пробы Б они — книги А (выведены на клетке с ограничением роста). Справочным вариантом проба Б быть не
+# может: подмены вариантов не несут null (ключи квартального режима здесь — null).
+# Узлы фактов годового режима уже в фактах: balance.dividends_payable 7,856117 и balance.dividends_payable_year 2025.
+# Вариант ступени политики «25 % при Н1.0 ≥ 11,5 %» — только для этой пробы (в квартальном режиме — отказ схемы):
+#   --set 'dividends.policy.steps=[{payout: 0.25, threshold: 0.115}, {payout: 0.20, threshold: 0.0}]'
+overrides:
+  capital.growth_constraint.enabled: false              # «как Сбер»: рост задан спросом; нехватку капитала печатает гейт capital_gap (класс 3: недостаток
+                                                        #   капитала до терминала бесплатен — engine-port, флаг 3)
+  dividends.calendar.frequency: annual
+  dividends.calendar.agm_quarter: 2                     # ГОСА в конце июня [Ф: МСФО прим. 21]
+  dividends.calendar.reg_deduction_quarter: 3           # вычет из норматива в квартале реестра (июль) [Ф]
+  dividends.calendar.payment_quarter: 3                 # выплата — июль [Ф]
+  dividends.calendar.checkpoints: [3, 4]                # проверка нормативов после выплаты и на конец года [В: как у Сбера]
+  dividends.calendar.decision_lag_quarters: null        # ключи квартального режима в годовом — null
+  dividends.calendar.reg_deduction_lag_quarters: null
+  dividends.calendar.payment_lag_quarters: null
+  dividends.calendar.checkpoints_ahead: null
+  dividends.policy.base_window_quarters: null           # только квартальный режим

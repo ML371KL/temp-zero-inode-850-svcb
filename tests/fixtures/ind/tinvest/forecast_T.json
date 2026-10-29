@@ -1,0 +1,51 @@
+{
+ "_note": "синтетика в формате ответа T-Invest (только поля, которые читает indicators/tinvest.py); не ответ API",
+ "targets": [
+  {
+   "showName": "Брокер A",
+   "recommendation": "RECOMMENDATION_HOLD",
+   "targetPrice": {
+    "units": "330",
+    "nano": 0
+   }
+  },
+  {
+   "showName": "Брокер B",
+   "recommendation": "RECOMMENDATION_BUY",
+   "targetPrice": {
+    "units": "380",
+    "nano": 0
+   }
+  },
+  {
+   "showName": "Брокер C",
+   "recommendation": "RECOMMENDATION_BUY",
+   "targetPrice": {
+    "units": "400",
+    "nano": 0
+   }
+  },
+  {
+   "showName": "Брокер D",
+   "recommendation": "RECOMMENDATION_BUY",
+   "targetPrice": {
+    "units": "420",
+    "nano": 0
+   }
+  },
+  {
+   "showName": "Брокер E",
+   "recommendation": "RECOMMENDATION_SELL",
+   "targetPrice": {
+    "units": "290",
+    "nano": 0
+   }
+  }
+ ],
+ "consensus": {
+  "consensus": {
+   "units": "380",
+   "nano": 0
+  }
+ }
+}

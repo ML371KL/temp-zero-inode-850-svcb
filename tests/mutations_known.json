@@ -1,0 +1,1328 @@
+{
+ "schema": "mutation-known/1",
+ "about": "Проверки, поймавшие каждого мутанта в последней полной записи (tests/mutations.py). По ним `python ops/tools/pmut.py --known` гоняет быстрый круг; устаревшая строка не страшна — мутант идёт полным набором проверок. Переписывает `python ops/tools/pmut.py --save-known запись`.",
+ "fingerprint": "54c40d04ec898c229534dd7fe378236cc74f24305f223d73f8a134bc22693311",
+ "mutants": {
+  "M01": [
+   "dia_leg_from_book",
+   "fvc_reference_is_the_book_before_the_draw",
+   "fvc_reference_regime",
+   "interest_legs_simple",
+   "llp_shift_exact"
+  ],
+  "M02": [
+   "interest_legs_simple",
+   "t_funding_path_and_names",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_release_on_the_divisor",
+   "t_room_of_the_quarter",
+   "t_rule_price_and_limits",
+   "t_sign_gates"
+  ],
+  "M03": [
+   "cor_path_bridged_once",
+   "fvc_reference_regime",
+   "kappa_lag_closed_form",
+   "kappa_zero_in_n",
+   "t_growth_shock_year_and_orders",
+   "t_kappa_reference_world",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M04": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants",
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter"
+  ],
+  "M05": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants"
+  ],
+  "M06": [
+   "dps_is_pool_over_issued"
+  ],
+  "M07": [
+   "exdate_jump_with_governance",
+   "pending_dividend_without_discount",
+   "t_bridge_and_ex_dates_by_period",
+   "t_exdate_jump_on_the_divisor",
+   "t_funding_path_and_names",
+   "t_release_nodes_of_the_levels",
+   "t_release_on_the_divisor"
+  ],
+  "M08": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants",
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_terminal_without_pending_deduction"
+  ],
+  "M09": [
+   "apu_cap_per_observation",
+   "apu_frozen_expectations"
+  ],
+  "M10": [
+   "dividend_bound_is_the_headroom",
+   "dps_is_pool_over_issued",
+   "epsilon_ramp",
+   "fade_is_one_sided",
+   "h_world_independent_of_phi",
+   "pending_dividend_without_discount",
+   "phi_remainder_reaches_liabilities",
+   "quarter_end_continuity",
+   "t_funding_path_and_names",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_release_on_the_divisor",
+   "t_room_of_the_quarter",
+   "t_rule_price_and_limits",
+   "t_sign_gates"
+  ],
+  "M11": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants",
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_level_gates",
+   "t_level_world",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter"
+  ],
+  "M12": [
+   "cor_path_bridged_once",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M13": [
+   "cor_path_bridged_once",
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M14": [
+   "deductions_scale_with_rwa",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M15": [
+   "t_anchor_payable_state",
+   "t_base_is_the_window_mean",
+   "t_room_of_the_quarter",
+   "unaudited_by_calendar"
+  ],
+  "M16": [
+   "agm_quarter_neutral_for_capital",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_catch_up",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_quarter_queues",
+   "t_sign_gates",
+   "t_terminal_without_pending_deduction"
+  ],
+  "M17": [
+   "ddm_ri_mid_quarter",
+   "pending_dividend_without_discount",
+   "quarter_end_continuity"
+  ],
+  "M18": [
+   "ddm_ri_mid_quarter",
+   "pending_dividend_without_discount",
+   "quarter_end_continuity"
+  ],
+  "M19": [
+   "lhs_order"
+  ],
+  "M20": [
+   "quantile_type_7",
+   "t_funding_path_and_names",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M21": [
+   "pending_dividend_without_discount",
+   "quarter_end_continuity",
+   "roll_is_end_of_day",
+   "t_unregistered_dividend_by_quarters",
+   "unregistered_dividend_closed_form"
+  ],
+  "M22": [
+   "sigma0_from_year",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders"
+  ],
+  "M23": [
+   "epsilon_ramp",
+   "t_excess_once_a_year"
+  ],
+  "M24": [
+   "misc_quarter_profile",
+   "t_room_of_the_quarter",
+   "t_sign_gates",
+   "terminal_closed_form"
+  ],
+  "M25": [
+   "apu_layer_average_is_observation"
+  ],
+  "M26": [
+   "deductions_scale_with_rwa"
+  ],
+  "M27": [
+   "terminal_closed_form"
+  ],
+  "M28": [
+   "terminal_closed_form"
+  ],
+  "M29": [
+   "terminal_closed_form"
+  ],
+  "M30": [
+   "dia_leg_from_book",
+   "t_growth_secant_step",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M31": [
+   "kappa_lag_closed_form",
+   "t_growth_shock_year_and_orders",
+   "t_kappa_reference_world"
+  ],
+  "M32": [
+   "cor_includes_kappa",
+   "t_growth_secant_step",
+   "t_kappa_reference_world",
+   "t_point_path_and_variants"
+  ],
+  "M33": [
+   "first_dy_from_anchor_curve",
+   "t_growth_secant_step"
+  ],
+  "M34": [
+   "la_minimum_binds",
+   "terminal_closed_form"
+  ],
+  "M35": [
+   "fvc_reference_regime"
+  ],
+  "M36": [
+   "fvc_reference_is_the_book_before_the_draw",
+   "fvc_reference_regime"
+  ],
+  "M37": [
+   "misc_quarter_profile",
+   "t_growth_shock_year_and_orders"
+  ],
+  "M38": [
+   "pending_dividend_without_discount",
+   "quarter_end_continuity"
+  ],
+  "M39": [
+   "roll_is_end_of_day"
+  ],
+  "M40": [
+   "apu_window"
+  ],
+  "M41": [
+   "apu_frozen_expectations"
+  ],
+  "M42": [
+   "crisis_skip_is_not_a_cut"
+  ],
+  "M43": [
+   "fade_is_one_sided",
+   "sigma0_from_year",
+   "t_growth_secant_step",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_sign_gates",
+   "terminal_closed_form"
+  ],
+  "M44": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants",
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_secant_step",
+   "t_level_gates",
+   "t_level_world",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter"
+  ],
+  "M45": [
+   "ddm_ri_mid_quarter",
+   "fade_is_one_sided",
+   "invariants",
+   "sigma0_split_closed_form",
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_level_gates",
+   "t_level_world",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M46": [
+   "lt_floor_at_the_ends_of_share_axes",
+   "lt_spread_closed_form"
+  ],
+  "M47": [
+   "neutral_edge_tolerance"
+  ],
+  "M48": [
+   "guidance_point_tolerance"
+  ],
+  "M49": [
+   "mean_shift_formula"
+  ],
+  "M50": [
+   "crisis_skip_is_not_a_cut",
+   "fvc_reference_regime",
+   "t_dps_of_the_year_with_closed_quarters",
+   "t_growth_shock_year_and_orders",
+   "t_regime_rwa_multiplier",
+   "t_room_of_the_quarter",
+   "t_shock_year_cancels_quarterly_decisions",
+   "t_sign_gates"
+  ],
+  "M51": [
+   "fade_is_one_sided",
+   "t_fade_mode",
+   "t_point_path_and_variants"
+  ],
+  "M52": [
+   "fvc_reference_is_the_book_before_the_draw"
+  ],
+  "M53": [
+   "regime_floor"
+  ],
+  "M54": [
+   "phi_remainder_reaches_liabilities",
+   "t_growth_secant_step",
+   "t_level_gates",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M55": [
+   "terminal_closed_form"
+  ],
+  "M56": [
+   "phi_split_closed_form",
+   "t_sign_gates"
+  ],
+  "M57": [
+   "lt_floor_at_the_ends_of_share_axes",
+   "lt_spread_closed_form",
+   "phi_split_closed_form",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M58": [
+   "year_with_reported_quarters"
+  ],
+  "M59": [
+   "unregistered_dividend_closed_form"
+  ],
+  "M60": [
+   "terminal_closed_form"
+  ],
+  "M61": [
+   "median_shift_window"
+  ],
+  "M62": [
+   "neutral_search_goes_inside_the_bracket"
+  ],
+  "M63": [
+   "nowcast_year_on_one_layer"
+  ],
+  "M64": [
+   "refine_takes_the_secant_step"
+  ],
+  "M65": [
+   "in_range_is_about_the_root"
+  ],
+  "M66": [
+   "point_neutral_goes_inside_the_bracket"
+  ],
+  "M67": [
+   "lt_floor_at_the_ends_of_share_axes"
+  ],
+  "M68": [
+   "unaudited_loss_in_base_capital"
+  ],
+  "M69": [
+   "t_growth_outputs_and_gates",
+   "unaudited_loss_in_base_capital"
+  ],
+  "M70": [
+   "dividend_bound_is_the_headroom"
+  ],
+  "M71": [
+   "probabilities_are_not_negative"
+  ],
+  "M72": [
+   "probabilities_are_not_negative"
+  ],
+  "M73": [
+   "schema_name_is_the_key_of_the_book"
+  ],
+  "M74": [
+   "book_title_keeps_abbreviations"
+  ],
+  "M75": [
+   "guidance_gate_reads_the_gate_flag",
+   "t_guidance_growth_nodes"
+  ],
+  "M76": [
+   "pending_branch_refuses"
+  ],
+  "M77": [
+   "label_fields_are_closed",
+   "t_gate_words_and_release_remarks"
+  ],
+  "M78": [
+   "inactive_calendar_key_refuses"
+  ],
+  "M79": [
+   "record_label_by_period"
+  ],
+  "M80": [
+   "corridor_words_from_the_book"
+  ],
+  "M81": [
+   "issued_divisor_needs_one_ticker"
+  ],
+  "M82": [
+   "growth_constraint_needs_the_quarterly_calendar"
+  ],
+  "M83": [
+   "t_exdate_jump_on_the_divisor"
+  ],
+  "M84": [
+   "t_bridge_and_ex_dates_by_period",
+   "t_divisor_scales_the_price",
+   "t_exdate_jump_on_the_divisor",
+   "t_rule_price_and_limits"
+  ],
+  "M85": [
+   "t_divisor_scales_the_price"
+  ],
+  "M86": [
+   "t_divisor_scales_the_price"
+  ],
+  "M87": [
+   "t_divisor_scales_the_price",
+   "t_rule_price_and_limits"
+  ],
+  "M88": [
+   "t_history_cap"
+  ],
+  "M89": [
+   "t_dps_of_the_year_with_closed_quarters",
+   "t_funding_path_and_names",
+   "t_history_cap",
+   "t_payout_cap_gate",
+   "t_payout_cap_tolerance",
+   "t_release_by_periods",
+   "t_release_nodes_of_the_levels",
+   "t_release_of_the_growth_nodes",
+   "t_release_on_the_divisor",
+   "t_words_and_release_nodes"
+  ],
+  "M90": [
+   "t_payout_cap_gate",
+   "t_payout_cap_tolerance"
+  ],
+  "M91": [
+   "t_growth_secant_step",
+   "t_sign_gates",
+   "t_volume_link_closed_form"
+  ],
+  "M92": [
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_sign_gates",
+   "t_volume_link_closed_form"
+  ],
+  "M93": [
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_volume_link_closed_form"
+  ],
+  "M94": [
+   "t_volume_link_closed_form"
+  ],
+  "M95": [
+   "t_growth_secant_step",
+   "t_sign_gates",
+   "t_volume_link_closed_form"
+  ],
+  "M96": [
+   "t_growth_catch_up",
+   "t_growth_lambda_on_every_loan_book",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_growth_switch_and_steps",
+   "t_premium_by_sector",
+   "t_sign_gates"
+  ],
+  "M97": [
+   "t_funding_path_and_names",
+   "t_funds_premium_by_quarter",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_outputs_and_gates",
+   "t_growth_secant_step",
+   "t_premium_by_sector",
+   "t_sign_gates"
+  ],
+  "M98": [
+   "t_fixed_other_assets",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_rule_price_and_limits",
+   "t_sign_gates"
+  ],
+  "M99": [
+   "t_fixed_other_assets",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M100": [
+   "t_fixed_other_assets",
+   "t_funding_path_and_names",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M101": [
+   "t_regime_rwa_multiplier"
+  ],
+  "M102": [
+   "t_guidance_growth_nodes"
+  ],
+  "M103": [
+   "t_guidance_growth_nodes"
+  ],
+  "M104": [
+   "t_estimated_capital"
+  ],
+  "M105": [
+   "t_estimated_capital"
+  ],
+  "M106": [
+   "t_funding_path_and_names",
+   "t_release_nodes_of_the_levels",
+   "t_release_on_the_divisor"
+  ],
+  "M107": [
+   "t_release_on_the_divisor"
+  ],
+  "M108": [
+   "t_release_on_the_divisor"
+  ],
+  "M109": [
+   "t_funding_path_and_names",
+   "t_release_by_periods",
+   "t_release_nodes_of_the_levels",
+   "t_release_on_the_divisor"
+  ],
+  "M110": [
+   "t_release_on_the_divisor"
+  ],
+  "M111": [
+   "t_release_on_the_divisor"
+  ],
+  "M112": [
+   "t_anchor_payable_state",
+   "t_base_is_the_window_mean",
+   "t_bridge_and_ex_dates_by_period",
+   "t_bundle_is_an_increment",
+   "t_covered_quarter_gives_zero",
+   "t_decision_event_of_the_calendar",
+   "t_dps_of_the_year_with_closed_quarters",
+   "t_excess_once_a_year",
+   "t_fade_mode",
+   "t_funding_path_and_names",
+   "t_funds_premium_by_quarter",
+   "t_gate_words_and_release_remarks",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_catch_up",
+   "t_growth_lambda_on_every_loan_book",
+   "t_growth_no_excess_when_cut",
+   "t_growth_outputs_and_gates",
+   "t_growth_requirement_glides",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_growth_switch_and_steps",
+   "t_kappa_reference_world",
+   "t_level_gates",
+   "t_level_world",
+   "t_live_register_by_period",
+   "t_payout_cap_tolerance",
+   "t_point_path_and_variants",
+   "t_printed_margin_and_its_gate",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_quarter_queues",
+   "t_range_edge_and_the_margin_fields",
+   "t_register_by_period",
+   "t_release_by_periods",
+   "t_release_nodes_of_the_levels",
+   "t_release_of_the_growth_nodes",
+   "t_reverse_axis_and_the_edge_of_the_search",
+   "t_room_of_the_quarter",
+   "t_rule_price_and_limits",
+   "t_shock_year_cancels_quarterly_decisions",
+   "t_sign_gates",
+   "t_terminal_without_pending_deduction",
+   "t_unregistered_dividend_by_quarters",
+   "t_variants_note_order_and_fingerprint",
+   "t_window_of_facts",
+   "t_words_and_release_nodes"
+  ],
+  "M113": [
+   "t_dps_of_the_year_with_closed_quarters",
+   "t_growth_secant_step",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_quarter_queues",
+   "t_register_by_period",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_shock_year_cancels_quarterly_decisions",
+   "t_sign_gates",
+   "t_terminal_without_pending_deduction",
+   "t_unregistered_dividend_by_quarters"
+  ],
+  "M114": [
+   "t_growth_outputs_and_gates",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_quarter_queues",
+   "t_sign_gates",
+   "t_terminal_without_pending_deduction"
+  ],
+  "M115": [
+   "t_anchor_payable_state",
+   "t_growth_secant_step",
+   "t_quarter_queues"
+  ],
+  "M116": [
+   "t_quarter_calendar_by_the_lag_map"
+  ],
+  "M117": [
+   "t_base_is_the_window_mean",
+   "t_bridge_and_ex_dates_by_period",
+   "t_dps_of_the_year_with_closed_quarters",
+   "t_growth_secant_step",
+   "t_live_register_by_period",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_quarter_queues",
+   "t_register_by_period",
+   "t_release_by_periods",
+   "t_room_of_the_quarter",
+   "t_sign_gates"
+  ],
+  "M118": [
+   "t_base_is_the_window_mean",
+   "t_growth_secant_step",
+   "t_growth_switch_and_steps"
+  ],
+  "M119": [
+   "t_base_is_the_window_mean",
+   "t_growth_shock_year_and_orders"
+  ],
+  "M120": [
+   "t_excess_once_a_year",
+   "t_growth_step_is_the_final_step"
+  ],
+  "M121": [
+   "t_shock_year_cancels_quarterly_decisions"
+  ],
+  "M122": [
+   "t_shock_year_cancels_quarterly_decisions"
+  ],
+  "M123": [
+   "t_anchor_payable_state",
+   "t_register_by_period",
+   "t_room_of_the_quarter",
+   "t_unregistered_dividend_by_quarters"
+  ],
+  "M124": [
+   "t_live_register_by_period",
+   "t_release_by_periods"
+  ],
+  "M125": [
+   "t_bridge_and_ex_dates_by_period",
+   "t_release_by_periods"
+  ],
+  "M126": [
+   "t_bridge_and_ex_dates_by_period"
+  ],
+  "M127": [
+   "t_register_by_period",
+   "t_room_of_the_quarter",
+   "t_unregistered_dividend_by_quarters"
+  ],
+  "M128": [
+   "t_register_by_period",
+   "t_room_of_the_quarter"
+  ],
+  "M129": [
+   "t_base_is_the_window_mean",
+   "t_growth_shock_year_and_orders"
+  ],
+  "M130": [
+   "t_growth_shock_year_and_orders",
+   "t_shock_year_cancels_quarterly_decisions"
+  ],
+  "M131": [
+   "t_unregistered_dividend_by_quarters"
+  ],
+  "M132": [
+   "t_unregistered_dividend_by_quarters"
+  ],
+  "M133": [
+   "t_room_of_the_quarter"
+  ],
+  "M134": [
+   "t_room_of_the_quarter"
+  ],
+  "M135": [
+   "t_funding_path_and_names",
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_outputs_and_gates",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_growth_switch_and_steps",
+   "t_quarter_calendar_by_the_lag_map",
+   "t_release_nodes_of_the_levels",
+   "t_room_of_the_quarter",
+   "t_rule_price_and_limits",
+   "t_sign_gates"
+  ],
+  "M136": [
+   "t_terminal_without_pending_deduction"
+  ],
+  "M137": [
+   "t_anchor_payable_state",
+   "t_quarter_queues"
+  ],
+  "M138": [
+   "t_anchor_payable_state"
+  ],
+  "M139": [
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_catch_up",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_quarter_queues",
+   "t_sign_gates",
+   "t_terminal_without_pending_deduction"
+  ],
+  "M140": [
+   "t_anchor_payable_state",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_quarter_queues"
+  ],
+  "M141": [
+   "t_covered_quarter_gives_zero",
+   "t_dps_of_the_year_with_closed_quarters"
+  ],
+  "M142": [
+   "t_live_register_by_period"
+  ],
+  "M143": [
+   "t_live_register_by_period"
+  ],
+  "M144": [
+   "t_live_register_by_period"
+  ],
+  "M145": [
+   "t_decision_event_of_the_calendar"
+  ],
+  "M146": [
+   "t_dps_of_the_year_with_closed_quarters"
+  ],
+  "M147": [
+   "t_release_by_periods"
+  ],
+  "M148": [
+   "t_release_by_periods",
+   "t_release_on_the_divisor",
+   "t_words_and_release_nodes"
+  ],
+  "M149": [
+   "t_release_by_periods"
+  ],
+  "M150": [
+   "t_release_by_periods"
+  ],
+  "M151": [
+   "t_release_by_periods"
+  ],
+  "M152": [
+   "t_release_by_periods"
+  ],
+  "M153": [
+   "t_release_by_periods"
+  ],
+  "M154": [
+   "t_release_by_periods"
+  ],
+  "M155": [
+   "t_release_by_periods"
+  ],
+  "M156": [
+   "t_funding_path_and_names",
+   "t_growth_lambda_on_every_loan_book",
+   "t_growth_outputs_and_gates",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M157": [
+   "t_growth_requirement_glides",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M158": [
+   "t_growth_requirement_glides",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M159": [
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_requirement_glides",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M160": [
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_growth_switch_and_steps",
+   "t_sign_gates"
+  ],
+  "M161": [
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_secant_step",
+   "t_growth_step_is_the_final_step"
+  ],
+  "M162": [
+   "t_growth_catch_up",
+   "t_growth_step_is_the_final_step"
+  ],
+  "M163": [
+   "t_growth_catch_up",
+   "t_growth_secant_step"
+  ],
+  "M164": [
+   "t_growth_catch_up",
+   "t_sign_gates"
+  ],
+  "M165": [
+   "t_growth_outputs_and_gates",
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_growth_switch_and_steps",
+   "t_release_nodes_of_the_levels",
+   "t_rule_price_and_limits",
+   "t_sign_gates"
+  ],
+  "M166": [
+   "t_growth_shock_year_and_orders",
+   "t_growth_step_is_the_final_step",
+   "t_rule_price_and_limits"
+  ],
+  "M167": [
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_secant_step",
+   "t_growth_step_is_the_final_step",
+   "t_sign_gates"
+  ],
+  "M168": [
+   "t_growth_no_excess_when_cut",
+   "t_growth_step_is_the_final_step"
+  ],
+  "M169": [
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_catch_up",
+   "t_growth_lambda_on_every_loan_book",
+   "t_growth_outputs_and_gates",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps",
+   "t_sign_gates"
+  ],
+  "M170": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M171": [
+   "t_growth_binding_ratio_equals_the_requirement",
+   "t_growth_outputs_and_gates",
+   "t_growth_secant_step"
+  ],
+  "M172": [
+   "t_growth_shock_year_and_orders"
+  ],
+  "M173": [
+   "t_growth_budget_of_step_evaluations",
+   "t_growth_secant_step",
+   "t_growth_shock_year_and_orders",
+   "t_growth_switch_and_steps"
+  ],
+  "M174": [
+   "t_growth_secant_step"
+  ],
+  "M175": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M176": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M177": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M178": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M179": [
+   "t_growth_outputs_and_gates",
+   "t_level_gates"
+  ],
+  "M180": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M181": [
+   "t_growth_outputs_and_gates"
+  ],
+  "M182": [
+   "t_rule_price_and_limits"
+  ],
+  "M183": [
+   "t_rule_price_and_limits"
+  ],
+  "M184": [
+   "t_rule_price_and_limits"
+  ],
+  "M185": [
+   "t_refine_rows_and_premium_facts",
+   "t_rule_price_and_limits"
+  ],
+  "M186": [
+   "t_rule_price_and_limits"
+  ],
+  "M187": [
+   "t_rule_price_and_limits"
+  ],
+  "M188": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M189": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M190": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M191": [
+   "t_funding_path_and_names",
+   "t_release_nodes_of_the_levels",
+   "t_release_of_the_growth_nodes"
+  ],
+  "M192": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M193": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M194": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M195": [
+   "t_release_of_the_growth_nodes"
+  ],
+  "M196": [
+   "t_bundle_is_an_increment"
+  ],
+  "M197": [
+   "t_bundle_is_an_increment"
+  ],
+  "M198": [
+   "t_bundle_is_an_increment"
+  ],
+  "M199": [
+   "t_bundle_is_an_increment"
+  ],
+  "M200": [
+   "t_printed_margin_and_its_gate"
+  ],
+  "M201": [
+   "t_printed_margin_and_its_gate"
+  ],
+  "M202": [
+   "t_printed_margin_and_its_gate"
+  ],
+  "M203": [
+   "t_sign_gates"
+  ],
+  "M204": [
+   "t_sign_gates",
+   "t_words_and_release_nodes"
+  ],
+  "M205": [
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M206": [
+   "t_sign_gates"
+  ],
+  "M207": [
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M208": [
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M209": [
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates",
+   "t_words_and_release_nodes"
+  ],
+  "M210": [
+   "t_payout_cap_tolerance"
+  ],
+  "M211": [
+   "t_covered_quarter_gives_zero"
+  ],
+  "M212": [
+   "t_covered_quarter_gives_zero"
+  ],
+  "M213": [
+   "t_reverse_axis_and_the_edge_of_the_search"
+  ],
+  "M214": [
+   "t_reverse_axis_and_the_edge_of_the_search"
+  ],
+  "M215": [
+   "t_reverse_axis_and_the_edge_of_the_search"
+  ],
+  "M216": [
+   "t_reverse_axis_and_the_edge_of_the_search"
+  ],
+  "M217": [
+   "t_words_and_release_nodes"
+  ],
+  "M218": [
+   "t_words_and_release_nodes"
+  ],
+  "M219": [
+   "t_words_and_release_nodes"
+  ],
+  "M220": [
+   "t_words_and_release_nodes"
+  ],
+  "M221": [
+   "t_words_and_release_nodes"
+  ],
+  "M222": [
+   "t_words_and_release_nodes"
+  ],
+  "M223": [
+   "t_words_and_release_nodes"
+  ],
+  "M224": [
+   "t_words_and_release_nodes"
+  ],
+  "M225": [
+   "t_release_nodes_of_the_levels",
+   "t_words_and_release_nodes"
+  ],
+  "M226": [
+   "t_sign_gates"
+  ],
+  "M227": [
+   "t_payout_cap_tolerance"
+  ],
+  "M228": [
+   "t_kappa_reference_world"
+  ],
+  "M229": [
+   "t_funding_path_and_names",
+   "t_kappa_reference_world",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M230": [
+   "t_kappa_reference_world"
+  ],
+  "M231": [
+   "t_fade_mode",
+   "t_point_path_and_variants"
+  ],
+  "M232": [
+   "t_fade_mode",
+   "t_point_path_and_variants"
+  ],
+  "M233": [
+   "t_level_gates",
+   "t_level_world"
+  ],
+  "M234": [
+   "t_level_gates"
+  ],
+  "M235": [
+   "t_level_gates",
+   "t_window_of_facts"
+  ],
+  "M236": [
+   "t_gate_words_and_release_remarks",
+   "t_level_gates",
+   "t_release_nodes_of_the_levels",
+   "t_window_of_facts"
+  ],
+  "M237": [
+   "t_level_gates"
+  ],
+  "M238": [
+   "t_level_gates",
+   "t_point_path_and_variants"
+  ],
+  "M239": [
+   "t_level_gates"
+  ],
+  "M240": [
+   "t_level_gates"
+  ],
+  "M241": [
+   "t_level_gates"
+  ],
+  "M242": [
+   "t_gate_words_and_release_remarks",
+   "t_level_gates",
+   "t_window_of_facts"
+  ],
+  "M243": [
+   "t_gate_words_and_release_remarks",
+   "t_level_gates",
+   "t_window_of_facts"
+  ],
+  "M244": [
+   "t_level_gates",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M245": [
+   "t_point_path_and_variants",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M246": [
+   "t_point_path_and_variants"
+  ],
+  "M247": [
+   "t_point_path_and_variants",
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M248": [
+   "t_point_path_and_variants",
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M249": [
+   "t_release_nodes_of_the_levels",
+   "t_sign_gates"
+  ],
+  "M250": [
+   "t_sign_gates"
+  ],
+  "M251": [
+   "t_range_edge_and_the_margin_fields"
+  ],
+  "M252": [
+   "t_range_edge_and_the_margin_fields"
+  ],
+  "M253": [
+   "t_level_world",
+   "t_range_edge_and_the_margin_fields",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M254": [
+   "t_release_nodes_of_the_levels"
+  ],
+  "M255": [
+   "t_level_gates",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M256": [
+   "t_release_nodes_of_the_levels"
+  ],
+  "M257": [
+   "t_funding_path_and_names",
+   "t_release_nodes_of_the_levels"
+  ],
+  "M258": [
+   "t_refine_rows_and_premium_facts",
+   "t_rule_price_and_limits"
+  ],
+  "M259": [
+   "t_funding_path_and_names",
+   "t_level_world"
+  ],
+  "M260": [
+   "t_funding_path_and_names",
+   "t_level_world"
+  ],
+  "M261": [
+   "t_funding_path_and_names",
+   "t_level_gates",
+   "t_level_world"
+  ],
+  "M262": [
+   "t_funding_path_and_names",
+   "t_level_world"
+  ],
+  "M263": [
+   "t_level_world"
+  ],
+  "M264": [
+   "t_level_world"
+  ],
+  "M265": [
+   "t_level_world"
+  ],
+  "M266": [
+   "t_window_of_facts"
+  ],
+  "M267": [
+   "t_window_of_facts"
+  ],
+  "M268": [
+   "t_window_of_facts"
+  ],
+  "M269": [
+   "t_window_of_facts"
+  ],
+  "M270": [
+   "t_funding_path_and_names",
+   "t_window_of_facts"
+  ],
+  "M271": [
+   "t_window_of_facts"
+  ],
+  "M272": [
+   "t_window_of_facts"
+  ],
+  "M273": [
+   "t_refine_rows_and_premium_facts"
+  ],
+  "M274": [
+   "t_refine_rows_and_premium_facts"
+  ],
+  "M275": [
+   "t_refine_rows_and_premium_facts"
+  ],
+  "M276": [
+   "t_refine_rows_and_premium_facts"
+  ],
+  "M277": [
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M278": [
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M279": [
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M280": [
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M281": [
+   "t_variants_note_order_and_fingerprint"
+  ],
+  "M282": [
+   "t_gate_words_and_release_remarks",
+   "t_level_gates"
+  ],
+  "M283": [
+   "t_gate_words_and_release_remarks"
+  ],
+  "M284": [
+   "t_gate_words_and_release_remarks"
+  ],
+  "M285": [
+   "t_gate_words_and_release_remarks"
+  ],
+  "M286": [
+   "t_gate_words_and_release_remarks"
+  ],
+  "M287": [
+   "t_funds_premium_by_quarter"
+  ],
+  "M288": [
+   "t_funds_premium_by_quarter"
+  ],
+  "M289": [
+   "t_funds_premium_by_quarter"
+  ],
+  "M290": [
+   "t_funding_path_and_names"
+  ],
+  "M291": [
+   "t_funding_path_and_names"
+  ],
+  "M292": [
+   "t_funding_path_and_names"
+  ],
+  "M293": [
+   "t_funding_path_and_names"
+  ],
+  "M294": [
+   "t_funding_path_and_names"
+  ],
+  "M295": [
+   "t_funding_path_and_names"
+  ]
+ }
+}

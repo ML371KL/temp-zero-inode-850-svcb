@@ -1,0 +1,57 @@
+# Фрагмент книги прохода ядра 5 (Р6-1; ключ core5-spec, 22.10.2026) — для потока книги ПОСЛЕ слияния ядра с ключом.
+# Значения — предложение методики по правилам устава и решений ведущего; решение о центрах θ и s* — за ведущим (вопросы в
+# report). Все числа ПРЕДВАРИТЕЛЬНЫЕ (сетка и малая полоса 600 прогонов прототипа, p3 @ 837590f).
+
+volumes:
+  # К8 + Р6-1: доля денег БЕЗ ФОР к уровню драйвера (средства клиентов без книги страховых) — параметр книги; деньги якоря —
+  # факт (amount: anchor); ФОР — доля якоря R_0 / D_0 (факт); путь от доли якоря 5,042 % к доле книги — линейно по кварталам
+  # до share_from; вытесненная (или добавленная) часть растущих прочих активов несёт плотность между денег (θ = 0) и прочих
+  # без денег (θ = 1).
+  cash_assets:
+    amount: anchor                     # C_0 = 176,354 (balance.nonworking_money.total) — факт, как было
+    driver: {retail_current: 1.0, retail_term: 1.0, corp_term: 1.0, corp_current: 1.0}
+    share: 0.0576                      # s* — среднее окна R без ФОР, 7 кварталов 2024К4–2026К2 (5,55 / 5,63 / 6,39 / 6,95 / 6,22 /
+                                       #   4,53 / 5,04 %) = 5,7586 % → запись 0,0576 (допуск правила 5e-5); середина диапазона 5,74 %
+                                       #   (Р6-1: центр 5,74–5,76 %; ВОПРОС ведущему — правило Р6-2 «среднее скользящих 4 кварталов»
+                                       #   дало бы 6,034 %, цена ≤ 0,011 ₽)
+    reserves: anchor                   # R_0 = 13,151 (balance.nonworking_money.mandatory_reserves) — факт; ФОР растёт со средствами
+                                       #   долей якоря 0,4063 % (норматив ЦБ на обязательства, не шум квартала)
+    share_from: 2026Q4                 # доля книги — с конца года якоря; 2026К3 — середина пути (линейно по кварталам)
+    displaced_weight: 0.5              # θ — середина гипотез «вытесненная часть прочих активов весит как деньги» (0) и «как прочие
+                                       #   без денег» (1): данные окна их не различают (правило Р4: не выбор, а ось)
+
+valuation:
+  uncertainty:
+    axes_append:                       # добавить в конец списка осей (новые оси — отдельный LHS, зерно + 7, как у потока i5)
+      - {name: "Неработающие деньги: доля без ФОР к средствам клиентов (кварталы окна R; Р6-1)", kind: value,
+         paths: [volumes.cash_assets.share], low: 0.0453, high: 0.0695, dist: triangular, unit: pct}
+      - {name: "Неработающие деньги: вес вытесненной части прочих активов (как деньги … как прочие; Р6-1)", kind: value,
+         paths: [volumes.cash_assets.displaced_weight], low: 0.0, high: 1.0, dist: triangular, unit: number}
+  reference_variants_changes:
+    add:
+      - {id: cash_share_anchor, title: "Доля неработающих денег — квартал якоря (прежнее суждение Р5-10)",
+         overrides: {volumes.cash_assets.share: anchor}}
+      - {id: cash_displaced_as_money, title: "Вытесненная часть прочих активов весит как деньги (θ = 0; приближение k8w)",
+         overrides: {volumes.cash_assets.displaced_weight: 0.0}}
+      - {id: cash_displaced_as_other, title: "Вытесненная часть прочих активов весит как прочие без денег (θ = 1)",
+         overrides: {volumes.cash_assets.displaced_weight: 1.0}}
+      - {id: cash_share_glide_2029, title: "Доля денег книги — к концу 2029 года (правило корней строк)",
+         overrides: {volumes.cash_assets.share_from: 2029Q4}}
+    amend:                             # ловушка: доля s* измерена к средствам клиентов без книги страховых
+      cash_with_loans: {add_overrides: {volumes.cash_assets.share: anchor}}          # иначе s* ляжет на кредиты; с anchor ≡ К8 выключен
+      nonworking_money_fixed: {add_overrides: {volumes.cash_assets.share: anchor}}  # деньги в постоянной части; иначе — дважды
+      cash_with_funds: {add_overrides: {volumes.cash_assets.share: anchor}}         # или s* × D_0 / D_0′ = 0,0576 × 3 236,582 /
+                                                                                     #   3 407,692 = 0,05471 — правилом класса 6
+
+# data/assumptions/class_checks.yaml — правила потока книги
+class_checks:
+  centres:
+    - {key: volumes.cash_assets.share, rule: facts, expr: "mean([0.0555, 0.0563, 0.0639, 0.0695, 0.0622, 0.0453, (F('balance', 'nonworking_money', 'total') - F('balance', 'nonworking_money', 'mandatory_reserves')) / 3236.582])", tol: 5.0e-05,
+       source: "Р6-1: среднее кварталов окна R 2024К4–2026К2, деньги без ФОР (счета в ЦБ + «ностро» + наличные) / средства клиентов (МСФО, прим. «Денежные средства»); якорь — из узлов фактов; 2024К2–К3 не взяты (счета в ЦБ с депозитами)"}
+    - {key: "ось доли денег: низ", rule: value, value: 0.0453, tol: 0, source: "Р6-1: наименьший квартал окна (2026К1)"}
+    - {key: "ось доли денег: верх", rule: value, value: 0.0695, tol: 0, source: "Р6-1: наибольший квартал окна (2025К3)"}
+    - {key: volumes.cash_assets.displaced_weight, rule: midpoint, lo: 0.0, hi: 1.0, tol: 1.0e-09,
+       source: "Р6-1, класс 1: вес вытесненной части прочих активов — середина гипотез (как деньги / как прочие без денег); данные окна не различают (решения № 4, диагноз)"}
+    - {key: volumes.cash_assets.share_from, rule: value, value: "2026Q4", tol: 0, source: "core5-spec: доля книги с конца года якоря"}
+  transitional:
+    - {name: "Доля неработающих денег: путь от квартала якоря к доле книги", series: cash_share, neutral: last, until: 2026}

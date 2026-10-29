@@ -1,0 +1,32 @@
+# Заглушка книги этой копии для тестов индикаторов (формат прил. A MODEL): эмитент, дата фактов и первый квартал
+# сетки, квартальный календарь дивидендов годового плательщика (решения по кварталам прибыли — техника ядра,
+# собрание — раз в год), подписи реестра и периодов. Числа и даты — сочинены для тестов.
+meta:
+  facts_date: "2026-06-30"
+  first_period: "2026Q3"
+  company:
+    name: "Совкомбанк"
+    tickers: [SVCB]
+    main_ticker: SVCB
+    cbr_regnum: 963
+    fiscal_year_end: "12-31"
+  labels:
+    register:
+      collector_alarm: "нет записи реестра {label} к сроку решения ({end}): {detail} — проверить документы эмитента или внести `record-dividend` со ссылкой на документ эмитента"
+    periods:
+      "1": "за первый квартал {year} года"
+      "2": "за полугодие {year} года"
+      "3": "за девять месяцев {year} года"
+      "4": "за {year} год"
+    nowcast:
+      targets:
+        ni_q: {title: "Прибыль акционеров квартала", basis: ifrs, title_long: "Прибыль МСФО акционерам банка за квартал"}
+        nim_q: {title: "ЧПМ квартала", basis: mgmt, title_long: "ЧПМ квартала (определение банка)"}
+        cor_q: {title: "Стоимость риска квартала", basis: mgmt, title_long: "Стоимость риска квартала (определение банка)"}
+dividends:
+  calendar:
+    frequency: quarterly
+    decision_lag_quarters: {"1": 4, "2": 4, "3": 3, "4": 2}
+    reg_deduction_lag_quarters: 3
+    payment_lag_quarters: 3
+    checkpoints_ahead: 0

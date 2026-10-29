@@ -1,0 +1,23 @@
+# Фрагмент книги прохода ядра 7 (Р9-1; core7-spec, 27.10.2026). Числа ρ — неподвижная точка правилом листа на книге p3 @ 5e50bf9
+# с ключом (κ книги; 4 круга: 3,05e-2 → 5,87e-4 → 5,0e-6 → 0). ВЫВОДИТ КОМАНДА (шаг share_roots листа, вместе с κ): при совместной
+# неподвижной точке κ и ρ числа ниже сдвигаются до 1,5e-5 (joint), κ — до 1,5e-3 (2029К4). Пример и фикстура тестов, не литералы книги.
+volumes:
+  liability_drivers: {insurance_liab: insurance}            # К6 — без изменений
+  liability_driver_roots:                                     # Р9-1 (проход ядра 7, М§4.3): корень ρ номинальной части книг К6 по строке-драйверу
+    insurance: {"2026Q3": -0.03039, "2026Q4": -0.030516, "2027Q1": -0.012945, "2027Q2": -0.008582, "2027Q3": -0.01464, "2027Q4": -0.014897, "2028Q1": -0.018292, "2028Q2": -0.008592, "2028Q3": -0.011925, "2028Q4": -0.012219, "2029Q1": -0.003982, "2029Q2": 0.000592, "2029Q3": -0.007253, "2029Q4": -0.010285, LT: 0.0, LT_from: 2030}
+#   правило: ρ_q = E_M[D_q] / E_M[D_(q−1)] / (1 + w^M_q)^(1/4) − 1 до 2029К4, D — база строки страхования на конец квартала (ряд vol_end_ins),
+#   E_M — ожидание слоя «рыночные ставки как есть», w^M — рост зарплат мира M; с 2030 года 0. Совместная точка с κ (run_joint.json):
+#   ρ {"2026Q3": -0.03039, "2026Q4": -0.030516, "2027Q1": -0.012945, "2027Q2": -0.008582, "2027Q3": -0.01464, "2027Q4": -0.014896, "2028Q1": -0.018292, "2028Q2": -0.00859, "2028Q3": -0.011921, "2028Q4": -0.012215, "2029Q1": -0.003973, "2029Q2": 0.000596, "2029Q3": -0.007238, "2029Q4": -0.01027}
+#   κ {"2026Q3": -0.102759, "2026Q4": -0.119057, "2027Q1": -0.102449, "2027Q2": -0.081984, "2027Q3": -0.065024, "2027Q4": -0.053625, "2028Q1": -0.060222, "2028Q2": -0.061249, "2028Q3": -0.069128, "2028Q4": -0.060761, "2029Q1": -0.056279, "2029Q2": -0.039346, "2029Q3": -0.033907, "2029Q4": -0.02674}
+# Связки осей, несущие пути κ (М13 41, базы страхования 49 и комиссий 50, периметра 52–55, связи страхования 59), несут и 14 путей
+# volumes.liability_driver_roots.insurance.<квартал> — ρ конца правилом центра. Замер на концах (run_ends.json):
+#   other.insurance_volume_link|low: Δρ к центру 0.000462; точка с ρ конца 15.619678, с ρ центра 15.617476
+#   other.insurance_volume_link|high: Δρ к центру 0.000471; точка с ρ конца 15.717111, с ρ центра 15.717716
+#   other.insurance_volume_base.mix.corporate.share|low: Δρ к центру 0.000288; точка с ρ конца 15.622117, с ρ центра 15.625335
+#   other.insurance_volume_base.mix.corporate.share|high: Δρ к центру 0.000287; точка с ρ конца 15.679220, с ρ центра 15.676148
+valuation:
+  reference_variants:
+    - {id: k6_root_off, title: "Книга страховых К6 без корня номинальной части (прежняя форма; цена Р9-1)", overrides: {volumes.liability_driver_roots.insurance.2026Q3: 0.0, volumes.liability_driver_roots.insurance.2026Q4: 0.0, volumes.liability_driver_roots.insurance.2027Q1: 0.0, volumes.liability_driver_roots.insurance.2027Q2: 0.0, volumes.liability_driver_roots.insurance.2027Q3: 0.0, volumes.liability_driver_roots.insurance.2027Q4: 0.0, volumes.liability_driver_roots.insurance.2028Q1: 0.0, volumes.liability_driver_roots.insurance.2028Q2: 0.0, volumes.liability_driver_roots.insurance.2028Q3: 0.0, volumes.liability_driver_roots.insurance.2028Q4: 0.0, volumes.liability_driver_roots.insurance.2029Q1: 0.0, volumes.liability_driver_roots.insurance.2029Q2: 0.0, volumes.liability_driver_roots.insurance.2029Q3: 0.0, volumes.liability_driver_roots.insurance.2029Q4: 0.0}}
+#   ρ = 0 во всех кварталах ≡ без ключа бит в бит (run_bits.json: rho_zero_bit) — пути в связках целы; подмена {} рвала бы их (отказ схемы)
+class_checks_yaml_transitional:   # data/assumptions/class_checks.yaml, переходные слагаемые (класс 5)
+  - {name: "Книга страховых К6: корень номинальной части — переход до 2029 года (Р9-1)", series: "driver_root.insurance", neutral: 0.0, until: 2029}

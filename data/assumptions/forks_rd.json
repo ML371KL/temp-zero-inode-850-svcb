@@ -1,0 +1,831 @@
+{
+ "schema": "forks-rd-v1",
+ "book": {
+  "version": "0.1",
+  "numbers": "456311cbb6031bfd7dfdc08738f4f7e9db846ede6547e9a460ac69c2e9bc4cc9",
+  "key": "valuation.reference_record"
+ },
+ "how": "сухой перевывод: вариант — центр шаблона копии дерева, лист вывода перевыводит корни, концы осей и проверки (ops/tools/rederive.py --dry-run); точка — сетка пробной книги; медиана — малая полоса на общих случайных числах (600 прогонов); разности — к базе тех же чисел",
+ "base": {
+  "point": 15.476434,
+  "median": 14.815000000000001,
+  "worlds": {
+   "N": 33.2231,
+   "H": 22.8553,
+   "M": 7.5333
+  },
+  "runs": 600,
+  "source": "ops/tools/forks.py @ 16d4f28 (base, 2026-10-29)"
+ },
+ "crn": {
+  "base": "книга круга 4 (c709f22): общие случайные числа развилок круга 12",
+  "base_axes": [
+   [
+    "shift",
+    "nii.nim_lt_target_mgmt"
+   ],
+   [
+    "shift",
+    "nii.transmission.target"
+   ],
+   [
+    "shift",
+    "regimes.soft.cor.LT"
+   ],
+   [
+    "bundle",
+    "credit.kappa"
+   ],
+   [
+    "dict",
+    "joint.regime_prob"
+   ],
+   [
+    "shift",
+    "regimes.crisis.cor.2027Q1"
+   ],
+   [
+    "shift",
+    "regimes.downturn.cor.2027Q1"
+   ],
+   [
+    "value",
+    "regimes.crisis.nim_shift.2027"
+   ],
+   [
+    "value",
+    "regimes.crisis.one_off_loss.amount"
+   ],
+   [
+    "value",
+    "regimes.crisis.rwa_density_mult.2027"
+   ],
+   [
+    "shift",
+    "opex.real_growth.2027"
+   ],
+   [
+    "shift",
+    "fees.growth_vs_wages.2027"
+   ],
+   [
+    "shift",
+    "other.insurance_growth_vs_wages.2027"
+   ],
+   [
+    "bundle",
+    "volumes.loan_share_drift.retail_other.2027"
+   ],
+   [
+    "bundle",
+    "volumes.funds_share_drift.retail.2027"
+   ],
+   [
+    "value",
+    "capital.mgmt_buffer.n20_0"
+   ],
+   [
+    "value",
+    "capital.rwa.density_drift_rate"
+   ],
+   [
+    "shift",
+    "capital.n20.t2.2026Q3"
+   ],
+   [
+    "value",
+    "credit.book_relative.by_book.mortgage"
+   ],
+   [
+    "value",
+    "capital.reg_scenarios.strict.deduction_pp.n20_0.LT"
+   ],
+   [
+    "bundle",
+    "capital.n20.fvoci_recognition"
+   ],
+   [
+    "shift",
+    "dividends.payout_deviation"
+   ],
+   [
+    "value",
+    "dividends.excess.epsilon"
+   ],
+   [
+    "bundle",
+    "dividends.buyback.amount.2026Q4"
+   ],
+   [
+    "bundle",
+    "nii.books.insurance_liab.beta"
+   ],
+   [
+    "value",
+    "valuation.terminal.fade"
+   ],
+   [
+    "value",
+    "valuation.beta_e"
+   ],
+   [
+    "value",
+    "valuation.erp"
+   ],
+   [
+    "value",
+    "valuation.terminal.real_growth"
+   ],
+   [
+    "value",
+    "tax.effective_gap"
+   ],
+   [
+    "value",
+    "tax.one_off.prob"
+   ],
+   [
+    "shift",
+    "other.misc_net_real"
+   ],
+   [
+    "value",
+    "pnl.nci_share"
+   ],
+   [
+    "dict",
+    "joint.world_prob"
+   ],
+   [
+    "shift",
+    "worlds.M.cpi"
+   ],
+   [
+    "value",
+    "nii.sigma0_split"
+   ],
+   [
+    "value",
+    "nii.phi_split"
+   ],
+   [
+    "value",
+    "nii.retail_current_share.psi"
+   ],
+   [
+    "value",
+    "nii.books.wholesale.spread.LT"
+   ],
+   [
+    "value",
+    "oci.fvoci_duration"
+   ],
+   [
+    "value",
+    "oci.fvoci_maturity"
+   ],
+   [
+    "bundle",
+    "opex.volume_weights.auto"
+   ],
+   [
+    "shift",
+    "opex.volume_weights.securities"
+   ],
+   [
+    "value",
+    "credit.book_relative.by_book.corp_loans"
+   ],
+   [
+    "value",
+    "credit.book_relative.by_book.auto"
+   ],
+   [
+    "value",
+    "credit.book_relative.by_book.cash_loans"
+   ],
+   [
+    "value",
+    "credit.book_relative.by_book.cards"
+   ],
+   [
+    "value",
+    "volumes.wholesale_structural_to_funds"
+   ],
+   [
+    "value",
+    "capital.rwa.guarantees.ccf.nonfinancial"
+   ],
+   [
+    "bundle",
+    "other.insurance_volume_base.mix.retail.share"
+   ],
+   [
+    "bundle",
+    "fees.volume_base.mix.corporate.share"
+   ]
+  ],
+  "alias": [
+   [
+    [
+     "shift",
+     "opex.real_growth.2027Q1"
+    ],
+    [
+     "shift",
+     "opex.real_growth.2027"
+    ]
+   ],
+   [
+    [
+     "shift",
+     "other.insurance_growth_vs_wages.2027Q1"
+    ],
+    [
+     "shift",
+     "other.insurance_growth_vs_wages.2027"
+    ]
+   ],
+   [
+    [
+     "bundle",
+     "capital.mgmt_buffer.n20_0"
+    ],
+    [
+     "value",
+     "capital.mgmt_buffer.n20_0"
+    ]
+   ],
+   [
+    [
+     "bundle",
+     "capital.rwa.guarantees.ccf.nonfinancial"
+    ],
+    [
+     "value",
+     "capital.rwa.guarantees.ccf.nonfinancial"
+    ]
+   ],
+   [
+    [
+     "bundle",
+     "other.insurance_volume_base.mix.corporate.share"
+    ],
+    [
+     "bundle",
+     "other.insurance_volume_base.mix.retail.share"
+    ]
+   ]
+  ],
+  "new_axes_seed": 7
+ },
+ "differences": [
+  {
+   "path": "checks.m_crisis_vs_cbr.n20_min",
+   "runs": 0.129,
+   "book": 0.1284,
+   "why": "порог гейта m_crisis_vs_cbr читает только гейт, лист вывода и оценка его не читают; порог поправлен после прогонов развилок (пол 12,0 % + запас менеджмента книги 0,84 п.п.)"
+  }
+ ],
+ "variants": {
+  "margin_hump_new_level": {
+   "fork": "hump",
+   "source": "forks_summary.json (hump)",
+   "point": 18.774681,
+   "median": 17.7225,
+   "d_point": 3.2982,
+   "d_median": 2.9075,
+   "d_worlds": {
+    "N": 6.3464,
+    "H": 4.2206,
+    "M": 2.0633
+   }
+  },
+  "margin_middle": {
+   "fork": "middle",
+   "source": "forks_summary.json (middle)",
+   "point": 13.059647,
+   "median": 12.382499999999999,
+   "d_point": -2.4168,
+   "d_median": -2.4325,
+   "d_worlds": {
+    "N": -2.7268,
+    "H": -2.5947,
+    "M": -2.2597
+   }
+  },
+  "nim_level_window_composition": {
+   "fork": "nimL",
+   "source": "forks_summary.json (nimL)",
+   "why": "без цены: вариант несовместим с гейтом стоимости средств клиентов к ключевой — на всей оси доли сжатия маржи (0,17…0,64) стоимость средств выше порога 0,876, центра в области гейта нет"
+  },
+  "bridge_literal": {
+   "fork": "bridgelit",
+   "source": "forks_summary.json (bridgelit)",
+   "point": 16.306027,
+   "median": 14.845,
+   "d_point": 0.8296,
+   "d_median": 0.03,
+   "d_worlds": {
+    "N": -1.3882,
+    "H": -0.2802,
+    "M": 1.8926
+   }
+  },
+  "cor_retail_tail": {
+   "fork": "var:cor_retail_tail",
+   "source": "forks_summary.json (cor_tail)",
+   "point": 13.043015,
+   "median": 13.129999999999999,
+   "d_point": -2.4334,
+   "d_median": -1.685,
+   "d_worlds": {
+    "N": -2.7885,
+    "H": -2.5478,
+    "M": -2.287
+   }
+  },
+  "serial_acquirer": {
+   "fork": "var:serial_acquirer",
+   "source": "forks_summary.json (serial)",
+   "point": 17.643733,
+   "median": 16.97,
+   "d_point": 2.1673,
+   "d_median": 2.155,
+   "d_worlds": {
+    "N": 2.2111,
+    "H": 1.9581,
+    "M": 2.2329
+   },
+   "mark": "отбор окон уровня по границе ROE варианта 15,44 % меняет только ось (ось — книги): окно 2П2025 выпадает (ROE 15,27 %)"
+  },
+  "buyback_none": {
+   "fork": "var:buyback_none+looseends",
+   "source": "forks_summary.json (buyback_none_loose)",
+   "point": 14.702441,
+   "median": 14.2975,
+   "d_point": -0.774,
+   "d_median": -0.5175,
+   "d_worlds": {
+    "N": -2.4713,
+    "H": -1.4468,
+    "M": -0.0267
+   },
+   "median_mark": "медиана — при вдвое большем допуске корней строк на концах осей-связок (центр сошёлся; точка — точная цена)"
+  },
+  "buyback_price_market": {
+   "fork": "var:buyback_price_market",
+   "source": "forks_summary.json (bb_price)",
+   "point": 15.770927,
+   "median": 15.120000000000001,
+   "d_point": 0.2945,
+   "d_median": 0.305,
+   "d_worlds": {
+    "N": 0.6055,
+    "H": 0.452,
+    "M": 0.1447
+   }
+  },
+  "at1_coupon_2026_remainder": {
+   "fork": "var:at1_coupon_2026_remainder",
+   "source": "forks_summary.json (at1_rem)",
+   "point": 15.500325,
+   "median": 14.8375,
+   "d_point": 0.0239,
+   "d_median": 0.0225,
+   "d_worlds": {
+    "N": 0.0275,
+    "H": 0.0247,
+    "M": 0.0225
+   }
+  },
+  "payout_flat_20": {
+   "fork": "var:payout_flat_20",
+   "source": "forks_summary.json (payout20)",
+   "point": 15.476058,
+   "median": 14.815000000000001,
+   "d_point": -0.0004,
+   "d_median": 0.0,
+   "d_worlds": {
+    "N": -0.0011,
+    "H": -0.0009,
+    "M": 0.0
+   }
+  },
+  "nonworking_money_fixed": {
+   "fork": "var:nonworking_money_fixed",
+   "source": "forks_summary.json (nonworking_fixed)",
+   "point": 19.807051,
+   "median": 19.447499999999998,
+   "d_point": 4.3306,
+   "d_median": 4.6325,
+   "d_worlds": {
+    "N": 1.5961,
+    "H": 2.0038,
+    "M": 6.0007
+   }
+  },
+  "cash_with_loans": {
+   "fork": "var:cash_with_loans",
+   "source": "forks_summary.json (cash_loans)",
+   "point": 16.434199,
+   "median": 15.834999999999999,
+   "d_point": 0.9578,
+   "d_median": 1.02,
+   "d_worlds": {
+    "N": -0.0728,
+    "H": 0.2448,
+    "M": 1.5257
+   }
+  },
+  "cash_with_funds": {
+   "fork": "var:cash_with_funds",
+   "source": "forks_summary.json (cash_funds)",
+   "point": 15.579381,
+   "median": 14.9125,
+   "d_point": 0.1029,
+   "d_median": 0.0975,
+   "d_worlds": {
+    "N": -0.1083,
+    "H": -0.0441,
+    "M": 0.2197
+   }
+  },
+  "cash_share_anchor": {
+   "fork": "var:cash_share_anchor",
+   "source": "forks_summary.json (cash_share_anchor)",
+   "point": 15.552541,
+   "median": 14.877500000000001,
+   "d_point": 0.0761,
+   "d_median": 0.0625,
+   "d_worlds": {
+    "N": -0.0906,
+    "H": -0.0398,
+    "M": 0.1682
+   }
+  },
+  "cash_displaced_as_money": {
+   "fork": "var:cash_displaced_as_money+looseends",
+   "source": "forks_summary.json (cash_disp_money_loose)",
+   "why": "без цены: книга под вариант не перевыводится — корни строк на концах осей-связок расходятся с правилом листа (2,9·10⁻⁴) и при вдвое большем допуске"
+  },
+  "cash_displaced_as_other": {
+   "fork": "var:cash_displaced_as_other",
+   "source": "forks_summary.json (cash_disp_other)",
+   "point": 15.578001,
+   "median": 14.8575,
+   "d_point": 0.1016,
+   "d_median": 0.0425,
+   "d_worlds": {
+    "N": 0.0981,
+    "H": 0.1008,
+    "M": 0.1028
+   }
+  },
+  "cash_share_glide_2029": {
+   "fork": "var:cash_share_glide_2029",
+   "source": "forks_summary.json (cash_glide_2029)",
+   "point": 15.487821,
+   "median": 14.84,
+   "d_point": 0.0114,
+   "d_median": 0.025,
+   "d_worlds": {
+    "N": 0.0212,
+    "H": 0.019,
+    "M": 0.0056
+   }
+  },
+  "audit_cutoffs_annual": {
+   "fork": "var:audit_cutoffs_annual",
+   "source": "forks_summary.json (audit_annual)",
+   "point": 15.476434,
+   "median": 14.815000000000001,
+   "d_point": 0.0,
+   "d_median": 0.0,
+   "d_worlds": {
+    "N": 0.0,
+    "H": 0.0,
+    "M": 0.0
+   }
+  },
+  "density_drift_zero": {
+   "fork": "var:density_drift_zero",
+   "source": "forks_summary.json (density_zero)",
+   "point": 15.100181,
+   "median": 14.579999999999998,
+   "d_point": -0.3763,
+   "d_median": -0.235,
+   "d_worlds": {
+    "N": -0.381,
+    "H": -0.3811,
+    "M": -0.3731
+   }
+  },
+  "density_drift_fact": {
+   "fork": "var:density_drift_fact",
+   "source": "forks_summary.json (density_fact)",
+   "point": 15.841655,
+   "median": 15.0325,
+   "d_point": 0.3652,
+   "d_median": 0.2175,
+   "d_worlds": {
+    "N": 0.3482,
+    "H": 0.3751,
+    "M": 0.3664
+   }
+  },
+  "segment_cor_off": {
+   "fork": "var:segment_cor_off",
+   "source": "forks_summary.json (segcor_off)",
+   "point": 14.019756,
+   "median": 13.31,
+   "d_point": -1.4567,
+   "d_median": -1.505,
+   "d_worlds": {
+    "N": -1.9362,
+    "H": -1.6269,
+    "M": -1.253
+   }
+  },
+  "cor_segments_two": {
+   "fork": "var:cor_segments_two",
+   "source": "forks_summary.json (cor_two)",
+   "point": 14.820505,
+   "median": 14.129999999999999,
+   "d_point": -0.6559,
+   "d_median": -0.685,
+   "d_worlds": {
+    "N": -0.8481,
+    "H": -0.696,
+    "M": -0.5849
+   }
+  },
+  "funds_premium_need": {
+   "fork": "var:funds_premium_need",
+   "source": "forks_summary.json (premium_need)",
+   "point": 15.774612,
+   "median": 15.0225,
+   "d_point": 0.2982,
+   "d_median": 0.2075,
+   "d_worlds": {
+    "N": -0.7427,
+    "H": -0.1658,
+    "M": 0.7757
+   }
+  },
+  "fvtpl_market_rho1": {
+   "fork": "var:fvtpl_market_rho1",
+   "source": "forks_summary.json (fvtpl_market)",
+   "point": 15.4834,
+   "median": 14.807500000000001,
+   "d_point": 0.007,
+   "d_median": -0.0075,
+   "d_worlds": {
+    "N": -0.5365,
+    "H": -0.2824,
+    "M": 0.274
+   }
+  },
+  "kappa_zero": {
+   "fork": "var:kappa_zero",
+   "source": "forks_summary.json (kappa0)",
+   "point": 15.647587,
+   "median": 14.927499999999998,
+   "d_point": 0.1712,
+   "d_median": 0.1125,
+   "d_worlds": {
+    "N": -0.1972,
+    "H": 0.0793,
+    "M": 0.313
+   }
+  },
+  "fade_symmetric": {
+   "fork": "var:fade_symmetric",
+   "source": "forks_summary.json (fade_sym)",
+   "point": 17.292583,
+   "median": 16.557499999999997,
+   "d_point": 1.8161,
+   "d_median": 1.7425,
+   "d_worlds": {
+    "N": 0.0,
+    "H": 0.1031,
+    "M": 2.9882
+   }
+  },
+  "terminal_fixed_as_t": {
+   "fork": "var:terminal_fixed_as_t",
+   "source": "forks_summary.json (term_fixed_t)",
+   "point": 15.521891,
+   "median": 14.842500000000001,
+   "d_point": 0.0455,
+   "d_median": 0.0275,
+   "d_worlds": {
+    "N": 0.2306,
+    "H": 0.1055,
+    "M": -0.0311
+   }
+  },
+  "terminal_calendar_year": {
+   "fork": "var:terminal_calendar_year",
+   "source": "forks_summary.json (term_calendar)",
+   "point": 15.518708,
+   "median": 14.855,
+   "d_point": 0.0423,
+   "d_median": 0.04,
+   "d_worlds": {
+    "N": 0.0413,
+    "H": 0.0351,
+    "M": 0.0452
+   }
+  },
+  "dividend_token_off": {
+   "fork": "var:dividend_token_off",
+   "source": "forks_summary.json (token_off)",
+   "point": 15.310069,
+   "median": 14.58,
+   "d_point": -0.1664,
+   "d_median": -0.235,
+   "d_worlds": {
+    "N": -0.0079,
+    "H": -0.0429,
+    "M": -0.2589
+   }
+  },
+  "wholesale_anchor_share": {
+   "fork": "var:wholesale_anchor_share",
+   "source": "forks_summary.json (wh_anchor)",
+   "point": 15.537017,
+   "median": 14.8475,
+   "d_point": 0.0606,
+   "d_median": 0.0325,
+   "d_worlds": {
+    "N": -0.1415,
+    "H": -0.0924,
+    "M": 0.1768
+   }
+  },
+  "wholesale_structural_low": {
+   "fork": "var:wholesale_structural_low",
+   "source": "forks_summary.json (wh_low)",
+   "point": 15.478787,
+   "median": 14.852500000000001,
+   "d_point": 0.0024,
+   "d_median": 0.0375,
+   "d_worlds": {
+    "N": 0.1594,
+    "H": 0.1491,
+    "M": -0.0985
+   }
+  },
+  "clients_all": {
+   "fork": "var:clients_all+k3core",
+   "source": "forks_summary.json (clients_all)",
+   "point": 15.38349,
+   "median": 14.7625,
+   "d_point": -0.0929,
+   "d_median": -0.0525,
+   "d_worlds": {
+    "N": -0.025,
+    "H": 0.0025,
+    "M": -0.1486
+   },
+   "median_mark": "медиана — с осью структурной доли опта на средствах с книгой страховых (0,0437…0,1403), как у центра варианта"
+  },
+  "terminal_rates_lagged": {
+   "fork": "var:terminal_rates_lagged",
+   "source": "forks_summary.json (term_rates_lag)",
+   "point": 15.555323,
+   "median": 14.897499999999999,
+   "d_point": 0.0789,
+   "d_median": 0.0825,
+   "d_worlds": {
+    "N": 0.1303,
+    "H": 0.1136,
+    "M": 0.0509
+   }
+  },
+  "guarantees_mix_driver": {
+   "fork": "var:guarantees_mix_driver",
+   "source": "forks_summary.json (guar_mix)",
+   "point": 15.544667,
+   "median": 14.872499999999999,
+   "d_point": 0.0682,
+   "d_median": 0.0575,
+   "d_worlds": {
+    "N": 0.0796,
+    "H": 0.0736,
+    "M": 0.0629
+   }
+  },
+  "insurance_liab_as_funds": {
+   "fork": "var:insurance_liab_as_funds+k3core",
+   "source": "forks_summary.json (ins_funds_k3)",
+   "point": 16.234058,
+   "median": 15.684999999999999,
+   "d_point": 0.7576,
+   "d_median": 0.87,
+   "d_worlds": {
+    "N": 0.603,
+    "H": 0.6259,
+    "M": 0.8521
+   },
+   "median_mark": "медиана — с осью структурной доли опта на средствах с книгой страховых (0,0437…0,1403), как у центра варианта"
+  },
+  "nci_real_rubles": {
+   "fork": "var:nci_real_rubles",
+   "source": "forks_summary.json (nci_rub)",
+   "point": 16.386542,
+   "median": 15.712500000000002,
+   "d_point": 0.9101,
+   "d_median": 0.8975,
+   "d_worlds": {
+    "N": 1.6196,
+    "H": 1.2153,
+    "M": 0.5887
+   }
+  },
+  "cards_slope_mid": {
+   "fork": "var:cards_slope_mid",
+   "source": "forks_summary.json (cards_mid)",
+   "point": 15.501348,
+   "median": 14.8525,
+   "d_point": 0.0249,
+   "d_median": 0.0375,
+   "d_worlds": {
+    "N": -0.0299,
+    "H": 0.0062,
+    "M": 0.0479
+   }
+  },
+  "k6_root_off": {
+   "fork": "var:k6_root_off+norho",
+   "source": "forks_summary.json (k6root)",
+   "point": 15.926583,
+   "median": 15.260000000000002,
+   "d_point": 0.4501,
+   "d_median": 0.445,
+   "d_worlds": {
+    "N": 0.4052,
+    "H": 0.3734,
+    "M": 0.492
+   }
+  },
+  "allowance_anchor_share": {
+   "fork": "var:allowance_anchor_share",
+   "source": "forks_summary.json (allowance_anchor)",
+   "point": 15.710973,
+   "median": 15.059999999999999,
+   "d_point": 0.2345,
+   "d_median": 0.245,
+   "d_worlds": {
+    "N": 0.2162,
+    "H": 0.1993,
+    "M": 0.253
+   }
+  }
+ },
+ "rule_price": {
+  "unconstrained": {
+   "fork": "rule:unconstrained",
+   "source": "ops/tools/forks.py @ 16d4f28 (unconstrained, 2026-10-29)",
+   "point": 15.902915,
+   "median": 14.905,
+   "d_point": 0.4265,
+   "d_median": 0.09,
+   "d_worlds": {
+    "N": 0.7525,
+    "H": 0.236,
+    "M": 0.4028
+   },
+   "capital_gap_mass": 0.9219062499999999
+  },
+  "dividend_first": {
+   "fork": "rule:dividend_first",
+   "source": "forks_summary.json (closure)",
+   "point": 15.68585,
+   "median": 15.09,
+   "d_point": 0.2094,
+   "d_median": 0.275,
+   "d_worlds": {
+    "N": 0.0676,
+    "H": 0.058,
+    "M": 0.3075
+   },
+   "capital_gap_mass": 0.1585
+  },
+  "growth_first": {
+   "fork": "base",
+   "source": "ops/tools/forks.py @ 16d4f28 (base, 2026-10-29)",
+   "point": 15.476434,
+   "median": 14.815000000000001,
+   "d_point": 0.0,
+   "d_median": 0.0,
+   "d_worlds": {
+    "N": 0.0,
+    "H": 0.0,
+    "M": 0.0
+   },
+   "capital_gap_mass": 0.1585
+  }
+ }
+}

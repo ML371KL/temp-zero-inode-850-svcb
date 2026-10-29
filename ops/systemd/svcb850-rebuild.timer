@@ -1,0 +1,19 @@
+[Unit]
+Description=Совкомбанк 850 · таймер проверки нового кода в main (раз в 15 минут)
+
+[Timer]
+# Минуты — ops/schedule.json (rebuild): строку OnCalendar вписывает
+# `python ops/tools/schedule.py --write`, руками она не правится. Каждые
+# 15 минут на своих минутах: мимо ровных четвертей и пересборок соседних
+# панелей. Проверка — один анонимный `git fetch` по HTTPS, секунды. После
+# правки кода новый выпуск на витрине — через 15–25 минут плюс сборка GitHub
+# Pages, а не вечером.
+OnCalendar=*:09,24,39,54
+RandomizedDelaySec=60
+AccuracySec=30s
+# Persistent не нужен: пропущенная проверка ничего не теряет — следующая
+# увидит тот же новый код.
+Unit=svcb850-rebuild.service
+
+[Install]
+WantedBy=timers.target
