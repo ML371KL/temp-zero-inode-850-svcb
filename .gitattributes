@@ -4,3 +4,4 @@
 *.xlsx binary
 *.gz binary
 data/assumptions/worlds_source.* -text
+tests/fixtures/worlds_1_4/worlds_source.* -text
