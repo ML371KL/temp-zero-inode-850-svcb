@@ -316,6 +316,7 @@ def book_text(c: Ctx, text: str) -> str:
                   f"**версия {c.version} записана:** {date} (миры семейства {c.worlds} — команда приёма миров)", text, count=1)
     text = re.sub(r"(> \*\*Числа раздела — выпуск ядра на книге )[0-9.]+(\*\*)", lambda m: m.group(1) + c.version + m.group(2), text,
                   count=1)
+    text = re.sub(r"(\*\*тег версии:\*\* `book-)[0-9.]+(`)", lambda m: m.group(1) + c.version + m.group(2), text, count=1)
     others = sorted({str(v["valid_until"]) for k, v in c.notes.items() if k != "manual_input_overdue"})
     until = d_ru(dt.date.fromisoformat(others[0])) if others else "—"
     text = re.sub(r"На книге [0-9.]+ сработали \d+ гейт\w*, у всех объяснения действуют по\s+\d\d\.\d\d\.\d{4}:",

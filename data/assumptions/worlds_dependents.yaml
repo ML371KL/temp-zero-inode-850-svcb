@@ -90,12 +90,16 @@ steps:
     title: "дальние ключи спредов книг активов 2028–2030 и LT на опоре мира H (лист калибровки ЧПД)"
     module: ops/tools/worlds_rules.py
     function: far_spreads
+    comments_flag: false               # числа миров из комментариев этих ключей убраны разово (b7857c7): там ставки якоря и
+                                       #   калибровка окон, от записи миров не зависят
     walk: {order: 3, name: "{labels.walk_step}: ключи спредов книг на опоре мира H {version} (ближние A-N1n и дальние — правило листа калибровки ЧПД)", keys: [nii.books]}
   - id: cor-paths
     kind: rule
     title: "пути стоимости риска режимов и концы оси κ — перенос κ по реальной ставке мира M"
     module: ops/tools/worlds_rules.py
     function: cor_paths
+    comments_flag: false               # числа миров из комментариев этих ключей убраны разово (b7857c7): там ставки якоря и
+                                       #   калибровка окон, от записи миров не зависят
     walk: {order: 4, name: "{labels.walk_step}: пути стоимости риска режимов — перенос κ по реальной ставке мира M", keys: [regimes.soft.cor, regimes.norm.cor, regimes.downturn.cor, regimes.crisis.cor]}
   - id: bridge-variants
     kind: rule
@@ -124,6 +128,7 @@ steps:
         title: "центр премии роста средств клиентов: середина фактов и нужды баланса (класс 6)"
         module: ops/tools/worlds_rules.py
         function: funds_premium
+        comments_flag: false           # в комментарии ключа — факты окон и история кругов, не числа миров
         walk: {order: 6, name: "{labels.walk_step}: центр премии роста средств клиентов на нужде баланса книги", keys: [volumes.funds_share_drift]}
       - id: rederive-again
         kind: run

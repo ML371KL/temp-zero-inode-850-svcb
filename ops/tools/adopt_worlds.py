@@ -581,6 +581,9 @@ class Run:
                 if (old.get("gates") or {}).get("before") is not None:
                     self.report["gates"]["before"] = old["gates"]["before"]
                 self.report["dependents"].update(old.get("dependents") or {})
+                self.report["red_flags"] += [f for f in old.get("red_flags") or []        # флаги пройденных шагов;
+                                             if not f.startswith(("остановка на шаге", "сдвиг медианы", "новые гейты"))]
+                                             # остановка — та, с которой продолжают; сдвиг и гейты считает finish заново
                 self.commits += (old.get("git") or {}).get("commits") or []
                 self.report["steps"] += [s for s in old.get("steps", []) if s.get("status") == "ok"]
         if self.a.from_step is None:
@@ -638,6 +641,7 @@ class Run:
         self.commits.append(git(self.tree, "rev-parse", "--short", "HEAD").strip())
 
     def finish(self) -> None:
+        self.report["red_flags"] = list(dict.fromkeys(self.report["red_flags"]))   # продолжение повторило шаг — флаг один
         for key, rel in (self.m.get("report_files") or {}).items():    # записи шагов в отчёт (прогулка и т. п.)
             p = self.tree / expand(str(rel), self.ctx)
             if p.exists():

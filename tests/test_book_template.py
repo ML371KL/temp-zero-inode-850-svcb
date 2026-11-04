@@ -397,7 +397,8 @@ def test_meta_company_and_prices(book):
 def test_lead_decisions_12_are_in_the_book(book):
     """Решения ведущего № 12 (итоговая книга круга 12, число устоялось) — числами книги: вероятности режимов — строгое
     прочтение без лет покупок 2016 и 2018 (Р12-6); доля сжатия φ на кредитных книгах — ближайшая граница области гейтов
-    (Р12-4: центр 0,48 при оценке «по истории» 0,4215, ось — к верху до записи вывода, несимметрия названа в ней);
+    (Р12-4: центр 0,48 при оценке «по истории» ниже области — 0,4215 на мирах 1.4, ось — к верху до записи вывода,
+    несимметрия названа в ней);
     подтверждения раздела Д — запас менеджмента 0,84 п.п. (ось 0,73…0,91, оба норматива), признание фонда ССПСД 0,4875
     (тип Г, ось 0…0,975), доля сжатия опта 0,2477 и ликвидности 0,1419; порог гейта m_crisis_vs_cbr — пол 12,0 % + запас
     книги 0,84 п.п. (медленный круг, Д4)."""
@@ -409,7 +410,10 @@ def test_lead_decisions_12_are_in_the_book(book):
     # центр — граница области гейтов (0,48 на мирах 1.4 и 1.7); верх оси — запись вывода (0,63 на мирах 1.4, 0,64 на 1.7)
     assert nii["phi_split"] == phi["low"] == rec["low"] == 0.48 and phi["high"] == rec["high"] > phi["low"] and phi["kind"] == "value"
     record = json.loads((S.EVIDENCE / "path" / "out" / "derive_out.json").read_text(encoding="utf-8"))["splits"]
-    assert (record["phi_split"], record["phi_type"], record["phi_bound"], record["phi_by_history"]) == (0.48, "Б", "low", 0.4215)
+    # оценка «по истории» — вывод на мирах книги (0,4215 на мирах 1.4, 0,4295 на 1.7): вне области гейтов, ниже её низа —
+    # центр на ближайшей границе (Р12-4)
+    assert (record["phi_split"], record["phi_type"], record["phi_bound"]) == (0.48, "Б", "low")
+    assert record["phi_by_history"] < record["phi_split"]
     assert book["capital"]["mgmt_buffer"] == {"n20_0": 0.0084, "n1_1": 0.0084}
     buf = axes["capital.mgmt_buffer.n20_0"]
     assert buf["paths"][:2] == ["capital.mgmt_buffer.n20_0", "capital.mgmt_buffer.n1_1"]
