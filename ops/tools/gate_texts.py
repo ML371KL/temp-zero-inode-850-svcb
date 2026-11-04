@@ -728,8 +728,19 @@ def render(n: dict, current: str, book: dict) -> tuple[str, list[str]]:
     line = (f"# Книга {version}: объяснения сработавших гейтов — шаблоном ops/tools/gate_texts.py (суждение написано один раз, "
             "числа и перечни клеток — сеткой книги, массы — таблицами книги); состав гейта не тот, на котором писались слова "
             "шаблона, — флаг «просмотреть ведущему» в отчёте команды.")
-    if line not in head:
-        head += "\n#\n" + "\n".join(textwrap.wrap(line, width=124, subsequent_indent="# ", break_long_words=False))
+    block = "\n".join(textwrap.wrap(line, width=124, subsequent_indent="# ", break_long_words=False))
+    lines, keep, skip = head.split("\n"), [], False      # абзац этой версии — один: прежние его копии снимаются
+    for ln in lines:
+        if ln.startswith(f"# Книга {version}: объяснения сработавших гейтов — шаблоном"):
+            skip = True
+            if keep and keep[-1] == "#":
+                keep.pop()
+            continue
+        if skip and ln.startswith("# ") and not ln.startswith("# Книга ") and not ln.startswith("# Круг "):
+            continue
+        skip = False
+        keep.append(ln)
+    head = "\n".join(keep).rstrip("\n") + "\n#\n" + block
     fired = n["results"]["gates"]
     default_until = min((str(v["valid_until"]) for k, v in old.items() if k != "manual_input_overdue"), default="2026-11-30")
     blocks, notes = [], {}
