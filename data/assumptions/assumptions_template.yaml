@@ -1902,9 +1902,9 @@ valuation:
                                                                #   с книгой (MODEL §14.5; ops/tools/forks.py), а не точка на замороженных выведенных числах
   reference_variants:                                          # справочные варианты (MODEL §14.5): развилки устава §6 и решений ведущего № 1 — ПЕРЕЧЕНЬ ПОДМЕН; цену
                                                                #   считает следующий круг. Выведенные на ядре числа (доли раскладки, ближний сдвиг, корни) у варианта — книги
-    - {id: margin_hump_new_level, title: "Маржа: «горб» 2026 года — новый уровень (мир M 6,8 %, передача −0,10)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.066193, nii.transmission.target: -0.113851}}
+    - {id: margin_hump_new_level, title: "Маржа: «горб» 2026 года — новый уровень (мир M 6,8 %, передача −0,10)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.066095, nii.transmission.target: -0.113851}}
                                                                # устав §6, № 1; ключ — 6,8 % опр. банка мира M точным мостом (ife_M = 0,65 × ключевая мира M в терминале + спред LT книги страховых; правило bridge_variants, ops/tools/worlds_rules.py), передача −0,10 × R − β × l_ins
-    - {id: margin_middle, title: "Маржа: середина (мир M 6,4 %, передача −0,06)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.062043}}
+    - {id: margin_middle, title: "Маржа: середина (мир M 6,4 %, передача −0,06)", overrides: {nii.transmission.level_world: M, nii.nim_lt_target_mgmt: 0.061945}}
     - {id: nim_level_window_composition, title: "Уровень мира N на составе окна L: 6,60 % (опр. банка)", overrides: {nii.nim_lt_target_mgmt: 0.067051}}
                                                                # решения № 1, п. 1: 6,60 — справочным вариантом с ценой; при нём решатель нарушает пол спреда юрлиц в мире M
     - {id: bridge_literal, title: "Мост банк ↔ движок буквально: ключ 0,0717 × b, передача −0,06 × b", overrides: {nii.nim_lt_target_mgmt: 0.0717, nii.transmission.target: -0.0501}}
