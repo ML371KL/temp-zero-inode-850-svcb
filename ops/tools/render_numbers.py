@@ -37,7 +37,8 @@ CommonMark — HTML-блок, и метка стала бы видна. Исто
 нуля знака нет). Разряды — обычным пробелом, дробная часть — запятой, минус —
 типографский. Хвост `n` (`sp3n`, `r2n`) разрешает пустое значение (`null` —
 корень обратного расчёта вне отрезка поиска): печатается словом «недостижимо»;
-без хвоста пустое значение — ошибка метки. Метка внутри `кода` или блока кода —
+хвост `w` (`s2w`) — цена развилки: пустое значение или нет поля цены у строки варианта —
+словами «без цены» (вариант, который сухой перевывод не переводит); без хвоста пустое значение — ошибка метки. Метка внутри `кода` или блока кода —
 пример синтаксиса, её команда не трогает.
 
 Коды: 0 — документы совпадают с результатами (или меток нет); 1 — документ
@@ -65,8 +66,9 @@ OPEN, CLOSE = "<!--=", "<!--/-->"
 # Метка не переходит строку: так её не собьёт ни перенос абзаца, ни таблица.
 MARK = re.compile(r"<!--=(.+?)-->(.*?)<!--/-->")
 TOKEN = re.compile(r'(\.)?([^.\[\]"]+)|\["([^"]*)"\]|\[(\d+)\]|\[([^\]=]+=[^\]]*)\]')
-FORMAT = re.compile(r"(r|p|s|sp)([0-4])(n?)")
+FORMAT = re.compile(r"(r|p|s|sp)([0-4])([nw]?)")
 UNREACHABLE = "недостижимо"
+NO_PRICE = "без цены"                    # хвост w: цена развилки, которой у варианта нет (запись forks_rd.json — «без цены»)
 CODE = re.compile(r"(`+).*?\1")
 FENCE = re.compile(r"\s*(```|~~~)")
 # Начало строки до содержимого: отступ, `>` цитаты, маркеры списка.
@@ -129,7 +131,7 @@ def formatted(value, fmt: str) -> str:
         raise ValueError(f"неизвестный формат «{fmt}»")
     kind, digits, nullable = m.groups()
     if value is None and nullable:
-        return UNREACHABLE
+        return NO_PRICE if nullable == "w" else UNREACHABLE
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ValueError(f"формат {fmt} ждёт число, а в пути {value!r}")
     return number(value * 100 if "p" in kind else value, int(digits), "s" in kind)
@@ -156,7 +158,13 @@ def _marks(segment: str, results: dict | None, where: str, errors: list[str], so
             errors.append(f"{where}: {m.group(1)}: нет файла источника {root.as_posix()}")
             return m.group(0)
         try:
-            value = formatted(resolve(data, path, root.name), fmt)
+            try:
+                found = resolve(data, path, root.name)
+            except KeyError:
+                if not fmt.endswith("w"):             # хвост w: у строки без цены поля цены нет — «без цены»
+                    raise
+                found = None
+            value = formatted(found, fmt)
         except (KeyError, ValueError) as exc:
             errors.append(f"{where}: {m.group(1)}: {exc.args[0]}")
             return m.group(0)

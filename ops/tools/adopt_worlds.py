@@ -53,7 +53,9 @@
                             происхождения — индексу, правила дают числа шаблона (сторож тестов).
 
 Отчёт — схема `adopt-worlds-report-v1`: числа «было → стало», сдвиг в шагах печати, гейты до и после, изменённые
-числа книги, красные флаги, коммиты, CI. Его собирает сводка источника (`tools/rollout.py`).
+числа книги, красные флаги, коммиты, CI; записи шагов, названные манифестом (`report_files: {ключ: файл JSON}` — прогулка
+версии), — тем же ключом; сдвиг медианы больше порога назван двумя шагами прогулки с наибольшим сдвигом. Его собирает
+сводка источника (`tools/rollout.py`).
 """
 from __future__ import annotations
 
@@ -404,6 +406,9 @@ class Run:
     def step_state(self, s: dict) -> dict:
         prev = read_state(self.tree) or {}
         self.state = make_state(self.tree, self.m, self.v, self.entry, self.src.commit())
+        if str(prev.get("version")) == self.v and prev.get("files") == self.state["files"]:
+            self.state["source_commit"] = prev.get("source_commit")    # повтор той же версии с теми же файлами: коммит
+                                                                       # источника, с которого она принята, прежний
         book = book_block(self.tree, self.m, prev, self.v, self.start)
         if book:
             self.state["book"] = book
@@ -633,6 +638,10 @@ class Run:
         self.commits.append(git(self.tree, "rev-parse", "--short", "HEAD").strip())
 
     def finish(self) -> None:
+        for key, rel in (self.m.get("report_files") or {}).items():    # записи шагов в отчёт (прогулка и т. п.)
+            p = self.tree / expand(str(rel), self.ctx)
+            if p.exists():
+                self.report[key] = json.loads(p.read_text(encoding="utf-8"))
         n = self.report["numbers"]
         b, a = n.get("before") or {}, n.get("after") or {}
         step = self.m.get("print_step")
@@ -641,8 +650,16 @@ class Run:
             n["print_steps"] = round(ps, 2)
             lim = (self.m.get("stop") or {}).get("median_print_steps", 2)
             if ps > lim:
+                why = "назвать причину до выкладки"
+                rows = (self.report.get("walk") or {}).get("rows") or []
+                key = "median" if rows and "median" in rows[0] else "point"
+                if len(rows) > 1:                              # причина — строками прогулки: два шага с наибольшим сдвигом
+                    d = sorted(((rows[i][key] - rows[i - 1][key], rows[i]["step"]) for i in range(1, len(rows))),
+                               key=lambda x: -abs(x[0]))[:2]
+                    why = (f"по прогулке ({'медиана' if key == 'median' else 'точка'}): "
+                           + "; ".join(f"{s} {x:+.2f}" for x, s in d))
                 self.report["red_flags"].append(f"сдвиг медианы {a['median'] - b['median']:+.2f} — {ps:.1f} шага "
-                                                f"печати (порог {lim}): назвать причину до выкладки")
+                                                f"печати (порог {lim}): {why}")
         g = self.report["gates"]
         if "before" in g and "after" in g:
             g["new"] = sorted(set(g["after"]) - set(g["before"]))

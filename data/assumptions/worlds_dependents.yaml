@@ -18,6 +18,7 @@ workers: 2                               # общая машина: тяжёлы
 record: data/assumptions/worlds_source.json
 overlay: data/assumptions/worlds_bank.json
 template: data/assumptions/assumptions_template.yaml
+report_files: {walk: var/adopt/walk.json}  # прогулка версии — в отчёт команды (причина сдвига медианы строками прогулки)
 book_version: meta.version                # номер книги: команда пишет в состояние «с какой → какая» (младший разряд + 1)
 
 steps:
@@ -154,7 +155,7 @@ steps:
   - id: forks
     kind: run
     title: "развилки сухим перевыводом (все варианты, замыкания, база) и запись forks_rd.json"
-    cmd: ["{python}", "-B", "ops/tools/forks_all.py", "--threads", "2", "--workers", "2"]
+    cmd: ["{python}", "-B", "ops/tools/forks_all.py", "--threads", "2", "--workers", "2", "--reuse"]
     skip_if: ["{python}", "-B", "ops/tools/forks.py", "--check"]
     timeout: 21600
   - id: tables
@@ -167,6 +168,9 @@ steps:
     kind: run
     title: "сводка контрольной модели (data/checks/control_model.json)"
     cmd: ["{python}", "-B", "-m", "tests.test_control_model", "--write"]
+    # сводка несёт день и коммит счёта: на той же книге и том же коде шаг не повторяется (неподвижная точка)
+    skip_if: ["{python}", "-B", "ops/tools/adopt_fresh.py", "data/checks/control_model.json", "commit",
+              "data/assumptions/assumptions.json", "data/facts", "model", "tests/independent_model.py", "tests/test_control_model.py"]
     timeout: 3600
   - id: marginal
     kind: run

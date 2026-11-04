@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import json
 import os
 import shutil
 import subprocess
@@ -63,16 +64,31 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--workers", type=int, default=int(os.environ.get("BANK_WORKERS", "2")))
     ap.add_argument("--out", type=Path, default=ROOT / "var" / "forks-adopt")
     ap.add_argument("--only")
+    ap.add_argument("--reuse", action="store_true",
+                    help="готовые итоги прежнего запуска в --out (тот же коммит или коммит с той же книгой, фактами и ядром) не "
+                         "перезапускать: продолжение после сбоя записи")
     a = ap.parse_args(argv)
     items = plan()
     if a.only:
         keep = set(a.only.split(","))
         items = [x for x in items if x[0] in keep or x[0] == "base"]
     items.sort(key=lambda x: (x[0] != "base", not any(h in x[1] for h in HEAVY)))
+    done = {}
+    if a.reuse:
+        for p in sorted(a.out.glob("q*/runs.json")):
+            for label, row in json.loads(p.read_text(encoding="utf-8")).items():
+                same = subprocess.run(["git", "-C", str(ROOT), "diff", "--quiet", str(row.get("commit")), "HEAD", "--",
+                                       "data/assumptions/assumptions.json", "data/facts", "model",
+                                       "data/assumptions/evidence/path"]).returncode == 0
+                if same and row.get("status") in ("price", "no_price") and "point" in row:
+                    done[label] = p.parent
+        print(f"готовые итоги той же книги: {len(done)} — не перезапускаются", flush=True)
+    else:
+        shutil.rmtree(a.out, ignore_errors=True)
+    items = [x for x in items if x[0] not in done]
     queues: list[list[tuple[str, str]]] = [[] for _ in range(max(1, a.threads))]
     for i, it in enumerate(items):
         queues[i % len(queues)].append(it)
-    shutil.rmtree(a.out, ignore_errors=True)
     procs = []
     t0 = time.time()
     env = dict(os.environ, PYTHONIOENCODING="utf-8", BANK_WORKERS=str(a.workers))
@@ -96,8 +112,8 @@ def main(argv: list[str] | None = None) -> int:
     if bad:
         return 1
     rec = [sys.executable, "-B", str(FORKS), "record", "--write"]
-    for d, _, _ in procs:
-        rec += ["--runs", str(d / "runs.json")]
+    for p in sorted(a.out.glob("q*/runs.json")):          # все очереди — и с итогами прежнего запуска (--reuse)
+        rec += ["--runs", str(p)]
     r = subprocess.run(rec, cwd=ROOT, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
     print((r.stdout or "").splitlines()[-2:] if r.returncode == 0 else (r.stdout or "") + (r.stderr or ""), flush=True)
     if r.returncode != 0:

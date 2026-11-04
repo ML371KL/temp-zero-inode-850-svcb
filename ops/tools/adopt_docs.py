@@ -166,17 +166,22 @@ def manual_text(c: Ctx, text: str) -> str:
 
 def decisions_row(c: Ctx) -> str:
     d = c.days
-    prev = [e for e in c.meetings() if c.from_curve < c.start(e) <= c.curve]
-    pm = c.start(prev[-1])
     n = int(c.book["checks"]["manual_overdue_days"]["worlds_after_cbr"])
+    past = [e for e in c.meetings() if c.start(e) <= c.curve]
+    pm = c.start(past[-1])
     nm = c.start(next(e for e in c.meetings() if c.start(e) > c.curve))
     ev = c.ifrs_event()
     cy, cq = int(ev["covers"][:4]), int(ev["covers"][-1])
+    if c.from_curve < pm:                    # прежняя книга стоит на кривой до заседания: на бою срок идёт до выкладки
+        before = (f"до выкладки книги {c.version} на бою книга {c.bk['from']} (кривая {d_ru(c.from_curve)}): с "
+                  f"{d_ru(pm + dt.timedelta(days=n + 1))} сборка на бою отказывает кодом 1 (гейт `manual_input_overdue`), пока её "
+                  "держит запись объяснения. После выкладки")
+    else:                                    # прежняя книга уже на кривой после заседания
+        before = (f"книга {c.bk['from']} на бою стоит на кривой {d_ru(c.from_curve)} — не раньше заседания, срок миров она "
+                  f"держит сама. После выкладки книги {c.version}")
     return (f"| Пересборка миров семейства после заседания ЦБ {d_ru(pm)} — **книга {c.version} на мирах {c.worlds} (кривая "
             f"{d_ru(c.curve)}; ветка `worlds-{c.worlds}`), ждёт проверки и выкладки ведущим** | автор книги-источника "
-            f"семейства, затем новая версия книги; выкладка — ведущий, до {d_ru(pm + dt.timedelta(days=n))} | до выкладки книги "
-            f"{c.version} на бою книга {c.bk['from']} (кривая {d_ru(c.from_curve)}): с {d_ru(pm + dt.timedelta(days=n + 1))} "
-            "сборка на бою отказывает кодом 1 (гейт `manual_input_overdue`), пока её держит запись объяснения. После выкладки "
+            f"семейства, затем новая версия книги; выкладка — ведущий, до {d_ru(pm + dt.timedelta(days=n))} | {before} "
             f"действует запись, на которой стоит книга {c.version}, но не дольше 21 дня после следующего заседания с прогнозом "
             f"({d_ru(nm)}): с {d_ru(d['worlds'])} без новой записи миров (кривая не раньше {d_ru(nm)}) или записи объяснения "
             f"гейта `manual_input_overdue` сборка отказывает кодом 1. Запись объяснения — со сроком не дальше {d_ru(c.limit)}, "
