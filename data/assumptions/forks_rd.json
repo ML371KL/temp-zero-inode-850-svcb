@@ -15,7 +15,7 @@
    "M": 7.0396
   },
   "runs": 600,
-  "source": "ops/tools/forks.py @ f103e7a (base, 2026-11-04)"
+  "source": "ops/tools/forks.py @ 3855c20 (base, 2026-11-04)"
  },
  "crn": {
   "base": "книга круга 4 (c709f22): общие случайные числа развилок круга 12",
@@ -283,7 +283,7 @@
  "variants": {
   "margin_hump_new_level": {
    "fork": "hump",
-   "source": "ops/tools/forks.py @ f103e7a (margin_hump_new_level, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (margin_hump_new_level, 2026-11-04)",
    "point": 18.742133,
    "median": 17.619999999999997,
    "d_point": 3.647,
@@ -296,7 +296,7 @@
   },
   "margin_middle": {
    "fork": "middle",
-   "source": "ops/tools/forks.py @ f103e7a (margin_middle, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 3855c20 (margin_middle, 2026-11-04)",
    "point": 12.843474,
    "median": 12.1675,
    "d_point": -2.2516,
@@ -309,12 +309,12 @@
   },
   "nim_level_window_composition": {
    "fork": "nimL",
-   "source": "ops/tools/forks.py @ f103e7a (nim_level_window_composition, 2026-11-04)",
-   "why": "без цены: вариант несовместим с гейтом стоимости средств клиентов к ключевой — на всей оси доли сжатия маржи (0,17…0,64) стоимость средств выше порога 0,876, центра в области гейта нет"
+   "source": "ops/tools/forks.py @ 9fefa94 (nim_level_window_composition, 2026-11-04)",
+   "why": "без цены: при уровне маржи мира N на составе окна L граница рентабельности, по которой книга отбирает окна уровней строк, опускается до 11,18 % — ниже рентабельности окна 2К2025–1К2026 (12,99 %); окно входит в отбор, и книга под вариант на своих окнах не переводится"
   },
   "bridge_literal": {
    "fork": "bridgelit",
-   "source": "ops/tools/forks.py @ f103e7a (bridge_literal, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 3855c20 (bridge_literal, 2026-11-04)",
    "point": 15.991113,
    "median": 14.49,
    "d_point": 0.896,
@@ -328,11 +328,11 @@
   "cor_retail_tail": {
    "fork": "var:cor_retail_tail",
    "source": "ops/tools/forks.py @ f103e7a (cor_retail_tail, 2026-11-04)",
-   "why": "без цены: по своей границе ROE развилки 12,98 % изменился отбор окон роли «центр»: 2К2025–1К2026 (ROE 12,99 %)"
+   "why": "без цены: с розничным хвостом стоимости риска граница рентабельности, по которой книга отбирает окна уровней строк, опускается до 12,98 % — ниже рентабельности окна 2К2025–1К2026 (12,99 %); окно входит в отбор, и книга под вариант на своих окнах не переводится"
   },
   "serial_acquirer": {
    "fork": "var:serial_acquirer",
-   "source": "ops/tools/forks.py @ f103e7a (serial_acquirer, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (serial_acquirer, 2026-11-04)",
    "point": 17.281516,
    "median": 16.572499999999998,
    "d_point": 2.1864,
@@ -346,7 +346,7 @@
   },
   "buyback_none": {
    "fork": "var:buyback_none+looseends",
-   "source": "ops/tools/forks.py @ f103e7a (buyback_none, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (buyback_none, 2026-11-04)",
    "point": 14.375902,
    "median": 13.915,
    "d_point": -0.7192,
@@ -373,7 +373,7 @@
   },
   "at1_coupon_2026_remainder": {
    "fork": "var:at1_coupon_2026_remainder",
-   "source": "ops/tools/forks.py @ f103e7a (at1_coupon_2026_remainder, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (at1_coupon_2026_remainder, 2026-11-04)",
    "point": 15.122159,
    "median": 14.4375,
    "d_point": 0.0271,
@@ -399,7 +399,7 @@
   },
   "nonworking_money_fixed": {
    "fork": "var:nonworking_money_fixed",
-   "source": "ops/tools/forks.py @ f103e7a (nonworking_money_fixed, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (nonworking_money_fixed, 2026-11-04)",
    "point": 19.595803,
    "median": 19.23,
    "d_point": 4.5007,
@@ -425,7 +425,7 @@
   },
   "cash_with_funds": {
    "fork": "var:cash_with_funds",
-   "source": "ops/tools/forks.py @ f103e7a (cash_with_funds, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (cash_with_funds, 2026-11-04)",
    "point": 15.189393,
    "median": 14.4875,
    "d_point": 0.0943,
@@ -451,7 +451,7 @@
   },
   "cash_displaced_as_money": {
    "fork": "var:cash_displaced_as_money+looseends",
-   "source": "ops/tools/forks.py @ f103e7a (cash_displaced_as_money, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 3855c20 (cash_displaced_as_money, 2026-11-04)",
    "point": 15.003104,
    "median": 14.3575,
    "d_point": -0.092,
@@ -465,7 +465,7 @@
   },
   "cash_displaced_as_other": {
    "fork": "var:cash_displaced_as_other",
-   "source": "ops/tools/forks.py @ f103e7a (cash_displaced_as_other, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (cash_displaced_as_other, 2026-11-04)",
    "point": 15.183422,
    "median": 14.4875,
    "d_point": 0.0883,
@@ -491,7 +491,7 @@
   },
   "audit_cutoffs_annual": {
    "fork": "var:audit_cutoffs_annual",
-   "source": "ops/tools/forks.py @ f103e7a (audit_cutoffs_annual, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (audit_cutoffs_annual, 2026-11-04)",
    "point": 15.095088,
    "median": 14.4225,
    "d_point": 0.0,
@@ -517,7 +517,7 @@
   },
   "density_drift_fact": {
    "fork": "var:density_drift_fact",
-   "source": "ops/tools/forks.py @ f103e7a (density_drift_fact, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (density_drift_fact, 2026-11-04)",
    "point": 15.464813,
    "median": 14.627500000000001,
    "d_point": 0.3697,
@@ -543,7 +543,7 @@
   },
   "cor_segments_two": {
    "fork": "var:cor_segments_two",
-   "source": "ops/tools/forks.py @ f103e7a (cor_segments_two, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (cor_segments_two, 2026-11-04)",
    "point": 14.459192,
    "median": 13.7725,
    "d_point": -0.6359,
@@ -569,7 +569,7 @@
   },
   "fvtpl_market_rho1": {
    "fork": "var:fvtpl_market_rho1",
-   "source": "ops/tools/forks.py @ f103e7a (fvtpl_market_rho1, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (fvtpl_market_rho1, 2026-11-04)",
    "point": 15.13876,
    "median": 14.42,
    "d_point": 0.0437,
@@ -595,7 +595,7 @@
   },
   "fade_symmetric": {
    "fork": "var:fade_symmetric",
-   "source": "ops/tools/forks.py @ f103e7a (fade_symmetric, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (fade_symmetric, 2026-11-04)",
    "point": 17.032864,
    "median": 16.259999999999998,
    "d_point": 1.9378,
@@ -621,7 +621,7 @@
   },
   "terminal_calendar_year": {
    "fork": "var:terminal_calendar_year",
-   "source": "ops/tools/forks.py @ f103e7a (terminal_calendar_year, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (terminal_calendar_year, 2026-11-04)",
    "point": 15.138323,
    "median": 14.4725,
    "d_point": 0.0432,
@@ -647,7 +647,7 @@
   },
   "wholesale_anchor_share": {
    "fork": "var:wholesale_anchor_share",
-   "source": "ops/tools/forks.py @ f103e7a (wholesale_anchor_share, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (wholesale_anchor_share, 2026-11-04)",
    "point": 15.129656,
    "median": 14.459999999999999,
    "d_point": 0.0346,
@@ -673,7 +673,7 @@
   },
   "clients_all": {
    "fork": "var:clients_all+k3core",
-   "source": "ops/tools/forks.py @ f103e7a (clients_all, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (clients_all, 2026-11-04)",
    "point": 15.021674,
    "median": 14.3475,
    "d_point": -0.0734,
@@ -687,7 +687,7 @@
   },
   "terminal_rates_lagged": {
    "fork": "var:terminal_rates_lagged",
-   "source": "ops/tools/forks.py @ f103e7a (terminal_rates_lagged, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (terminal_rates_lagged, 2026-11-04)",
    "point": 15.203457,
    "median": 14.55,
    "d_point": 0.1084,
@@ -727,7 +727,7 @@
   },
   "nci_real_rubles": {
    "fork": "var:nci_real_rubles",
-   "source": "ops/tools/forks.py @ f103e7a (nci_real_rubles, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (nci_real_rubles, 2026-11-04)",
    "point": 16.015944,
    "median": 15.370000000000001,
    "d_point": 0.9209,
@@ -753,7 +753,7 @@
   },
   "k6_root_off": {
    "fork": "var:k6_root_off+norho",
-   "source": "ops/tools/forks.py @ f103e7a (k6_root_off, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (k6_root_off, 2026-11-04)",
    "point": 15.542286,
    "median": 14.8375,
    "d_point": 0.4472,
@@ -766,7 +766,7 @@
   },
   "allowance_anchor_share": {
    "fork": "var:allowance_anchor_share",
-   "source": "ops/tools/forks.py @ f103e7a (allowance_anchor_share, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (allowance_anchor_share, 2026-11-04)",
    "point": 15.329828,
    "median": 14.635000000000002,
    "d_point": 0.2347,
@@ -795,7 +795,7 @@
   },
   "dividend_first": {
    "fork": "rule:dividend_first",
-   "source": "ops/tools/forks.py @ f103e7a (dividend_first, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 9fefa94 (dividend_first, 2026-11-04)",
    "point": 15.342201,
    "median": 14.725,
    "d_point": 0.2471,
@@ -809,7 +809,7 @@
   },
   "growth_first": {
    "fork": "base",
-   "source": "ops/tools/forks.py @ f103e7a (base, 2026-11-04)",
+   "source": "ops/tools/forks.py @ 3855c20 (base, 2026-11-04)",
    "point": 15.095088,
    "median": 14.4225,
    "d_point": 0.0,
