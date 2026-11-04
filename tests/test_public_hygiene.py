@@ -82,7 +82,7 @@ HANDOFF_ENV = "BANK_HANDOFF_DIR"
 # (`_is_allowed`): короткое имя панели (`t`) не разрешает имён, которые с него
 # только начинаются.
 PREFIX = "temp-zero-" + "inode-"          # по частям: целиком строка ловится своим же правилом
-PUBLIC_REPOS = re.compile(PREFIX + r"850-(?:sber|t|vtb|svcb|lenta|x5)(?:-data)?(?:\.git)?")
+PUBLIC_REPOS = re.compile(PREFIX + r"850-(?:sber|t|vtb|svcb|lenta|x5|worlds)(?:-data)?(?:\.git)?")   # worlds — общий источник миров ставок
 
 OCTET = r"(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)"
 RULES_ALL = {

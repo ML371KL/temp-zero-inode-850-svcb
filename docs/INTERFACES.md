@@ -228,7 +228,7 @@ var/                         локальное состояние, времен
 | Поток | Файлы (пишет только он) |
 |---|---|
 | **core** | весь `model/`; `tests/test_core_*.py`, `tests/test_core2_*.py`, `tests/test_integrate_*.py`, `tests/support_core*.py`, `tests/mutations.py`, `tests/fixtures/core*/**`; `data/assumptions/results.json` и `run_output.txt` — их выпускает `python -B -m model.book_results`, коммитит интеграция |
-| **book** | `data/assumptions/**` (кроме `results.json` и `run_output.txt`); `tests/test_book_*.py`, `tests/support_book.py` |
+| **book** | `data/assumptions/**` (кроме `results.json` и `run_output.txt`); `tests/test_book_*.py`, `tests/test_worlds_*.py` (сторож приёма миров), `tests/support_book.py` |
 | **facts** | `data/facts/**` (включая `calendar.json`, `peers.json`, `SCHEMA.md`); `ops/tools/build_facts.py`; `docs/FACTS.md`; `tests/test_facts_*.py`. Листов квартала в репозитории нет: числа нового квартала лежат в листах этапа 1 папки передачи. Календарь событий — `data/facts/calendar.json` (М прил. B), отдельного файла календаря вне фактов нет |
 | **control** | `tests/independent_model.py`, `tests/test_control_*.py`, `docs/CONTROL-MODEL.md`, `data/checks/**` |
 | **indicators** | `indicators/**`, `data/indicators/**`, `docs/INDICATORS.md`, `tests/test_ind_*.py`, `tests/support_ind.py`, `tests/fixtures/ind/**` |
