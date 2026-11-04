@@ -15,8 +15,8 @@
    "path": "stage1/calib/nii/backtest/backtest_joint.json",
    "from": "stage1/calib-nii/out/backtest.json",
    "sha256_full": "2915afc6fa33cf243f17fae88f1b5f36b815588822cf109107fee1432a3f0d86",
-   "sha256_input": "75c692374bdb4149992a4bd959218509f892f72f4460067fd3321562d36ba047",
-   "filter": "ref и joint (ρ, a, c) двенадцати книг, lambda; плечи joint, ЧПМ модели joint и факта по кварталам окна",
+   "sha256_input": "edf09eccb96da8b94099f146161036dffc1eab4ee64285e56d64cf283cdc38c7",
+   "filter": "ref и joint (ρ, a, c) двенадцати книг, остаток последних четырёх кварталов совместного подбора (resid_last4_joint; дальние ключи спредов книг активов — правило far_spreads, ops/tools/worlds_rules.py), lambda; плечи joint, ЧПМ модели joint и факта по кварталам окна",
    "rows_kept": 12,
    "rows_total": 12
   },

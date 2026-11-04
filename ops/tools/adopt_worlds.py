@@ -120,11 +120,13 @@ class Source:
         return p.stdout.strip() or None
 
 
-def flat(d: Any, prefix: str = "") -> dict[str, Any]:
+def flat(d: Any, prefix: str = "", lists: bool = False) -> dict[str, Any]:
+    """Словарь → {ключ.с.точками: лист}; `lists` — и элементы списков (номером): сверка точечной записи в осях и
+    вариантах книги."""
     out: dict[str, Any] = {}
-    if isinstance(d, dict):
-        for k, v in d.items():
-            out.update(flat(v, f"{prefix}{k}."))
+    if isinstance(d, dict) or (lists and isinstance(d, list)):
+        for k, v in (d.items() if isinstance(d, dict) else enumerate(d)):
+            out.update(flat(v, f"{prefix}{k}.", lists))
     else:
         out[prefix[:-1]] = d
     return out
@@ -239,10 +241,11 @@ def set_values(path: Path, values: dict[tuple, Any], decimals: dict[tuple, int] 
     for a, b, s in sorted(edits, reverse=True):
         text = text[:a] + s + text[b:]
     after = yaml.safe_load(text)
-    fb, fa = flat(before), flat(after)
+    fb, fa = flat(before, lists=True), flat(after, lists=True)
     want = {_dotted(p): v for p, v in values.items()}
+    digits = {_dotted(p): d for p, d in (decimals or {}).items()}
     bad = [k for k in fa if k not in want and not same(fa.get(k), fb.get(k))]
-    bad += [k for k, v in want.items() if not same(fa.get(k), v, 10.0 ** -((decimals or {}).get(_path(k), 12)))]
+    bad += [k for k, v in want.items() if not same(fa.get(k), v, 10.0 ** -digits.get(k, 12))]
     if bad or set(fa) != set(fb):
         raise Stop(f"{path.name}: точечная запись разошлась с повторным разбором: {bad[:8]}")
     if edits:
@@ -322,6 +325,8 @@ class Run:
         self.from_v = str(state["version"])
         self.from_entry = source.entry(self.from_v) if self.from_v in source.index["versions"] else None
         self.ctx = context(manifest, self.entry, self.from_entry, self.v, self.from_v)
+        if self.from_v == self.v:
+            self.ctx.update(book_ctx(state.get("book")))       # повтор приёма той же версии: номер книги прежний
         self.report: dict[str, Any] = {
             "schema": REPORT_SCHEMA, "model": manifest["model"], "version": self.v, "from_version": self.from_v,
             "mode": "branch" if args.branch else "dry-run", "status": "running",
@@ -383,10 +388,15 @@ class Run:
         return {"changed": changed}
 
     def step_state(self, s: dict) -> dict:
+        prev = read_state(self.tree) or {}
         self.state = make_state(self.tree, self.m, self.v, self.entry, self.src.commit())
+        book = book_block(self.tree, self.m, prev, self.v)
+        if book:
+            self.state["book"] = book
+            self.ctx.update(book_ctx(book))
         p = self.tree / STATE_REL
         p.write_text(json.dumps(self.state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
-        return {"changed": [STATE_REL]}
+        return {"changed": [STATE_REL], **({"book": book} if book else {})}
 
     def step_set(self, s: dict) -> dict:
         path = self.tree / s["file"]
@@ -423,8 +433,40 @@ class Run:
         return {"values": out, "count": len(out)}
 
     def step_run(self, s: dict) -> dict:
+        if s.get("skip_if"):
+            c = self.cmd(s["skip_if"])
+            p = subprocess.run(c, cwd=self.tree, env=self.env(), capture_output=True, text=True, encoding="utf-8",
+                               errors="replace", timeout=s.get("timeout"))
+            if p.returncode == 0:
+                self.say("    уже на этой книге (skip_if): шаг не повторяется")
+                return {"skipped": (p.stdout or "").strip().splitlines()[-1:] or True}
         self.sh(s["cmd"], timeout=s.get("timeout"), ok=tuple(s.get("ok", [0])), log=s["id"])
         return {}
+
+    def snapshot(self) -> dict[str, str]:
+        """Хэши изменённых и новых файлов дерева против HEAD (кроме var/): мерка «круг цикла что-то изменил»."""
+        st = git(self.tree, "status", "--porcelain", "--untracked-files=all")
+        out = {}
+        for ln in st.splitlines():
+            p = ln[3:].strip().strip('"').split(" -> ")[-1]
+            if p and not p.startswith("var/"):
+                f = self.tree / p
+                out[p] = sha256_bytes(f.read_bytes()) if f.is_file() else "<нет>"
+        return out
+
+    def step_loop(self, s: dict) -> dict:
+        """Шаги тела по кругу до неподвижной точки: круг, который не изменил ни одного файла дерева, — сошлось; не
+        сошлось за `max` кругов — остановка."""
+        rounds = []
+        for i in range(1, int(s.get("max", 3)) + 1):
+            before = self.snapshot()
+            for sub in s["steps"]:
+                self.say(f"  круг {i}, шаг {sub['id']}: {expand(sub.get('title', sub['kind']), self.ctx)}")
+                res = getattr(self, f"step_{sub['kind']}")(sub)
+                rounds.append({"round": i, "id": sub["id"], **{k: v for k, v in res.items() if k != "numbers"}})
+            if self.snapshot() == before:
+                return {"rounds": i, "converged": True, "steps": rounds}
+        raise Stop(f"{s['id']}: за {s.get('max', 3)} кругов неподвижная точка не достигнута")
 
     def step_quick(self, s: dict, phase: str) -> dict:
         out = self.tree / expand(s["out"], self.ctx)
@@ -490,6 +532,17 @@ class Run:
     def execute(self) -> int:
         quick = next((s for s in self.m["steps"] if s["kind"] == "quick"), None)
         gates = next((s for s in self.m["steps"] if s["kind"] == "gates"), None)
+        prev = self.var() / "report.json"
+        if self.a.from_step is not None and prev.exists():      # продолжение: числа и гейты «до» — из прошлого отчёта
+            old = json.loads(prev.read_text(encoding="utf-8"))
+            if old.get("version") == self.v and old.get("mode") == self.report["mode"]:
+                if (old.get("numbers") or {}).get("before"):
+                    self.report["numbers"]["before"] = old["numbers"]["before"]
+                if (old.get("gates") or {}).get("before") is not None:
+                    self.report["gates"]["before"] = old["gates"]["before"]
+                self.report["dependents"].update(old.get("dependents") or {})
+                self.commits += (old.get("git") or {}).get("commits") or []
+                self.report["steps"] += [s for s in old.get("steps", []) if s.get("status") == "ok"]
         if self.a.from_step is None:
             if gates:
                 self.step_gates(gates, "before")
@@ -593,6 +646,31 @@ def make_state(tree: Path, manifest: dict, v: str, entry: dict, source_commit: s
     return st
 
 
+def bump(version: str) -> str:
+    """Номер версии книги при приёме миров: младший разряд + 1 («0.1» → «0.2», «1.1» → «1.2»)."""
+    head, _, last = str(version).rpartition(".")
+    return f"{head}.{int(last) + 1}" if head else str(int(last) + 1)
+
+
+def book_block(tree: Path, manifest: dict, prev: dict, v: str) -> dict | None:
+    """Версия книги в состоянии (манифест `book_version`: адрес версии в шаблоне): при смене версии миров — с какой
+    версии книги и коммита приняты миры и какой номер получает книга; при повторном приёме той же версии — прежний
+    блок (неподвижная точка: номер не растёт от повтора)."""
+    addr = manifest.get("book_version")
+    if not addr:
+        return None
+    if str(prev.get("version")) == v and prev.get("book"):
+        return prev["book"]
+    tpl = yaml.safe_load((tree / manifest["template"]).read_text(encoding="utf-8"))
+    cur = str(get(tpl, _path(addr)))
+    head = git(tree, "rev-parse", "HEAD").strip()
+    return {"from": cur, "version": bump(cur), "from_worlds": str(prev.get("version")), "from_commit": head}
+
+
+def book_ctx(book: dict | None) -> dict:
+    return {f"book.{k}": val for k, val in (book or {}).items()}
+
+
 class RuleContext:
     """Что видит правило модели: запись и надстройка версии из дерева, индекс версии, корень дерева."""
 
@@ -600,6 +678,7 @@ class RuleContext:
                  version: str | None = None, say: Callable[[str], None] = print, manifest: dict | None = None):
         self.root = run.tree if run else tree
         self.version = run.v if run else version
+        self.from_version = run.from_v if run else version
         self.entry = run.entry if run else entry
         m = run.m if run else (manifest or {})
         self.say = run.say if run else say
@@ -644,11 +723,11 @@ def load_manifest(tree: Path = ROOT) -> dict:
     m = yaml.safe_load((tree / "data" / "assumptions" / "worlds_dependents.yaml").read_text(encoding="utf-8"))
     if m.get("schema") != MANIFEST_SCHEMA:
         raise Stop(f"манифест: схема {m.get('schema')!r} ≠ {MANIFEST_SCHEMA}")
-    ids = [s["id"] for s in m["steps"]]
+    ids = [s["id"] for s in walk_steps(m["steps"])]
     if len(ids) != len(set(ids)):
         raise Stop("манифест: повторяются id шагов")
-    bad = [s["id"] for s in m["steps"] if s["kind"] not in
-           ("install", "state", "set", "rule", "run", "quick", "gates", "journal")]
+    bad = [s["id"] for s in walk_steps(m["steps"]) if s["kind"] not in
+           ("install", "state", "set", "rule", "run", "quick", "gates", "journal", "loop")]
     if bad:
         raise Stop(f"манифест: неизвестный вид шага у {bad}")
     return m
@@ -671,7 +750,13 @@ def check(manifest: dict, source: Source | None, tree: Path = ROOT, say: Callabl
         if state["record_sha256"] != entry["record"]["sha256"] or state.get("overlay_sha256") != (entry.get("overlay") or {}).get("sha256"):
             bad.append(f"{STATE_REL}: хэши записи или надстройки не равны индексу источника для {v}")
         ctx = context(manifest, entry, None, v, v)
-        for s in manifest["steps"]:
+        book = state.get("book")
+        if book is None and manifest.get("book_version"):           # состояние до первого приёма: номер — шаблона
+            cur = str(get(yaml.safe_load((tree / manifest["template"]).read_text(encoding="utf-8")),
+                          _path(manifest["book_version"])))
+            book = {"from": cur, "version": cur}
+        ctx.update(book_ctx(book))
+        for s in walk_steps(manifest["steps"]):
             if s["kind"] == "install":
                 for f in s["files"]:
                     dst = tree / f["dst"]
@@ -685,7 +770,7 @@ def check(manifest: dict, source: Source | None, tree: Path = ROOT, say: Callabl
                     if not same(get(doc, _path(k)), want):
                         bad.append(f"{s['file']}: {k} = {get(doc, _path(k))!r}, индекс версии {v} даёт {want!r}")
     rc = RuleContext(tree=tree, entry=entry, version=v, say=say, manifest=manifest)
-    for s in manifest["steps"]:
+    for s in walk_steps(manifest["steps"]):
         if s["kind"] != "rule" or not s.get("check", True):
             continue
         tol = float(s.get("tol", 0.0))
@@ -694,8 +779,18 @@ def check(manifest: dict, source: Source | None, tree: Path = ROOT, say: Callabl
             for k, want in target["values"].items():
                 have = get(doc, _path(k))
                 if not same(have, want, tol):
-                    bad.append(f"{target['file']}: {k} = {have!r}, правило {s['id']} даёт {want!r}")
+                    bad.append(f"{target['file']}: {_dotted(_path(k))} = {have!r}, правило {s['id']} даёт {want!r}")
     return bad
+
+
+def walk_steps(steps: list[dict]) -> list[dict]:
+    """Шаги манифеста с телами циклов (`loop`) — плоским списком."""
+    out = []
+    for s in steps:
+        out.append(s)
+        if s["kind"] == "loop":
+            out += walk_steps(s["steps"])
+    return out
 
 
 # ----------------------------------------------------------------------------------------------- вход
@@ -708,9 +803,21 @@ def write_report(rep: dict, path: Path) -> None:
     n = rep.get("numbers") or {}
     if n.get("before") or n.get("after"):
         md += ["## Числа", "", "| | было | стало |", "|---|---:|---:|"]
-        for k in ("point", "median", "print", "low", "high"):
-            md.append(f"| {k} | {(n.get('before') or {}).get(k, '—')} | {(n.get('after') or {}).get(k, '—')} |")
+        fb, fa = flat(n.get("before") or {}, lists=True), flat(n.get("after") or {}, lists=True)
+        keys = [k for k in ("point", "median", "print", "low", "high") if k in fb or k in fa]
+        keys += sorted(k for k in set(fb) | set(fa) if k not in keys and isinstance(fb.get(k, fa.get(k)), (int, float))
+                       and not isinstance(fb.get(k, fa.get(k)), bool))
+        for k in keys:
+            md.append(f"| {k} | {fb.get(k, '—')} | {fa.get(k, '—')} |")
+        if "print_steps" in n:
+            md.append(f"| сдвиг медианы, шагов печати | | {n['print_steps']} |")
         md.append("")
+    g = rep.get("gates") or {}
+    if "before" in g or "after" in g:
+        md += ["## Гейты", "", f"- до: {', '.join(g.get('before') or []) or '—'}", f"- после: {', '.join(g.get('after') or []) or '—'}",
+               f"- новые: {', '.join(g.get('new') or []) or '—'}; ушли: {', '.join(g.get('gone') or []) or '—'}", ""]
+    if "tree_changes" in rep:
+        md += ["## Изменения дерева (сухой прогон)", ""] + ([f"- {p}" for p in rep["tree_changes"]] or ["- нет"]) + [""]
     md += ["## Шаги", ""] + [f"- {s['id']}: {s['status']} ({s.get('seconds', '?')} с)"
                              + (f" — {s['reason'].splitlines()[0]}" if s.get("reason") else "") for s in rep["steps"]]
     path.with_suffix(".md").write_text("\n".join(md) + "\n", encoding="utf-8")
@@ -795,6 +902,14 @@ def main(argv: list[str] | None = None) -> int:
         run = Run(a, manifest, source, tree, say)
         code = run.execute()
         run.finish()
+        if worktree:                                      # сухой прогон: что команда изменила бы в дереве
+            changed = sorted(run.snapshot())
+            run.report["tree_changes"] = changed
+            if run.from_v == a.version and not a.from_step and code == OK:
+                run.report["fixed_point"] = not changed
+                if changed:
+                    run.report["red_flags"].append(f"повтор приёма той же версии изменил бы {len(changed)} файлов — "
+                                                   f"неподвижной точки нет: {', '.join(changed[:6])}")
         if a.branch and code == OK and not a.no_push:
             git(ROOT, "push", "-q", "-u", "origin", f"worlds-{a.version}")
             head = git(ROOT, "rev-parse", "HEAD").strip()
