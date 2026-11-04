@@ -65,7 +65,15 @@ steps:
       worlds.source.record_asof: "{record.asof}"
       worlds.source.curve_date: "{record.curve_date}"
       worlds.source.sha256: "{record.sha256}"
-    replace: {"{from.origin}": "{origin}"}   # подписи источника суждений на витрине: «[Ф: … — magnit-850oa book-1.x]»
+    replace:                                 # подписи версии миров: на витрине «[Ф: … — magnit-850oa book-1.x]», в документах книги
+      "{from.origin}": "{origin}"
+      "кривая {from.record.curve_date_ru}": "кривая {record.curve_date_ru}"
+      "дата записи {from.record.asof_ru}": "дата записи {record.asof_ru}"
+      "{from.record.sha256}": "{record.sha256}"
+      "{from.record.sha8}…": "{record.sha8}…"
+      "{from.overlay.sha8}…": "{overlay.sha8}…"
+    replace_in: [data/assumptions/assumptions_template.yaml, data/assumptions/README.md, data/assumptions/ASSUMPTIONS-BOOK.md,
+                 data/assumptions/evidence/worlds_bank/README.md]
 
   - id: book-version
     kind: set
@@ -128,11 +136,88 @@ steps:
     kind: run
     title: "запись, книга, ближние и дальние ключи спредов согласованы"
     cmd: ["{python}", "-B", "ops/tools/refresh_worlds.py", "--check"]
+  - id: class-6
+    kind: run
+    title: "центры суждений равны правилам устава (класс 6: пути CoR, премия, уровень маржи — правила книги)"
+    cmd: ["{python}", "-B", "ops/tools/class_checks.py", "--only", "6", "--quiet", "--json", "var/adopt/{version}/class6.json"]
+    timeout: 1800
   - id: class-checks
     kind: run
-    title: "проверки классов ошибок в модели (все шесть — зелёные)"
+    title: "проверки классов ошибок в модели (все шесть); срабатывание — красный флаг отчёта, не остановка"
     cmd: ["{python}", "-B", "ops/tools/class_checks.py", "--workers", "2", "--quiet", "--json", "var/adopt/{version}/class_checks.json"]
+    ok: [0, 1]
+    flags: {file: "var/adopt/{version}/class_checks.json", path: flags}
     timeout: 1800
+
+  # ---------------------------------------------------------------- развилки, таблицы, контроль (после последней правки книги)
+  - id: forks
+    kind: run
+    title: "развилки сухим перевыводом (все варианты, замыкания, база) и запись forks_rd.json"
+    cmd: ["{python}", "-B", "ops/tools/forks_all.py", "--threads", "2", "--workers", "2"]
+    skip_if: ["{python}", "-B", "ops/tools/forks.py", "--check"]
+    timeout: 21600
+  - id: tables
+    kind: run
+    title: "таблицы книги полной полосой (results.json, run_output.txt)"
+    cmd: ["{python}", "-B", "-m", "model.book_results"]
+    skip_if: ["{python}", "-B", "ops/tools/quick_numbers.py", "--check-tables"]
+    timeout: 10800
+  - id: control
+    kind: run
+    title: "сводка контрольной модели (data/checks/control_model.json)"
+    cmd: ["{python}", "-B", "-m", "tests.test_control_model", "--write"]
+    timeout: 3600
+  - id: marginal
+    kind: run
+    title: "запись листа предельной экономики роста (evidence/path/out/marginal_loan_out.*)"
+    cmd: ["{python}", "-B", "data/assumptions/evidence/path/marginal_loan.py"]
+    timeout: 1800
+  - id: gates
+    kind: gates
+    title: "сработавшие гейты таблиц книги"
+    file: data/assumptions/results.json
+    path: checks
+    flag: fired
+    where: {kind: gate}
+  - id: gate-texts
+    kind: run
+    title: "объяснения сработавших гейтов числами книги (шаблон ops/tools/gate_texts.py)"
+    cmd: ["{python}", "-B", "ops/tools/gate_texts.py", "--write", "--flags", "var/adopt/{version}/gate_flags.json"]
+    flags: var/adopt/{version}/gate_flags.json
+    timeout: 1800
+  - id: walk
+    kind: run
+    title: "прогулка {book.from} → {book.version} по шагам манифеста (точка и медиана малой полосы)"
+    cmd: ["{python}", "-B", "ops/tools/adopt_walk.py", "--median", "--draws", "400"]
+    timeout: 5400
+  - id: docs
+    kind: run
+    title: "документы версии: календарь отказов, открытый вопрос о мирах, V{book.version}-CHANGES.md, журнал изменений"
+    cmd: ["{python}", "-B", "ops/tools/adopt_docs.py"]
+  - id: render
+    kind: run
+    title: "числа документов метками из таблиц книги и сводки контроля"
+    cmd: ["{python}", "-B", "ops/tools/render_numbers.py"]
+  - id: render-check
+    kind: run
+    title: "документы равны таблицам книги"
+    cmd: ["{python}", "-B", "ops/tools/render_numbers.py", "--check"]
+  - id: quick
+    kind: quick
+    title: "быстрые числа книги (до и после приёма)"
+    cmd: ["{python}", "-B", "ops/tools/quick_numbers.py", "--out", "var/adopt/{version}/quick.json", "--runs", "400", "--workers", "2"]
+    out: var/adopt/{version}/quick.json
+    timeout: 3600
+
+  # ---------------------------------------------------------------- тесты
+  - id: tests-book
+    kind: run
+    title: "книжные тесты, сторож приёма, инструменты и документы"
+    cmd: ["{python}", "-B", "-m", "pytest", "--basetemp=var/pytest-book", "-p", "no:cacheprovider", "-q", "-x",
+          "tests/test_book_core.py", "tests/test_book_evidence.py", "tests/test_book_forks.py", "tests/test_book_gates.py",
+          "tests/test_book_sheet_backtest_path.py", "tests/test_book_template.py", "tests/test_book_texts.py",
+          "tests/test_book_worlds.py", "tests/test_worlds_dependents.py", "tests/test_ops_tools.py", "tests/test_ops_docs.py"]
+    timeout: 7200
 
 # Листы и инструменты, которые читают запись миров, надстройку или их копии (сторож тестов сверяет список с деревом).
 # feeds — ключи шаблона из их выхода; пусто — печать или проверка.

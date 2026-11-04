@@ -24,7 +24,9 @@ except ImportError:                      # прогон без pytest.ini (pytho
 pytestmark = pytest.mark.tact
 
 MARKS = ("  #{{WORLDS}}", "#{{WORLDS_BANK}}", "#{{OVERLAY_SHA256}}")
-VERSION = "0.1"
+# номер книги — из состояния команды приёма миров (data/assumptions/worlds_state.json, блок book: младший разряд + 1 при
+# приёме версии миров); до первого приёма — книга 0.1
+VERSION = str((json.loads((S.BOOK_DIR / "worlds_state.json").read_text(encoding="utf-8")).get("book") or {}).get("version", "0.1"))
 SCHEMA = "svcb-v1"
 RESULTS = S.BOOK_DIR / "results.json"
 # Оси, которые из полосы не выводятся никогда (MODEL §10): односторонние рисковые — по путям ключей

@@ -11,7 +11,9 @@
   * `docs/DECISIONS.md` — строку открытого вопроса «Пересборка миров семейства…» (тот же счёт);
   * `data/assumptions/V<версия>-CHANGES.md` — что изменилось против прежней книги: запись миров, правила, числа
     «было → стало» (таблицы книги прежнего коммита и дерева), прогулка по шагам, гейты;
-  * `docs/CHANGELOG.md` — запись версии сверху (повтор приёма той же версии заменяет её, а не дописывает).
+  * `docs/CHANGELOG.md` — запись версии сверху (повтор приёма той же версии заменяет её, а не дописывает);
+  * текст книги `ASSUMPTIONS-BOOK.md` (номер версии, раздел 10 о гейтах, строка таблицы версий) и строку таблицы версий
+    `data/assumptions/README.md`.
 Версия, с какой книги и какого коммита принята запись миров, дата приёма — блок `book` состояния
 (`data/assumptions/worlds_state.json`). Случай, когда ближайший срок — миры (книга ещё не на новой записи), этим
 шаблоном не пишется: отказ кодом 1. `--check` — ничего не пишет, код 1, если документы не равны шаблону.
@@ -272,6 +274,62 @@ def changelog_text(c: Ctx, text: str) -> str:
     return text[:first] + block + "\n" + text[first:]
 
 
+def gates_word(n: int) -> str:
+    return "гейт" if n % 10 == 1 and n % 100 != 11 else ("гейта" if n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14) else "гейтов")
+
+
+def version_row(c: Ctx, readme: bool) -> str:
+    before, after = numbers(tables(c.bk["from_commit"])), numbers(tables(None))
+    date = d_ru(dt.date.fromisoformat(c.bk["date"]))
+    what = (f"миры семейства {c.worlds} (кривая {d_ru(c.curve)}) — команда приёма миров (`ops/tools/adopt_worlds.py`); суждения, "
+            f"дата книги, цена и зерно — книги {c.bk['from']}; медиана {num(before['median'])} → {num(after['median'])} ₽ (печать "
+            f"{num(before['print'], 1)} → {num(after['print'], 1)}), точка {num(before['point'])} → {num(after['point'])} ₽ "
+            f"(`V{c.version}-CHANGES.md`)")
+    return f"| {c.version} | {date} | {what} |"
+
+
+def add_version_row(c: Ctx, text: str, readme: bool) -> str:
+    lines = text.split("\n")
+    row = version_row(c, readme)
+    have = [i for i, ln in enumerate(lines) if ln.startswith(f"| {c.version} | ")]
+    if have:
+        lines[have[0]] = row
+        return "\n".join(lines)
+    prev = [i for i, ln in enumerate(lines) if ln.startswith(f"| {c.bk['from']} | ")]
+    if not prev:
+        raise SystemExit(f"ОТКАЗ: в таблице версий нет строки книги {c.bk['from']}")
+    lines.insert(prev[-1] + 1, row)
+    return "\n".join(lines)
+
+
+def book_text(c: Ctx, text: str) -> str:
+    """Текст книги: номер версии в заголовке и в шапке раздела 0, строка таблицы версий, раздел 10 о гейтах."""
+    fired = numbers(tables(None))["gates"]
+    date = d_ru(dt.date.fromisoformat(c.bk["date"]))
+    text = re.sub(r"^(# Совкомбанк — книга допущений, версия )[0-9.]+", lambda m: m.group(1) + c.version, text, count=1, flags=re.M)
+    text = re.sub(r"\*\*версия [0-9.]+ записана:\*\*\s+\d\d\.\d\d\.\d{4} \([^)]*\)",
+                  f"**версия {c.version} записана:** {date} (миры семейства {c.worlds} — команда приёма миров)", text, count=1)
+    text = re.sub(r"(> \*\*Числа раздела — выпуск ядра на книге )[0-9.]+(\*\*)", lambda m: m.group(1) + c.version + m.group(2), text,
+                  count=1)
+    others = sorted({str(v["valid_until"]) for k, v in c.notes.items() if k != "manual_input_overdue"})
+    until = d_ru(dt.date.fromisoformat(others[0])) if others else "—"
+    text = re.sub(r"На книге [0-9.]+ сработали \d+ гейт\w*, у всех объяснения действуют по\s+\d\d\.\d\d\.\d{4}:",
+                  f"На книге {c.version} сработали {len(fired)} {gates_word(len(fired))}, у всех объяснения действуют по\n{until}:", text, count=1)
+    d = c.days
+    mu = c.notes.get("manual_input_overdue", {}).get("valid_until")
+    ev = c.ifrs_event()
+    para = (f"Гейт ручных входов `manual_input_overdue` по мирам молчит до {d_ru(d['worlds'] - dt.timedelta(days=1))}: книга "
+            f"{c.version} стоит на записи миров семейства {c.worlds} (кривая {d_ru(c.curve)}); с {d_ru(d['ifrs'])} он сработает по "
+            f"невнесённому отчёту МСФО за {ev['covers'][-1]}-й квартал {ev['covers'][:4]} года — его объяснение в книге "
+            f"{c.version} стоит со сроком {d_ru(dt.date.fromisoformat(str(mu))) if mu else '—'} и называет только миры (календарь "
+            "отказов — `docs/MANUAL.md` §10.9).")
+    m = re.search(r"Гейт ручных входов `manual_input_overdue` [^\n]*(?:\n(?!\n)[^\n]*)*", text)
+    if not m:
+        raise SystemExit("ОТКАЗ: в тексте книги нет абзаца о гейте ручных входов")
+    text = text[:m.start()] + wrap(para, 124) + text[m.end():]
+    return add_version_row(c, text, readme=False)
+
+
 def main(argv: list[str] | None = None) -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -281,7 +339,9 @@ def main(argv: list[str] | None = None) -> int:
     targets = [(MANUAL, manual_text(c, MANUAL.read_text(encoding="utf-8"))),
                (DECISIONS, decisions_text(c, DECISIONS.read_text(encoding="utf-8"))),
                (BOOK_DIR / f"V{c.version}-CHANGES.md", changes(c) + "\n"),
-               (CHANGELOG, changelog_text(c, CHANGELOG.read_text(encoding="utf-8")))]
+               (CHANGELOG, changelog_text(c, CHANGELOG.read_text(encoding="utf-8"))),
+               (BOOK_DIR / "ASSUMPTIONS-BOOK.md", book_text(c, (BOOK_DIR / "ASSUMPTIONS-BOOK.md").read_text(encoding="utf-8"))),
+               (BOOK_DIR / "README.md", add_version_row(c, (BOOK_DIR / "README.md").read_text(encoding="utf-8"), readme=True))]
     stale = []
     for path, text in targets:
         now = path.read_text(encoding="utf-8") if path.exists() else None

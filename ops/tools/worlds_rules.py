@@ -174,15 +174,23 @@ def cor_raw(ctx) -> dict[str, dict[str, float]]:
 
 
 def cor_paths(ctx) -> dict:
+    """Число = правило + остаток записи 0.1, но не дальше допуска правила класса 6 от правила: остаток у края допуска
+    при новой записи и округлении до 6 знаков вышел бы за допуск — тогда остаток снимается (у кварталов — их среднее)."""
     rests = json.loads((Path(ctx.root) / RESTS).read_text(encoding="utf-8"))["cor_rests"]
     raw = cor_raw(ctx)
     i, _ = kappa_axis(template(ctx))
     values, decimals = {}, {}
     for end, vals in raw.items():
-        for k, v in vals.items():
-            addr = k if end == "centre" else ("valuation", "uncertainty", "axes", i, end, k)
-            values[addr] = round(v + float(rests[end][k]), 6) + 0.0
-            decimals[addr] = 6
+        for rule, keys in cor_rules(Path(ctx.root)):
+            v, tol = vals[keys[0]], float(rule.get("tol", 0.0))
+            got = {k: round(v + float(rests[end][k]), 6) + 0.0 for k in keys}
+            if abs(sum(got.values()) / len(got) - v) > tol:
+                mean_rest = sum(float(rests[end][k]) for k in keys) / len(keys)
+                got = {k: round(v + float(rests[end][k]) - mean_rest, 6) + 0.0 for k in keys}
+            for k, x in got.items():
+                addr = k if end == "centre" else ("valuation", "uncertainty", "axes", i, end, k)
+                values[addr] = x
+                decimals[addr] = 6
     return {"file": TEMPLATE, "values": values, "decimals": decimals}
 
 

@@ -19,7 +19,9 @@ CommonMark — HTML-блок, и метка стала бы видна. Исто
 
 (строка сводки — по её словам `what`, графа `control` — число контрольной
 модели, `core` — число ядра; счётчики `n_rows`, `n_bad` — в корне файла).
-Нет файла источника, а метка на него есть — ошибка метки.
+Третий источник — машинная книга `data/assumptions/assumptions.json`, приставка `book:`
+(`<!--=book:worlds.M.key_rate["2036H2"] p1-->…<!--/-->`): числа суждений и миров ставок в
+тексте книги. Нет файла источника, а метка на него есть — ошибка метки.
 
     python ops/tools/render_numbers.py           # переписать значения в документах
     python ops/tools/render_numbers.py --check   # выход 1, если документ устарел или метка сломана
@@ -53,8 +55,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = Path("data") / "assumptions" / "results.json"
-# Источники с приставкой пути «имя:»; путь без приставки — результаты книги.
-SOURCES = {"control": Path("data") / "checks" / "control_model.json"}
+# Источники с приставкой пути «имя:»; путь без приставки — результаты книги. `book:` — машинная книга (числа суждений и
+# миров ставок в тексте книги: при новой записи миров их переписывает эта команда, а не правка руками).
+SOURCES = {"control": Path("data") / "checks" / "control_model.json",
+           "book": Path("data") / "assumptions" / "assumptions.json"}
 SOURCE = re.compile(r"(" + "|".join(SOURCES) + r"):")
 
 OPEN, CLOSE = "<!--=", "<!--/-->"

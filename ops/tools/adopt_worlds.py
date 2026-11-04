@@ -24,14 +24,26 @@
   state     записать `worlds_state.json` (версия, хэши записи, надстройки и скопированных файлов);
   set       скаляры YAML из индекса (`values: {ключ: "{record.sha256}"}`), замены подписей (`replace`);
   rule      функция модели `module:function(ctx)` → числа книги по правилу; пишутся точечно, с повторным разбором;
-  run       команда модели (`cmd`), код возврата из `ok`;
+            адрес — ключ с точками или кортеж (элемент списка — номером: оси полосы, варианты);
+  run       команда модели (`cmd`), код возврата из `ok`; `skip_if` — команда: код 0 — шаг уже сделан на этой книге
+            (тяжёлые развилки и таблицы не повторяются при повторе приёма); `flags` — JSON-список строк (или
+            `{file, path}`), который шаг пишет сам: строки идут в красные флаги отчёта («просмотреть ведущему»);
+  loop      тело `steps` по кругу до неподвижной точки (круг, не изменивший ни одного файла дерева), не больше `max`;
   quick     команда быстрых чисел → JSON (`out`): точка, медиана, печать, низ, верх, миры — до и после приёма;
-  gates     сработавшие гейты из JSON таблиц (`file`, `path`) — до и после;
+  gates     сработавшие гейты из JSON таблиц (`file`, `path`; строки таблиц — с `flag` и отбором `where`) — до и после;
   journal   записи журналов по шаблону с числами отчёта.
+
+Номер книги (манифест `book_version` — адрес версии в шаблоне): при смене версии миров шаг `state` пишет в состояние блок
+`book` — с какой версии книги, с какого коммита и в какой день принята запись и какой номер получает книга (младший разряд
++ 1); повтор приёма той же версии блок не меняет. Поля контекста `{book.version}`, `{book.from}`; у прежней версии —
+`{from.record.curve_date_ru}`, короткие хэши `{record.sha8}`, `{from.overlay.sha8}`.
 
 Режимы:
   --dry-run (по умолчанию)  все шаги во временной копии дерева (`git worktree`, `var/adopt/<v>/tree`), в рабочую
-                            копию не пишется ничего; отчёт — `var/adopt/<v>/report.json` и `.md`;
+                            копию не пишется ничего; шаги коммитятся в копии (шагам вроде развилок нужен `git archive`
+                            с правками прежних шагов), копия потом удаляется; отчёт — `var/adopt/<v>/report.json` и `.md`
+                            с перечнем файлов, которые прогон изменил бы (`tree_changes`); повтор приёма версии, на которой
+                            книга уже стоит, — проверка неподвижной точки (`fixed_point`: изменений нет);
   --branch                  в рабочей копии: ветка `worlds-<v>` (создаётся от текущего коммита или продолжается, если
                             уже текущая; дерево обязано быть чистым), коммит после каждого шага, который что-то изменил;
                             в конце — push ветки (без `--no-push`) и прогон CI (`--ci record` — номер прогона, `wait` —
@@ -391,7 +403,7 @@ class Run:
     def step_state(self, s: dict) -> dict:
         prev = read_state(self.tree) or {}
         self.state = make_state(self.tree, self.m, self.v, self.entry, self.src.commit())
-        book = book_block(self.tree, self.m, prev, self.v)
+        book = book_block(self.tree, self.m, prev, self.v, self.start)
         if book:
             self.state["book"] = book
             self.ctx.update(book_ctx(book))
@@ -441,7 +453,17 @@ class Run:
             if p.returncode == 0:
                 self.say("    уже на этой книге (skip_if): шаг не повторяется")
                 return {"skipped": (p.stdout or "").strip().splitlines()[-1:] or True}
+        spec = s.get("flags")                          # шаг сам называет, что просмотреть: JSON-список строк
+        spec = {"file": spec} if isinstance(spec, str) else (spec or {})  # или {file, path} — список внутри записи шага
+        fl = self.tree / expand(spec["file"], self.ctx) if spec else None
+        if fl and fl.exists():
+            fl.unlink()
         self.sh(s["cmd"], timeout=s.get("timeout"), ok=tuple(s.get("ok", [0])), log=s["id"])
+        if fl and fl.exists():
+            data = json.loads(fl.read_text(encoding="utf-8"))
+            got = [str(x) for x in (get(data, _path(spec["path"])) if spec.get("path") else data)]
+            self.report["red_flags"] += [f"{s['id']}: {x}" for x in got]
+            return {"flags": got}
         return {}
 
     def snapshot(self) -> dict[str, str]:
@@ -671,7 +693,7 @@ def bump(version: str) -> str:
     return f"{head}.{int(last) + 1}" if head else str(int(last) + 1)
 
 
-def book_block(tree: Path, manifest: dict, prev: dict, v: str) -> dict | None:
+def book_block(tree: Path, manifest: dict, prev: dict, v: str, start: str | None = None) -> dict | None:
     """Версия книги в состоянии (манифест `book_version`: адрес версии в шаблоне): при смене версии миров — с какой
     версии книги и коммита приняты миры и какой номер получает книга; при повторном приёме той же версии — прежний
     блок (неподвижная точка: номер не растёт от повтора)."""
@@ -682,7 +704,7 @@ def book_block(tree: Path, manifest: dict, prev: dict, v: str) -> dict | None:
         return prev["book"]
     tpl = yaml.safe_load((tree / manifest["template"]).read_text(encoding="utf-8"))
     cur = str(get(tpl, _path(addr)))
-    head = git(tree, "rev-parse", "HEAD").strip()
+    head = start or git(tree, "rev-parse", "HEAD").strip()      # коммит, с которого начат приём (книга «было»)
     return {"from": cur, "version": bump(cur), "from_worlds": str(prev.get("version")), "from_commit": head,
             "date": dt.date.today().isoformat()}
 
