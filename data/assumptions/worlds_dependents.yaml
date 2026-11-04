@@ -163,6 +163,13 @@ steps:
     timeout: 3600
 
   # ---------------------------------------------------------------- развилки, таблицы, контроль (после последней правки книги)
+  - id: quick
+    kind: quick
+    title: "малая полоса книги (400 прогонов, зерно книги) до и после приёма — ранняя остановка по сдвигу медианы до развилок"
+    cmd: ["{python}", "-B", "ops/tools/quick_numbers.py", "--out", "var/adopt/{version}/quick.json", "--runs", "400", "--workers", "2"]
+    out: var/adopt/{version}/quick.json
+    path: small                        # медиана малой полосы: сравнима до и после приёма (верхние поля — таблицы, если они этой книги)
+    timeout: 3600
   - id: forks
     kind: run
     title: "развилки сухим перевыводом (все варианты, замыкания, база) и запись forks_rd.json"
@@ -176,6 +183,14 @@ steps:
     cmd: ["{python}", "-B", "-m", "model.book_results"]
     skip_if: ["{python}", "-B", "ops/tools/quick_numbers.py", "--check-tables"]
     timeout: 10800
+  - id: table-numbers
+    kind: numbers
+    title: "числа книги из таблиц (2 000 прогонов): точка, медиана, печать, низ, верх, полоса — до и после приёма"
+    file: data/assumptions/results.json
+    fields: {point: headline.point, median: headline.median, print: headline.printed_median, low: headline.low,
+             high: headline.high, band: headline.band80, printed_band: headline.printed_band80,
+             implied: layers.market_implied.price, worlds.M: layers.macro_neutral.price, runs: headline.draws,
+             seed: headline.seed, book_version: book_version}
   - id: control
     kind: run
     title: "сводка контрольной модели (data/checks/control_model.json)"
@@ -219,12 +234,6 @@ steps:
     kind: run
     title: "документы равны таблицам книги"
     cmd: ["{python}", "-B", "ops/tools/render_numbers.py", "--check"]
-  - id: quick
-    kind: quick
-    title: "быстрые числа книги (до и после приёма)"
-    cmd: ["{python}", "-B", "ops/tools/quick_numbers.py", "--out", "var/adopt/{version}/quick.json", "--runs", "400", "--workers", "2"]
-    out: var/adopt/{version}/quick.json
-    timeout: 3600
 
   # ---------------------------------------------------------------- тесты
   - id: tests-book
