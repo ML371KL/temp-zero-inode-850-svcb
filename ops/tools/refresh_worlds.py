@@ -10,7 +10,8 @@
       строгая проверка канона (CI): рецепт на входах книги воспроизводит
       worlds_source.json целиком; sha256 и asof записи = worlds.source.* шаблона;
       сборка build_assumptions.py воспроизводит машинную книгу бит в бит; ближние
-      ключи спредов книг ЧПД следуют правилу A-N1n на опоре мира-эталона записи.
+      ключи спредов книг ЧПД следуют правилу A-N1n на опоре мира-эталона записи, дальние
+      ключи книг активов (2028–2030, LT) — правилу листа калибровки ЧПД (far_spreads).
 
   python -B ops/tools/refresh_worlds.py --record КАТАЛОГ --out КАТАЛОГ [--median [--draws N]]
       кандидат на новую запись семейства: КАТАЛОГ записи — worlds_source.json
@@ -69,6 +70,7 @@ TEMPLATE = "assumptions_template.yaml"
 
 OK, BAD_INPUT, NOT_BUILT = 0, 1, 2
 NEAR_TOL = 6e-6                 # ключ спреда «от ставки якоря» записан в шаблоне с 5 знаками (как SPREAD_RULE_TOL reanchor.py)
+JOINT = Path("evidence") / "nii" / "inputs" / "stage1" / "calib" / "nii" / "backtest" / "backtest_joint.json"
 
 
 class Refused(Exception):
@@ -157,6 +159,25 @@ def near_key_problems(machine: dict, rates: dict[str, float]) -> list[str]:
     return problems
 
 
+def far_key_problems(machine: dict, book: Path = BOOK) -> list[str]:
+    """Дальние ключи спредов книг активов (2028–2030, LT) против правила листа калибровки ЧПД на опоре мира-эталона
+    машинной книги (правило far_spreads, ops/tools/worlds_rules.py; входы — копия бэктеста); пусто — следуют правилу."""
+    joint_p = book / JOINT
+    if not joint_p.exists():
+        return [f"нет копии бэктеста {JOINT.as_posix()} — дальние ключи сверить не с чем"]
+    rules = _module(ROOT / "ops" / "tools" / "worlds_rules.py", "_refresh_worlds_rules")
+    joint = json.loads(joint_p.read_text(encoding="utf-8"))
+    world = machine["worlds"][str(machine["nii"]["transmission"]["reference_world"])]
+    far = rules.far_spread_values(world, machine["nii"]["books"], joint, rules._halves(machine["meta"])[-1])
+    problems = []
+    for name, vals in far.items():
+        spread = machine["nii"]["books"][name]["spread"]
+        bad = {k: (float(spread[k]), v) for k, v in vals.items() if abs(float(spread[k]) - v) > NEAR_TOL}
+        if bad:
+            problems.append(f"{name}: " + ", ".join(f"{k} {h:+.5f}, по правилу {v:+.5f}" for k, (h, v) in bad.items()))
+    return problems
+
+
 def check_canon(book: Path = BOOK) -> tuple[list[str], list[str]]:
     """(нарушения, строки отчёта) канона миров книги."""
     problems, report = [], []
@@ -206,6 +227,11 @@ def check_canon(book: Path = BOOK) -> tuple[list[str], list[str]]:
         problems.append("ближние ключи спредов не следуют правилу A-N1n на опоре записи: " + "; ".join(near[:5]))
     else:
         report.append("ближние ключи спредов следуют правилу A-N1n на опоре мира-эталона записи")
+    far = far_key_problems(machine, book)
+    if far:
+        problems.append("дальние ключи спредов не следуют правилу листа калибровки ЧПД на опоре записи: " + "; ".join(far[:5]))
+    else:
+        report.append("дальние ключи спредов книг активов следуют правилу листа калибровки ЧПД на опоре мира-эталона записи")
     return problems, report
 
 
@@ -308,8 +334,13 @@ def build_candidate(record_dir: Path, out: Path, *, book: Path = BOOK, facts_dir
     near = near_key_problems(machine, anchor_rates(facts_dir))
     if near:
         raise Refused("ближние ключи спредов шаблона не пересчитаны по правилу A-N1n на опоре мира-эталона новой записи "
-                      f"({len(near)}): " + "; ".join(near) + ". Пересчитать ключи в шаблоне рабочей копии (A-N1n, лист "
-                      "evidence/nii) и собрать кандидат заново; подобранные числа — derive_on_engine.py новой версии книги")
+                      f"({len(near)}): " + "; ".join(near) + ". Пересчитать шагом near_spreads (ops/tools/rederive.py) "
+                      "или командой приёма миров (ops/tools/adopt_worlds.py) и собрать кандидат заново")
+    far = far_key_problems(machine, book)
+    if far:
+        raise Refused("дальние ключи спредов шаблона не пересчитаны по правилу листа калибровки ЧПД на опоре новой записи "
+                      f"({len(far)}): " + "; ".join(far) + ". Пересчитать правилом far_spreads (ops/tools/worlds_rules.py) "
+                      "или командой приёма миров (ops/tools/adopt_worlds.py)")
     (out / "assumptions.candidate.yaml").write_text(text_yaml, encoding="utf-8", newline="\n")
     (out / "assumptions.candidate.json").write_text(text_json, encoding="utf-8", newline="\n")
     for name in (RECORD, RECORD_CSV):

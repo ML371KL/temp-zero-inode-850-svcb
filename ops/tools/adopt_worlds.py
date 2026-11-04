@@ -637,6 +637,13 @@ def context(manifest: dict, entry: dict, from_entry: dict | None, v: str, from_v
             ctx[f"{k}_ru"] = ru_date(ctx[k])
     if from_entry:
         ctx.update({f"from.{k}": val for k, val in flat(from_entry).items()})
+        for k in ("record.asof", "record.curve_date", "cbr_decision"):
+            if ctx.get(f"from.{k}"):
+                ctx[f"from.{k}_ru"] = ru_date(ctx[f"from.{k}"])
+    for pre in ("", "from."):                                   # короткие хэши для подписей: «7296567d…»
+        for k in ("record.sha256", "overlay.sha256"):
+            if ctx.get(pre + k):
+                ctx[pre + k.replace("sha256", "sha8")] = str(ctx[pre + k])[:8]
     for k in ("model", "title", "book_gen"):
         if k in manifest:
             ctx[k] = manifest[k]
@@ -676,7 +683,8 @@ def book_block(tree: Path, manifest: dict, prev: dict, v: str) -> dict | None:
     tpl = yaml.safe_load((tree / manifest["template"]).read_text(encoding="utf-8"))
     cur = str(get(tpl, _path(addr)))
     head = git(tree, "rev-parse", "HEAD").strip()
-    return {"from": cur, "version": bump(cur), "from_worlds": str(prev.get("version")), "from_commit": head}
+    return {"from": cur, "version": bump(cur), "from_worlds": str(prev.get("version")), "from_commit": head,
+            "date": dt.date.today().isoformat()}
 
 
 def book_ctx(book: dict | None) -> dict:

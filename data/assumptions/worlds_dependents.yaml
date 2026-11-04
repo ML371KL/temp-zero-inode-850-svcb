@@ -142,4 +142,6 @@ readers:
   data/assumptions/evidence/worlds_bank/build_overlay.py: {feeds: [worlds_bank.json], step: overlay-check}
   ops/tools/refresh_worlds.py: {feeds: [], step: refresh-check}
   ops/tools/adopt_worlds.py: {feeds: [], step: ""}
+  ops/tools/worlds_rules.py: {feeds: ["nii.books.<активы>.spread.2028–LT", "regimes.<R>.cor.2027–LT", "ось κ", "volumes.funds_share_drift.*", "варианты уровня маржи"], step: far-spreads}
+  ops/tools/adopt_walk.py: {feeds: [], step: ""}                   # прогулка версии: старт — книга коммита из состояния
   model/payload.py: {feeds: [], step: ""}                  # печать происхождения записи на витрине (читает книгу)
