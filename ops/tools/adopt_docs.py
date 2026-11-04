@@ -173,9 +173,11 @@ def decisions_row(c: Ctx) -> str:
     ev = c.ifrs_event()
     cy, cq = int(ev["covers"][:4]), int(ev["covers"][-1])
     if c.from_curve < pm:                    # прежняя книга стоит на кривой до заседания: на бою срок идёт до выкладки
+        mu = (c.notes.get("manual_input_overdue") or {}).get("valid_until")
+        held = (f"сборку держит запись объяснения до {d_ru(dt.date.fromisoformat(str(mu)))} включительно, дальше — отказ кодом 1"
+                if mu else "без записи объяснения сборка отказывает кодом 1")
         before = (f"до выкладки книги {c.version} на бою книга {c.bk['from']} (кривая {d_ru(c.from_curve)}): с "
-                  f"{d_ru(pm + dt.timedelta(days=n + 1))} сборка на бою отказывает кодом 1 (гейт `manual_input_overdue`), пока её "
-                  "держит запись объяснения. После выкладки")
+                  f"{d_ru(pm + dt.timedelta(days=n + 1))} на бою срабатывает гейт `manual_input_overdue`, {held}. После выкладки")
     else:                                    # прежняя книга уже на кривой после заседания
         before = (f"книга {c.bk['from']} на бою стоит на кривой {d_ru(c.from_curve)} — не раньше заседания, срок миров она "
                   f"держит сама. После выкладки книги {c.version}")
