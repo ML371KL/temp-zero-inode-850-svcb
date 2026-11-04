@@ -1,0 +1,85 @@
+# Манифест приёма миров ставок семейства 850 — книга Совкомбанка (команда ops/tools/adopt_worlds.py).
+#
+# Что из версии миров копируется в дерево, какие ключи книги пишутся из индекса источника, какие числа книги
+# зависят от миров и каким правилом этой книги пересчитываются, какие команды пересобирают книгу, таблицы, тексты и
+# эталоны тестов. Правится руками вместе с кодом книги; на какой версии стоит книга — data/assumptions/worlds_state.json
+# (пишет команда). Сторож tests/test_worlds_dependents.py: каждый лист и инструмент, читающий миры, назван здесь в
+# `readers`; правила манифеста на мирах книги дают числа шаблона.
+schema: worlds-dependents-v1
+model: svcb
+title: "Совкомбанк 850"
+book_gen: "Совкомбанка"                  # имя книги в описании рецепта и строке 1 входов (<<book_gen>>)
+print_step: 0.1                          # шаг печати медианы на витрине, ₽ (печать 14,8)
+stop: {median_print_steps: 2}            # сдвиг медианы больше двух шагов печати — красный флаг
+workers_env: [BANK_WORKERS]
+workers: 2                               # общая машина: тяжёлые прогоны — два процесса
+git_identity: {name: ML371KL, email: "304002195+ML371KL@users.noreply.github.com"}
+record: data/assumptions/worlds_source.json
+overlay: data/assumptions/worlds_bank.json
+template: data/assumptions/assumptions_template.yaml
+
+steps:
+  # ---------------------------------------------------------------- файлы версии
+  - id: record
+    kind: install
+    title: "запись миров {version} побайтово, рецепт, входы, описание рецепта"
+    files:
+      - {src: record/worlds_source.json, dst: data/assumptions/worlds_source.json}
+      - {src: record/worlds_source.csv, dst: data/assumptions/worlds_source.csv}
+      - {src: recipe/worlds_recipe.py, dst: data/assumptions/worlds_recipe.py}
+      - src: inputs/worlds_inputs.yaml
+        dst: data/assumptions/worlds_inputs.yaml
+        verify: body
+        keep_lines: [1]
+        own_lines: {1: "# Входы записи для сборки макро-миров — книга-источник (850oa) (WORLDS-RECIPE.md); копия общей записи {record.curve_date_ru} для книги Совкомбанка (DESIGN §3.3)."}
+      - {src: doc/WORLDS-RECIPE.md, dst: data/assumptions/WORLDS-RECIPE.md, verify: result, subst: {"<<book_gen>>": "{book_gen}"}}
+  - id: overlay
+    kind: install
+    title: "надстройка банков {version}: лист сектора семейства и worlds_bank.json"
+    files:
+      - {src: bank/sector_sheet.yaml, dst: data/assumptions/evidence/worlds_bank/inputs/bank_overlay_draft.yaml, verify: result, keep_head: true}
+      - {src: bank/worlds_bank.json, dst: data/assumptions/worlds_bank.json}
+  - id: state
+    kind: state
+    title: "состояние: книга на мирах {version}"
+  - id: recipe-check
+    kind: run
+    title: "рецепт воспроизводит запись {version}"
+    cmd: ["{python}", "-B", "data/assumptions/worlds_recipe.py", "--check"]
+  - id: overlay-check
+    kind: run
+    title: "сборщик надстройки воспроизводит worlds_bank.json"
+    cmd: ["{python}", "-B", "data/assumptions/evidence/worlds_bank/build_overlay.py", "--check"]
+
+  # ---------------------------------------------------------------- ключи происхождения
+  - id: provenance
+    kind: set
+    title: "шаблон: дата кривых, происхождение и хэш записи {version}"
+    file: data/assumptions/assumptions_template.yaml
+    values:
+      meta.curve_as_of: "{record.curve_date}"
+      worlds.source.origin: "{origin}"
+      worlds.source.record_asof: "{record.asof}"
+      worlds.source.curve_date: "{record.curve_date}"
+      worlds.source.sha256: "{record.sha256}"
+    replace: {"{from.origin}": "{origin}"}   # подписи источника суждений на витрине: «[Ф: … — magnit-850oa book-1.x]»
+
+  # ---------------------------------------------------------------- сборка
+  - id: build
+    kind: run
+    title: "машинная книга из шаблона, записи и надстройки"
+    cmd: ["{python}", "-B", "data/assumptions/build_assumptions.py"]
+  - id: refresh-check
+    kind: run
+    title: "запись, книга и ближние ключи спредов согласованы"
+    cmd: ["{python}", "-B", "ops/tools/refresh_worlds.py", "--check"]
+
+# Листы и инструменты, которые читают запись миров, надстройку или их копии (сторож тестов сверяет список с деревом).
+# feeds — ключи шаблона из их выхода; пусто — печать или проверка.
+readers:
+  data/assumptions/build_assumptions.py: {feeds: ["worlds.<W>.*", "worlds_bank.<W>.*"], step: build}
+  data/assumptions/worlds_recipe.py: {feeds: [], step: recipe-check}
+  data/assumptions/evidence/worlds_bank/build_overlay.py: {feeds: [worlds_bank.json], step: overlay-check}
+  ops/tools/refresh_worlds.py: {feeds: [], step: refresh-check}
+  ops/tools/adopt_worlds.py: {feeds: [], step: ""}
+  model/payload.py: {feeds: [], step: ""}                  # печать происхождения записи на витрине (читает книгу)

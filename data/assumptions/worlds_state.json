@@ -1,0 +1,42 @@
+{
+ "schema": "worlds-state-v1",
+ "version": "1.4",
+ "origin": "magnit-850oa book-1.6",
+ "title": "миры ставок книги-источника 1.4 (кривая 18.09.2026); надстройка банков — проект ОНДКП 30.09.2026",
+ "record_sha256": "7296567d5200b5599efd0989de6ed8c8461d56c5c5dda244ab7d622303969fec",
+ "record_csv_sha256": "2faae142d447a309daaf43eeea0a928db94ae2dc90ff1e0b21771703cd4a8dfc",
+ "record_asof": "2026-09-21",
+ "curve_date": "2026-09-18",
+ "overlay_sha256": "6fb82a41c4aa558c1f9a11323c7602ea0feb82e09d7430e85d4ea696ed03037a",
+ "source_commit": "f98b403aefba",
+ "files": {
+  "data/assumptions/worlds_source.json": {
+   "src": "record/worlds_source.json",
+   "sha256": "7296567d5200b5599efd0989de6ed8c8461d56c5c5dda244ab7d622303969fec"
+  },
+  "data/assumptions/worlds_source.csv": {
+   "src": "record/worlds_source.csv",
+   "sha256": "2faae142d447a309daaf43eeea0a928db94ae2dc90ff1e0b21771703cd4a8dfc"
+  },
+  "data/assumptions/worlds_recipe.py": {
+   "src": "recipe/worlds_recipe.py",
+   "sha256": "459b7b6eb8da4228ab8eec657ba9ae758b5521676306555bfd37bc07e4fcf180"
+  },
+  "data/assumptions/worlds_inputs.yaml": {
+   "src": "inputs/worlds_inputs.yaml",
+   "sha256": "8c090dd9549b83aa3ccc323ce56ca8a3816e4d2098cfead58b847f3820919cc5"
+  },
+  "data/assumptions/WORLDS-RECIPE.md": {
+   "src": "doc/WORLDS-RECIPE.md",
+   "sha256": "fafa3227d9387e0641fe17cfdc6ae7ae5f6dcbd3c9794812d84d39f0c8c14705"
+  },
+  "data/assumptions/evidence/worlds_bank/inputs/bank_overlay_draft.yaml": {
+   "src": "bank/sector_sheet.yaml",
+   "sha256": "79103e1ef93f45d902e70de3bc5a01c40260a3cb567cfe772af48ae7699037f8"
+  },
+  "data/assumptions/worlds_bank.json": {
+   "src": "bank/worlds_bank.json",
+   "sha256": "6fb82a41c4aa558c1f9a11323c7602ea0feb82e09d7430e85d4ea696ed03037a"
+  }
+ }
+}

@@ -9,17 +9,31 @@
   python -B ops/tools/refresh_worlds.py --check
       строгая проверка канона (CI): рецепт на входах книги воспроизводит
       worlds_source.json целиком; sha256 и asof записи = worlds.source.* шаблона;
-      сборка build_assumptions.py воспроизводит машинную книгу бит в бит.
+      сборка build_assumptions.py воспроизводит машинную книгу бит в бит; ближние
+      ключи спредов книг ЧПД следуют правилу A-N1n на опоре мира-эталона записи.
 
   python -B ops/tools/refresh_worlds.py --record КАТАЛОГ --out КАТАЛОГ [--median [--draws N]]
       кандидат на новую запись семейства: КАТАЛОГ записи — worlds_source.json
       (+ worlds_source.csv, worlds_inputs.yaml, если входы менялись). Проверяет, что
       рецепт воспроизводит новую запись, собирает книгу-кандидат (шаблон с новыми
-      worlds.source.{sha256, record_asof, curve_date} и meta.curve_as_of) и
-      считает ядро на книге и на кандидате (цена, дата и реестр книги).
+      worlds.source.{sha256, record_asof, curve_date} и meta.curve_as_of), сверяет
+      ближние ключи спредов шаблона с правилом A-N1n на опоре мира-эталона НОВОЙ
+      записи (отказ, если ключи не пересчитаны) и считает ядро на книге и на
+      кандидате (цена, дата и реестр книги).
       Пишет ТОЛЬКО в --out: assumptions_template.candidate.yaml,
       assumptions.candidate.yaml/.json и CANDIDATE.md (что меняется в записи,
       строки шаблона, точка и слои «книга → кандидат», черновик строки журнала).
+
+Ближние ключи (A-N1n, MODEL §4.4): спреды книг ЧПД заданы в мире-эталоне
+(`nii.transmission.reference_world`, у этой книги — H), и ключ года первого
+прогнозного квартала — ставка якоря (факты `nii_books.json`) − β × опора мира-эталона
+в этом квартале, ключ следующего года — середина до значения через год. Новая запись
+двигает опору — без пересчёта ключей кандидат смещён (у ВТБ на одной записи +9,4 ₽
+точки против +2,5 ₽ с пересчётом, анализ миров 27.10.2026, раздел 4, п. 6). Поэтому
+кандидат с непересчитанными ключами — отказ (код 1) со списком книг и чисел правила:
+ключи пересчитываются в шаблоне рабочей копии (лист evidence/nii), затем кандидат
+собирается заново. Подобранные числа (лист evidence/path/derive_on_engine.py) и
+надстройку инструмент не пересчитывает — это шаги новой версии книги.
 
 Чего НЕ делает: не пишет в data/assumptions/ (каталог внутри книги как --out
 отвергается), не публикует, не выбирает якоря и веса миров — это книга-источник
@@ -47,12 +61,14 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 BOOK = ROOT / "data" / "assumptions"
+FACTS = ROOT / "data" / "facts"
 RECORD = "worlds_source.json"
 RECORD_CSV = "worlds_source.csv"
 INPUTS = "worlds_inputs.yaml"
 TEMPLATE = "assumptions_template.yaml"
 
 OK, BAD_INPUT, NOT_BUILT = 0, 1, 2
+NEAR_TOL = 6e-6                 # ключ спреда «от ставки якоря» записан в шаблоне с 5 знаками (как SPREAD_RULE_TOL reanchor.py)
 
 
 class Refused(Exception):
@@ -87,6 +103,58 @@ def recipe_diffs(recipe, inputs: dict, record: dict) -> list[str]:
         bad, _ = recipe.check_nh(record, rebuilt)
         return bad
     return recipe.compare(record, rebuilt)
+
+
+def anchor_rates(facts_dir: Path | None = None) -> dict[str, float]:
+    """Ставки якоря книг ЧПД — факты ядра (`nii_books.json`, поле rate_anchor, доли, act/365)."""
+    path = (facts_dir or FACTS) / "nii_books.json"
+    if not path.exists():
+        raise Refused(f"нет фактов ставок якоря {path.name} — ближние ключи сверить не с чем")
+    books = json.loads(path.read_text(encoding="utf-8"))["books"]
+    return {b: float(v["rate_anchor"]["v"]) for b, v in books.items() if "rate_anchor" in v}
+
+
+def _year_value(spread: dict, year: int) -> float | None:
+    if str(year) in spread:
+        return float(spread[str(year)])
+    if "LT" in spread and "LT_from" in spread and year >= int(spread["LT_from"]):
+        return float(spread["LT"])
+    return None
+
+
+def near_key_problems(machine: dict, rates: dict[str, float]) -> list[str]:
+    """Ближние ключи спредов против правила A-N1n на мирах машинной книги; пусто — ключи следуют правилу.
+
+    Ключ года первого прогнозного квартала = ставка якоря − β × опора мира-эталона в этом квартале (квартал берёт значение
+    своего полугодия; у активов β = 1); ключ следующего года, если он есть, — середина между ним и значением через год."""
+    first = str(machine["meta"]["first_period"])
+    year, quarter = int(first[:4]), int(first[5])
+    half = f"{year}H{1 if quarter <= 2 else 2}"
+    ref_world = str(machine["nii"]["transmission"]["reference_world"])
+    world = machine["worlds"][ref_world]
+    problems = []
+    for name, spec in machine["nii"]["books"].items():
+        spread = spec.get("spread")
+        if not isinstance(spread, dict) or str(year) not in spread:
+            continue
+        if name not in rates:
+            problems.append(f"{name}: в фактах нет ставки якоря")
+            continue
+        field = "key_rate" if spec["ref"] == "key" else spec["ref"]
+        ref = float(world[field][half])
+        beta = float(spec.get("beta", 1.0)) if spec["side"] == "liability" else 1.0
+        rule = rates[name] - beta * ref
+        have = float(spread[str(year)])
+        if abs(have - rule) > NEAR_TOL:
+            problems.append(f"{name}: ключ {year} {have:+.5f}, по правилу {rule:+.5f} (ставка якоря {rates[name]:.5f} − "
+                            f"{beta:g} × опора мира {ref_world} {half} {ref:.4f})")
+        later = _year_value(spread, year + 2)
+        if str(year + 1) in spread and later is not None:
+            mid = (have + later) / 2
+            if abs(float(spread[str(year + 1)]) - mid) > NEAR_TOL:
+                problems.append(f"{name}: ключ {year + 1} {float(spread[str(year + 1)]):+.5f}, середина до {year + 2} "
+                                f"{mid:+.5f}")
+    return problems
 
 
 def check_canon(book: Path = BOOK) -> tuple[list[str], list[str]]:
@@ -130,6 +198,14 @@ def check_canon(book: Path = BOOK) -> tuple[list[str], list[str]]:
     else:
         report.append(f"машинная книга воспроизводится сборкой (версия {machine['meta']['version']}, "
                       f"миры {', '.join(machine['worlds']['ids'])})")
+    try:
+        near = near_key_problems(machine, anchor_rates())
+    except Refused as exc:
+        near = [str(exc)]
+    if near:
+        problems.append("ближние ключи спредов не следуют правилу A-N1n на опоре записи: " + "; ".join(near[:5]))
+    else:
+        report.append("ближние ключи спредов следуют правилу A-N1n на опоре мира-эталона записи")
     return problems, report
 
 
@@ -229,6 +305,11 @@ def build_candidate(record_dir: Path, out: Path, *, book: Path = BOOK, facts_dir
         current = builder_now.render()[2]
     except Exception as exc:  # noqa: BLE001
         raise NotBuilt(f"книга-кандидат не собирается: {type(exc).__name__}: {exc}") from exc
+    near = near_key_problems(machine, anchor_rates(facts_dir))
+    if near:
+        raise Refused("ближние ключи спредов шаблона не пересчитаны по правилу A-N1n на опоре мира-эталона новой записи "
+                      f"({len(near)}): " + "; ".join(near) + ". Пересчитать ключи в шаблоне рабочей копии (A-N1n, лист "
+                      "evidence/nii) и собрать кандидат заново; подобранные числа — derive_on_engine.py новой версии книги")
     (out / "assumptions.candidate.yaml").write_text(text_yaml, encoding="utf-8", newline="\n")
     (out / "assumptions.candidate.json").write_text(text_json, encoding="utf-8", newline="\n")
     for name in (RECORD, RECORD_CSV):

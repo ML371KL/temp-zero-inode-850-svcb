@@ -18,10 +18,10 @@
     python -B tests/independent_model.py --json out.json      то же + полный результат в JSON
     python -B tests/independent_model.py --gates              то же + числа гейтов знака, печатаемая маржа и уровни
                                                               после фазы роста (М§14.2)
-    python -B tests/independent_model.py --draft --worlds-lt N=<доля>,H=<доля> [--facts DIR]
+    python -B tests/independent_model.py --draft [--worlds-lt N=<доля>,H=<доля>] [--facts DIR]
         шаблон книги (assumptions_template.yaml) + миры из worlds_source.json и надстройка
-        worlds_bank.json (узел LT кривой миров N и H — правило сборки семейства, передаётся явно;
-        M — правило рецепта)
+        worlds_bank.json (узел LT кривой миров: с записи 1.7 — блок curve_lt записи; у записи без
+        блока N и H — правило сборки семейства, передаётся явно, M — правило рецепта)
 """
 
 from __future__ import annotations
@@ -131,8 +131,9 @@ def c_book_from_draft(draft: Path | None = None, *, worlds_source: Path | None =
     """Шаблон книги (по умолчанию assumptions_template.yaml, иначе черновик) + блоки worlds.<W> и
     worlds_bank.<W> по таблице М§3.1 — независимая сборка машинной книги.
 
-    Узел LT бескупонной кривой: M — правило рецепта (ОФЗ 10 лет последнего полугодия, до 0,1
-    п.п.), N и H — правило сборки семейства (передаётся явно, в коде чисел нет). Строки-метки
+    Узел LT бескупонной кривой: явно переданный уровень; иначе блок `curve_lt` записи (с записи 1.7 —
+    правило для всех миров); у записи без блока M — правило рецепта (ОФЗ 10 лет последнего полугодия,
+    до 0,1 п.п.), N и H — правило сборки семейства (передаётся явно, в коде чисел нет). Строки-метки
     шаблона — комментарии YAML, поэтому шаблон читается как книга без миров.
     """
     src_book = Path(draft) if draft else (TEMPLATE_YAML if TEMPLATE_YAML.exists() else DRAFT_YAML)
@@ -140,6 +141,7 @@ def c_book_from_draft(draft: Path | None = None, *, worlds_source: Path | None =
     src = json.loads(Path(worlds_source or WORLDS_SOURCE).read_text(encoding="utf-8"))
     ovl = json.loads(Path(overlay or WORLDS_BANK).read_text(encoding="utf-8"))
     curve_lt = dict(curve_lt or {})
+    block = src.get("curve_lt") or {}
     fields = {"key_rate": "key_avg", "cpi": "cpi_yoy_avg", "wage_growth": "nominal_wage_yoy",
               "ofz_1y": "ofz_1y", "ofz_3y": "ofz_3y", "ofz_5y": "ofz_5y", "ofz_10y": "ofz_10y",
               "real_key": "real_key_fwd12m"}
@@ -151,9 +153,12 @@ def c_book_from_draft(draft: Path | None = None, *, worlds_source: Path | None =
             blk[key] = {r["period"]: r[col] / pct for r in rows}
         curve = {str(k): v / pct for k, v in src["fair_zero_curve_today"][w].items()}
         if w not in curve_lt:
-            if w != W_MKT:
+            if w in block:
+                curve_lt[w] = float(block[w]) / pct
+            elif w != W_MKT:
                 raise ControlInputError(f"узел LT кривой мира {w}: передайте --worlds-lt")
-            curve_lt[w] = round(rows[-1]["ofz_10y"], 1) / pct
+            else:
+                curve_lt[w] = round(rows[-1]["ofz_10y"], 1) / pct
         curve["LT"] = float(curve_lt[w])
         blk["zero_curve"] = curve
         blk["lt_inflation"] = src["lt_inflation"][w] / pct

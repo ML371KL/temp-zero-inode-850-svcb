@@ -182,6 +182,47 @@ def test_the_candidate_never_writes_into_the_book(refresh_worlds, tmp_path, caps
     assert not (BOOK / "candidate").exists()
 
 
+def test_the_near_spread_keys_follow_the_rule_on_the_book(refresh_worlds):
+    """A-N1n: ближние ключи спредов книги = ставка якоря − β × опора мира-эталона записи (проход); ключ, сдвинутый на
+    одну сотую пункта, — нарушение с числом правила."""
+    _needs_book()
+    machine = yaml.safe_load((BOOK / "assumptions.yaml").read_text(encoding="utf-8"))
+    rates = refresh_worlds.anchor_rates()
+    assert refresh_worlds.near_key_problems(machine, rates) == []
+    year = machine["meta"]["first_period"][:4]
+    books = [b for b, s in machine["nii"]["books"].items() if isinstance(s["spread"], dict) and year in s["spread"]]
+    assert len(books) == 13                                  # книги активов и пассивов с ключом года якоря
+    machine["nii"]["books"]["cards"]["spread"][year] += 1e-4
+    problems = refresh_worlds.near_key_problems(machine, rates)
+    assert len(problems) == 2 and all(p.startswith("cards: ключ") for p in problems), problems
+    assert "по правилу" in problems[0] and "опора мира H" in problems[0]
+
+
+def test_a_candidate_with_stale_near_spread_keys_is_refused(refresh_worlds, tmp_path, capsys):
+    """Новая запись двигает опору мира-эталона, а ключи шаблона прежние: кандидат — отказ (код 1) со списком книг;
+    книга не тронута."""
+    _needs_book()
+    recipe = _load_module(BOOK / "worlds_recipe.py", "candidate_recipe_near")
+    inputs = yaml.safe_load((BOOK / "worlds_inputs.yaml").read_text(encoding="utf-8"))
+    first_half = "2026H2"
+    inputs["worlds"]["H"]["anchors"]["key"][first_half] = round(inputs["worlds"]["H"]["anchors"]["key"][first_half] + 0.25, 2)
+    record = tmp_path / "record"
+    recipe.write_candidate(recipe.build_worlds(inputs), record)
+    (record / "worlds_inputs.yaml").write_text(yaml.safe_dump(inputs, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    before = {p.name: p.read_bytes() for p in BOOK.iterdir() if p.is_file()}
+    assert refresh_worlds.main(["--record", str(record), "--out", str(tmp_path / "candidate")]) == 1
+    err = capsys.readouterr().err
+    assert "A-N1n" in err and "cards: ключ 2026" in err and "wholesale: ключ 2026" in err, err
+    assert {p.name: p.read_bytes() for p in BOOK.iterdir() if p.is_file()} == before, "книга не тронута"
+
+
+def _load_module(path: Path, name: str):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def test_the_candidate_template_changes_only_the_record_lines(refresh_worlds):
     _needs_book()
     text = (BOOK / "assumptions_template.yaml").read_text(encoding="utf-8")

@@ -45,7 +45,8 @@ WORLDS = ("N", "H", "M")
 GROUPS = (("credit_growth", ("corporate", "mortgage", "retail_other")), ("funds_growth", ("retail", "corporate")))
 AS_OF = "2026-09-30"                             # титул ОНДКП: «Проект от 30 сентября 2026 года»
 MORTGAGE_WEIGHT = 0.5806                         # доля ИЖК в задолженности физлиц на 01.08.2026 (dataservice ЦБ; лист этапа 1)
-FAMILY_SHA256 = "6fb82a41c4aa558c1f9a11323c7602ea0feb82e09d7430e85d4ea696ed03037a"   # надстройка семейства (книга Сбербанка)
+STATE = BOOK_DIR / "worlds_state.json"            # пишет команда приёма миров (ops/tools/adopt_worlds.py)
+FAMILY_SHA256_BOOK_0_1 = "6fb82a41c4aa558c1f9a11323c7602ea0feb82e09d7430e85d4ea696ed03037a"   # до команды приёма
 TOL = 6e-4                                       # сверка пути мира с пересчётом: округление середин до 0,01 п.п.
 
 RECIPE = (
@@ -72,6 +73,17 @@ _REPLACE = (
     (re.compile(_START + _NAME + "/(data/assumptions/)"), r"\1"),
     (re.compile(_START + "(?:" + _NAME + "/)*" + _NAME + "-handoff/(primary/)"), r"\1"),
 )
+
+
+def family_sha256() -> str:
+    """Хэш надстройки семейства для версии миров книги: из состояния, которое пишет команда приёма (индекс
+    источника миров), до неё — надстройка книги 0.1."""
+    if STATE.exists():
+        return json.loads(STATE.read_text(encoding="utf-8"))["overlay_sha256"]
+    return FAMILY_SHA256_BOOK_0_1
+
+
+FAMILY_SHA256 = family_sha256()
 
 
 def sanitize(text: str) -> str:
@@ -153,6 +165,8 @@ def build_overlay(draft: dict, record_bytes: bytes) -> dict:
     if bad:
         raise ValueError("лист надстройки не проходит самопроверку:\n  " + "\n  ".join(bad))
     src = draft["meta"]["sources"]["ondkp"]
+    overlay = draft["meta"].get("overlay") or {}     # дата и текст рецепта надстройки едут с листом семейства;
+                                                     # лист без блока — прежние константы (книга 0.1)
     worlds = {}
     for w in WORLDS:
         blk = draft["sector"]["worlds"][w]
@@ -165,8 +179,9 @@ def build_overlay(draft: dict, record_bytes: bytes) -> dict:
         worlds[w] = out
     return {
         "schema": "worlds_bank-v1",
-        "source": {"doc": src["file"], "url": src["url"], "sha256": src["sha256"], "as_of": AS_OF},
-        "recipe": RECIPE,
+        "source": {"doc": src["file"], "url": src["url"], "sha256": src["sha256"],
+                   "as_of": str(overlay.get("as_of", AS_OF))},
+        "recipe": overlay.get("recipe", RECIPE),
         "worlds": worlds,
     }
 

@@ -630,6 +630,11 @@ def test_template_plus_worlds_is_the_machine_book(inputs):
     lt = {w: book["worlds"][w]["zero_curve"]["LT"] for w in book["worlds"]["ids"] if w != cm.W_MKT}
     built = cm.c_book_from_draft(template, worlds_source=source, overlay=bank, curve_lt=lt)
     assert book["worlds"]["overlay"]["sha256"] == hashlib.sha256(bank.read_bytes()).hexdigest()
+    record = json.loads(source.read_text(encoding="utf-8"))
+    if record.get("curve_lt"):                  # с записи 1.7 узел LT всех миров — блок записи: явный уровень не нужен
+        own = cm.c_book_from_draft(template, worlds_source=source, overlay=bank)
+        assert {w: own["worlds"][w]["zero_curve"]["LT"] for w in book["worlds"]["ids"]} == pytest.approx(
+            {w: book["worlds"][w]["zero_curve"]["LT"] for w in book["worlds"]["ids"]}, abs=1e-12)
     mine = cm.copy.deepcopy(book)
     for tree in (mine, built):
         tree["worlds"]["overlay"]["sha256"] = None
