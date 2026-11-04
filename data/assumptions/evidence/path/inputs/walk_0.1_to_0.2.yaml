@@ -1,0 +1,38 @@
+# Прогулка книги 0.1 → 0.2 (Совкомбанк 850): шаги ops/tools/walk_book.py по шагам манифеста приёма миров 1.7 (ops/tools/adopt_walk.py; правится манифестом, не руками).
+- name: 'Миры ставок (ЦБ 23.10.2026): запись миров 1.7 — пути N/H/M, кривые, уровень кривой в терминале, дата кривых'
+  from_end:
+  - worlds.N
+  - worlds.H
+  - worlds.M
+  - worlds.source
+  - meta.curve_as_of
+- name: 'Миры ставок (ЦБ 23.10.2026): банковская надстройка 1.7 — рост сектора по мирам'
+  from_end:
+  - worlds_bank
+  - worlds.overlay
+- name: 'Миры ставок (ЦБ 23.10.2026): ключи спредов книг на опоре мира H 1.7 (ближние A-N1n и дальние — правило листа калибровки ЧПД)'
+  from_end:
+  - nii.books
+- name: 'Миры ставок (ЦБ 23.10.2026): пути стоимости риска режимов — перенос κ по реальной ставке мира M'
+  from_end:
+  - regimes.soft.cor
+  - regimes.norm.cor
+  - regimes.downturn.cor
+  - regimes.crisis.cor
+- name: 'Миры ставок (ЦБ 23.10.2026): числа, выведенные на ядре, концы осей и справочные варианты'
+  from_end:
+  - checks.cir_lt
+  - fees.growth_vs_wages
+  - opex.line_share_roots.insurance
+  - opex.real_growth
+  - other.insurance_growth_vs_wages
+  - regimes.near_nim_shift
+  - valuation.reference_variants
+  - valuation.uncertainty
+  - volumes.liability_driver_roots.insurance
+- name: 'Миры ставок (ЦБ 23.10.2026): центр премии роста средств клиентов на нужде баланса книги'
+  from_end:
+  - volumes.funds_share_drift
+- name: Версия книги 0.2
+  from_end:
+  - meta.version
