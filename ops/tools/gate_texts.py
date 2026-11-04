@@ -427,11 +427,15 @@ def t_m_crisis_vs_cbr(n: dict) -> tuple[str, dict]:
     rest = [s for s in SCENARIOS if s not in longer]
     g28 = [c["loan_growth"]["2028"] for c in mc]
     lo28, hi28 = ch["loan_growth"]["2028"]
-    fails = sorted({m.split(":")[1].strip().split(" вне")[0].rsplit(" ", 1)[0]
-                    for m in n["results"]["gates"]["m_crisis_vs_cbr"]["message"].split(";")})
+    fails = sorted({re.sub(r"\s+[−-]?\d+(,\d+)?\s*%.*$", "", m.split(":", 1)[1].strip())
+                    for m in n["results"]["gates"]["m_crisis_vs_cbr"]["message"].split(";") if ":" in m})
     sig = {"fails": fails, "all_zero_2028": max(abs(x) for x in g28) < 5e-4, "common_stop": common - 2027,
            "longer": longer}
-    after = mc[[cell(c["cell"])[2] for c in mc].index(rest[0])]["loan_growth"][str(common + 1)] if rest and longer else None
+    grow = {cell(c["cell"])[2]: c["loan_growth"][str(common + 1)] for c in mc}
+    tail = ""
+    if longer and rest:
+        tail = (f", в сценари{'ях' if len(longer) > 1 else 'и'} {join_ru([S_NOM[s] for s in longer])} — и в {common + 1} году ("
+                + ", ".join(f"{S_NOM[s]} — {pct(grow[s])} %" for s in rest) + ")")
     t = ("Гейт сверяет клетки «Рыночный как есть» × «Кризис» с рисковым сценарием Банка России: рост кредита 2027 года "
          f"{span(*ch['loan_growth']['2027'], 0)} %, 2028 года {span(lo28, hi28, 0)} %, стоимость риска года шока не ниже "
          f"{pct(ch['cor_shock_year'])} %, наименьший норматив достаточности собственных средств (капитала) банка Н1.0 не выше "
@@ -439,9 +443,7 @@ def t_m_crisis_vs_cbr(n: dict) -> tuple[str, dict]:
          f"{ru(100 * n['mgmt_buffer'], 2)} п.п.). Расходится одно условие — рост кредита 2028 года: {pct(max(g28))} % во всех "
          f"трёх клетках ({pct(mass, 0)} % вероятности). Причина — капитал: после разового убытка 2027 года и ступени надбавок "
          "1 января 2028 года норматив ниже пола, и книга не даёт кредиту расти, пока запас не восстановится; в этом мире рост "
-         f"стоит до {common} года включительно" +
-         (f", в сценариях {join_ru([S_NOM[s] for s in longer])} — и в {common + 1} году ({S_NOM[rest[0]]} — {pct(after)} %)"
-          if longer and rest else "") +
+         f"стоит до {common} года включительно" + tail +
          ". Кризис книги в мире высоких ставок жёстче сценария Банка России по кредиту — в консервативную сторону. Стоимость "
          f"риска года шока ({_crisis_cor(n)} %) и наименьший норматив ({span(min(c['n20_min'] for c in mc), max(c['n20_min'] for c in mc))} %) "
          "— в коридоре сценария.")
@@ -528,7 +530,11 @@ def _nim_cells(cells: list[dict]) -> str:
     if full:
         bits.append(f"{join_ru([R_NOM[r] for r in full])} во всех сценариях")
     for r in part:
-        bits.append(f"{R_NOM[r]} " + join_ru([S_SHORT[s] for s in sorted(by[r], key=SCENARIOS.index)]))
+        sc = sorted(by[r], key=SCENARIOS.index)
+        named = [S_NOM[s] for s in sc if s != "schedule"]
+        words = (["по графику"] if "schedule" in sc else []) + \
+                ([f"в сценари{'ях' if len(named) > 1 else 'и'} {join_ru(named)}"] if named else [])
+        bits.append(f"{R_NOM[r]} " + join_ru(words))
     return join_ru(bits)
 
 
@@ -546,19 +552,50 @@ def t_nim_path_joint(n: dict) -> tuple[str, dict]:
     nim2829 = [x for c in cells for x in (c["nim_2028"], c["nim_2029"])]
     nim36 = [c["nim_2036"] for c in cells]
     sig = {"worlds": ws, "cells": sorted(c["cell"] for c in cells), "one_cap": len(caps) == 1}
-    count = NUM_NOM.get(len(cells), str(len(cells)))
     t = ("Гейт следит, чтобы в первых восьми кварталах после якоря не было ступени маржи: управленческая чистая процентная "
          "маржа квартала не должна быть выше большей из двух величин — маржи якоря по счёту модели "
          f"({pct(nj['nim0_mgmt'], 2)} %; отчётная маржа квартала — {rep.group(1) if rep else '—'} %) и уровня своего мира — "
-         f"больше чем на {ru(100 * nj['tolerance'], 1)} п.п.; порог во всех мирах — {pct(caps[0], 2)} %. Выше порога — {count} "
-         f"клеток мира {W_NOM[ws[0]]} ({_nim_cells(cells)}; {pct(mass)} % вероятности) в кварталах {_back_range(quarters)}; "
+         f"больше чем на {ru(100 * nj['tolerance'], 1)} п.п.; порог во всех мирах — {pct(caps[0], 2)} %. Выше порога — "
+         f"{cells_word(len(cells))} мира {W_NOM[ws[0]]} ({_nim_cells(cells)}; {pct(mass)} % вероятности) в кварталах {_back_range(quarters)}; "
          f"наибольшее значение — {pct(top['max'], 2)} % {in_q(top['max_q'])}. Это не ступень, а путь мира: ключевая ставка "
          f"снижается с {trim(key['2026H2'])} % в конце 2026 года до {trim(key['2028H2'])} % в конце 2028 года, средства клиентов "
          "дешевеют быстрее, чем переоцениваются кредиты, и сжатие спредов при высокой ставке уходит — маржа поднимается до "
          f"{span(min(nim2829), max(nim2829))} % в 2028–2029 годах и затем сходит к {span(min(nim36), max(nim36))} % к 2036 году. "
-         "В мирах «Высокие ставки надолго» и «Рыночный как есть», в «Розничном спаде» мира «Нормализация ставок» при двух более "
-         "жёстких сценариях и в его «Кризисе» маржа первых восьми кварталов остаётся под порогом.")
+         f"{_nim_under(cells)} маржа первых восьми кварталов остаётся под порогом.")
     return t, sig
+
+
+UNDER = {("mid", "strict"): "при двух более жёстких сценариях", ("schedule",): "по графику",
+         ("schedule", "mid"): "при двух более мягких сценариях", ("mid",): "в сценарии «АЦН 1 % и консолидация страховщиков»",
+         ("strict",): "в сценарии «Жёсткий»", ("schedule", "strict"): "по графику и в сценарии «Жёсткий»"}
+
+
+def _nim_under(cells: list[dict]) -> str:
+    """Где маржа под порогом: миры без срабатывания, режимы мира срабатывания с частью сценариев под порогом, режимы
+    целиком под порогом («и в его …»)."""
+    over = {(cell(c["cell"])[0], cell(c["cell"])[1], cell(c["cell"])[2]) for c in cells}
+    ws = [w for w in WORLDS if not any(o[0] == w for o in over)]
+    bits = [("В мирах " if len(ws) > 1 else "В мире ") + join_ru([W_NOM[w] for w in ws])] if ws else []
+    whole = []
+    for w in [w for w in WORLDS if w not in ws]:
+        for r in REGIMES:
+            under = tuple(s for s in SCENARIOS if (w, r, s) not in over)
+            if len(under) == 3:
+                whole.append(r)
+            elif under:
+                bits.append(f"в {R_PREP[r]} мира {W_NOM[w]} {UNDER[under]}")
+    text = ", ".join(bits) if bits else "В остальных клетках"
+    if whole:
+        text += f" и в его {join_ru([R_PREP[r] for r in whole])}"
+    return text[:1].upper() + text[1:]
+
+
+def cells_word(k: int) -> str:
+    if k % 10 == 1 and k % 100 != 11:
+        return f"{NUM_NOM_F.get(k, str(k))} клетка"
+    if k % 10 in (2, 3, 4) and k % 100 not in (12, 13, 14):
+        return f"{NUM_NOM_F.get(k, str(k))} клетки"
+    return f"{NUM_NOM.get(k, str(k))} клеток"
 
 
 def t_pb_by_world(n: dict) -> tuple[str, dict]:
@@ -570,16 +607,31 @@ def t_pb_by_world(n: dict) -> tuple[str, dict]:
     regs = sorted({cell(r["cell"])[1] for r in out}, key=REGIMES.index)
     w = ws[0] if ws else "M"
 
-    def pbs(reg):
-        v = [r["pb"] for r in rows if cell(r["cell"])[0] == w and cell(r["cell"])[1] == reg]
-        return span(min(v), max(v), 2, 1.0)
+    outs = {(cell(r["cell"])[1], cell(r["cell"])[2]): r["pb"] for r in out if cell(r["cell"])[0] == w}
+    inside = {(cell(r["cell"])[1], cell(r["cell"])[2]): r["pb"] for r in rows if cell(r["cell"])[0] == w
+              and (cell(r["cell"])[1], cell(r["cell"])[2]) not in outs}
     stop = _stop_years(_m_crisis(n))
     sig = {"worlds": ws, "regimes": regs, "below": all(r["pb"] < r["corridor"][0] for r in out), "count": len(out)}
-    by_s = {cell(r["cell"])[2]: r["pb"] for r in out}
+    groups = []
+    for r in reversed(REGIMES):                       # от тяжёлого режима к лёгкому, как в тексте 0.1
+        sc = [s for s in SCENARIOS if (r, s) in outs]
+        if not sc:
+            continue
+        vals = ", ".join(f"{ru(outs[(r, s)])} {S_NOM[s]}" for s in sc)
+        groups.append(f"{R_NOM[r]} во всех трёх сценариях требований ({vals})" if len(sc) == 3 else
+                      f"{R_NOM[r]} в сценари{'ях' if len(sc) > 1 else 'и'} " + join_ru([f"{S_NOM[s]} ({ru(outs[(r, s)])})" for s in sc]))
+    near = []
+    for r, title in (("downturn", "«Розничный спад» того же мира"), ("norm", "«Нормализация» мира")):
+        sc = [s for s in SCENARIOS if (r, s) in inside]
+        v = [inside[(r, s)] for s in sc]
+        if v:
+            where = ""
+            if any((r, s) in outs for s in SCENARIOS):
+                where = f" в сценари{'ях' if len(sc) > 1 else 'и'} {join_ru([S_NOM[s] for s in sc])}"
+            near.append(f"{title}{where} — {span(min(v), max(v), 2, 1.0)}")
     t = (f"Гейт сверяет отношение стоимости клетки к капиталу акционеров с коридором {ru(lo, 1)}–{ru(hi, 1)}. Ниже коридора — "
-         f"{NUM_NOM_F.get(len(out), str(len(out)))} клетки мира {W_NOM[w]} ({pct(mass)} % вероятности): {R_NOM[regs[0]]} во всех "
-         "трёх сценариях требований (" + ", ".join(f"{ru(by_s[s])} {S_NOM[s]}" for s in SCENARIOS if s in by_s) + "); "
-         f"«Розничный спад» того же мира — {pbs('downturn')}, «Нормализация» мира — {pbs('norm')}. Это самые тяжёлые сочетания "
+         f"{cells_word(len(out))} мира {W_NOM[w]} ({pct(mass)} % вероятности): {'; '.join(groups)}; {', '.join(near)}. "
+         "Это самые тяжёлые сочетания "
          f"книги: ключевая ставка около {ru(100 * n['key_M_lt'], 0)} % надолго, шок 2027 года с разовым убытком "
          f"{ru(abs(n['one_off_loss']['amount']), 0)} млрд ₽ (рост кредита стоит до {span(min(stop.values()), max(stop.values()), 0, 1.0)} "
          "годов), а требование с надбавками держит капитал, который в этом мире окупается хуже своей стоимости (единица "

@@ -45,7 +45,8 @@
                             с перечнем файлов, которые прогон изменил бы (`tree_changes`); повтор приёма версии, на которой
                             книга уже стоит, — проверка неподвижной точки (`fixed_point`: изменений нет);
   --branch                  в рабочей копии: ветка `worlds-<v>` (создаётся от текущего коммита или продолжается, если
-                            уже текущая; дерево обязано быть чистым), коммит после каждого шага, который что-то изменил;
+                            уже текущая; дерево обязано быть чистым), коммит после каждого шага, который что-то изменил
+                            (личность — ADOPT_GIT_NAME / ADOPT_GIT_EMAIL, иначе `git_identity` манифеста, иначе git);
                             в конце — push ветки (без `--no-push`) и прогон CI (`--ci record` — номер прогона, `wait` —
                             дождаться итога). Слияние в main и выкладка — не здесь: по «да» владельца;
   --check                   ничего не пишет: копии файлов версии из `worlds_state.json` равны источнику, ключи
@@ -626,7 +627,7 @@ class Run:
         msg = (f"Миры {self.v}, шаг {s['id']}: {expand(s.get('title', s['kind']), self.ctx)}\n\n"
                f"Команда приёма ops/tools/adopt_worlds.py --version {self.v} (источник миров {self.src.commit() or '?'}).\n\n"
                f"{CO_AUTHOR}")
-        ident = self.m.get("git_identity") or {}
+        ident = {k: os.environ.get(f"ADOPT_GIT_{k.upper()}") or (self.m.get("git_identity") or {}).get(k) for k in ("name", "email")}
         flags = [x for k in ("name", "email") if ident.get(k) for x in ("-c", f"user.{k}={ident[k]}")]
         git(self.tree, *flags, "commit", "-q", "-m", msg)
         self.commits.append(git(self.tree, "rev-parse", "--short", "HEAD").strip())

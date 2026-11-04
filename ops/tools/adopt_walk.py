@@ -92,7 +92,8 @@ def main(argv: list[str] | None = None) -> int:
         w = s["walk"]
         keys = rest_keys(start, end, taken) if w.get("rest") else list(w["keys"])
         if keys:
-            steps.append({"name": A.expand(w["name"], ctx), "from_end": keys})
+            name = A.expand(w["name"], ctx)
+            steps.append({"name": name[:1].upper() + name[1:], "from_end": keys})
     tag = f"{book['from']}_to_{book['version']}"
     steps_p = PATH_DIR / "inputs" / f"walk_{tag}.yaml"
     head = (f"# Прогулка книги {book['from']} → {book['version']} ({ctx.get('title', '')}): шаги ops/tools/walk_book.py по "

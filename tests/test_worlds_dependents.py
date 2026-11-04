@@ -129,3 +129,22 @@ def test_the_engine_writes_numbers_inside_lists(tmp_path):
     ch = A.set_values(f, {("a", "axes", 0, "low", "k.2"): 1.25, ("a", "axes", 1, "low", "k.1"): 2.0}, {("a", "axes", 0, "low", "k.2"): 6})
     assert ch == {"a.axes.0.low.k.2": (1.0, 1.25)}
     assert f.read_text(encoding="utf-8").splitlines()[2] == "    - {name: x, low: {k.1: 0.5, k.2: 1.25}}   # конец"
+
+
+def test_the_gate_texts_template_writes_the_book_0_1_texts_from_its_numbers():
+    """Шаблон объяснений гейтов (ops/tools/gate_texts.py) на числах книги 0.1 даёт её тексты: суждение написано один раз,
+    числа и перечни клеток — подстановкой. Два места правило пишет чище ручного текста 0.1: верх маржи 2036 года — без
+    двойного округления (7,55 → 7,5, а не 7,6) и P/B «Розничного спада» и «Нормализации» мира M — по всем клеткам режима
+    (ручной текст брал восемь нижних клеток мира)."""
+    import gate_texts as G
+    fix = ROOT / "tests" / "fixtures" / "gate_texts_0_1"
+    n = json.loads((fix / "numbers.json").read_text(encoding="utf-8"))
+    old = yaml.safe_load((fix / "gate_explanations.yaml").read_text(encoding="utf-8"))
+    known = {"nim_path_joint": [("7,1–7,6", "7,1–7,5")], "pb_by_world": [("0,21–0,25", "0,22–0,25"), ("0,38–0,40", "0,38–0,43")]}
+    for name, fn in G.TEXTS.items():
+        text, sig = fn(n)
+        want = " ".join(old[name]["explanation"].split())
+        for a, b in known.get(name, []):
+            want = want.replace(a, b)
+        assert " ".join(text.split()) == want, name
+        assert sig == G.SIG_BOOK[name], name
