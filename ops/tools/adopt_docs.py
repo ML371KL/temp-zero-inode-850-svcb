@@ -273,10 +273,14 @@ def changelog_text(c: Ctx, text: str) -> str:
             f"{num(after['band80'][1], 1)} ₽; разложение — `data/assumptions/V{c.version}-CHANGES.md`.",
             f"- Дата книги, оценки, цена и зерно — прежние; суждения не менялись.", ""]
     block = "\n".join(body)
+    # повтор приёма той же версии заменяет строки записи, написанные шаблоном (до строки «Дата книги…»); строки,
+    # дописанные в запись после (выкладка), остаются
     m = re.search(rf"^## \d\d\.\d\d\.\d{{4}} — книга {re.escape(c.version)}: миры ставок {re.escape(c.worlds)} .*?(?=^## )", text,
                   flags=re.M | re.S)
     if m:
-        return text[:m.start()] + block + "\n" + text[m.end():]
+        entry, last = m.group(0), body[-2] + "\n"
+        tail = entry[entry.index(last) + len(last):] if last in entry else "\n"
+        return text[:m.start()] + block + tail + text[m.end():]
     first = re.search(r"^## ", text, flags=re.M).start()
     return text[:first] + block + "\n" + text[first:]
 
