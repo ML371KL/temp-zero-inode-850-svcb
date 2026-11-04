@@ -55,6 +55,11 @@ steps:
     kind: run
     title: "сборщик надстройки воспроизводит worlds_bank.json"
     cmd: ["{python}", "-B", "data/assumptions/evidence/worlds_bank/build_overlay.py", "--check"]
+  - id: worlds-text
+    kind: marks
+    title: "таблица роста сектора по мирам в справке надстройки — метками надстройки {version}"
+    sources: {bank: data/assumptions/worlds_bank.json}
+    files: [data/assumptions/evidence/worlds_bank/README.md]
 
   # ---------------------------------------------------------------- ключи происхождения
   - id: provenance

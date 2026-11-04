@@ -48,12 +48,18 @@ def d_ru(d: dt.date) -> str:
     return d.strftime("%d.%m.%Y")
 
 
+def _half_up(x: float, nd: int):
+    """Половина вверх по десятичной записи числа (327,025 → 327,03), а не по двоичной (формат Python дал бы 327,02)."""
+    from decimal import ROUND_HALF_UP, Decimal
+    return Decimal(repr(float(x))).quantize(Decimal(1).scaleb(-nd), rounding=ROUND_HALF_UP)
+
+
 def num(x: float, nd: int = 2) -> str:
-    return f"{x:.{nd}f}".replace("-", "−").replace(".", ",")
+    return f"{_half_up(x, nd):.{nd}f}".replace("-", "−").replace(".", ",")
 
 
 def signed(x: float, nd: int = 2) -> str:
-    return f"{x:+.{nd}f}".replace("-", "−").replace(".", ",")
+    return f"{_half_up(x, nd):+.{nd}f}".replace("-", "−").replace(".", ",")
 
 
 def day_word(n: int) -> str:
