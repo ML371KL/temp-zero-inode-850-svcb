@@ -32,7 +32,7 @@
   },
   "data/assumptions/evidence/worlds_bank/inputs/bank_overlay_draft.yaml": {
    "src": "bank/sector_sheet.yaml",
-   "sha256": "79103e1ef93f45d902e70de3bc5a01c40260a3cb567cfe772af48ae7699037f8"
+   "sha256": "6f43ab2b3a94bf37cbaa81470a1c2f5bb0cbd006d6c090329a7daed7b04e3bb4"
   },
   "data/assumptions/worlds_bank.json": {
    "src": "bank/worlds_bank.json",
