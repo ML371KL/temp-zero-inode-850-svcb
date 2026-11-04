@@ -336,6 +336,7 @@ class Run:
         }
         self.commits: list[str] = []
         self.installed: dict[str, str] = {}
+        self.start = git(tree, "rev-parse", "HEAD").strip()
 
     def env(self) -> dict:
         env = dict(os.environ, PYTHONIOENCODING="utf-8", WORLDS_SOURCE_DIR=str(self.src.path),
@@ -454,6 +455,13 @@ class Run:
                 out[p] = sha256_bytes(f.read_bytes()) if f.is_file() else "<нет>"
         return out
 
+    def changed_since_start(self) -> list[str]:
+        """Файлы дерева (кроме var/), которые прогон изменил против коммита, с которого начал (коммиты шагов и правки)."""
+        diff = git(self.tree, "diff", "--name-only", self.start).split()
+        new = [ln[3:].strip().strip('"') for ln in git(self.tree, "status", "--porcelain", "--untracked-files=all").splitlines()
+               if ln.startswith("??")]
+        return sorted({p for p in diff + new if p and not p.startswith("var/")})
+
     def step_loop(self, s: dict) -> dict:
         """Шаги тела по кругу до неподвижной точки: круг, который не изменил ни одного файла дерева, — сошлось; не
         сошлось за `max` кругов — остановка."""
@@ -485,8 +493,12 @@ class Run:
             return {}
         data = json.loads(p.read_text(encoding="utf-8"))
         fired = get(data, _path(s["path"])) if s.get("path") else data
-        names = sorted(fired if isinstance(fired, list) else
-                       [k for k, v in fired.items() if (v.get(s.get("flag", "fired")) if isinstance(v, dict) else v)])
+        flag, where = s.get("flag", "fired"), s.get("where") or {}
+        if isinstance(fired, list) and fired and isinstance(fired[0], dict):    # строки таблиц: [{name, kind, fired}, …]
+            names = sorted(x["name"] for x in fired if x.get(flag) and all(x.get(k) == v for k, v in where.items()))
+        else:
+            names = sorted(fired if isinstance(fired, list) else
+                           [k for k, v in fired.items() if (v.get(flag) if isinstance(v, dict) else v)])
         self.report["gates"][phase] = names
         return {"fired": names}
 
@@ -577,8 +589,8 @@ class Run:
                 return FAILED
             rec["seconds"] = round(time.time() - t0)
             self.report["steps"].append(rec)
-            if self.a.branch:
-                self.commit(s)
+            self.commit(s)                     # и в сухом прогоне — во временном дереве: шагам вроде развилок нужен
+                                               # коммит с правками прежних шагов (`git archive`); дерево потом удаляется
         self.report["status"] = "ok"
         return OK
 
@@ -903,7 +915,7 @@ def main(argv: list[str] | None = None) -> int:
         code = run.execute()
         run.finish()
         if worktree:                                      # сухой прогон: что команда изменила бы в дереве
-            changed = sorted(run.snapshot())
+            changed = run.changed_since_start()
             run.report["tree_changes"] = changed
             if run.from_v == a.version and not a.from_step and code == OK:
                 run.report["fixed_point"] = not changed

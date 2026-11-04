@@ -17,12 +17,14 @@ git_identity: {name: ML371KL, email: "304002195+ML371KL@users.noreply.github.com
 record: data/assumptions/worlds_source.json
 overlay: data/assumptions/worlds_bank.json
 template: data/assumptions/assumptions_template.yaml
+book_version: meta.version                # номер книги: команда пишет в состояние «с какой → какая» (младший разряд + 1)
 
 steps:
   # ---------------------------------------------------------------- файлы версии
   - id: record
     kind: install
     title: "запись миров {version} побайтово, рецепт, входы, описание рецепта"
+    walk: {order: 1, name: "Миры ставок {labels.walk_step}: запись миров {version} — пути N/H/M, кривые, уровень кривой в терминале, дата кривых", keys: [worlds.N, worlds.H, worlds.M, worlds.source, meta.curve_as_of]}
     files:
       - {src: record/worlds_source.json, dst: data/assumptions/worlds_source.json}
       - {src: record/worlds_source.csv, dst: data/assumptions/worlds_source.csv}
@@ -36,6 +38,7 @@ steps:
   - id: overlay
     kind: install
     title: "надстройка банков {version}: лист сектора семейства и worlds_bank.json"
+    walk: {order: 2, name: "Миры ставок {labels.walk_step}: банковская надстройка {version} — рост сектора по мирам", keys: [worlds_bank, worlds.overlay]}
     files:
       - {src: bank/sector_sheet.yaml, dst: data/assumptions/evidence/worlds_bank/inputs/bank_overlay_draft.yaml, verify: result, keep_head: true}
       - {src: bank/worlds_bank.json, dst: data/assumptions/worlds_bank.json}
@@ -64,15 +67,72 @@ steps:
       worlds.source.sha256: "{record.sha256}"
     replace: {"{from.origin}": "{origin}"}   # подписи источника суждений на витрине: «[Ф: … — magnit-850oa book-1.x]»
 
-  # ---------------------------------------------------------------- сборка
+  - id: book-version
+    kind: set
+    title: "версия книги {book.version} (было {book.from}; дата, оценка, цена и зерно — без изменений)"
+    file: data/assumptions/assumptions_template.yaml
+    values: {meta.version: "{book.version}"}
+    walk: {order: 99, name: "Версия книги {book.version}", keys: [meta.version]}
+
+  # ---------------------------------------------------------------- правила книги (ops/tools/worlds_rules.py)
+  - id: far-spreads
+    kind: rule
+    title: "дальние ключи спредов книг активов 2028–2030 и LT на опоре мира H (лист калибровки ЧПД)"
+    module: ops/tools/worlds_rules.py
+    function: far_spreads
+    walk: {order: 3, name: "Миры ставок {labels.walk_step}: ключи спредов книг на опоре мира H {version} (ближние A-N1n и дальние — правило листа калибровки ЧПД)", keys: [nii.books]}
+  - id: cor-paths
+    kind: rule
+    title: "пути стоимости риска режимов и концы оси κ — перенос κ по реальной ставке мира M"
+    module: ops/tools/worlds_rules.py
+    function: cor_paths
+    walk: {order: 4, name: "Миры ставок {labels.walk_step}: пути стоимости риска режимов — перенос κ по реальной ставке мира M", keys: [regimes.soft.cor, regimes.norm.cor, regimes.downturn.cor, regimes.crisis.cor]}
+  - id: bridge-variants
+    kind: rule
+    title: "ключ уровня маржи вариантов «другой уровень мира» — мостом листа при ключевой мира"
+    module: ops/tools/worlds_rules.py
+    function: bridge_variants
+
+  # ---------------------------------------------------------------- сборка и вывод на ядре
   - id: build
     kind: run
     title: "машинная книга из шаблона, записи и надстройки"
     cmd: ["{python}", "-B", "data/assumptions/build_assumptions.py"]
+  - id: rederive
+    kind: run
+    title: "вывод на ядре: ближние ключи, корни, концы осей, варианты, пороги по правилу листа"
+    cmd: ["{python}", "-B", "ops/tools/rederive.py", "--no-quick", "--no-classes", "--workers", "2", "--label", "adopt-{version}-1"]
+    timeout: 5400
+    walk: {order: 5, name: "Миры ставок {labels.walk_step}: числа, выведенные на ядре, концы осей и справочные варианты", rest: true}
+  - id: premium-loop
+    kind: loop
+    title: "центр премии средств клиентов и повтор вывода — до неподвижной точки"
+    max: 3
+    steps:
+      - id: funds-premium
+        kind: rule
+        title: "центр премии роста средств клиентов: середина фактов и нужды баланса (класс 6)"
+        module: ops/tools/worlds_rules.py
+        function: funds_premium
+        walk: {order: 6, name: "Миры ставок {labels.walk_step}: центр премии роста средств клиентов на нужде баланса книги", keys: [volumes.funds_share_drift]}
+      - id: rederive-again
+        kind: run
+        title: "повтор вывода на ядре на новом центре премии («изменений нет» — сошлось)"
+        cmd: ["{python}", "-B", "ops/tools/rederive.py", "--no-quick", "--no-classes", "--workers", "2", "--label", "adopt-{version}-loop"]
+        timeout: 5400
+  - id: build-check
+    kind: run
+    title: "машинная книга воспроизводится сборкой"
+    cmd: ["{python}", "-B", "data/assumptions/build_assumptions.py", "--check"]
   - id: refresh-check
     kind: run
-    title: "запись, книга и ближние ключи спредов согласованы"
+    title: "запись, книга, ближние и дальние ключи спредов согласованы"
     cmd: ["{python}", "-B", "ops/tools/refresh_worlds.py", "--check"]
+  - id: class-checks
+    kind: run
+    title: "проверки классов ошибок в модели (все шесть — зелёные)"
+    cmd: ["{python}", "-B", "ops/tools/class_checks.py", "--workers", "2", "--quiet", "--json", "var/adopt/{version}/class_checks.json"]
+    timeout: 1800
 
 # Листы и инструменты, которые читают запись миров, надстройку или их копии (сторож тестов сверяет список с деревом).
 # feeds — ключи шаблона из их выхода; пусто — печать или проверка.
