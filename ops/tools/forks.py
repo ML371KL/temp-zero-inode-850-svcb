@@ -383,7 +383,9 @@ def cmd_run(a: argparse.Namespace) -> int:
         row["seconds"] = round(time.time() - t0)
         res = json.loads(res_p.read_text(encoding="utf-8")) if res_p.exists() else {}
         res[label] = row
-        res_p.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        tmp = res_p.with_suffix(".json.tmp")           # атомарно: прерванный прогон не оставит итоги очереди пустыми
+        tmp.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        os.replace(tmp, res_p)
         if not a.keep:
             shutil.rmtree(copy, ignore_errors=True)
     return 0

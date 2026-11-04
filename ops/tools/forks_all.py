@@ -32,6 +32,10 @@ HEAVY = ("looseends", "hump", "middle", "nimL", "bridgelit", "norho", "k3core")
 
 SPEC = "data/assumptions/evidence/path/derive_spec.py"
 WORDS_ONLY = ("FORK_WHY", "FORK_MARKS")              # слова записи развилок: на сухой перевывод не влияют
+# выходы шагов после развилок в каталоге листа вывода (прогулка версии, запись листа предельной экономики) — не входы
+# развилок: их правка не повод перевыводить
+OUTPUTS_ONLY = tuple(f":(exclude)data/assumptions/evidence/path/{p}" for p in
+                     ("inputs/walk_*", "out/walk_*", "out/marginal_loan_out.*"))
 
 
 def spec_core(rev: str) -> str:
@@ -44,6 +48,11 @@ def spec_core(rev: str) -> str:
             b = text.find("\n}\n", a)
             text = text[:a] + text[b + 3:]
     return "\n".join(ln for ln in text.split("\n") if not ln.lstrip().startswith("#"))   # и без строк-комментариев
+
+
+def queue_runs(out: Path) -> list[Path]:
+    """Итоги очередей с записями (пустой файл прерванного прогона — не итог)."""
+    return [p for p in sorted(out.glob("q*/runs.json")) if p.stat().st_size > 0]
 
 
 def plan() -> list[tuple[str, str]]:
@@ -92,7 +101,7 @@ def main(argv: list[str] | None = None) -> int:
         c = subprocess.run([sys.executable, "-B", str(FORKS), "--check"], cwd=ROOT, env=env, capture_output=True, text=True,
                            encoding="utf-8", errors="replace")
         print((c.stdout or "").strip(), flush=True)
-        runs = sorted(a.out.glob("q*/runs.json"))
+        runs = queue_runs(a.out)
         if c.returncode != 0 or not runs:
             if not runs and c.returncode == 0:
                 print("итогов прогонов рядом нет — сверка по числовому отпечатку", flush=True)
@@ -114,11 +123,11 @@ def main(argv: list[str] | None = None) -> int:
     items.sort(key=lambda x: (x[0] != "base", not any(h in x[1] for h in HEAVY)))
     done = {}
     if a.reuse:
-        for p in sorted(a.out.glob("q*/runs.json")):
+        for p in queue_runs(a.out):
             for label, row in json.loads(p.read_text(encoding="utf-8")).items():
                 same = subprocess.run(["git", "-C", str(ROOT), "diff", "--quiet", str(row.get("commit")), "HEAD", "--",
                                        "data/assumptions/assumptions.json", "data/facts", "model",
-                                       "data/assumptions/evidence/path", f":(exclude){SPEC}"]).returncode == 0 \
+                                       "data/assumptions/evidence/path", f":(exclude){SPEC}", *OUTPUTS_ONLY]).returncode == 0 \
                     and spec_core(str(row.get("commit"))) == spec_core("HEAD")
                 if same and row.get("status") in ("price", "no_price") and "point" in row:
                     done[label] = p.parent
@@ -152,7 +161,7 @@ def main(argv: list[str] | None = None) -> int:
     if bad:
         return 1
     rec = [sys.executable, "-B", str(FORKS), "record", "--write"]
-    for p in sorted(a.out.glob("q*/runs.json")):          # все очереди — и с итогами прежнего запуска (--reuse)
+    for p in queue_runs(a.out):                         # все очереди — и с итогами прежнего запуска (--reuse)
         rec += ["--runs", str(p)]
     r = subprocess.run(rec, cwd=ROOT, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
     print((r.stdout or "").splitlines()[-2:] if r.returncode == 0 else (r.stdout or "") + (r.stderr or ""), flush=True)
