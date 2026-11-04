@@ -30,6 +30,22 @@ FORKS = ROOT / "ops" / "tools" / "forks.py"
 HEAVY = ("looseends", "hump", "middle", "nimL", "bridgelit", "norho", "k3core")
 
 
+SPEC = "data/assumptions/evidence/path/derive_spec.py"
+WORDS_ONLY = ("FORK_WHY", "FORK_MARKS")              # слова записи развилок: на сухой перевывод не влияют
+
+
+def spec_core(rev: str) -> str:
+    """Описание вывода коммита без слов записи развилок (их правка не повод перевыводить развилки)."""
+    text = subprocess.run(["git", "-C", str(ROOT), "show", f"{rev}:{SPEC}"], capture_output=True, text=True,
+                          encoding="utf-8").stdout
+    for name in WORDS_ONLY:
+        a = text.find(f"\n{name} = {{")
+        if a >= 0:
+            b = text.find("\n}\n", a)
+            text = text[:a] + text[b + 3:]
+    return "\n".join(ln for ln in text.split("\n") if not ln.lstrip().startswith("#"))   # и без строк-комментариев
+
+
 def plan() -> list[tuple[str, str]]:
     from model.book import load_book, load_facts
     from model.book_results import rule_closures
@@ -67,7 +83,30 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--reuse", action="store_true",
                     help="готовые итоги прежнего запуска в --out (тот же коммит или коммит с той же книгой, фактами и ядром) не "
                          "перезапускать: продолжение после сбоя записи")
+    ap.add_argument("--check", action="store_true",
+                    help="ничего не пишет: 0 — запись forks_rd.json этой книги и (если итоги прогонов в --out есть) равна "
+                         "записи, которую дали бы эти итоги со словами описания вывода сейчас")
     a = ap.parse_args(argv)
+    if a.check:
+        env = dict(os.environ, PYTHONIOENCODING="utf-8")
+        c = subprocess.run([sys.executable, "-B", str(FORKS), "--check"], cwd=ROOT, env=env, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        print((c.stdout or "").strip(), flush=True)
+        runs = sorted(a.out.glob("q*/runs.json"))
+        if c.returncode != 0 or not runs:
+            if not runs and c.returncode == 0:
+                print("итогов прогонов рядом нет — сверка по числовому отпечатку", flush=True)
+            return c.returncode
+        rec = [sys.executable, "-B", str(FORKS), "record"] + [x for p in runs for x in ("--runs", str(p))]
+        r = subprocess.run(rec, cwd=ROOT, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        if r.returncode != 0:
+            print((r.stdout or "") + (r.stderr or ""), flush=True)
+            return 1
+        now = json.loads((ROOT / "data" / "assumptions" / "forks_rd.json").read_text(encoding="utf-8"))
+        same = json.loads(r.stdout.split("\n", 1)[1]) == now
+        print("запись развилок равна итогам прогонов и словам описания" if same else
+              "запись развилок НЕ равна записи из итогов прогонов (слова описания вывода сменились?)", flush=True)
+        return 0 if same else 1
     items = plan()
     if a.only:
         keep = set(a.only.split(","))
@@ -79,7 +118,8 @@ def main(argv: list[str] | None = None) -> int:
             for label, row in json.loads(p.read_text(encoding="utf-8")).items():
                 same = subprocess.run(["git", "-C", str(ROOT), "diff", "--quiet", str(row.get("commit")), "HEAD", "--",
                                        "data/assumptions/assumptions.json", "data/facts", "model",
-                                       "data/assumptions/evidence/path"]).returncode == 0
+                                       "data/assumptions/evidence/path", f":(exclude){SPEC}"]).returncode == 0 \
+                    and spec_core(str(row.get("commit"))) == spec_core("HEAD")
                 if same and row.get("status") in ("price", "no_price") and "point" in row:
                     done[label] = p.parent
         print(f"готовые итоги той же книги: {len(done)} — не перезапускаются", flush=True)

@@ -156,12 +156,19 @@ steps:
     flags: {file: "var/adopt/{version}/class_checks.json", path: flags}
     timeout: 1800
 
+  - id: mixed-roots
+    kind: run
+    title: "эталон тестов проходов 7 и 8: корни прежних форм — неподвижная точка листа на книге в форме mixed"
+    cmd: ["{python}", "-B", "ops/tools/mixed_roots.py", "--workers", "2"]
+    timeout: 3600
+
   # ---------------------------------------------------------------- развилки, таблицы, контроль (после последней правки книги)
   - id: forks
     kind: run
     title: "развилки сухим перевыводом (все варианты, замыкания, база) и запись forks_rd.json"
     cmd: ["{python}", "-B", "ops/tools/forks_all.py", "--threads", "2", "--workers", "2", "--reuse"]
-    skip_if: ["{python}", "-B", "ops/tools/forks.py", "--check"]
+    # запись этой книги и, если итоги прогонов рядом, — те же слова описания вывода: иначе только запись, без пересчёта
+    skip_if: ["{python}", "-B", "ops/tools/forks_all.py", "--check"]
     timeout: 21600
   - id: tables
     kind: run

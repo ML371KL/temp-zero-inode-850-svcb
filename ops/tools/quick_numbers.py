@@ -2,7 +2,7 @@
 """Быстрые числа книги для приёма миров (шаг `quick` манифеста; формат `850-worlds/model-kit/README.md`).
 
     python -B ops/tools/quick_numbers.py --out ФАЙЛ.json [--runs N] [--workers N]
-    python -B ops/tools/quick_numbers.py --check-tables      # 0 — таблицы книги посчитаны на этой книге
+    python -B ops/tools/quick_numbers.py --check-tables      # 0 — таблицы книги посчитаны на этой книге (и словах записи развилок)
 
 Пишет JSON: `point`, `low`, `high` (точка по сетке и её концы при λ слоя — функции ядра, ₽ на акцию), `worlds` (цены
 миров N, H, M слоя «свой макро-взгляд»), `median`, `print` (печать медианы на витрине), `band80`, `band50`, `runs`, `seed`,
@@ -34,6 +34,11 @@ def tables_of(book) -> dict | None:
     rec = res.get("reference_record") or {}
     if str(res.get("book_version")) != str(book.get("meta.version")) or rec.get("book_numbers") != book_numbers(book):
         return None
+    forks = ROOT / "data" / "assumptions" / "forks_rd.json"         # слова «без цены» таблицы берут из записи развилок
+    if forks.exists():
+        words = {k: r.get("why") for k, r in (json.loads(forks.read_text(encoding="utf-8")).get("variants") or {}).items()}
+        if any(words.get(v["id"]) and v.get("why") != words[v["id"]] for v in res.get("reference_variants") or []):
+            return None
     return res
 
 

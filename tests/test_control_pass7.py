@@ -453,14 +453,20 @@ def test_p7_link_zero_is_the_nominal_with_root(repo):
 
 
 def test_p7_link_continuity(repo):
-    """Стоимость клеток непрерывна по связи страхования с ключом у 0 и у 1: связь 0 и 1e-9, 1 − 1e-9 и 1 (1e-8
-    относительно)."""
+    """Стоимость клеток непрерывна по связи страхования с ключом у 0 и у 1: у края и в 1e-9 от него стоимость та же до 1e-8
+    относительно — или разность убывает вдвое вместе с шагом (в 2e-9 от края она вдвое больше): скачка у края нет, есть
+    производная. Прежнее «1e-8 при шаге 1e-9» молча требовало производной не больше 10 на единицу связи; у малой клетки
+    M/«Розничный спад»/«Жёсткий» книги 0.2 (миры 1.7; стоимость 8,06) она 11,5, разность при шаге 1e-9…1e-7 растёт ровно с
+    шагом."""
     book, facts = repo
-    for lo, hi in ((0.0, 1e-9), (1.0 - 1e-9, 1.0)):
-        _, a = tp2.cells_of(keyed(book, **{LINK_I.replace(".", "__"): lo}), facts)
-        _, b = tp2.cells_of(keyed(book, **{LINK_I.replace(".", "__"): hi}), facts)
+
+    def values(x):
+        return tp2.cells_of(keyed(book, **{LINK_I.replace(".", "__"): x}), facts)[1]
+    for edge, step in ((0.0, 1e-9), (1.0, -1e-9)):
+        a, b, c = values(edge), values(edge + step), values(edge + 2 * step)
         for key in tp2.CELLS:
-            assert rel(a[key]["v_price"], b[key]["v_price"]) <= 1e-8, (lo, key)
+            one, two = rel(a[key]["v_price"], b[key]["v_price"]), rel(a[key]["v_price"], c[key]["v_price"])
+            assert one <= 1e-8 or one <= 0.6 * two, (edge, key, one, two)
 
 
 def _layer_m_ratio(ctl: dict, b: str) -> dict:

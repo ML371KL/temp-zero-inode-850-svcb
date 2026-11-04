@@ -513,6 +513,13 @@ def cmd_record(a: argparse.Namespace) -> int:
             and r.get("status") not in ("no_price", "no_numbers", "без цены", "без цены (справочно)")
         if not priced:
             words = why_words.get(key)
+            if words and "{" in words:                 # слова правила отбора окон: числа — из прогона развилки
+                changed = r.get("windows_changed") or {}
+                if not (r.get("status") == "no_price" and changed and r.get("roe_bound") is not None):
+                    raise SystemExit(f"forks: у строки {key} ({fork}) слова причины — о правиле отбора окон, а цену сняло "
+                                     "не оно — запись не пишется (переписать FORK_WHY)")
+                words = words.format(bound=_pct(r["roe_bound"]),
+                                     windows=", ".join(f"{n} ({_pct(w.get('roe'))})" for n, w in changed.items()))
             if not words and r.get("status") == "no_price" and r.get("selection"):
                 # причины словами описания нет, а развилку остановило правило отбора окон (Р12-8а) — его слова из прогона
                 words = "без цены: " + str(r["selection"])

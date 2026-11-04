@@ -473,14 +473,11 @@ def check_layer_m(run: Any, b: str, line: str = "insurance", top: float = 2e-3) 
 
 
 def check_layer_bank() -> None:
-    """Книга дерева: на ρ примера — слой M (`check_layer_m`; печать Йенсена в [0; 2e-3]; без ключа слой M к 2029К4 выше
-    базы больше чем на 10 %); неподвижная точка ρ правилом листа от ρ = 0 — сдвиги кругов убывают до 0, слой M на ней
-    тот же; на книге примера (точка без ключа — число примера) неподвижная точка — ρ примера ровно."""
+    """Книга дерева: без ключа слой M к 2029К4 выше базы больше чем на 10 %; неподвижная точка ρ правилом листа от ρ = 0 —
+    сдвиги кругов убывают до 0, слой M на ней (`check_layer_m`; печать Йенсена в [0; 2e-3]); на книге примера (точка без
+    ключа — число примера) неподвижная точка — ρ примера ровно, и слой M на ρ примера тот же."""
     rho = bank_rho()
     scope = tree_scope()                                       # интеграция круга 11: неподвижная точка — на средствах книги дерева
-    run = bank({"insurance": rho}, **scope)
-    _, top, low = check_layer_m(run, B6)
-    assert 0.0 <= low and top <= 2e-3, (low, top)
     base = bank(**scope)
     prep, tl = base.ctx.prep, base.ctx.timeline
     q = tl.index(Q_END)
@@ -491,9 +488,13 @@ def check_layer_bank() -> None:
     assert ek / ed > 1.10, ek / ed
     fp, traj, shifts = fixed_point(lambda t: bank({"insurance": t}, **scope))
     assert shifts[-1] == 0.0 and all(b <= a for a, b in zip(shifts, shifts[1:])), shifts
-    check_layer_m(fp, B6)
-    if base.point == EX_BASE_POINT:
+    # слой M — на собственной неподвижной точке книги дерева (долг справочника §6 закрыт на мирах 1.7): ρ фикстуры —
+    # неподвижная точка только на своей книге, а книга дерева идёт за записью миров
+    _, top, low = check_layer_m(fp, B6)
+    assert 0.0 <= low and top <= 2e-3, (low, top)
+    if base.point == EX_BASE_POINT:                            # книга фрагмента: ρ фрагмента — та же точка ровно
         assert traj == rho, {k: (traj.get(k), rho.get(k)) for k in rho if traj.get(k) != rho.get(k)}
+        check_layer_m(bank({"insurance": rho}, **scope), B6)
 
 
 def check_layer_fixture() -> None:
